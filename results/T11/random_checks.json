@@ -1,0 +1,35 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:38Z",
+  "rows": [
+    {
+      "witness_id": "fixed_idempotent_no_ladder",
+      "lens_id": "base_binary",
+      "seed": 7,
+      "replace": false,
+      "sample_count": 8,
+      "empirical_rate": "1/2",
+      "exact_probability": "1/2",
+      "matches_exact_formula": true
+    },
+    {
+      "witness_id": "lens_extension_escape",
+      "lens_id": "extended_ternary",
+      "seed": 7,
+      "replace": false,
+      "sample_count": 8,
+      "empirical_rate": "1/1",
+      "exact_probability": "1/1",
+      "matches_exact_formula": true
+    },
+    {
+      "witness_id": "hidden_clock_reversible",
+      "lens_id": "observe_x_binary",
+      "seed": 7,
+      "replace": false,
+      "sample_count": 16,
+      "empirical_rate": "1/4",
+      "exact_probability": "1/4",
+      "matches_exact_formula": true
+    }
+  ]
+}

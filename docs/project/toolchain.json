@@ -1,0 +1,101 @@
+{
+  "generated_at_utc": "2026-03-16T19:08:35Z",
+  "repo_root": ".",
+  "platform": {
+    "system": "Linux",
+    "release": "5.15.0-152-generic",
+    "machine": "x86_64"
+  },
+  "tools": {
+    "git": {
+      "available": true,
+      "version": "git version 2.34.1",
+      "path": "/usr/bin/git",
+      "notes": ""
+    },
+    "python": {
+      "available": true,
+      "version": "Python 3.10.12",
+      "path": "/usr/bin/python3",
+      "notes": ""
+    },
+    "pip": {
+      "available": true,
+      "version": "pip 26.0.1 from /home/ioannis/.local/lib/python3.10/site-packages/pip (python 3.10)",
+      "path": "/home/ioannis/.local/bin/pip3",
+      "notes": ""
+    },
+    "uv": {
+      "available": false,
+      "version": null,
+      "path": null,
+      "notes": ""
+    },
+    "poetry": {
+      "available": true,
+      "version": "Poetry (version 2.1.4)",
+      "path": "/usr/local/bin/poetry",
+      "notes": ""
+    },
+    "pytest": {
+      "available": true,
+      "version": "pytest 9.0.2",
+      "path": "/home/ioannis/.local/bin/pytest",
+      "notes": ""
+    },
+    "unittest": {
+      "available": true,
+      "version": null,
+      "path": null,
+      "notes": "Python stdlib"
+    },
+    "tox": {
+      "available": false,
+      "version": null,
+      "path": null,
+      "notes": ""
+    },
+    "nox": {
+      "available": false,
+      "version": null,
+      "path": null,
+      "notes": ""
+    },
+    "make": {
+      "available": true,
+      "version": "GNU Make 4.3",
+      "path": "/usr/bin/make",
+      "notes": ""
+    },
+    "just": {
+      "available": false,
+      "version": null,
+      "path": null,
+      "notes": ""
+    },
+    "lean": {
+      "available": true,
+      "version": "Lean (version 4.28.0, x86_64-unknown-linux-gnu, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b, Release)",
+      "path": "/home/ioannis/.elan/bin/lean",
+      "notes": ""
+    },
+    "lake": {
+      "available": true,
+      "version": "Lake version 5.0.0-src+7e01a1b (Lean version 4.28.0)",
+      "path": "/home/ioannis/.elan/bin/lake",
+      "notes": ""
+    }
+  },
+  "repo_snapshot": {
+    "top_level_paths": [
+      ".git",
+      ".gitignore",
+      "docs",
+      "plan.md",
+      "scripts"
+    ],
+    "knowledge_base_paths": [],
+    "file_count": 23,
+    "dir_count": 14
+  }
+}

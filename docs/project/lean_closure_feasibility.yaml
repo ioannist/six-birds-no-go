@@ -1,0 +1,208 @@
+{
+  "version": "T40",
+  "generated_at_utc": "2026-03-19T00:00:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_closure": "docs/project/theorem_pack_closure.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_probability_scope_charter": "docs/project/lean_probability_scope_charter.yaml",
+    "lean_probability_core": "docs/project/lean_probability_core.yaml",
+    "lean_kl_dpi_core": "docs/project/lean_kl_dpi_core.yaml",
+    "closure_deficit_module": "src/sixbirds_nogo/closure_deficit.py",
+    "t09_closure_metrics": "results/T09/closure_metrics.json",
+    "t09_grid_check": "results/T09/grid_check.json",
+    "t24_attribution_resolution": "results/T24/closure_attribution_resolution.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "decision_mode": [
+      "proceed_to_variational_core",
+      "freeze_boundary_now"
+    ],
+    "obligation_status": [
+      "already_formalized",
+      "needed_narrow",
+      "requires_forbidden_expansion",
+      "out_of_scope"
+    ],
+    "frontier_status": [
+      "unchanged"
+    ],
+    "boundary_status": [
+      "frozen"
+    ]
+  },
+  "current_frontier_snapshot": {
+    "direct_ids": [
+      "NG_LADDER_IDEM",
+      "NG_FORCE_FOREST",
+      "NG_FORCE_NULL",
+      "NG_LADDER_BOUNDED_INTERFACE",
+      "NG_ARROW_DPI",
+      "NG_PROTOCOL_TRAP",
+      "NG_MACRO_CLOSURE_DEFICIT"
+    ],
+    "auxiliary_ids": [
+      "NG_OBJECT_CONTRACTIVE"
+    ],
+    "missing_ids": [],
+    "status": "unchanged",
+    "note": "The direct closure wrapper is now landed; objecthood is the only remaining auxiliary Lean front."
+  },
+  "theorem_target": {
+    "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+    "current_lean_status": "direct",
+    "theorem_statement": "Positive closure deficit forbids an exact closed macro law under the chosen packaging, and the best macro kernel attains the variational minimum.",
+    "analytic_status": "present",
+    "attribution_status": "Resolved analytically in T24 and out of scope for this Lean feasibility spike.",
+    "note": "The finite variational core and the direct theorem wrapper/corollary are now formalized."
+  },
+  "decision_policy": {
+    "proceed_only_if_all_missing_obligations_narrow": true,
+    "forbid_generic_optimization_library": true,
+    "forbid_generic_information_library": true,
+    "forbid_generic_channel_layer": true,
+    "attribution_not_part_of_lean_target": true,
+    "objecthood_revisit_deferred_until_after_decision": true,
+    "no_status_changes_in_t40": true,
+    "note": "This spike is a theorem-driven boundary decision, not a library-expansion ticket."
+  },
+  "obligation_matrix": [
+    {
+      "obligation_id": "CL_BASE_FINITE_LAWS",
+      "description": "Existing finite law, path-law, and packaged-law substrate for exact closure statements.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_DISTRIBUTIONS",
+        "FP_FIXED_HORIZON_PATH_LAWS"
+      ],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "The finite probability core already formalizes the exact finite-law objects the closure front consumes."
+    },
+    {
+      "obligation_id": "CL_BASE_FINITE_KL",
+      "description": "Existing exact finite KL layer for grouped variational comparisons.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_MINIMAL_SCALAR_LOG_LAYER",
+        "FP_FINITE_KL"
+      ],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "The current finite KL core is already available and narrow enough for closure use."
+    },
+    {
+      "obligation_id": "CL_PACKAGED_FUTURE_LAW_FAMILY",
+      "description": "Exact packaged future laws p_x^(tau) as finite-law family.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_DISTRIBUTIONS",
+        "FP_FIXED_HORIZON_PATH_LAWS",
+        "FP_FINITE_MACRO_KERNEL_OBJECTS"
+      ],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "This is a closure-specific finite family wrapper over already formalized exact laws, not a new general probability layer."
+    },
+    {
+      "obligation_id": "CL_FINITE_MACRO_KERNEL",
+      "description": "Finite macro-kernel object with row laws.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_DISTRIBUTIONS",
+        "FP_FINITE_MACRO_KERNEL_OBJECTS"
+      ],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "A finite row-law object is enough; no generic stochastic-channel layer is required."
+    },
+    {
+      "obligation_id": "CL_VARIATIONAL_OBJECTIVE",
+      "description": "Exact finite variational objective over candidate macro kernels.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_KL",
+        "FP_FINITE_MACRO_KERNEL_OBJECTS",
+        "FP_FINITE_VARIATIONAL_OBJECTIVES"
+      ],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "The objective is a finite exact sum over macro rows and can stay closure-local rather than becoming a generic optimization package."
+    },
+    {
+      "obligation_id": "CL_ROWWISE_MINIMIZER_LEMMA",
+      "description": "Rowwise finite minimizer theorem sufficient for the closure front.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_KL",
+        "FP_FINITE_MACRO_KERNEL_OBJECTS",
+        "FP_FINITE_VARIATIONAL_OBJECTIVES"
+      ],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "The needed minimizer result is the finite rowwise KL projection lemma, not a generic convex optimization library."
+    },
+    {
+      "obligation_id": "CL_CLOSED_FORM_BEST_KERNEL",
+      "description": "Closed-form best macro kernel K*.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_DISTRIBUTIONS",
+        "FP_FINITE_MACRO_KERNEL_OBJECTS",
+        "FP_FINITE_VARIATIONAL_OBJECTIVES"
+      ],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "The closed form is determined rowwise from exact packaged future laws and remains closure-specific."
+    },
+    {
+      "obligation_id": "CL_CLOSURE_VARIATIONAL_IDENTITY_AND_COROLLARY",
+      "description": "Closure deficit equals the variational minimum, and positive deficit forbids exact closure.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_DISTRIBUTIONS",
+        "FP_FINITE_KL",
+        "FP_FINITE_MACRO_KERNEL_OBJECTS",
+        "FP_FINITE_VARIATIONAL_OBJECTIVES"
+      ],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "The final identity and positive-deficit corollary consume only the finite kernel/objective pieces above and stay theorem-facing."
+    },
+    {
+      "obligation_id": "CL_ATTRIBUTION_RESOLUTION_OUT_OF_SCOPE",
+      "description": "Local rewrite-only attribution resolution remains outside Lean theorem-core target.",
+      "status": "out_of_scope",
+      "required_foundation_ids": [],
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "Primitive attribution was already resolved analytically in T24 and does not belong to the Lean variational theorem-core target."
+    }
+  ],
+  "decision": {
+    "decision_mode": "proceed_to_variational_core",
+    "rationale": "All theorem-core obligations, including the direct closure wrapper, landed as narrow finite statements without any forbidden broad expansion.",
+    "next_ticket_id": null,
+    "next_ticket_title": null,
+    "formal_boundary_note_ref": "docs/project/lean_closure_formal_boundary.md",
+    "status": "frozen"
+  },
+  "non_goals": [
+    "primitive attribution is not part of the Lean target",
+    "no generic convex/optimization library",
+    "no broad conditional-information library",
+    "no generic stochastic-channel layer",
+    "objecthood revisit remains deferred until after the closure decision"
+  ]
+}

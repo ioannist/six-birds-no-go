@@ -1,0 +1,137 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-18T07:32:56Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "master_manifest": "results/master/witness_manifest.json",
+    "t11_definability_metrics": "results/T11/definability_metrics.json",
+    "t11_no_ladder_demos": "results/T11/no_ladder_demos.json",
+    "t11_random_checks": "results/T11/random_checks.json",
+    "t14_primitive_coverage": "results/T14/primitive_coverage.json",
+    "t14_primitive_matrix": "results/T14/primitive_matrix.csv",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "pack_status": [
+      "direct_ready",
+      "blocked",
+      "deferred"
+    ],
+    "support_grade": [
+      "direct",
+      "evidence_only",
+      "insufficient"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "pack_status": "direct_ready",
+      "theorem_statement": "Fixed bounded interface plus fixed idempotent packaging and fixed domain forbids unbounded internal definable laddering.",
+      "theorem_core": {
+        "antecedent": [
+          "finite deterministic lens on a fixed domain",
+          "interface size is fixed and bounded",
+          "packaging is fixed and idempotent",
+          "definability is counted exactly relative to the fixed lens",
+          "observed packaging signatures are tracked under repeated packaging"
+        ],
+        "conclusion": [
+          "exact definable predicate count is 2^|im(f)|",
+          "observed packaging signatures stabilize after one step",
+          "unbounded internal definable laddering is impossible under fixed lens/domain/package",
+          "strict lens/domain extension is outside theorem scope rather than a contradiction"
+        ],
+        "scope_limits": [
+          "fixed lens/interface only",
+          "fixed domain only",
+          "fixed packaging only",
+          "theorem does not preclude strict lens/domain extension",
+          "theorem evidence uses exact finite-lens definability and exact signature stabilization, not heuristic capacity analogies"
+        ]
+      },
+      "proof_spine": [
+        "Exact definable predicate count under a fixed lens is 2^{|im(f)|}.",
+        "Fixed idempotent packaging saturates after one step.",
+        "Observed packaging signatures stabilize under the same fixed lens and package.",
+        "Finite definable capacity plus one-step saturation forbids unbounded internal definable laddering.",
+        "Extension witness shows escape only by strict lens extension, which changes the theory rather than violating the theorem."
+      ],
+      "guardrails": [
+        {
+          "claim_id": "NG_LADDER_BOUNDED_INTERFACE.guardrail",
+          "guardrail_text": "Bounded-interface no-ladder applies only while lens, domain, and packaging remain fixed.",
+          "evidence_refs": [
+            "results/T11/no_ladder_demos.json",
+            "results/T11/definability_metrics.json"
+          ],
+          "note": "This is a fixed-theory theorem front, not a cross-theory claim."
+        },
+        {
+          "claim_id": "NG_LADDER_BOUNDED_INTERFACE.guardrail",
+          "guardrail_text": "Strict lens/domain extension is a theory extension, not internal laddering.",
+          "evidence_refs": [
+            "results/T11/no_ladder_demos.json",
+            "results/T14/primitive_coverage.json"
+          ],
+          "note": "Extension escape is scoped outside the fixed-interface theorem."
+        }
+      ],
+      "evidence_refs": {
+        "analytic": [
+          "docs/project/theorem_pack_bounded_interface.yaml",
+          "results/T26/bounded_interface_pack_summary.json"
+        ],
+        "computational": [
+          "results/T11/definability_metrics.json",
+          "results/T11/no_ladder_demos.json",
+          "results/T14/primitive_coverage.json",
+          "results/master/witness_manifest.json"
+        ],
+        "guardrail": [
+          "results/T11/no_ladder_demos.json",
+          "results/T14/primitive_coverage.json"
+        ],
+        "lean": [
+          "lean/SixBirdsNoGo/Idempotence.lean",
+          "lean/SixBirdsNoGo/FiniteLensDefinability.lean",
+          "lean/SixBirdsNoGo/FiniteLensDefinabilityExample.lean",
+          "lean/SixBirdsNoGo/BoundedInterfaceNoLadder.lean",
+          "lean/SixBirdsNoGo/BoundedInterfaceNoLadderExample.lean",
+          "docs/project/lean_count_bounded_interface.yaml",
+          "docs/project/lean_corollary_bounded_interface.yaml",
+          "results/T28/lean_finite_lens_count_summary.json",
+          "results/T29/lean_bounded_interface_corollary_summary.json"
+        ],
+        "witness": [
+          "fixed_idempotent_no_ladder",
+          "lens_extension_escape"
+        ]
+      },
+      "readiness_delta": {
+        "analytic_support_before": "partial",
+        "analytic_support_after": "present",
+        "blockers_resolved": [
+          "Direct bounded-interface theorem-facing package is now frozen.",
+          "Fixed interface/domain/package scope and extension-escape note are explicit.",
+          "Direct finite-lens count-core Lean evidence is now present.",
+          "Direct Lean bounded-interface no-ladder corollary is now present."
+        ],
+        "blockers_remaining": []
+      },
+      "claim_delta": {
+        "core_claim_id": "NG_LADDER_BOUNDED_INTERFACE.core",
+        "core_support_grade_before": "evidence_only",
+        "core_support_grade_after": "direct",
+        "guardrail_claim_ids": [
+          "NG_LADDER_BOUNDED_INTERFACE.guardrail"
+        ]
+      },
+      "remaining_blockers": [],
+      "next_ticket": null
+    }
+  ]
+}

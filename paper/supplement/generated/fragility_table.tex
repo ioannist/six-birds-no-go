@@ -1,0 +1,24 @@
+{\footnotesize
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}p{0.08\textwidth} >{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth}}
+\caption{Fragility items and their frozen guardrails.}\label{tab:fragility-map}\\
+\toprule
+Fragility item & Severity & Affected claims & Guardrail claim & Mitigation / note\\
+\midrule
+\endfirsthead
+\toprule
+Fragility item & Severity & Affected claims & Guardrail claim & Mitigation / note\\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page}\\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{stationary\_zero\_arrow\_is\_fragile\_to\_initial\_distribution} & high & \texttt{NG\_PROTOCOL\_TRAP.core} & \texttt{NG\_PROTOCOL\_TRAP.guardrail} & Protocol-trap claims must be stated on the lifted chain or honest observed path law, under sta…\\
+\texttt{macro\_arrow\_depends\_strongly\_on\_lens\_choice} & high & \texttt{NG\_ARROW\_DPI.core}; \texttt{NG\_PROTOCOL\_TRAP.core} & \texttt{NG\_ARROW\_DPI.guardrail} & Fitted first-order macro proxies are not theorem-level arrow audits and can create or distort …\\
+\texttt{fitted\_markov\_proxy\_can\_create\_or\_distort\_macro\_arrow} & high & \texttt{NG\_ARROW\_DPI.guardrail}; \texttt{NG\_PROTOCOL\_TRAP.guardrail}; \texttt{NG\_MACRO\_CLOSURE\_DEFICIT.guardrail} & \texttt{NG\_ARROW\_DPI.guardrail} & Fitted first-order macro proxies are not theorem-level arrow audits and can create or distort …\\
+\texttt{threshold\_floors\_can\_introduce\_spurious\_one\_way\_support} & medium & \texttt{NG\_FORCE\_FOREST.guardrail}; \texttt{NG\_FORCE\_NULL.guardrail} & \texttt{NG\_FORCE\_NULL.guardrail} & Thresholding or regularization can distort exactness and affinity interpretation; theorem clai…\\
+\texttt{object\_multiplicity\_can\_be\_metric\_artifact} & medium & \texttt{NG\_OBJECT\_CONTRACTIVE.guardrail} & \texttt{NG\_OBJECT\_CONTRACTIVE.guardrail} & Theorem objecthood claims must use admissible total-variation/Dobrushin metric assumptions; pr…\\
+\end{longtable}
+}

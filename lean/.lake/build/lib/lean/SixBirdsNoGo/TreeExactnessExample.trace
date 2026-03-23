@@ -1,0 +1,31 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["7d15785d30fd58b9.olean"],
+  "i": "53f0ce5b55376259.ilean",
+  "c": "5473a950237c3e59.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/TreeExactnessExample.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/TreeExactnessExample.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/TreeExactnessExample.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/TreeExactnessExample.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/TreeExactnessExample.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["SixBirdsNoGo.TreeExactnessExample:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["SixBirdsNoGo.TreeExactness transitive imports (legacy)",
+         "00000000000006bb"],
+        ["SixBirdsNoGo.TreeExactness:importAllArts", "dca903d4f915df5c"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/TreeExactnessExample.lean",
+   "97c604d972bd2b0d"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "a1627aab8dbe1065"}

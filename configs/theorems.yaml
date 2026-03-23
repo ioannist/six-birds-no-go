@@ -1,0 +1,182 @@
+{
+  "version": "1.0",
+  "source_basis_registry": [
+    {"id": "CLASSICAL_DATA_PROCESSING", "short_name": "Classical DPI"},
+    {"id": "CLASSICAL_CYCLE_AFFINITY", "short_name": "Classical cycle affinity"},
+    {"id": "SIX_BIRDS_FOUNDATIONS", "short_name": "Six Birds foundations"},
+    {"id": "MINIMAL_SUBSTRATE_SEMANTICS", "short_name": "Minimal substrate semantics"},
+    {"id": "OBJECTHOOD_TRACK", "short_name": "Objecthood track"},
+    {"id": "TIME_TRACK", "short_name": "Time track"}
+  ],
+  "audit_registry": [
+    {"id": "AUDIT_PATH_KL_MICRO", "short_name": "Micro path KL"},
+    {"id": "AUDIT_PATH_KL_MACRO_HONEST", "short_name": "Macro path KL honest"},
+    {"id": "AUDIT_DPI_GAP", "short_name": "DPI gap"},
+    {"id": "AUDIT_PHASE_LIFT_REVERSIBILITY", "short_name": "Phase lift reversibility"},
+    {"id": "AUDIT_CYCLE_RANK", "short_name": "Cycle rank"},
+    {"id": "AUDIT_MAX_CYCLE_AFFINITY", "short_name": "Max cycle affinity"},
+    {"id": "AUDIT_ONEFORM_EXACTNESS", "short_name": "One-form exactness"},
+    {"id": "AUDIT_CLOSURE_DEFICIT", "short_name": "Closure deficit"},
+    {"id": "AUDIT_BEST_MACRO_GAP", "short_name": "Best macro gap"},
+    {"id": "AUDIT_IDEMPOTENCE_DEFECT", "short_name": "Idempotence defect"},
+    {"id": "AUDIT_CONTRACTION_LAMBDA", "short_name": "Contraction lambda"},
+    {"id": "AUDIT_FIXED_POINT_COUNT", "short_name": "Fixed-point count"},
+    {"id": "AUDIT_EPS_STABLE_COUNT", "short_name": "Epsilon-stable count"},
+    {"id": "AUDIT_DEFINABLE_PREDICATE_COUNT", "short_name": "Definable predicate count"},
+    {"id": "AUDIT_INTERFACE_SIZE", "short_name": "Interface size"}
+  ],
+  "theorems": [
+    {
+      "id": "NG_ARROW_DPI",
+      "short_name": "No fake arrows under honest coarse-graining",
+      "claim_type": "monotonicity_impossibility",
+      "assumptions": {
+        "bundles": ["B_PATHSPACE_HONEST"],
+        "atoms": [],
+        "normalized_atoms": ["A_FIN", "A_LENS_HONEST"]
+      },
+      "conclusion": {
+        "kind": "obstruction",
+        "statements": ["macro_path_kl_le_micro_path_kl", "if_micro_zero_then_macro_zero"]
+      },
+      "origin": "existing",
+      "evidence_required": ["analytic", "experiment"],
+      "source_basis_refs": ["CLASSICAL_DATA_PROCESSING", "SIX_BIRDS_FOUNDATIONS"],
+      "required_witnesses": ["hidden_clock_reversible", "hidden_clock_driven", "rev_cycle_3"],
+      "required_audits": ["AUDIT_PATH_KL_MICRO", "AUDIT_PATH_KL_MACRO_HONEST", "AUDIT_DPI_GAP"]
+    },
+    {
+      "id": "NG_PROTOCOL_TRAP",
+      "short_name": "No autonomous ratchet from reversible hidden clock",
+      "claim_type": "obstruction",
+      "assumptions": {
+        "bundles": ["B_PROTOCOL_TRAP"],
+        "atoms": [],
+        "normalized_atoms": ["A_AUT", "A_FIN", "A_LENS_HONEST", "A_PHASE_INTERNAL", "A_PHASE_REV", "A_SHARED_STATIONARY"]
+      },
+      "conclusion": {
+        "kind": "obstruction",
+        "statements": ["reversible_phase_clock_cannot_induce_autonomous_macro_arrow"]
+      },
+      "origin": "new",
+      "evidence_required": ["analytic", "experiment"],
+      "source_basis_refs": ["CLASSICAL_DATA_PROCESSING", "TIME_TRACK", "SIX_BIRDS_FOUNDATIONS"],
+      "required_witnesses": ["hidden_clock_reversible", "hidden_clock_driven"],
+      "required_audits": ["AUDIT_PHASE_LIFT_REVERSIBILITY", "AUDIT_DPI_GAP"]
+    },
+    {
+      "id": "NG_FORCE_FOREST",
+      "short_name": "No force-like cycle drive on forests",
+      "claim_type": "finite_capacity_obstruction",
+      "assumptions": {
+        "bundles": ["B_FORCE_FOREST"],
+        "atoms": [],
+        "normalized_atoms": ["A_FIN", "A_SUPPORT_FOREST"]
+      },
+      "conclusion": {
+        "kind": "obstruction",
+        "statements": ["forest_support_implies_cycle_rank_zero", "no_nontrivial_cycle_drive"]
+      },
+      "origin": "existing",
+      "evidence_required": ["analytic", "experiment"],
+      "source_basis_refs": ["CLASSICAL_CYCLE_AFFINITY", "MINIMAL_SUBSTRATE_SEMANTICS"],
+      "required_witnesses": ["rev_tree_4", "biased_cycle_3"],
+      "required_audits": ["AUDIT_CYCLE_RANK", "AUDIT_MAX_CYCLE_AFFINITY"]
+    },
+    {
+      "id": "NG_FORCE_NULL",
+      "short_name": "No steady drive in null-affinity class",
+      "claim_type": "obstruction",
+      "assumptions": {
+        "bundles": ["B_FORCE_NULL"],
+        "atoms": [],
+        "normalized_atoms": ["A_FIN", "A_NULL_AFFINITY", "A_REV_SUPPORT"]
+      },
+      "conclusion": {
+        "kind": "obstruction",
+        "statements": ["null_affinity_implies_exact_cycle_potential", "steady_drive_obstructed"]
+      },
+      "origin": "existing",
+      "evidence_required": ["analytic", "experiment"],
+      "source_basis_refs": ["CLASSICAL_CYCLE_AFFINITY", "MINIMAL_SUBSTRATE_SEMANTICS"],
+      "required_witnesses": ["rev_cycle_3", "biased_cycle_3"],
+      "required_audits": ["AUDIT_ONEFORM_EXACTNESS", "AUDIT_MAX_CYCLE_AFFINITY"]
+    },
+    {
+      "id": "NG_MACRO_CLOSURE_DEFICIT",
+      "short_name": "Positive closure deficit blocks exact macro-law",
+      "claim_type": "variational_obstruction",
+      "assumptions": {
+        "bundles": ["B_MACRO_CLOSURE"],
+        "atoms": [],
+        "normalized_atoms": ["A_FIN", "A_LENS_HONEST", "A_PACKAGE_DEFINED", "A_STAGING_FIXED"]
+      },
+      "conclusion": {
+        "kind": "obstruction",
+        "statements": ["positive_closure_deficit_forbids_exact_closed_macro_law"]
+      },
+      "origin": "new",
+      "evidence_required": ["analytic", "experiment"],
+      "source_basis_refs": ["SIX_BIRDS_FOUNDATIONS", "MINIMAL_SUBSTRATE_SEMANTICS"],
+      "required_witnesses": ["zero_closure_deficit_lumpable", "positive_closure_deficit"],
+      "required_audits": ["AUDIT_CLOSURE_DEFICIT", "AUDIT_BEST_MACRO_GAP"]
+    },
+    {
+      "id": "NG_OBJECT_CONTRACTIVE",
+      "short_name": "Contraction forbids multiple robust objects",
+      "claim_type": "uniqueness_under_contraction",
+      "assumptions": {
+        "bundles": ["B_OBJECT_CONTRACTIVE"],
+        "atoms": [],
+        "normalized_atoms": ["A_FIN", "A_METRIC_TV", "A_PACKAGE_CONTRACTIVE", "A_PACKAGE_DEFINED", "A_PACKAGE_FIXED"]
+      },
+      "conclusion": {
+        "kind": "obstruction",
+        "statements": ["strict_contraction_implies_unique_stable_packaged_object"]
+      },
+      "origin": "new",
+      "evidence_required": ["analytic", "experiment"],
+      "source_basis_refs": ["OBJECTHOOD_TRACK", "SIX_BIRDS_FOUNDATIONS"],
+      "required_witnesses": ["contractive_unique_object", "noncontractive_multiobject"],
+      "required_audits": ["AUDIT_CONTRACTION_LAMBDA", "AUDIT_FIXED_POINT_COUNT", "AUDIT_EPS_STABLE_COUNT"]
+    },
+    {
+      "id": "NG_LADDER_IDEM",
+      "short_name": "Idempotent packaging saturates immediately",
+      "claim_type": "saturation",
+      "assumptions": {
+        "bundles": ["B_LADDER_IDEM"],
+        "atoms": [],
+        "normalized_atoms": ["A_FIN", "A_PACKAGE_DEFINED", "A_PACKAGE_FIXED", "A_PACKAGE_IDEM"]
+      },
+      "conclusion": {
+        "kind": "obstruction",
+        "statements": ["idempotent_packaging_implies_no_nontrivial_internal_ladder"]
+      },
+      "origin": "new",
+      "evidence_required": ["analytic", "experiment"],
+      "source_basis_refs": ["OBJECTHOOD_TRACK", "SIX_BIRDS_FOUNDATIONS"],
+      "required_witnesses": ["fixed_idempotent_no_ladder", "lens_extension_escape"],
+      "required_audits": ["AUDIT_IDEMPOTENCE_DEFECT", "AUDIT_DEFINABLE_PREDICATE_COUNT"]
+    },
+    {
+      "id": "NG_LADDER_BOUNDED_INTERFACE",
+      "short_name": "Bounded fixed interface forbids unbounded laddering",
+      "claim_type": "finite_capacity_obstruction",
+      "assumptions": {
+        "bundles": ["B_LADDER_BOUNDED_INTERFACE"],
+        "atoms": [],
+        "normalized_atoms": ["A_DOMAIN_FIXED", "A_FIN", "A_INTERFACE_BOUNDED", "A_INTERFACE_FIXED", "A_PACKAGE_DEFINED", "A_PACKAGE_FIXED", "A_PACKAGE_IDEM"]
+      },
+      "conclusion": {
+        "kind": "obstruction",
+        "statements": ["bounded_fixed_interface_plus_idempotence_blocks_unbounded_internal_depth"]
+      },
+      "origin": "new",
+      "evidence_required": ["analytic", "experiment"],
+      "source_basis_refs": ["OBJECTHOOD_TRACK", "TIME_TRACK", "SIX_BIRDS_FOUNDATIONS"],
+      "required_witnesses": ["fixed_idempotent_no_ladder", "lens_extension_escape"],
+      "required_audits": ["AUDIT_INTERFACE_SIZE", "AUDIT_IDEMPOTENCE_DEFECT", "AUDIT_DEFINABLE_PREDICATE_COUNT"]
+    }
+  ]
+}

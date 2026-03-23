@@ -1,0 +1,11 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.ArrowDPI",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.FiniteProbabilityCore":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCore.olean"],
+  "SixBirdsNoGo.FiniteKLDPI":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteKLDPI.olean"]},
+ "dynlibs": []}

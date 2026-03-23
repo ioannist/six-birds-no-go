@@ -1,0 +1,5 @@
+case_id,floor,retained_directed_edge_count,retained_bidirected_edge_count,one_way_directed_edge_count,one_way_pair_count,one_way_edges,thresholded_support_cycle_rank,original_cycle_rank,original_exactness_flag,note
+tiny_reversible_triangle,0,6,3,0,0,,1,1,true,threshold proxy diagnostics over tiny reversible triangle
+tiny_reversible_triangle,1/1000,6,3,0,0,,1,1,true,threshold proxy diagnostics over tiny reversible triangle
+tiny_reversible_triangle,1/100,4,1,2,2,0->2;1->2,1,1,true,threshold proxy diagnostics over tiny reversible triangle
+tiny_reversible_triangle,1/50,2,0,2,2,0->1;0->2,0,1,true,threshold proxy diagnostics over tiny reversible triangle

@@ -1,0 +1,391 @@
+{
+  "generation_timestamp_utc": "2026-03-23T16:01:38Z",
+  "theorem_target_count": 8,
+  "supporting_pair_count": 8,
+  "gap_note_count": 2,
+  "coverage_satisfied_count": 8,
+  "theorem_targets": [
+    {
+      "theorem_id": "NG_ARROW_DPI",
+      "coverage_mode": "supporting_pair",
+      "coverage_satisfied": true,
+      "pair_count": 1,
+      "satisfied_pair_count": 1,
+      "gap_note": "",
+      "pairs": [
+        {
+          "pair_id": "dpi_hidden_clock_driven_h3",
+          "pair_type": "audit_context_pair",
+          "lhs": {
+            "witness_id": "hidden_clock_driven",
+            "audit_id": "AUDIT_PATH_KL_MICRO",
+            "context": {
+              "horizon": 3
+            },
+            "actual": {
+              "kind": "finite_positive",
+              "support_mismatch_count": 0,
+              "log_terms": [
+                {
+                  "ratio": "1/8",
+                  "coeff": "1/27"
+                },
+                {
+                  "ratio": "1/2",
+                  "coeff": "2/9"
+                },
+                {
+                  "ratio": "2",
+                  "coeff": "4/9"
+                },
+                {
+                  "ratio": "8",
+                  "coeff": "8/27"
+                }
+              ],
+              "decimal_value": "0.69314718055994530941723212145817656807550013436025525412068000949339362196969471",
+              "precision": 80
+            },
+            "comparable_value": "0.69314718055994530941723212145817656807550013436025525412068000949339362196969471"
+          },
+          "rhs": {
+            "witness_id": "hidden_clock_driven",
+            "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+            "context": {
+              "lens_id": "observe_x_binary",
+              "horizon": 3
+            },
+            "actual": {
+              "kind": "zero",
+              "support_mismatch_count": 0,
+              "log_terms": [],
+              "decimal_value": "0",
+              "precision": 80
+            },
+            "comparable_value": "0"
+          },
+          "checks": [
+            {
+              "relation": "gt",
+              "lhs_value": "0.69314718055994530941723212145817656807550013436025525412068000949339362196969471",
+              "rhs_value": "0",
+              "passed": true
+            },
+            {
+              "side": "rhs",
+              "relation": "eq",
+              "actual_value": "0",
+              "expected_value": "0",
+              "passed": true
+            }
+          ],
+          "checks_passed": true,
+          "note": "Hidden-clock driven case shows strict information loss under honest coarse observation."
+        }
+      ]
+    },
+    {
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "coverage_mode": "supporting_pair",
+      "coverage_satisfied": true,
+      "pair_count": 1,
+      "satisfied_pair_count": 1,
+      "gap_note": "",
+      "pairs": [
+        {
+          "pair_id": "protocol_hidden_clock_drive_flip",
+          "pair_type": "witness_pair",
+          "lhs": {
+            "row_id": "hidden_clock_reversible"
+          },
+          "rhs": {
+            "row_id": "hidden_clock_driven"
+          },
+          "checks": [
+            {
+              "lhs_field": "drive",
+              "rhs_field": "drive",
+              "relation": "off_to_on",
+              "lhs_value": "off",
+              "rhs_value": "on",
+              "passed": true
+            },
+            {
+              "lhs_field": "micro_arrow_kl",
+              "rhs_field": "micro_arrow_kl",
+              "relation": "lt",
+              "lhs_value": "0",
+              "rhs_value": "0.69314718055994530941723212145817656807550013436025525412068000949339362196969471",
+              "passed": true
+            }
+          ],
+          "checks_passed": true,
+          "note": "Turning on driven protocol increases micro arrow from zero to positive."
+        }
+      ]
+    },
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "coverage_mode": "supporting_pair",
+      "coverage_satisfied": true,
+      "pair_count": 2,
+      "satisfied_pair_count": 2,
+      "gap_note": "",
+      "pairs": [
+        {
+          "pair_id": "forest_rewrite_cycle_create",
+          "pair_type": "witness_pair",
+          "lhs": {
+            "row_id": "rev_tree_4"
+          },
+          "rhs": {
+            "row_id": "rev_tree_4__rewrite_add_cd"
+          },
+          "checks": [
+            {
+              "lhs_field": "rewrite",
+              "rhs_field": "rewrite",
+              "relation": "off_to_on",
+              "lhs_value": "off",
+              "rhs_value": "on",
+              "passed": true
+            },
+            {
+              "lhs_field": "cycle_rank",
+              "rhs_field": "cycle_rank",
+              "relation": "lt",
+              "lhs_value": 0,
+              "rhs_value": 1,
+              "passed": true
+            }
+          ],
+          "checks_passed": true,
+          "note": "Minimal rewrite adds a cycle to forest support."
+        },
+        {
+          "pair_id": "forest_gating_cycle_kill",
+          "pair_type": "witness_pair",
+          "lhs": {
+            "row_id": "biased_cycle_3"
+          },
+          "rhs": {
+            "row_id": "biased_cycle_3__gated_path"
+          },
+          "checks": [
+            {
+              "lhs_field": "gating",
+              "rhs_field": "gating",
+              "relation": "off_to_on",
+              "lhs_value": "off",
+              "rhs_value": "on",
+              "passed": true
+            },
+            {
+              "lhs_field": "cycle_rank",
+              "rhs_field": "cycle_rank",
+              "relation": "gt",
+              "lhs_value": 1,
+              "rhs_value": 0,
+              "passed": true
+            }
+          ],
+          "checks_passed": true,
+          "note": "Gating kills cycle space in a driven construction."
+        }
+      ]
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "coverage_mode": "supporting_pair",
+      "coverage_satisfied": true,
+      "pair_count": 1,
+      "satisfied_pair_count": 1,
+      "gap_note": "",
+      "pairs": [
+        {
+          "pair_id": "null_rev_vs_biased_cycle",
+          "pair_type": "witness_pair",
+          "lhs": {
+            "row_id": "rev_cycle_3"
+          },
+          "rhs": {
+            "row_id": "biased_cycle_3"
+          },
+          "checks": [
+            {
+              "lhs_field": "drive",
+              "rhs_field": "drive",
+              "relation": "off_to_on",
+              "lhs_value": "off",
+              "rhs_value": "on",
+              "passed": true
+            },
+            {
+              "lhs_field": "max_cycle_affinity",
+              "rhs_field": "max_cycle_affinity",
+              "relation": "lt",
+              "lhs_value": "0",
+              "rhs_value": "7",
+              "passed": true
+            },
+            {
+              "lhs_field": "exactness_flag",
+              "rhs_field": "exactness_flag",
+              "relation": "ne",
+              "lhs_value": true,
+              "rhs_value": false,
+              "passed": true
+            }
+          ],
+          "checks_passed": true,
+          "note": "Drive on-transition aligns with affinity jump and exactness loss."
+        }
+      ]
+    },
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "coverage_mode": "gap_note",
+      "coverage_satisfied": true,
+      "pair_count": 0,
+      "satisfied_pair_count": 0,
+      "gap_note": "The witness contrast zero_closure_deficit_lumpable vs positive_closure_deficit is present and useful, but the current codebase does not isolate this as a clean primitive-bit flip; recorded explicitly as a primitive-attribution gap.",
+      "pairs": []
+    },
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "coverage_mode": "mixed",
+      "coverage_satisfied": true,
+      "pair_count": 1,
+      "satisfied_pair_count": 1,
+      "gap_note": "Primitive presence is unchanged (packaging on in both); coverage relies on regime contrast inside packaging dynamics.",
+      "pairs": [
+        {
+          "pair_id": "object_contraction_regime",
+          "pair_type": "witness_pair",
+          "lhs": {
+            "row_id": "contractive_unique_object"
+          },
+          "rhs": {
+            "row_id": "noncontractive_multiobject"
+          },
+          "checks": [
+            {
+              "lhs_field": "fixed_point_count",
+              "rhs_field": "fixed_point_count",
+              "relation": "ne",
+              "lhs_value": 1,
+              "rhs_value": 2,
+              "passed": true
+            },
+            {
+              "lhs_field": "contraction_lambda",
+              "rhs_field": "contraction_lambda",
+              "relation": "ne",
+              "lhs_value": "0",
+              "rhs_value": "1",
+              "passed": true
+            }
+          ],
+          "checks_passed": true,
+          "note": "Within-packaging contraction-regime contrast; not a primitive-presence flip."
+        }
+      ]
+    },
+    {
+      "theorem_id": "NG_LADDER_IDEM",
+      "coverage_mode": "supporting_pair",
+      "coverage_satisfied": true,
+      "pair_count": 1,
+      "satisfied_pair_count": 1,
+      "gap_note": "",
+      "pairs": [
+        {
+          "pair_id": "ladder_staging_escape",
+          "pair_type": "witness_pair",
+          "lhs": {
+            "row_id": "fixed_idempotent_no_ladder"
+          },
+          "rhs": {
+            "row_id": "lens_extension_escape"
+          },
+          "checks": [
+            {
+              "lhs_field": "staging",
+              "rhs_field": "staging",
+              "relation": "off_to_on",
+              "lhs_value": "off",
+              "rhs_value": "on",
+              "passed": true
+            },
+            {
+              "lhs_field": "interface_size",
+              "rhs_field": "interface_size",
+              "relation": "lt",
+              "lhs_value": 2,
+              "rhs_value": 3,
+              "passed": true
+            },
+            {
+              "lhs_field": "definable_predicate_count",
+              "rhs_field": "definable_predicate_count",
+              "relation": "lt",
+              "lhs_value": 4,
+              "rhs_value": 8,
+              "passed": true
+            }
+          ],
+          "checks_passed": true,
+          "note": "Lens extension opens staged interface/definability escape under fixed idempotent packaging."
+        }
+      ]
+    },
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "coverage_mode": "supporting_pair",
+      "coverage_satisfied": true,
+      "pair_count": 1,
+      "satisfied_pair_count": 1,
+      "gap_note": "",
+      "pairs": [
+        {
+          "pair_id": "bounded_interface_escape",
+          "pair_type": "witness_pair",
+          "lhs": {
+            "row_id": "fixed_idempotent_no_ladder"
+          },
+          "rhs": {
+            "row_id": "lens_extension_escape"
+          },
+          "checks": [
+            {
+              "lhs_field": "staging",
+              "rhs_field": "staging",
+              "relation": "off_to_on",
+              "lhs_value": "off",
+              "rhs_value": "on",
+              "passed": true
+            },
+            {
+              "lhs_field": "interface_size",
+              "rhs_field": "interface_size",
+              "relation": "lt",
+              "lhs_value": 2,
+              "rhs_value": 3,
+              "passed": true
+            },
+            {
+              "lhs_field": "definable_predicate_count",
+              "rhs_field": "definable_predicate_count",
+              "relation": "lt",
+              "lhs_value": 4,
+              "rhs_value": 8,
+              "passed": true
+            }
+          ],
+          "checks_passed": true,
+          "note": "Same staged lens extension demonstrates bounded-interface escape contrast."
+        }
+      ]
+    }
+  ]
+}

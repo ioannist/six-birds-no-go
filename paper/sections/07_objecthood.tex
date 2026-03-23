@@ -1,0 +1,88 @@
+\section{Objecthood under strict contraction}\label{sec:objecthood}
+
+This section proves Theorem~\ref{thm:NG_OBJECT_CONTRACTIVE}.
+The theorem is formulated on a finite simplex equipped with total variation distance and a strict Dobrushin contraction bound.
+Within this admissible regime, the induced Markov operator has a unique fixed distribution, its iterates converge geometrically, and any two $\varepsilon$-approximate fixed points must lie within an explicit separation bound.
+
+Let $Y$ be a finite set.
+For $\mu,\nu\in\Delta(Y)$, define the total variation distance by
+\[
+d_{\mathrm{TV}}(\mu,\nu) := \frac12\sum_{y\in Y}|\mu(y)-\nu(y)|.
+\]
+We also use the equivalent variational form
+\[
+d_{\mathrm{TV}}(\mu,\nu)=\sup_{A\subseteq Y}(\mu(A)-\nu(A)).
+\]
+Let $P:Y\to\Delta(Y)$ be a Markov kernel and let $T:\Delta(Y)\to\Delta(Y)$ be the induced affine map
+\[
+T(\mu):=\mu P.
+\]
+The Dobrushin coefficient of $P$ is
+\[
+\lambda(P) := \max_{y,y'\in Y} d_{\mathrm{TV}}\bigl(P(y,\cdot),P(y',\cdot)\bigr).
+\]
+This contraction coefficient and its standard consequences for finite chains are discussed in \citep{Dobrushin1956,Seneta2006}.
+
+\begin{lemma}[Dobrushin contraction in total variation]\label{lem:objecthood_dobrushin}
+For all $\mu,\nu\in\Delta(Y)$,
+\[
+d_{\mathrm{TV}}(\mu P,\nu P)\le \lambda(P)\,d_{\mathrm{TV}}(\mu,\nu).
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:probkl}.
+\end{proof}
+
+\begin{lemma}[Strict contraction gives a unique fixed distribution]\label{lem:objecthood_unique_fixed}
+Assume $\lambda(P)<1$.
+Then there exists a unique distribution $\pi\in\Delta(Y)$ with $\pi P=\pi$.
+Moreover, for every $\mu\in\Delta(Y)$ and every integer $t\ge 0$,
+\[
+d_{\mathrm{TV}}(\mu P^t,\pi)\le \lambda(P)^t\,d_{\mathrm{TV}}(\mu,\pi).
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:probkl}.
+\end{proof}
+
+\begin{lemma}[Approximate fixed-point separation bound]\label{lem:objecthood_approximate_separation}
+Assume $\lambda(P)\le \lambda<1$.
+If $\mu,\nu\in\Delta(Y)$ satisfy
+\[
+d_{\mathrm{TV}}(\mu P,\mu)\le \varepsilon,
+\qquad
+d_{\mathrm{TV}}(\nu P,\nu)\le \varepsilon,
+\]
+then
+\[
+d_{\mathrm{TV}}(\mu,\nu)\le \frac{2\varepsilon}{1-\lambda}.
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:probkl}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:NG_OBJECT_CONTRACTIVE}]
+The uniqueness and convergence claims follow from Lemma~\ref{lem:objecthood_unique_fixed} once $\lambda(P)<1$.
+For the approximate objecthood statement, suppose $\mu$ and $\nu$ are $\varepsilon$-stable packaged states in the admissible TV/Dobrushin regime.
+Lemma~\ref{lem:objecthood_approximate_separation} then gives the bound
+\[
+d_{\mathrm{TV}}(\mu,\nu)\le \frac{2\varepsilon}{1-\lambda(P)}.
+\]
+In particular, when $\varepsilon=0$ every fixed distribution coincides with the unique stationary distribution from Lemma~\ref{lem:objecthood_unique_fixed}.
+Thus the theorem rules out multiplicity of well-separated robust objects inside the stated contraction regime.
+\end{proof}
+
+\begin{remark}[Regime and metric scope]
+This front is formulated in total variation distance with the Dobrushin coefficient as the contraction parameter.
+The theorem asserts an obstruction only in that regime.
+Other metrics, other contraction notions, or noncontractive operators lie outside the scope of this statement.
+\end{remark}
+
+\begin{remark}[Formalization status]
+For this front, the formalized component is the uniqueness consequence of strict contraction for fixed distributions.
+The total-variation/Dobrushin framework and the $\varepsilon$-stability separation bound are used here at the level of the paper proof and are not part of the formalized core.
+\end{remark}

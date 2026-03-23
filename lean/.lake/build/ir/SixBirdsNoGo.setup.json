@@ -1,0 +1,61 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.TreeExactnessExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/TreeExactnessExample.olean"],
+  "SixBirdsNoGo.TreeExactness":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/TreeExactness.olean"],
+  "SixBirdsNoGo.ProtocolTrapExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ProtocolTrapExample.olean"],
+  "SixBirdsNoGo.ProtocolTrap":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ProtocolTrap.olean"],
+  "SixBirdsNoGo.NullForceBridgeExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/NullForceBridgeExample.olean"],
+  "SixBirdsNoGo.NullForceBridge":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/NullForceBridge.olean"],
+  "SixBirdsNoGo.Idempotence":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/Idempotence.olean"],
+  "SixBirdsNoGo.ForestForceBridgeExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ForestForceBridgeExample.olean"],
+  "SixBirdsNoGo.ForestForceBridge":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ForestForceBridge.olean"],
+  "SixBirdsNoGo.FiniteProbabilityCoreExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCoreExample.olean"],
+  "SixBirdsNoGo.FiniteProbabilityCore":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCore.olean"],
+  "SixBirdsNoGo.FiniteLensDefinabilityExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteLensDefinabilityExample.olean"],
+  "SixBirdsNoGo.FiniteLensDefinability":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteLensDefinability.olean"],
+  "SixBirdsNoGo.FiniteKLDPIExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteKLDPIExample.olean"],
+  "SixBirdsNoGo.FiniteKLDPI":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteKLDPI.olean"],
+  "SixBirdsNoGo.ContractionUniquenessExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ContractionUniquenessExample.olean"],
+  "SixBirdsNoGo.ContractionUniqueness":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ContractionUniqueness.olean"],
+  "SixBirdsNoGo.ClosureVariationalCoreExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosureVariationalCoreExample.olean"],
+  "SixBirdsNoGo.ClosureVariationalCore":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosureVariationalCore.olean"],
+  "SixBirdsNoGo.ClosureDirectPackExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosureDirectPackExample.olean"],
+  "SixBirdsNoGo.ClosureDirectPack":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosureDirectPack.olean"],
+  "SixBirdsNoGo.ClosedWalkExactnessExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosedWalkExactnessExample.olean"],
+  "SixBirdsNoGo.ClosedWalkExactness":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosedWalkExactness.olean"],
+  "SixBirdsNoGo.BoundedInterfaceNoLadderExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/BoundedInterfaceNoLadderExample.olean"],
+  "SixBirdsNoGo.BoundedInterfaceNoLadder":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/BoundedInterfaceNoLadder.olean"],
+  "SixBirdsNoGo.ArrowDPIExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ArrowDPIExample.olean"],
+  "SixBirdsNoGo.ArrowDPI":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ArrowDPI.olean"]},
+ "dynlibs": []}

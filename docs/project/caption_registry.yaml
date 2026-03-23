@@ -1,0 +1,218 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T16:30:00Z",
+  "source_context": {
+    "draft_v2": "paper/draft_v2.md",
+    "draft_v3": "paper/draft_v3.md",
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "paper_asset_freeze": "docs/project/paper_asset_freeze.yaml",
+    "theorem_evidence_map": "docs/project/theorem_evidence_map.yaml",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "caption_status": [
+      "fixed"
+    ],
+    "callout_kind": [
+      "figure",
+      "table"
+    ]
+  },
+  "caption_entries": [
+    {
+      "callout_id": "FIG-1",
+      "callout_kind": "figure",
+      "section_id": "S2_SETUP",
+      "theorem_ids": [],
+      "primary_source_ref": "authored:theory-package-and-audit-convention-schematic",
+      "caption_text": "Figure 1 ([FIG-1]). Finite audited theory package and audit-convention schematic: microstate space, deterministic lens, packaging operator, exact audits, and the honest-versus-proxy rule that restricts theorem evidence to exact finite constructions.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "TBL-1",
+      "callout_kind": "table",
+      "section_id": "S1_INTRO",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL",
+        "NG_MACRO_CLOSURE_DEFICIT",
+        "NG_OBJECT_CONTRACTIVE",
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "results/master/witness_metrics.csv",
+      "caption_text": "Table 1 ([TBL-1]). Theorem front map and support snapshot: the eight theorem fronts, their section homes, current analytic/computational/Lean statuses, and the single primary evidence handle each front contributes to the manuscript evidence map.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "FIG-2",
+      "callout_kind": "figure",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "primary_source_ref": "results/T15/horizon_lens_sweep.csv",
+      "caption_text": "Figure 2 ([FIG-2]). Hidden-clock DPI / protocol matrix: honest observed path-reversal KL can shrink under deterministic observation but cannot exceed the micro path-reversal KL; stationary reversible lifts stay honest-zero-arrow, while driven or initialization-perturbed cases mark the escape routes.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "TBL-2",
+      "callout_kind": "table",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "primary_source_ref": "results/T15/adversarial_cases.json",
+      "caption_text": "Table 2 ([TBL-2]). Arrow / protocol theorem evidence and guardrails: the paper binds the arrow and protocol claims to honest path-law assets plus adversarial proxy and initialization diagnostics, while keeping stationary-initial-law and anti-proxy clauses explicit.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "FIG-3",
+      "callout_kind": "figure",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "theorem_ids": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL"
+      ],
+      "primary_source_ref": "results/T14/primitive_coverage.json",
+      "caption_text": "Figure 3 ([FIG-3]). Graph / affinity contrasts: forest support removes cycle-space obstruction, exact null-affinity cycles carry zero closed-walk obstruction, and the biased cycle isolates nonzero drive on otherwise minimal finite support.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "TBL-3",
+      "callout_kind": "table",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "theorem_ids": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL"
+      ],
+      "primary_source_ref": "results/T15/threshold_sweep.csv",
+      "caption_text": "Table 3 ([TBL-3]). Graph / affinity theorem evidence and guardrails: exact-support cycle information is separated from threshold fragility, so no theorem claim rests on thresholded or regularized proxy support.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "FIG-4",
+      "callout_kind": "figure",
+      "section_id": "S5_CLOSURE",
+      "theorem_ids": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "primary_source_ref": "results/T09/closure_metrics.json",
+      "caption_text": "Figure 4 ([FIG-4]). Closure front: exact packaged future laws define the finite variational objective, the best macro kernel attains the minimum, and the rewrite-only local isolator stays analytically separate from the theorem core.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "TBL-4",
+      "callout_kind": "table",
+      "section_id": "S5_CLOSURE",
+      "theorem_ids": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "primary_source_ref": "results/T09/grid_check.json",
+      "caption_text": "Table 4 ([TBL-4]). Closure theorem evidence and provenance: the direct pack uses exact variational metrics and the grid-check asset, while attribution history remains a separate resolved note rather than part of the theorem statement.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "FIG-5",
+      "callout_kind": "figure",
+      "section_id": "S6_OBJECTHOOD",
+      "theorem_ids": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "primary_source_ref": "results/T10/objecthood_metrics.json",
+      "caption_text": "Figure 5 ([FIG-5]). Objecthood front: in the admissible total-variation regime, contraction yields a unique fixed distribution and constrains epsilon-stable laws, while poor proxy metrics can spuriously split the regime into fake multiplicity.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "TBL-5",
+      "callout_kind": "table",
+      "section_id": "S6_OBJECTHOOD",
+      "theorem_ids": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "primary_source_ref": "results/T15/objecthood_metric_sweep.csv",
+      "caption_text": "Table 5 ([TBL-5]). Objecthood admissible regime and guardrail matrix: exact contraction metrics and stability checks support the analytic theorem, while the Lean side is explicitly bounded at the retained uniqueness core.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "FIG-6",
+      "callout_kind": "figure",
+      "section_id": "S7_LADDER",
+      "theorem_ids": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "results/T11/no_ladder_demos.json",
+      "caption_text": "Figure 6 ([FIG-6]). Ladder front: fixed idempotent packaging saturates after one step, bounded-interface definability remains finite, and apparent escape occurs only by strict lens or domain extension rather than by internal laddering.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "TBL-6",
+      "callout_kind": "table",
+      "section_id": "S7_LADDER",
+      "theorem_ids": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "results/T11/definability_metrics.json",
+      "caption_text": "Table 6 ([TBL-6]). Ladder theorem evidence, count core, and corollary map: no-ladder demos, exact definability counts, and the finite interface corollary jointly separate fixed-theory obstruction from genuine theory extension.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "TBL-A1",
+      "callout_kind": "table",
+      "section_id": "A1_ARTIFACTS",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL",
+        "NG_MACRO_CLOSURE_DEFICIT",
+        "NG_OBJECT_CONTRACTIVE",
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "results/master/witness_manifest.json",
+      "caption_text": "Table A1 ([TBL-A1]). Artifact and evidence provenance map: each frozen core or guardrail claim is bound to one primary evidence handle and one primary figure or table decision, with excluded raw assets retained only as non-manuscript repository support.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    },
+    {
+      "callout_id": "TBL-A2",
+      "callout_kind": "table",
+      "section_id": "A2_LEAN",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL",
+        "NG_MACRO_CLOSURE_DEFICIT",
+        "NG_OBJECT_CONTRACTIVE",
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "derived:lean-support-and-proof-dependency-map",
+      "caption_text": "Table A2 ([TBL-A2]). Lean support and proof dependency map: seven fronts are direct, objecthood remains auxiliary-only by permanent boundary, and the finite law, KL/DPI, and variational layers feed the theorem-facing bridges without broad foundations drift.",
+      "caption_status": "fixed",
+      "note": "Final caption fixed from the frozen callout binding and preserved manuscript scope."
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+\section{Closure deficit and a variational obstruction}\label{sec:closure}
+
+This section proves Theorem~\ref{thm:NG_MACRO_CLOSURE_DEFICIT}.
+The setting is finite throughout.
+Let $X$ be a finite state space, let $Y$ be a finite macro space, and let $(X_t)_{t\in\mathbb{Z}}$
+be a stationary Markov chain on $X$ with stationary law $\mu$.
+Fix a deterministic packaging map $\Pi:X\to Y$ and define the macro process by
+$Y_t := \Pi(X_t)$.
+For an integer lag $\tau\ge 1$ and a microstate $x\in X$, write
+\[
+p_x^{(\tau)}(\cdot) := \mathrm{Law}(Y_{t+\tau}\mid X_t=x)\in \Delta(Y).
+\]
+For a macrostate $y\in Y$, write
+\[
+\bar p_y^{(\tau)}(\cdot) := \mathrm{Law}(Y_{t+\tau}\mid Y_t=y)\in \Delta(Y).
+\]
+A macro kernel is a function $K:Y\to \Delta(Y)$, equivalently a row-stochastic array
+$K(y,y')$ on $Y\times Y$.
+The variational objective at lag $\tau$ is
+\[
+\mathcal L_\tau(K) := \sum_{x\in X} \mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,K(\Pi(x),\cdot)\right).
+\]
+The KL decompositions and conditional-mutual-information identities used below are standard finite information-theoretic calculations, and the variational minimizer is a finite KL-projection instance \citep{CoverThomas2006,Csiszar1975}.
+
+\begin{lemma}[KL mixture decomposition]\label{lem:closure_kl_mixture}
+Let $(w_i)_{i\in I}$ be nonnegative weights on a finite index set $I$, not all zero,
+and let $(P_i)_{i\in I}$ be probability laws on a finite set $\Omega$.
+Define
+\[
+W := \sum_{i\in I} w_i,
+\qquad
+R := \frac{1}{W}\sum_{i\in I} w_i P_i.
+\]
+Then for every probability law $Q$ on $\Omega$,
+\[
+\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,Q\right)
+=
+\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right)
++
+W\,D_{\mathrm{KL}}\!\left(R\,\middle\|\,Q\right).
+\]
+In particular, $Q=R$ is a minimizer, and the minimum value is
+\[
+\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right).
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:varclosure}.
+\end{proof}
+
+\begin{lemma}[Best macro kernel]\label{lem:closure_best_macro_kernel}
+For each $y\in Y$, define
+\[
+K^\star_\tau(y,\cdot) := \bar p_y^{(\tau)}(\cdot)=\mathrm{Law}(Y_{t+\tau}\mid Y_t=y).
+\]
+Then
+\[
+\min_K \mathcal L_\tau(K)
+=
+\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right),
+\]
+and the minimum is attained by $K^\star_\tau$.
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:varclosure}.
+\end{proof}
+
+\begin{lemma}[Conditional mutual information identity]\label{lem:closure_cmi_identity}
+In this finite deterministic setting,
+\[
+I(X_t;Y_{t+\tau}\mid Y_t)
+=
+\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:varclosure}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:NG_MACRO_CLOSURE_DEFICIT}]
+By definition, the closure deficit in the theorem is
+\[
+\mathrm{CD}_\tau(\Pi)
+=
+I(X_t;\Pi(X_{t+\tau})\mid \Pi(X_t))
+=
+I(X_t;Y_{t+\tau}\mid Y_t).
+\]
+Lemma~\ref{lem:closure_cmi_identity} expresses this quantity as
+\[
+\mathrm{CD}_\tau(\Pi)
+=
+\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
+\]
+Lemma~\ref{lem:closure_best_macro_kernel} identifies the same expression as the minimum
+of the variational objective:
+\[
+\mathrm{CD}_\tau(\Pi)
+=
+\min_K \mathcal L_\tau(K),
+\qquad
+K^\star_\tau(y,\cdot)=\bar p_y^{(\tau)}(\cdot).
+\]
+This proves the finite variational identity and the formula for the minimizing macro kernel.
+
+For the positivity claim, suppose there exist $x,x'\in X$ with $\Pi(x)=\Pi(x')=:y$,
+$\mu(x)>0$, $\mu(x')>0$, and $p_x^{(\tau)}\neq p_{x'}^{(\tau)}$.
+Then not all positive-mass fiber laws in $\Pi^{-1}(y)$ coincide with their weighted average
+$\bar p_y^{(\tau)}$.
+Hence at least one state $z\in\Pi^{-1}(y)$ with $\mu(z)>0$ satisfies
+\[
+D_{\mathrm{KL}}\!\left(p_z^{(\tau)}\,\middle\|\,\bar p_y^{(\tau)}\right)>0.
+\]
+The sum formula for $\mathrm{CD}_\tau(\Pi)$ therefore contains at least one strictly
+positive term and all remaining terms are nonnegative, so
+\[
+\mathrm{CD}_\tau(\Pi)>0.
+\]
+\end{proof}
+
+\begin{remark}[Scope of exact closure]
+If every macro fiber is a singleton, then $\Pi$ loses no information and the closure
+deficit vanishes trivially.
+More generally, if all packaged future laws $p_x^{(\tau)}$ agree inside each fiber
+$\Pi^{-1}(y)$, then the minimizing macro kernel reproduces those common laws and
+$\mathrm{CD}_\tau(\Pi)=0$.
+The theorem becomes informative exactly when a macro fiber contains distinct packaged
+future laws.
+\end{remark}
+
+\begin{remark}[Attribution is separate]
+The theorem isolates a finite obstruction: distinct packaged future laws inside a single
+macro fiber force a positive closure deficit.
+Which primitive or modeling decision produces such a pair is a separate question and is
+independent of the variational identity proved here.
+\end{remark}

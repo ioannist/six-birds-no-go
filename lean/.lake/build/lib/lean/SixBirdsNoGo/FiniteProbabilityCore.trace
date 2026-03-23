@@ -1,0 +1,28 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["6acce05aa65062d3.olean"],
+  "i": "b4cb0f62676d2894.ilean",
+  "c": "761ea5906990e2e9.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/FiniteProbabilityCore.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCore.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCore.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/FiniteProbabilityCore.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/FiniteProbabilityCore.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["SixBirdsNoGo.FiniteProbabilityCore:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports", "00000000000006bb"]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/FiniteProbabilityCore.lean",
+   "475fc8b63a2b24d6"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "fd5108344d4d2a52"}

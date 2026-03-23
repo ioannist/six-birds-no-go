@@ -1,0 +1,236 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-18T08:12:42Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "master_manifest": "results/master/witness_manifest.json",
+    "t14_primitive_coverage": "results/T14/primitive_coverage.json",
+    "t14_primitive_matrix": "results/T14/primitive_matrix.csv",
+    "t15_fragility_summary": "results/T15/fragility_summary.json",
+    "t15_threshold_sweep": "results/T15/threshold_sweep.csv",
+    "t15_adversarial_cases": "results/T15/adversarial_cases.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "pack_status": [
+      "direct_ready",
+      "blocked",
+      "deferred"
+    ],
+    "support_grade": [
+      "direct",
+      "evidence_only",
+      "insufficient"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "pack_status": "direct_ready",
+      "theorem_statement": "Forest support kills cycle-space obstruction: cycle rank zero forbids force-like cycle drive.",
+      "theorem_core": {
+        "antecedent": [
+          "finite exact support graph",
+          "undirected support and cycle-rank computation",
+          "self-loops ignored in cycle-space accounting",
+          "forest support or cycle rank zero"
+        ],
+        "conclusion": [
+          "no cycle-space obstruction remains",
+          "max cycle affinity is zero",
+          "force-like cycle drive is forbidden"
+        ],
+        "scope_limits": [
+          "exact support graph only",
+          "no thresholded or regularized proxy support",
+          "theorem front is about cycle-space force obstruction, not arbitrary one-way artifacts"
+        ]
+      },
+      "proof_spine": [
+        "Cycle rank zero identifies forest support in exact undirected support accounting.",
+        "On rooted trees/forests, path summation reconstructs a potential from antisymmetric edge labels.",
+        "Exact potential kills closed-walk and cycle sums.",
+        "With no cycle space, the cycle-affinity obstruction vanishes.",
+        "Gating can delete loops but cannot create loop-based drive from a forest."
+      ],
+      "guardrails": [
+        {
+          "claim_id": "NG_FORCE_FOREST.guardrail",
+          "guardrail_text": "Thresholded support graphs are proxy diagnostics only, not theorem-level support objects.",
+          "fragility_refs": [
+            "results/T15/fragility_summary.json:threshold_floors_can_introduce_spurious_one_way_support"
+          ],
+          "note": "The theorem front uses exact support, not floor-cut proxy support."
+        },
+        {
+          "claim_id": "NG_FORCE_FOREST.guardrail",
+          "guardrail_text": "Support floors can create spurious one-way behavior and false forest/cycle interpretations.",
+          "fragility_refs": [
+            "results/T15/threshold_sweep.csv",
+            "results/T15/adversarial_cases.json:threshold_creates_spurious_one_way_support"
+          ],
+          "note": "Threshold artifacts are tracked as fragility diagnostics, not theorem evidence."
+        }
+      ],
+      "evidence_refs": {
+        "analytic": [
+          "docs/project/theorem_pack_graph_affinity.yaml",
+          "results/T23/graph_affinity_pack_summary.json"
+        ],
+        "computational": [
+          "results/master/witness_manifest.json",
+          "results/master/witness_metrics.csv",
+          "results/T14/primitive_coverage.json",
+          "results/T14/primitive_matrix.csv"
+        ],
+        "fragility": [
+          "results/T15/fragility_summary.json:threshold_floors_can_introduce_spurious_one_way_support",
+          "results/T15/threshold_sweep.csv"
+        ],
+        "lean": [
+          "lean/SixBirdsNoGo/TreeExactness.lean",
+          "lean/SixBirdsNoGo/ClosedWalkExactness.lean",
+          "lean/SixBirdsNoGo/ForestForceBridge.lean",
+          "lean/SixBirdsNoGo/ForestForceBridgeExample.lean",
+          "docs/project/lean_bridge_graph_affinity.yaml",
+          "results/T27/lean_graph_bridge_summary.json"
+        ],
+        "witness": [
+          "rev_tree_4",
+          "rev_tree_4__rewrite_add_cd",
+          "biased_cycle_3",
+          "biased_cycle_3__gated_path"
+        ]
+      },
+      "readiness_delta": {
+        "analytic_support_before": "partial",
+        "analytic_support_after": "present",
+        "blockers_resolved": [
+          "Direct theorem-facing analytic package is frozen for forest/cycle-rank obstruction.",
+          "Threshold/regularization guardrails are explicit and frozen."
+        ],
+        "blockers_remaining": [
+          "Exact-support and threshold guardrails must remain explicit in paper assembly."
+        ]
+      },
+      "claim_delta": {
+        "core_claim_id": "NG_FORCE_FOREST.core",
+        "core_support_grade_before": "evidence_only",
+        "core_support_grade_after": "direct",
+        "guardrail_claim_ids": [
+          "NG_FORCE_FOREST.guardrail"
+        ]
+      },
+      "remaining_blockers": [
+        "Exact-support and threshold guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_10_graph_scope_guardrail_freeze",
+        "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
+      }
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "pack_status": "direct_ready",
+      "theorem_statement": "On exact bidirected support, null-affinity / exact 1-form kills cycle obstruction: every cycle has zero affinity and no steady nonconservative drive remains.",
+      "theorem_core": {
+        "antecedent": [
+          "finite bidirected exact support",
+          "exact ratio-form exactness / exact 1-form / null-affinity condition",
+          "exact cycle-affinity audit"
+        ],
+        "conclusion": [
+          "every cycle ratio telescopes to one",
+          "every cycle affinity is zero",
+          "no steady nonconservative cycle drive remains"
+        ],
+        "scope_limits": [
+          "exact bidirected support only",
+          "no thresholded support or regularized affinities",
+          "theorem front is about cycle-force obstruction, not arbitrary nonreversible sink structure"
+        ]
+      },
+      "proof_spine": [
+        "Exact 1-form/null-affinity gives a potential representation on exact bidirected support.",
+        "Cycle products and closed-walk sums telescope under the potential representation.",
+        "Every cycle ratio is one and the exact affinity surrogate vanishes.",
+        "Therefore no nonconservative cycle drive remains in the null class."
+      ],
+      "guardrails": [
+        {
+          "claim_id": "NG_FORCE_NULL.guardrail",
+          "guardrail_text": "Thresholding or regularization can distort exactness and affinity interpretation.",
+          "fragility_refs": [
+            "results/T15/fragility_summary.json:threshold_floors_can_introduce_spurious_one_way_support",
+            "results/T15/threshold_sweep.csv"
+          ],
+          "note": "Proxy threshold floors are not admissible for theorem-level affinity claims."
+        },
+        {
+          "claim_id": "NG_FORCE_NULL.guardrail",
+          "guardrail_text": "Theorem claims must use exact bidirected support and exact ratio-form exactness.",
+          "fragility_refs": [
+            "results/T15/adversarial_cases.json:threshold_creates_spurious_one_way_support"
+          ],
+          "note": "Regularized affinity surrogates are diagnostic only."
+        }
+      ],
+      "evidence_refs": {
+        "analytic": [
+          "docs/project/theorem_pack_graph_affinity.yaml",
+          "results/T23/graph_affinity_pack_summary.json"
+        ],
+        "computational": [
+          "results/master/witness_manifest.json",
+          "results/master/witness_metrics.csv",
+          "results/T14/primitive_coverage.json",
+          "results/T14/primitive_matrix.csv"
+        ],
+        "fragility": [
+          "results/T15/fragility_summary.json:threshold_floors_can_introduce_spurious_one_way_support",
+          "results/T15/threshold_sweep.csv"
+        ],
+        "lean": [
+          "lean/SixBirdsNoGo/ClosedWalkExactness.lean",
+          "lean/SixBirdsNoGo/NullForceBridge.lean",
+          "lean/SixBirdsNoGo/NullForceBridgeExample.lean",
+          "docs/project/lean_bridge_graph_affinity.yaml",
+          "results/T27/lean_graph_bridge_summary.json"
+        ],
+        "witness": [
+          "rev_cycle_3",
+          "biased_cycle_3"
+        ]
+      },
+      "readiness_delta": {
+        "analytic_support_before": "partial",
+        "analytic_support_after": "present",
+        "blockers_resolved": [
+          "Direct theorem-facing analytic package is frozen for exactness/null-affinity obstruction.",
+          "Threshold/regularization guardrails are explicit and frozen."
+        ],
+        "blockers_remaining": [
+          "Exact bidirected-support and no-regularization guardrails must remain explicit in paper assembly."
+        ]
+      },
+      "claim_delta": {
+        "core_claim_id": "NG_FORCE_NULL.core",
+        "core_support_grade_before": "evidence_only",
+        "core_support_grade_after": "direct",
+        "guardrail_claim_ids": [
+          "NG_FORCE_NULL.guardrail"
+        ]
+      },
+      "remaining_blockers": [
+        "Exact bidirected-support and no-regularization guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_10_graph_scope_guardrail_freeze",
+        "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
+      }
+    }
+  ]
+}

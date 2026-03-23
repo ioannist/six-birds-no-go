@@ -1,0 +1,212 @@
+{
+  "version": "1.0",
+  "primitive_registry": [
+    {"id": "rewrite", "short_name": "rewrite", "description": "explicit structural rewrite of support/kernel used as contrastive construction"},
+    {"id": "gating", "short_name": "gating", "description": "explicit edge/support deletion or feasibility restriction used as contrastive construction"},
+    {"id": "holonomy", "short_name": "holonomy", "description": "explicit phase-lift/hidden-clock/protocol structure"},
+    {"id": "staging", "short_name": "staging", "description": "explicit lens refinement/extension staging in witness construction"},
+    {"id": "packaging", "short_name": "packaging", "description": "non-null packaging object present"},
+    {"id": "drive", "short_name": "drive", "description": "explicit nonequilibrium/protocol bias primitive source"}
+  ],
+  "toggle_values": ["on", "off", "ambiguous"],
+  "witness_assignments": [
+    {"witness_id": "rev_tree_4", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "off", "drive": "off"}, "assignment_notes": "Baseline reversible tree witness without extra primitives.", "ambiguity_notes": ""},
+    {"witness_id": "rev_cycle_3", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "off", "drive": "off"}, "assignment_notes": "Baseline reversible cycle witness without explicit drive primitive.", "ambiguity_notes": ""},
+    {"witness_id": "biased_cycle_3", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "off", "drive": "on"}, "assignment_notes": "Biased cycle includes explicit drive primitive.", "ambiguity_notes": ""},
+    {"witness_id": "hidden_clock_reversible", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "on", "staging": "off", "packaging": "off", "drive": "off"}, "assignment_notes": "Phase-lift hidden-clock structure marks holonomy on.", "ambiguity_notes": ""},
+    {"witness_id": "hidden_clock_driven", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "on", "staging": "off", "packaging": "off", "drive": "on"}, "assignment_notes": "Phase-lift witness with explicit driven protocol bias.", "ambiguity_notes": ""},
+    {"witness_id": "zero_closure_deficit_lumpable", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "off", "drive": "off"}, "assignment_notes": "Lumpable closure benchmark without primitive flips.", "ambiguity_notes": ""},
+    {"witness_id": "positive_closure_deficit", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "off", "drive": "off"}, "assignment_notes": "Positive closure-deficit contrast is present but not attributed to a distinct primitive flip in current set.", "ambiguity_notes": ""},
+    {"witness_id": "contractive_unique_object", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "on", "drive": "off"}, "assignment_notes": "Packaging operator witness in contractive regime.", "ambiguity_notes": ""},
+    {"witness_id": "noncontractive_multiobject", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "on", "drive": "off"}, "assignment_notes": "Packaging operator witness in noncontractive/multi-fixed-point regime.", "ambiguity_notes": ""},
+    {"witness_id": "fixed_idempotent_no_ladder", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "on", "drive": "off"}, "assignment_notes": "Idempotent packaging with bounded interface and no-ladder behavior.", "ambiguity_notes": ""},
+    {"witness_id": "lens_extension_escape", "toggles": {"rewrite": "off", "gating": "off", "holonomy": "off", "staging": "on", "packaging": "on", "drive": "off"}, "assignment_notes": "Lens extension/refinement enables staging primitive over fixed packaging.", "ambiguity_notes": ""}
+  ],
+  "derived_variants": [
+    {
+      "id": "rev_tree_4__rewrite_add_cd",
+      "parent_witness_id": "rev_tree_4",
+      "kind": "derived_markov_variant",
+      "description": "add the reversible edge c <-> d to create one undirected cycle without introducing drive",
+      "states": ["a", "b", "c", "d"],
+      "matrix": [
+        ["0", "1", "0", "0"],
+        ["1/3", "0", "1/3", "1/3"],
+        ["0", "1/2", "0", "1/2"],
+        ["0", "1/2", "1/2", "0"]
+      ],
+      "lenses": [
+        {"id": "identity", "mapping": {"a": "a", "b": "b", "c": "c", "d": "d"}}
+      ],
+      "toggles": {"rewrite": "on", "gating": "off", "holonomy": "off", "staging": "off", "packaging": "off", "drive": "off"},
+      "assignment_notes": "Minimal structural rewrite that creates one cycle while keeping reversible/no-drive character.",
+      "ambiguity_notes": ""
+    },
+    {
+      "id": "biased_cycle_3__gated_path",
+      "parent_witness_id": "biased_cycle_3",
+      "kind": "derived_markov_variant",
+      "description": "delete the 0 <-> 2 edge pair from the biased 3-cycle to kill cycle space while retaining an explicit drive source",
+      "states": ["0", "1", "2"],
+      "matrix": [
+        ["0", "1", "0"],
+        ["1/3", "0", "2/3"],
+        ["0", "1", "0"]
+      ],
+      "lenses": [
+        {"id": "identity", "mapping": {"0": "0", "1": "1", "2": "2"}}
+      ],
+      "toggles": {"rewrite": "off", "gating": "on", "holonomy": "off", "staging": "off", "packaging": "off", "drive": "on"},
+      "assignment_notes": "Explicit gating deletes one edge pair; drive primitive stays on even though cycle-force signal is removed.",
+      "ambiguity_notes": ""
+    }
+  ],
+  "theorem_coverage": [
+    {
+      "theorem_id": "NG_ARROW_DPI",
+      "coverage_mode": "supporting_pair",
+      "pairs": [
+        {
+          "pair_id": "dpi_hidden_clock_driven_h3",
+          "pair_type": "audit_context_pair",
+          "lhs": {"witness_id": "hidden_clock_driven", "audit_id": "AUDIT_PATH_KL_MICRO", "context": {"horizon": 3}},
+          "rhs": {"witness_id": "hidden_clock_driven", "audit_id": "AUDIT_PATH_KL_MACRO_HONEST", "context": {"lens_id": "observe_x_binary", "horizon": 3}},
+          "checks": [
+            {"relation": "gt"},
+            {"side": "rhs", "relation": "eq", "value": "0"}
+          ],
+          "note": "Hidden-clock driven case shows strict information loss under honest coarse observation."
+        }
+      ],
+      "gap_note": ""
+    },
+    {
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "coverage_mode": "supporting_pair",
+      "pairs": [
+        {
+          "pair_id": "protocol_hidden_clock_drive_flip",
+          "pair_type": "witness_pair",
+          "lhs": {"row_id": "hidden_clock_reversible"},
+          "rhs": {"row_id": "hidden_clock_driven"},
+          "checks": [
+            {"lhs_field": "drive", "rhs_field": "drive", "relation": "off_to_on"},
+            {"lhs_field": "micro_arrow_kl", "rhs_field": "micro_arrow_kl", "relation": "lt"}
+          ],
+          "note": "Turning on driven protocol increases micro arrow from zero to positive."
+        }
+      ],
+      "gap_note": ""
+    },
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "coverage_mode": "supporting_pair",
+      "pairs": [
+        {
+          "pair_id": "forest_rewrite_cycle_create",
+          "pair_type": "witness_pair",
+          "lhs": {"row_id": "rev_tree_4"},
+          "rhs": {"row_id": "rev_tree_4__rewrite_add_cd"},
+          "checks": [
+            {"lhs_field": "rewrite", "rhs_field": "rewrite", "relation": "off_to_on"},
+            {"lhs_field": "cycle_rank", "rhs_field": "cycle_rank", "relation": "lt"}
+          ],
+          "note": "Minimal rewrite adds a cycle to forest support."
+        },
+        {
+          "pair_id": "forest_gating_cycle_kill",
+          "pair_type": "witness_pair",
+          "lhs": {"row_id": "biased_cycle_3"},
+          "rhs": {"row_id": "biased_cycle_3__gated_path"},
+          "checks": [
+            {"lhs_field": "gating", "rhs_field": "gating", "relation": "off_to_on"},
+            {"lhs_field": "cycle_rank", "rhs_field": "cycle_rank", "relation": "gt"}
+          ],
+          "note": "Gating kills cycle space in a driven construction."
+        }
+      ],
+      "gap_note": ""
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "coverage_mode": "supporting_pair",
+      "pairs": [
+        {
+          "pair_id": "null_rev_vs_biased_cycle",
+          "pair_type": "witness_pair",
+          "lhs": {"row_id": "rev_cycle_3"},
+          "rhs": {"row_id": "biased_cycle_3"},
+          "checks": [
+            {"lhs_field": "drive", "rhs_field": "drive", "relation": "off_to_on"},
+            {"lhs_field": "max_cycle_affinity", "rhs_field": "max_cycle_affinity", "relation": "lt"},
+            {"lhs_field": "exactness_flag", "rhs_field": "exactness_flag", "relation": "ne"}
+          ],
+          "note": "Drive on-transition aligns with affinity jump and exactness loss."
+        }
+      ],
+      "gap_note": ""
+    },
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "coverage_mode": "gap_note",
+      "pairs": [],
+      "gap_note": "The witness contrast zero_closure_deficit_lumpable vs positive_closure_deficit is present and useful, but the current codebase does not isolate this as a clean primitive-bit flip; recorded explicitly as a primitive-attribution gap."
+    },
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "coverage_mode": "mixed",
+      "pairs": [
+        {
+          "pair_id": "object_contraction_regime",
+          "pair_type": "witness_pair",
+          "lhs": {"row_id": "contractive_unique_object"},
+          "rhs": {"row_id": "noncontractive_multiobject"},
+          "checks": [
+            {"lhs_field": "fixed_point_count", "rhs_field": "fixed_point_count", "relation": "ne"},
+            {"lhs_field": "contraction_lambda", "rhs_field": "contraction_lambda", "relation": "ne"}
+          ],
+          "note": "Within-packaging contraction-regime contrast; not a primitive-presence flip."
+        }
+      ],
+      "gap_note": "Primitive presence is unchanged (packaging on in both); coverage relies on regime contrast inside packaging dynamics."
+    },
+    {
+      "theorem_id": "NG_LADDER_IDEM",
+      "coverage_mode": "supporting_pair",
+      "pairs": [
+        {
+          "pair_id": "ladder_staging_escape",
+          "pair_type": "witness_pair",
+          "lhs": {"row_id": "fixed_idempotent_no_ladder"},
+          "rhs": {"row_id": "lens_extension_escape"},
+          "checks": [
+            {"lhs_field": "staging", "rhs_field": "staging", "relation": "off_to_on"},
+            {"lhs_field": "interface_size", "rhs_field": "interface_size", "relation": "lt"},
+            {"lhs_field": "definable_predicate_count", "rhs_field": "definable_predicate_count", "relation": "lt"}
+          ],
+          "note": "Lens extension opens staged interface/definability escape under fixed idempotent packaging."
+        }
+      ],
+      "gap_note": ""
+    },
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "coverage_mode": "supporting_pair",
+      "pairs": [
+        {
+          "pair_id": "bounded_interface_escape",
+          "pair_type": "witness_pair",
+          "lhs": {"row_id": "fixed_idempotent_no_ladder"},
+          "rhs": {"row_id": "lens_extension_escape"},
+          "checks": [
+            {"lhs_field": "staging", "rhs_field": "staging", "relation": "off_to_on"},
+            {"lhs_field": "interface_size", "rhs_field": "interface_size", "relation": "lt"},
+            {"lhs_field": "definable_predicate_count", "rhs_field": "definable_predicate_count", "relation": "lt"}
+          ],
+          "note": "Same staged lens extension demonstrates bounded-interface escape contrast."
+        }
+      ],
+      "gap_note": ""
+    }
+  ]
+}

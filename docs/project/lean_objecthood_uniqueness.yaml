@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T15:10:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_objecthood": "docs/project/theorem_pack_objecthood.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "t10_objecthood_metrics": "results/T10/objecthood_metrics.json",
+    "t10_stability_grid": "results/T10/stability_grid.json",
+    "t15_objecthood_metric_sweep": "results/T15/objecthood_metric_sweep.csv",
+    "t15_adversarial_cases": "results/T15/adversarial_cases.json",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "outcome_mode": [
+      "direct_uniqueness_theorem",
+      "formal_boundary_note"
+    ],
+    "bridge_status": [
+      "uniqueness_core_ready",
+      "boundary_frozen",
+      "blocked"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "outcome_mode": "direct_uniqueness_theorem",
+      "bridge_status": "uniqueness_core_ready",
+      "bridge_statement": "A strict contraction on a natural-valued distance has at most one fixed point, providing a direct Lean uniqueness core for the objecthood front.",
+      "prerequisites": [
+        "fixed-point notion",
+        "strict contraction on unequal points",
+        "natural-valued distance"
+      ],
+      "direct_corollaries": [
+        "at most one fixed point",
+        "direct uniqueness core for contraction regime",
+        "explicit toy/example witness"
+      ],
+      "scope_limits": [
+        "discrete natural-valued distance model only",
+        "not yet the full TV/Dobrushin coefficient bridge",
+        "not yet the epsilon-stable separation bound",
+        "proxy clustering metrics remain outside theorem evidence"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/ContractionUniqueness.lean",
+        "lean/SixBirdsNoGo/ContractionUniquenessExample.lean",
+        "lean/SixBirdsNoGo.lean"
+      ],
+      "formal_boundary_note_ref": "docs/project/lean_objecthood_formal_boundary.md",
+      "readiness_delta": {
+        "lean_support_before": "missing",
+        "lean_support_after": "auxiliary_only",
+        "direct_uniqueness_core_formalized": true,
+        "full_tv_bound_bridge_pending": false
+      },
+      "remaining_blockers": [],
+      "next_ticket": null,
+      "note": "The uniqueness core is the terminal Lean result for objecthood."
+    }
+  ]
+}

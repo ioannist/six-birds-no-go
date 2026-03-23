@@ -1,0 +1,659 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-20T10:17:44Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "t21_summary": "results/T21/theorem_atlas_summary.json",
+    "t30_summary": "results/T30/lean_objecthood_uniqueness_summary.json",
+    "vision_present": true,
+    "vision_path": "vision.md",
+    "paper_narrative_charter": "docs/project/paper_narrative_charter.yaml",
+    "background_citation_map": "docs/project/background_citation_map.yaml",
+    "draft_v3": "paper/draft_v3.md",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json"
+  },
+  "status_enums": {
+    "section_kind": [
+      "front_matter",
+      "setup",
+      "theorem_section",
+      "discussion",
+      "appendix"
+    ],
+    "contract_status": [
+      "fixed"
+    ],
+    "alignment_status": [
+      "fixed"
+    ]
+  },
+  "section_order": [
+    "S1_INTRO",
+    "S2_SETUP",
+    "S3_ARROW_PROTOCOL",
+    "S4_GRAPH_AFFINITY",
+    "S5_CLOSURE",
+    "S6_OBJECTHOOD",
+    "S7_LADDER",
+    "S8_DISCUSSION",
+    "A1_ARTIFACTS",
+    "A2_LEAN"
+  ],
+  "theorem_order": [
+    "NG_ARROW_DPI",
+    "NG_PROTOCOL_TRAP",
+    "NG_FORCE_FOREST",
+    "NG_FORCE_NULL",
+    "NG_MACRO_CLOSURE_DEFICIT",
+    "NG_OBJECT_CONTRACTIVE",
+    "NG_LADDER_IDEM",
+    "NG_LADDER_BOUNDED_INTERFACE"
+  ],
+  "theorem_homes": [
+    {
+      "theorem_id": "NG_ARROW_DPI",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "subsection_slot": "3.1",
+      "theorem_number_slot": "Theorem 1",
+      "figure_callouts": [
+        "FIG-2"
+      ],
+      "table_callouts": [
+        "TBL-2"
+      ],
+      "responsibility_note": "Arrow no-go under honest coarse observation."
+    },
+    {
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "subsection_slot": "3.2",
+      "theorem_number_slot": "Theorem 2",
+      "figure_callouts": [
+        "FIG-2"
+      ],
+      "table_callouts": [
+        "TBL-2"
+      ],
+      "responsibility_note": "Protocol trap requires real drive or asymmetric setup to escape."
+    },
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "subsection_slot": "4.1",
+      "theorem_number_slot": "Theorem 3",
+      "figure_callouts": [
+        "FIG-3"
+      ],
+      "table_callouts": [
+        "TBL-3"
+      ],
+      "responsibility_note": "Forest structure forbids sustained cycle drive."
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "subsection_slot": "4.2",
+      "theorem_number_slot": "Theorem 4",
+      "figure_callouts": [
+        "FIG-3"
+      ],
+      "table_callouts": [
+        "TBL-3"
+      ],
+      "responsibility_note": "Exact/null-affinity class kills nonconservative drive."
+    },
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "section_id": "S5_CLOSURE",
+      "subsection_slot": "5.1",
+      "theorem_number_slot": "Theorem 5",
+      "figure_callouts": [
+        "FIG-4"
+      ],
+      "table_callouts": [
+        "TBL-4"
+      ],
+      "responsibility_note": "Positive closure deficit forbids exact closed macro law."
+    },
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "section_id": "S6_OBJECTHOOD",
+      "subsection_slot": "6.1",
+      "theorem_number_slot": "Theorem 6",
+      "figure_callouts": [
+        "FIG-5"
+      ],
+      "table_callouts": [
+        "TBL-5"
+      ],
+      "responsibility_note": "Contraction regime yields uniqueness-scale objecthood guardrail."
+    },
+    {
+      "theorem_id": "NG_LADDER_IDEM",
+      "section_id": "S7_LADDER",
+      "subsection_slot": "7.1",
+      "theorem_number_slot": "Theorem 7",
+      "figure_callouts": [
+        "FIG-6"
+      ],
+      "table_callouts": [
+        "TBL-6"
+      ],
+      "responsibility_note": "Idempotent packaging saturates immediately."
+    },
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "section_id": "S7_LADDER",
+      "subsection_slot": "7.2",
+      "theorem_number_slot": "Theorem 8",
+      "figure_callouts": [
+        "FIG-6"
+      ],
+      "table_callouts": [
+        "TBL-6"
+      ],
+      "responsibility_note": "Fixed bounded interface forbids unbounded internal laddering."
+    }
+  ],
+  "callout_registry": {
+    "figures": [
+      {
+        "callout_id": "FIG-1",
+        "title": "theory package and audit-convention schematic",
+        "section_id": "S2_SETUP",
+        "theorem_ids": [],
+        "source_refs": [
+          "authored:theory-package-and-audit-convention-schematic",
+          "docs/project/theorem_atlas.yaml",
+          "docs/project/claim_audit_freeze.yaml"
+        ],
+        "note": "Setup-only schematic placeholder."
+      },
+      {
+        "callout_id": "FIG-2",
+        "title": "hidden-clock DPI / protocol matrix",
+        "section_id": "S3_ARROW_PROTOCOL",
+        "theorem_ids": [
+          "NG_ARROW_DPI",
+          "NG_PROTOCOL_TRAP"
+        ],
+        "source_refs": [
+          "results/T15/horizon_lens_sweep.csv",
+          "results/T08/arrow_metrics.json",
+          "results/T15/initial_distribution_sweep.csv"
+        ],
+        "note": "Arrow/protocol section figure placeholder."
+      },
+      {
+        "callout_id": "FIG-3",
+        "title": "graph / affinity contrasts and threshold fragility",
+        "section_id": "S4_GRAPH_AFFINITY",
+        "theorem_ids": [
+          "NG_FORCE_FOREST",
+          "NG_FORCE_NULL"
+        ],
+        "source_refs": [
+          "results/T14/primitive_coverage.json",
+          "results/master/witness_metrics.csv"
+        ],
+        "note": "Graph-front figure placeholder."
+      },
+      {
+        "callout_id": "FIG-4",
+        "title": "closure variational identity and local rewrite isolator",
+        "section_id": "S5_CLOSURE",
+        "theorem_ids": [
+          "NG_MACRO_CLOSURE_DEFICIT"
+        ],
+        "source_refs": [
+          "results/T09/closure_metrics.json",
+          "results/T09/grid_check.json"
+        ],
+        "note": "Closure figure placeholder."
+      },
+      {
+        "callout_id": "FIG-5",
+        "title": "objecthood admissible metric vs proxy multiplicity artifact",
+        "section_id": "S6_OBJECTHOOD",
+        "theorem_ids": [
+          "NG_OBJECT_CONTRACTIVE"
+        ],
+        "source_refs": [
+          "results/T10/objecthood_metrics.json",
+          "results/T10/stability_grid.json"
+        ],
+        "note": "Objecthood figure placeholder."
+      },
+      {
+        "callout_id": "FIG-6",
+        "title": "bounded-interface no-ladder and extension escape",
+        "section_id": "S7_LADDER",
+        "theorem_ids": [
+          "NG_LADDER_IDEM",
+          "NG_LADDER_BOUNDED_INTERFACE"
+        ],
+        "source_refs": [
+          "results/T11/no_ladder_demos.json",
+          "results/T11/definability_metrics.json"
+        ],
+        "note": "Ladder figure placeholder."
+      }
+    ],
+    "tables": [
+      {
+        "callout_id": "TBL-1",
+        "title": "theorem front map and support snapshot",
+        "section_id": "S1_INTRO",
+        "theorem_ids": [
+          "NG_ARROW_DPI",
+          "NG_PROTOCOL_TRAP",
+          "NG_FORCE_FOREST",
+          "NG_FORCE_NULL",
+          "NG_MACRO_CLOSURE_DEFICIT",
+          "NG_OBJECT_CONTRACTIVE",
+          "NG_LADDER_IDEM",
+          "NG_LADDER_BOUNDED_INTERFACE"
+        ],
+        "source_refs": [
+          "results/master/witness_metrics.csv",
+          "results/master/witness_manifest.json"
+        ],
+        "note": "Intro theorem map table placeholder."
+      },
+      {
+        "callout_id": "TBL-2",
+        "title": "arrow / protocol theorem evidence and guardrails",
+        "section_id": "S3_ARROW_PROTOCOL",
+        "theorem_ids": [
+          "NG_ARROW_DPI",
+          "NG_PROTOCOL_TRAP"
+        ],
+        "source_refs": [
+          "results/T15/adversarial_cases.json",
+          "results/T15/initial_distribution_sweep.csv"
+        ],
+        "note": "Arrow/protocol table placeholder."
+      },
+      {
+        "callout_id": "TBL-3",
+        "title": "graph / affinity theorem evidence and guardrails",
+        "section_id": "S4_GRAPH_AFFINITY",
+        "theorem_ids": [
+          "NG_FORCE_FOREST",
+          "NG_FORCE_NULL"
+        ],
+        "source_refs": [
+          "results/T15/threshold_sweep.csv",
+          "results/T14/primitive_coverage.json"
+        ],
+        "note": "Graph/affinity table placeholder."
+      },
+      {
+        "callout_id": "TBL-4",
+        "title": "closure theorem evidence and attribution resolution",
+        "section_id": "S5_CLOSURE",
+        "theorem_ids": [
+          "NG_MACRO_CLOSURE_DEFICIT"
+        ],
+        "source_refs": [
+          "results/T09/grid_check.json",
+          "results/T09/closure_metrics.json"
+        ],
+        "note": "Closure table placeholder."
+      },
+      {
+        "callout_id": "TBL-5",
+        "title": "objecthood admissible regime and guardrail matrix",
+        "section_id": "S6_OBJECTHOOD",
+        "theorem_ids": [
+          "NG_OBJECT_CONTRACTIVE"
+        ],
+        "source_refs": [
+          "results/T15/objecthood_metric_sweep.csv",
+          "results/T10/stability_grid.json"
+        ],
+        "note": "Objecthood table placeholder."
+      },
+      {
+        "callout_id": "TBL-6",
+        "title": "ladder theorem evidence, count core, and corollary map",
+        "section_id": "S7_LADDER",
+        "theorem_ids": [
+          "NG_LADDER_IDEM",
+          "NG_LADDER_BOUNDED_INTERFACE"
+        ],
+        "source_refs": [
+          "results/T11/definability_metrics.json",
+          "results/T11/no_ladder_demos.json"
+        ],
+        "note": "Ladder table placeholder."
+      },
+      {
+        "callout_id": "TBL-A1",
+        "title": "artifact and evidence provenance map",
+        "section_id": "A1_ARTIFACTS",
+        "theorem_ids": [
+          "NG_ARROW_DPI",
+          "NG_PROTOCOL_TRAP",
+          "NG_FORCE_FOREST",
+          "NG_FORCE_NULL",
+          "NG_MACRO_CLOSURE_DEFICIT",
+          "NG_OBJECT_CONTRACTIVE",
+          "NG_LADDER_IDEM",
+          "NG_LADDER_BOUNDED_INTERFACE"
+        ],
+        "source_refs": [
+          "results/master/witness_manifest.json",
+          "results/master/witness_metrics.csv"
+        ],
+        "note": "Artifact appendix table placeholder."
+      },
+      {
+        "callout_id": "TBL-A2",
+        "title": "Lean support and proof dependency map",
+        "section_id": "A2_LEAN",
+        "theorem_ids": [
+          "NG_ARROW_DPI",
+          "NG_PROTOCOL_TRAP",
+          "NG_FORCE_FOREST",
+          "NG_FORCE_NULL",
+          "NG_MACRO_CLOSURE_DEFICIT",
+          "NG_OBJECT_CONTRACTIVE",
+          "NG_LADDER_IDEM",
+          "NG_LADDER_BOUNDED_INTERFACE"
+        ],
+        "source_refs": [
+          "derived:lean-support-and-proof-dependency-map",
+          "docs/project/readiness_checklist.yaml",
+          "docs/project/theorem_atlas.yaml"
+        ],
+        "note": "Lean appendix table placeholder."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "section_id": "S1_INTRO",
+      "section_kind": "front_matter",
+      "title": "Introduction and theorem map",
+      "order": 1,
+      "theorem_ids": [],
+      "dependencies": [],
+      "responsibilities": [
+        "problem framing",
+        "theorem-front map",
+        "contribution list",
+        "early six-primitives grammar paragraph",
+        "historical bridge to earlier Six Birds papers"
+      ],
+      "figure_callouts": [],
+      "table_callouts": [
+        "TBL-1"
+      ],
+      "excluded_content": [
+        "No theorem proofs or section-specific discussion material.",
+        "Do not organize the introduction primitive-by-primitive.",
+        "Do not let the introduction read as a survey or retrospective."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "S2_SETUP",
+      "section_kind": "setup",
+      "title": "Formal setup, audits, and scope conventions",
+      "order": 2,
+      "theorem_ids": [],
+      "dependencies": [
+        "S1_INTRO"
+      ],
+      "responsibilities": [
+        "theory package",
+        "exact audit families",
+        "assumption bundles",
+        "honest vs proxy rule",
+        "notation / audit conventions"
+      ],
+      "figure_callouts": [
+        "FIG-1"
+      ],
+      "table_callouts": [],
+      "excluded_content": [
+        "No theorem-front discussion material that belongs in S8_DISCUSSION."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "S3_ARROW_PROTOCOL",
+      "section_kind": "theorem_section",
+      "title": "Arrow and protocol obstructions",
+      "order": 3,
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "dependencies": [
+        "S2_SETUP"
+      ],
+      "responsibilities": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "initial-law / proxy guardrails"
+      ],
+      "figure_callouts": [
+        "FIG-2"
+      ],
+      "table_callouts": [
+        "TBL-2"
+      ],
+      "excluded_content": [
+        "Do not write discussion material that belongs in S8_DISCUSSION."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "S4_GRAPH_AFFINITY",
+      "section_kind": "theorem_section",
+      "title": "Graph and affinity obstructions",
+      "order": 4,
+      "theorem_ids": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL"
+      ],
+      "dependencies": [
+        "S2_SETUP"
+      ],
+      "responsibilities": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL",
+        "threshold / regularization guardrails"
+      ],
+      "figure_callouts": [
+        "FIG-3"
+      ],
+      "table_callouts": [
+        "TBL-3"
+      ],
+      "excluded_content": [
+        "Do not write discussion material that belongs in S8_DISCUSSION."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "S5_CLOSURE",
+      "section_kind": "theorem_section",
+      "title": "Closure obstruction",
+      "order": 5,
+      "theorem_ids": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "dependencies": [
+        "S2_SETUP"
+      ],
+      "responsibilities": [
+        "NG_MACRO_CLOSURE_DEFICIT",
+        "variational theorem",
+        "attribution-resolution note kept separate from theorem core"
+      ],
+      "figure_callouts": [
+        "FIG-4"
+      ],
+      "table_callouts": [
+        "TBL-4"
+      ],
+      "excluded_content": [
+        "Do not write discussion material that belongs in S8_DISCUSSION.",
+        "Do not collapse attribution resolution into the core theorem statement."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "S6_OBJECTHOOD",
+      "section_kind": "theorem_section",
+      "title": "Objecthood under contraction",
+      "order": 6,
+      "theorem_ids": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "dependencies": [
+        "S2_SETUP"
+      ],
+      "responsibilities": [
+        "NG_OBJECT_CONTRACTIVE",
+        "admissible TV/Dobrushin regime",
+        "proxy clustering exclusion",
+        "permanent auxiliary Lean boundary explicit"
+      ],
+      "figure_callouts": [
+        "FIG-5"
+      ],
+      "table_callouts": [
+        "TBL-5"
+      ],
+      "excluded_content": [
+        "Do not write discussion material that belongs in S8_DISCUSSION.",
+        "Do not use proxy clustering as theorem evidence.",
+        "Do not describe objecthood as Lean-direct."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "S7_LADDER",
+      "section_kind": "theorem_section",
+      "title": "Laddering and interface bounds",
+      "order": 7,
+      "theorem_ids": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "dependencies": [
+        "S2_SETUP"
+      ],
+      "responsibilities": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE",
+        "extension escape outside theorem scope"
+      ],
+      "figure_callouts": [
+        "FIG-6"
+      ],
+      "table_callouts": [
+        "TBL-6"
+      ],
+      "excluded_content": [
+        "Do not write discussion material that belongs in S8_DISCUSSION.",
+        "Do not treat strict extension as internal laddering."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "S8_DISCUSSION",
+      "section_kind": "discussion",
+      "title": "Discussion, falsifiability, and escape routes",
+      "order": 8,
+      "theorem_ids": [],
+      "dependencies": [
+        "S3_ARROW_PROTOCOL",
+        "S4_GRAPH_AFFINITY",
+        "S5_CLOSURE",
+        "S6_OBJECTHOOD",
+        "S7_LADDER"
+      ],
+      "responsibilities": [
+        "falsifiability limits",
+        "minimal escape routes",
+        "what is not ruled out",
+        "anti-emergence vs anti-vagueness clarification"
+      ],
+      "figure_callouts": [],
+      "table_callouts": [],
+      "excluded_content": [
+        "No theorem-core restatement drift."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "A1_ARTIFACTS",
+      "section_kind": "appendix",
+      "title": "Artifact and evidence provenance",
+      "order": 9,
+      "theorem_ids": [],
+      "dependencies": [
+        "S3_ARROW_PROTOCOL",
+        "S4_GRAPH_AFFINITY",
+        "S5_CLOSURE",
+        "S6_OBJECTHOOD",
+        "S7_LADDER"
+      ],
+      "responsibilities": [
+        "artifact provenance",
+        "evidence-to-theorem map",
+        "frozen evidence-to-claim discipline"
+      ],
+      "figure_callouts": [],
+      "table_callouts": [
+        "TBL-A1"
+      ],
+      "excluded_content": [
+        "No manuscript discussion or theorem proof narrative."
+      ],
+      "status": "fixed"
+    },
+    {
+      "section_id": "A2_LEAN",
+      "section_kind": "appendix",
+      "title": "Lean support and proof dependency map",
+      "order": 10,
+      "theorem_ids": [],
+      "dependencies": [
+        "S3_ARROW_PROTOCOL",
+        "S4_GRAPH_AFFINITY",
+        "S5_CLOSURE",
+        "S6_OBJECTHOOD",
+        "S7_LADDER"
+      ],
+      "responsibilities": [
+        "final Lean support map",
+        "seven-direct one-auxiliary status distribution",
+        "objecthood permanent boundary explicit",
+        "theorem dependency bridge map"
+      ],
+      "figure_callouts": [],
+      "table_callouts": [
+        "TBL-A2"
+      ],
+      "excluded_content": [
+        "No manuscript discussion or theorem proof narrative."
+      ],
+      "status": "fixed"
+    }
+  ],
+  "narrative_alignment": {
+    "intro_primitive_placement_section": "S1_INTRO",
+    "historical_bridge_section": "S1_INTRO",
+    "body_organization": "theorem_fronts",
+    "objecthood_boundary_appendix_section": "A2_LEAN",
+    "status": "fixed"
+  }
+}

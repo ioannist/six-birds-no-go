@@ -1,0 +1,106 @@
+{
+  "generation_timestamp_utc": "2026-03-23T16:01:39Z",
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "proxy_spurious_macro_arrow_nonstationary",
+      "proxy_id": "PROXY_MACRO_MARKOV_ARROW",
+      "category": "proxy_arrow",
+      "description": "Nonstationary phase-balanced init creates proxy macro arrow under observe_x_binary at horizon 2.",
+      "honest_reference": {
+        "witness_id": "hidden_clock_driven",
+        "lens_id": "observe_x_binary",
+        "horizon": 2,
+        "initial_id": "phase1_balanced",
+        "macro_arrow_kl_honest": "0",
+        "macro_arrow_kind_honest": "zero"
+      },
+      "proxy_reference": {
+        "proxy_id": "PROXY_MACRO_MARKOV_ARROW",
+        "macro_arrow_kl_proxy": "0.11552453009332421823620535357636276134591668906004254235344666824889893699494912",
+        "macro_arrow_kind_proxy": "finite_positive"
+      },
+      "divergence_status": "honest_zero_proxy_positive",
+      "material_divergence": true,
+      "key_values": {
+        "honest": "0",
+        "proxy": "0.11552453009332421823620535357636276134591668906004254235344666824889893699494912"
+      },
+      "fragile_setting": "hidden_clock_driven/observe_x_binary/h2/phase1_balanced",
+      "note": "Proxy introduces spurious macro arrow where honest observed arrow is exactly zero."
+    },
+    {
+      "case_id": "proxy_underestimates_nonmarkov_macro_arrow",
+      "proxy_id": "PROXY_MACRO_MARKOV_ARROW",
+      "category": "proxy_arrow",
+      "description": "Proxy underestimates non-Markov observed arrow for observe_clock_3 at horizon 3.",
+      "honest_reference": {
+        "witness_id": "hidden_clock_driven",
+        "lens_id": "observe_clock_3",
+        "horizon": 3,
+        "initial_id": "stationary",
+        "macro_arrow_kl_honest": "0.68031112166068706294654263772746959459262050224247274941474149079907151785914482",
+        "macro_arrow_kind_honest": "finite_positive"
+      },
+      "proxy_reference": {
+        "proxy_id": "PROXY_MACRO_MARKOV_ARROW",
+        "macro_arrow_kl_proxy": "0.51986038541995898206292409109363242605662510077019144059051000712004521647727104",
+        "macro_arrow_kind_proxy": "finite_positive"
+      },
+      "divergence_status": "proxy_materially_smaller",
+      "material_divergence": true,
+      "key_values": {
+        "honest": "0.68031112166068706294654263772746959459262050224247274941474149079907151785914482",
+        "proxy": "0.51986038541995898206292409109363242605662510077019144059051000712004521647727104"
+      },
+      "fragile_setting": "hidden_clock_driven/observe_clock_3/h3/stationary",
+      "note": "Proxy remains finite positive but materially smaller than honest macro arrow."
+    },
+    {
+      "case_id": "threshold_creates_spurious_one_way_support",
+      "proxy_id": "PROXY_THRESHOLD_SUPPORT_GRAPH",
+      "category": "threshold_support",
+      "description": "Threshold floor removes tiny reverse edges and creates one-way support artifacts.",
+      "honest_reference": {
+        "case_id": "tiny_reversible_triangle",
+        "original_exactness_flag": true,
+        "original_cycle_rank": 1
+      },
+      "proxy_reference": {
+        "floor": "1/100",
+        "one_way_directed_edge_count": 2,
+        "one_way_edges": "0->2;1->2"
+      },
+      "divergence_status": "spurious_one_way_edges",
+      "material_divergence": true,
+      "key_values": {
+        "one_way_directed_edge_count": 2,
+        "one_way_edges": "0->2;1->2"
+      },
+      "fragile_setting": "tiny_reversible_triangle/floor=1/100",
+      "note": "Original chain is exact/reversible class, thresholded proxy creates apparent directionality."
+    },
+    {
+      "case_id": "poor_metric_splits_unique_object",
+      "proxy_id": "PROXY_CLUSTERED_OBJECT_COUNT",
+      "category": "objecthood_metric",
+      "description": "Support-signature proxy metric splits a unique-object contractive witness into two clusters.",
+      "honest_reference": {
+        "metric_id": "tv",
+        "cluster_count": 1
+      },
+      "proxy_reference": {
+        "metric_id": "support_signature",
+        "cluster_count": 2
+      },
+      "divergence_status": "metric_artifact_split",
+      "material_divergence": true,
+      "key_values": {
+        "tv_cluster_count": 1,
+        "support_signature_cluster_count": 2
+      },
+      "fragile_setting": "contractive_unique_object/den=4/eps=1/4/threshold=1/2",
+      "note": "Object multiplicity changes purely by metric choice."
+    }
+  ]
+}

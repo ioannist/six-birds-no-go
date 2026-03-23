@@ -1,0 +1,68 @@
+\section{Bounded interfaces and no-ladder obstructions}\label{sec:bounded-interface}
+
+This section isolates two finite obstructions to indefinite refinement under audited closure.
+The first is a simple idempotence observation. The second is a counting argument: under a fixed
+deterministic interface, there are only finitely many definable predicates, hence no infinite strictly
+increasing ladder of distinct definable distinctions.
+
+\subsection{Idempotent saturation}
+
+Let $\X$ be a finite set and let $e:\X\to\X$ be a deterministic packaging operator.
+For an integer $n\ge 1$, write $e^{\circ n}$ for the $n$-fold iterate
+$e^{\circ n} = \underbrace{e\circ\cdots\circ e}_{n\ \text{times}}$.
+
+\begin{lemma}\label{lem:idempotent-iterates}
+If $e\circ e = e$, then $e^{\circ n}=e$ for all integers $n\ge 1$.
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:packdef}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:NG_LADDER_IDEM}]
+Fix $n\ge 1$. By Lemma~\ref{lem:idempotent-iterates} we have $e^{\circ n}=e$, hence for every $x\in\X$,
+\[
+e^{\circ n}(x)=e(x).
+\]
+In particular, the packaged state stabilizes after one step, and any packaged signature depending only
+on $e^{\circ n}(x)$ stabilizes after one step as well.
+\end{proof}
+
+\subsection{Definability count for a fixed interface}
+
+Let $f:\X\to\Y$ be a deterministic interface observation into a finite set $\Y$.
+Define the family of predicates definable from $f$ by
+\[
+\Def(f)\coloneqq \{g\circ f : \X\to\{0,1\} \mid g:\Y\to\{0,1\}\}.
+\]
+Only the restriction of $g$ to the image $\im(f)\subseteq \Y$ matters.
+
+\begin{lemma}\label{lem:definability-bijection}
+The map
+\[
+A\subseteq \im(f)\quad\longmapsto\quad \1_A\circ f
+\]
+is a bijection between $\mathcal P(\im(f))$ and $\Def(f)$. Consequently,
+\[
+|\Def(f)| = 2^{|\im(f)|}.
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:packdef}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:NG_LADDER_BOUNDED_INTERFACE}]
+Assume for contradiction that there exists an infinite strictly increasing sequence
+$(h_n)_{n\ge 1}\subseteq \Def(f)$, meaning $h_n(x)\le h_{n+1}(x)$ for all $x\in\X$ and $h_n\neq h_{n+1}$
+for each $n$. By Lemma~\ref{lem:definability-bijection}, the set $\Def(f)$ has finite cardinality
+$2^{|\im(f)|}$, so it cannot contain infinitely many distinct elements. This contradiction shows that
+no such infinite strictly increasing sequence exists.
+\end{proof}
+
+\begin{remark}[Extension escape]
+Theorem~\ref{thm:NG_LADDER_BOUNDED_INTERFACE} assumes a fixed interface map $f$.
+If one allows the interface to vary with the step index (for example by adding coordinates or refining
+the lens family so that $|\im(f_n)|$ grows), then the bound $|\Def(f_n)|=2^{|\im(f_n)|}$ can increase and longer
+refinement chains become possible. Such interface expansion is outside the scope of the bounded-interface front.
+\end{remark}

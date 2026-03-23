@@ -1,0 +1,32 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["9c4a1dda7bd5c3ac.olean"],
+  "i": "4f56cdbd76889762.ilean",
+  "c": "80c87c957564c28d.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/NullForceBridge.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/NullForceBridge.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/NullForceBridge.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/NullForceBridge.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/NullForceBridge.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["SixBirdsNoGo.NullForceBridge:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["SixBirdsNoGo.ClosedWalkExactness transitive imports (legacy)",
+         "00000000000006bb"],
+        ["SixBirdsNoGo.ClosedWalkExactness:importAllArts",
+         "f734c71cee073eed"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/NullForceBridge.lean",
+   "b487230daa9fc336"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "feecd21e8d8ce824"}

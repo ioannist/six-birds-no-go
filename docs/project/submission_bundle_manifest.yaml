@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T17:59:54Z",
+  "source_context": {
+    "submission_metadata": "docs/project/submission_metadata.yaml",
+    "draft_v3": "paper/draft_v3.md",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "entry_status": [
+      "fixed"
+    ],
+    "bundle_mode": [
+      "anonymous_ready"
+    ]
+  },
+  "bundle_mode": "anonymous_ready",
+  "bundle_entries": [
+    {
+      "entry_id": "README",
+      "role": "bundle_readme",
+      "source_path": "authored:t47",
+      "target_path": "paper/submission_bundle/README.md",
+      "required": true,
+      "entry_status": "fixed",
+      "note": "Bundle overview for outward-facing package."
+    },
+    {
+      "entry_id": "MANUSCRIPT",
+      "role": "manuscript",
+      "source_path": "paper/draft_v3.md",
+      "target_path": "paper/submission_bundle/manuscript_submission.md",
+      "required": true,
+      "entry_status": "fixed",
+      "note": "Outward-facing manuscript copy projected from the current internal draft."
+    },
+    {
+      "entry_id": "TITLE_ABSTRACT_KEYWORDS",
+      "role": "front_matter_sheet",
+      "source_path": "paper/draft_v3.md",
+      "target_path": "paper/submission_bundle/title_abstract_keywords.md",
+      "required": true,
+      "entry_status": "fixed",
+      "note": "Standalone title, abstract, and keyword sheet extracted from the frozen draft."
+    },
+    {
+      "entry_id": "COVER_NOTE",
+      "role": "cover_note",
+      "source_path": "authored:t47",
+      "target_path": "paper/submission_bundle/cover_note.md",
+      "required": true,
+      "entry_status": "fixed",
+      "note": "Anonymous-ready cover note material."
+    },
+    {
+      "entry_id": "SUBMISSION_CHECKLIST",
+      "role": "checklist",
+      "source_path": "authored:t47",
+      "target_path": "paper/submission_bundle/submission_checklist.md",
+      "required": true,
+      "entry_status": "fixed",
+      "note": "Submission readiness checklist for outward-facing package."
+    },
+    {
+      "entry_id": "ARCHIVE_MANIFEST",
+      "role": "archive_manifest",
+      "source_path": "generated:t47",
+      "target_path": "paper/submission_bundle/archive_manifest.yaml",
+      "required": true,
+      "entry_status": "fixed",
+      "note": "Hash manifest for outward-facing payload files."
+    }
+  ]
+}

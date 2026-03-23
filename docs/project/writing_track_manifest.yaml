@@ -1,0 +1,105 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-20T00:00:00Z",
+  "source_context": {
+    "paper_narrative_charter": "docs/project/paper_narrative_charter.yaml",
+    "background_citation_map": "docs/project/background_citation_map.yaml",
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "paper_asset_freeze": "docs/project/paper_asset_freeze.yaml",
+    "theorem_evidence_map": "docs/project/theorem_evidence_map.yaml",
+    "source_skeleton": "paper/manuscript_skeleton.md",
+    "historical_internal_drafts": [
+      "paper/draft_v1.md",
+      "paper/draft_v2.md",
+      "paper/draft_v3.md"
+    ],
+    "vision_present": true,
+    "vision_path": "vision.md",
+    "historical_writing_track_drafts": [
+      "paper/writing_track/draft_v1.md",
+      "paper/writing_track/draft_v2.md",
+      "paper/writing_track/draft_v3.md",
+      "paper/writing_track/draft_v4.md"
+    ],
+    "internal_draft_lineage": "docs/project/internal_draft_lineage.yaml"
+  },
+  "status_enums": {
+    "track_status": [
+      "active"
+    ],
+    "section_completion": [
+      "drafted",
+      "scaffold"
+    ]
+  },
+  "writing_track": {
+    "current_draft": "paper/draft_v2.md",
+    "previous_draft": "paper/draft_v1.md",
+    "source_skeleton": "paper/manuscript_skeleton.md",
+    "prose_stage": "revised_internal_draft_v2",
+    "citation_placeholder_scheme": "[CITE: <citation_id>]",
+    "historical_internal_draft_chain_preserved": true,
+    "historical_writing_track_drafts_preserved": true,
+    "legacy_t33_draft_v1_archived": true,
+    "legacy_t45_draft_v2_archived": true,
+    "note": "The writing-track construction sequence remains preserved; the current revised internal draft now lives at paper/draft_v2.md.",
+    "status": "active"
+  },
+  "section_completion": [
+    {
+      "unit_id": "ABSTRACT",
+      "completion": "drafted",
+      "note": "Full prose present."
+    },
+    {
+      "unit_id": "S1_INTRO",
+      "completion": "drafted",
+      "note": "Opening narrative, primitives paragraph, historical bridge, and theorem map prose present."
+    },
+    {
+      "unit_id": "S2_SETUP",
+      "completion": "drafted",
+      "note": "Formal package, audit families, and honest-versus-proxy rule prose present."
+    },
+    {
+      "unit_id": "S3_ARROW_PROTOCOL",
+      "completion": "drafted",
+      "note": "Arrow and protocol theorem prose present."
+    },
+    {
+      "unit_id": "S4_GRAPH_AFFINITY",
+      "completion": "drafted",
+      "note": "Graph and affinity theorem prose present."
+    },
+    {
+      "unit_id": "S5_CLOSURE",
+      "completion": "drafted",
+      "note": "Closure theorem prose present."
+    },
+    {
+      "unit_id": "S6_OBJECTHOOD",
+      "completion": "drafted",
+      "note": "Objecthood theorem prose present."
+    },
+    {
+      "unit_id": "S7_LADDER",
+      "completion": "drafted",
+      "note": "Ladder theorem prose present."
+    },
+    {
+      "unit_id": "S8_DISCUSSION",
+      "completion": "drafted",
+      "note": "Discussion prose present."
+    },
+    {
+      "unit_id": "A1_ARTIFACTS",
+      "completion": "drafted",
+      "note": "Appendix A provenance narrative present."
+    },
+    {
+      "unit_id": "A2_LEAN",
+      "completion": "drafted",
+      "note": "Appendix B Lean-support map prose present."
+    }
+  ]
+}

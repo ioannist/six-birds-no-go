@@ -1,0 +1,33 @@
+{
+  "generated_at_utc": "2026-03-17T07:57:45Z",
+  "case_matrix": [
+    {
+      "witness_id": "zero_closure_deficit_lumpable",
+      "lens_id": "macro_AB",
+      "tau": 0
+    },
+    {
+      "witness_id": "zero_closure_deficit_lumpable",
+      "lens_id": "macro_AB",
+      "tau": 1
+    },
+    {
+      "witness_id": "positive_closure_deficit",
+      "lens_id": "macro_AB",
+      "tau": 0
+    },
+    {
+      "witness_id": "positive_closure_deficit",
+      "lens_id": "macro_AB",
+      "tau": 1
+    }
+  ],
+  "taus": [
+    0,
+    1
+  ],
+  "grid_denominator": 12,
+  "precision": 80,
+  "row_count": 4,
+  "grid_check_count": 2
+}

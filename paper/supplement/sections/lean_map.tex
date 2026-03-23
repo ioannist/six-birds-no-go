@@ -1,0 +1,8 @@
+\section{Formalization support map}
+This section summarizes the distribution of Lean support across the eight theorem fronts.
+The table is generated from \texttt{docs/project/readiness\_checklist.yaml} together with the frozen Lean bridge files under \texttt{docs/project/lean\_*.yaml}.
+
+\input{generated/lean_status_table.tex}
+
+For \texttt{NG\_OBJECT\_CONTRACTIVE}, the permanent boundary is explicit.
+The uniqueness-from-strict-contraction core is formalized, but the broader total-variation/Dobrushin plus $\varepsilon$-stability package used in the paper is not Lean-direct and remains frozen behind the objecthood TV boundary note.

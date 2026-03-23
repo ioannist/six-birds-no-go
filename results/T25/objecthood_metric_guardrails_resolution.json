@@ -1,0 +1,55 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:39Z",
+  "outcome_mode": "resolved_by_metric_regime_freeze",
+  "historical_gap_claim_id": "NG_OBJECT_CONTRACTIVE.metric_regime_gap",
+  "admissible_metric": {
+    "metric_id": "total_variation",
+    "contraction_coefficient": "dobrushin_tv",
+    "note": "Theorem objecthood claims are stated only in the TV/Dobrushin metric family."
+  },
+  "admissible_regime": {
+    "lambda_condition": "lambda_lt_1",
+    "stability_metric_match": true,
+    "regime_note": "Epsilon-stability and separation are measured in the same theorem metric."
+  },
+  "theorem_witness": {
+    "witness_id": "contractive_unique_object",
+    "contraction_lambda": "0/1",
+    "fixed_point_count": 1,
+    "unique_fixed_distribution": [
+      "3/4",
+      "1/4"
+    ],
+    "grid_denominator": 4,
+    "epsilon": "1/4",
+    "stable_point_count": 3,
+    "theorem_metric_cluster_count": 1
+  },
+  "proxy_metric_artifact": {
+    "metric_id": "support_signature",
+    "cluster_count": 2,
+    "note": "Support-signature clustering is a proxy artifact and not theorem evidence."
+  },
+  "contextual_noncontractive_case": {
+    "witness_id": "noncontractive_multiobject",
+    "fixed_point_count": 2,
+    "contraction_lambda": "1/1",
+    "note": "This case is outside the admissible contraction regime and is contextual rather than contradictory."
+  },
+  "approximate_bound_check": {
+    "dist_a": [
+      "1/2",
+      "1/2"
+    ],
+    "dist_b": [
+      "1/1",
+      "0/1"
+    ],
+    "epsilon": "1/4",
+    "holds": true,
+    "lhs_tv": "1/2",
+    "rhs_bound": "1/2"
+  },
+  "resolution_note": "Earlier objecthood metric/regime gap is resolved by freezing admissible theorem metric/regime to total variation + lambda<1 contraction and excluding proxy clustering metrics from theorem evidence.",
+  "status": "success"
+}

@@ -1,0 +1,46 @@
+\section{Graph exactness and closed-walk derivations}\label{app:graphexact}
+
+This appendix records the graph calculations used by the force and affinity fronts.
+
+\begin{proof}[Proof of Lemma~\ref{lem:tree-parent}]
+Because $G$ is a tree it is connected and acyclic, hence for any $v$ there is a unique
+simple path from $r$ to $v$. If $v\neq r$, the final edge of that path has the form
+$\{\mathrm{par}(v),v\}$ for a neighbor $\mathrm{par}(v)$ of $v$.
+Uniqueness of the path gives uniqueness of $\mathrm{par}(v)$.
+\end{proof}
+
+\begin{proposition}[Potential construction on a rooted tree]\label{prop:tree_potential_construction}
+Let $G=(V,E)$ be a finite tree with root $r$, and let $a:\vec E\to\mathbb{R}$ be antisymmetric.
+Define $\phi(r)=0$ and, for $v\neq r$,
+\[
+\phi(v)=\phi(\mathrm{par}(v))+a(\mathrm{par}(v),v).
+\]
+Then $a(u,v)=\phi(v)-\phi(u)$ for every oriented edge $(u,v)\in\vec E$.
+\end{proposition}
+
+\begin{proof}
+Fix an undirected edge $\{u,v\}\in E$. Since $G$ is a rooted tree, exactly one of $u,v$
+is the parent of the other. If $\mathrm{par}(v)=u$, then by definition,
+$\phi(v)-\phi(u)=a(u,v)$. If instead $\mathrm{par}(u)=v$, then
+$\phi(u)-\phi(v)=a(v,u)$, hence by antisymmetry
+$a(u,v)=-a(v,u)=\phi(v)-\phi(u)$.
+Thus the identity holds on every oriented edge.
+\end{proof}
+
+\begin{proof}[Expanded proof of Theorem~\ref{thm:NG_FORCE_FOREST}]
+For a tree, Proposition~\ref{prop:tree_potential_construction} gives the potential explicitly.
+For a forest, apply the same rooted construction on each connected component after choosing one root per component.
+The resulting componentwise potentials patch together to a global potential because no edge joins distinct components.
+\end{proof}
+
+\begin{proof}[Expanded proof of Theorem~\ref{thm:NG_FORCE_NULL}]
+Assume $a$ is exact: $a(u,v)=\phi(v)-\phi(u)$ for some $\phi:V\to\mathbb{R}$.
+Let $w=(v_0,v_1,\dots,v_k)$ be a closed walk with $v_k=v_0$.
+Then
+\[
+S_a(w)=\sum_{i=0}^{k-1} a(v_i,v_{i+1})
+=\sum_{i=0}^{k-1}\bigl(\phi(v_{i+1})-\phi(v_i)\bigr)
+=\phi(v_k)-\phi(v_0)=0.
+\]
+The sum telescopes because each interior term appears once with positive sign and once with negative sign.
+\end{proof}

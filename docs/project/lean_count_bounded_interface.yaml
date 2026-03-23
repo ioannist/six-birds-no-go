@@ -1,0 +1,57 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-18T08:45:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_bounded_interface": "docs/project/theorem_pack_bounded_interface.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "bridge_status": [
+      "counting_core_ready",
+      "blocked",
+      "deferred"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "bridge_status": "counting_core_ready",
+      "bridge_statement": "For a surjective finite deterministic lens, definable predicates are equivalent to Boolean assignments on the fixed image, and there are exactly 2^{|im(f)|} such assignments.",
+      "prerequisites": [
+        "finite deterministic lens over a fixed image",
+        "surjective image map",
+        "exact enumeration of Boolean image assignments"
+      ],
+      "direct_corollaries": [
+        "exact assignment family count 2^k",
+        "surjective pullback injectivity",
+        "definable predicates equivalent to image assignments"
+      ],
+      "scope_limits": [
+        "fixed lens only",
+        "fixed image/interface only",
+        "count core only",
+        "full bounded-interface no-ladder corollary remains pending",
+        "strict lens/domain extension is outside this Lean count core"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteLensDefinability.lean",
+        "lean/SixBirdsNoGo/FiniteLensDefinabilityExample.lean",
+        "lean/SixBirdsNoGo/Idempotence.lean"
+      ],
+      "readiness_delta": {
+        "lean_support_before": "auxiliary_only",
+        "lean_support_after": "direct",
+        "counting_core_formalized": true,
+        "full_corollary_pending": false
+      },
+      "full_corollary_pending": false,
+      "remaining_blockers": [],
+      "next_ticket": null
+    }
+  ]
+}

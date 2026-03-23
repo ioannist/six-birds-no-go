@@ -1,0 +1,2 @@
+cd paper && latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error main.tex
+cd paper/supplement && latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error main.tex

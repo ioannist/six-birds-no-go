@@ -1,0 +1,232 @@
+{
+  "generated_at_utc": "2026-03-17T07:57:45Z",
+  "precision": 80,
+  "rows": [
+    {
+      "witness_id": "zero_closure_deficit_lumpable",
+      "lens_id": "macro_AB",
+      "tau": 0,
+      "initial_mode": "stationary",
+      "strong_lumpable": true,
+      "closure": {
+        "kind": "zero",
+        "support_mismatch_count": 0,
+        "log_terms": [],
+        "decimal_value": "0",
+        "precision": 80
+      },
+      "best_gap": {
+        "kind": "zero",
+        "support_mismatch_count": 0,
+        "log_terms": [],
+        "decimal_value": "0",
+        "precision": 80
+      },
+      "variational_match": true,
+      "best_kernel_rows": [
+        [
+          "1/1",
+          "0/1"
+        ],
+        [
+          "0/1",
+          "1/1"
+        ]
+      ],
+      "packaged_future_laws": {
+        "A0": [
+          "1/1",
+          "0/1"
+        ],
+        "A1": [
+          "1/1",
+          "0/1"
+        ],
+        "B0": [
+          "0/1",
+          "1/1"
+        ],
+        "B1": [
+          "0/1",
+          "1/1"
+        ]
+      },
+      "packaged_future_distinct_count": 2,
+      "precision": 80
+    },
+    {
+      "witness_id": "zero_closure_deficit_lumpable",
+      "lens_id": "macro_AB",
+      "tau": 1,
+      "initial_mode": "stationary",
+      "strong_lumpable": true,
+      "closure": {
+        "kind": "zero",
+        "support_mismatch_count": 0,
+        "log_terms": [],
+        "decimal_value": "0",
+        "precision": 80
+      },
+      "best_gap": {
+        "kind": "zero",
+        "support_mismatch_count": 0,
+        "log_terms": [],
+        "decimal_value": "0",
+        "precision": 80
+      },
+      "variational_match": true,
+      "best_kernel_rows": [
+        [
+          "1/2",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1/2"
+        ]
+      ],
+      "packaged_future_laws": {
+        "A0": [
+          "1/2",
+          "1/2"
+        ],
+        "A1": [
+          "1/2",
+          "1/2"
+        ],
+        "B0": [
+          "1/2",
+          "1/2"
+        ],
+        "B1": [
+          "1/2",
+          "1/2"
+        ]
+      },
+      "packaged_future_distinct_count": 1,
+      "precision": 80
+    },
+    {
+      "witness_id": "positive_closure_deficit",
+      "lens_id": "macro_AB",
+      "tau": 0,
+      "initial_mode": "stationary",
+      "strong_lumpable": false,
+      "closure": {
+        "kind": "zero",
+        "support_mismatch_count": 0,
+        "log_terms": [],
+        "decimal_value": "0",
+        "precision": 80
+      },
+      "best_gap": {
+        "kind": "zero",
+        "support_mismatch_count": 0,
+        "log_terms": [],
+        "decimal_value": "0",
+        "precision": 80
+      },
+      "variational_match": true,
+      "best_kernel_rows": [
+        [
+          "1/1",
+          "0/1"
+        ],
+        [
+          "0/1",
+          "1/1"
+        ]
+      ],
+      "packaged_future_laws": {
+        "A0": [
+          "1/1",
+          "0/1"
+        ],
+        "A1": [
+          "1/1",
+          "0/1"
+        ],
+        "B0": [
+          "0/1",
+          "1/1"
+        ],
+        "B1": [
+          "0/1",
+          "1/1"
+        ]
+      },
+      "packaged_future_distinct_count": 2,
+      "precision": 80
+    },
+    {
+      "witness_id": "positive_closure_deficit",
+      "lens_id": "macro_AB",
+      "tau": 1,
+      "initial_mode": "stationary",
+      "strong_lumpable": false,
+      "closure": {
+        "kind": "finite_positive",
+        "support_mismatch_count": 0,
+        "log_terms": [
+          {
+            "ratio": "3/4",
+            "coeff": "1/5"
+          },
+          {
+            "ratio": "3/2",
+            "coeff": "2/5"
+          }
+        ],
+        "decimal_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+        "precision": 80
+      },
+      "best_gap": {
+        "kind": "finite_positive",
+        "support_mismatch_count": 0,
+        "log_terms": [
+          {
+            "ratio": "3/4",
+            "coeff": "1/5"
+          },
+          {
+            "ratio": "3/2",
+            "coeff": "2/5"
+          }
+        ],
+        "decimal_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+        "precision": 80
+      },
+      "variational_match": true,
+      "best_kernel_rows": [
+        [
+          "1/3",
+          "2/3"
+        ],
+        [
+          "1/1",
+          "0/1"
+        ]
+      ],
+      "packaged_future_laws": {
+        "A0": [
+          "1/2",
+          "1/2"
+        ],
+        "A1": [
+          "0/1",
+          "1/1"
+        ],
+        "B0": [
+          "1/1",
+          "0/1"
+        ],
+        "B1": [
+          "1/1",
+          "0/1"
+        ]
+      },
+      "packaged_future_distinct_count": 3,
+      "precision": 80
+    }
+  ]
+}

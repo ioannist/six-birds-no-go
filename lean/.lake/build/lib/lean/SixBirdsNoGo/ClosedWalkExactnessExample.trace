@@ -1,0 +1,32 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["22c8cde04ce6cbc1.olean"],
+  "i": "3e81373761e690ae.ilean",
+  "c": "b4accb23b464be2f.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/ClosedWalkExactnessExample.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosedWalkExactnessExample.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosedWalkExactnessExample.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/ClosedWalkExactnessExample.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/ClosedWalkExactnessExample.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["SixBirdsNoGo.ClosedWalkExactnessExample:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["SixBirdsNoGo.ClosedWalkExactness transitive imports (legacy)",
+         "00000000000006bb"],
+        ["SixBirdsNoGo.ClosedWalkExactness:importAllArts",
+         "f734c71cee073eed"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/ClosedWalkExactnessExample.lean",
+   "8d9a270e229a964c"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "4449d01343df22cb"}

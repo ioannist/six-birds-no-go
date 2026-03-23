@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "atoms": [
+    {"id": "A_FIN", "short_name": "Finite state space", "description": "Underlying state space is finite."},
+    {"id": "A_AUT", "short_name": "Autonomous dynamics", "description": "Dynamics are autonomous under the stated model."},
+    {"id": "A_LENS_HONEST", "short_name": "Honest coarse-graining", "description": "Macro lens is an honest push-forward from micro paths."},
+    {"id": "A_PHASE_INTERNAL", "short_name": "Internal phase", "description": "Phase variable is internal to the hidden dynamics."},
+    {"id": "A_PHASE_REV", "short_name": "Reversible phase", "description": "Phase dynamics are reversible under the hidden model."},
+    {"id": "A_SHARED_STATIONARY", "short_name": "Shared stationary law", "description": "Compared processes share a stationary distribution."},
+    {"id": "A_REV_SUPPORT", "short_name": "Reversible support", "description": "Support graph admits reverse transitions where required."},
+    {"id": "A_NULL_AFFINITY", "short_name": "Null cycle affinity", "description": "Cycle affinities vanish in the target class."},
+    {"id": "A_SUPPORT_FOREST", "short_name": "Forest support", "description": "Support graph is a forest (acyclic)."},
+    {"id": "A_STAGING_FIXED", "short_name": "Fixed staging", "description": "Macro staging map is fixed during analysis."},
+    {"id": "A_PACKAGE_DEFINED", "short_name": "Package defined", "description": "Packaging operator is well-defined on domain."},
+    {"id": "A_PACKAGE_FIXED", "short_name": "Package fixed", "description": "Packaging operator is fixed (not retuned per instance)."},
+    {"id": "A_PACKAGE_IDEM", "short_name": "Package idempotent", "description": "Applying package twice equals once."},
+    {"id": "A_PACKAGE_CONTRACTIVE", "short_name": "Package contractive", "description": "Packaging is contractive under chosen metric."},
+    {"id": "A_METRIC_TV", "short_name": "TV metric", "description": "Total variation metric is used for contraction claims."},
+    {"id": "A_INTERFACE_FIXED", "short_name": "Fixed interface", "description": "Interface map is fixed across levels."},
+    {"id": "A_INTERFACE_BOUNDED", "short_name": "Bounded interface", "description": "Interface complexity is uniformly bounded."},
+    {"id": "A_DOMAIN_FIXED", "short_name": "Fixed domain", "description": "Domain/codomain class is fixed a priori."}
+  ],
+  "bundles": [
+    {"id": "B_PATHSPACE_HONEST", "short_name": "Pathspace honesty", "assumptions": ["A_FIN", "A_LENS_HONEST"]},
+    {"id": "B_PROTOCOL_TRAP", "short_name": "Protocol trap preconditions", "assumptions": ["A_FIN", "A_AUT", "A_PHASE_INTERNAL", "A_PHASE_REV", "A_SHARED_STATIONARY", "A_LENS_HONEST"]},
+    {"id": "B_FORCE_FOREST", "short_name": "Forest force obstruction", "assumptions": ["A_FIN", "A_SUPPORT_FOREST"]},
+    {"id": "B_FORCE_NULL", "short_name": "Null-affinity obstruction", "assumptions": ["A_FIN", "A_REV_SUPPORT", "A_NULL_AFFINITY"]},
+    {"id": "B_MACRO_CLOSURE", "short_name": "Macro closure context", "assumptions": ["A_FIN", "A_LENS_HONEST", "A_STAGING_FIXED", "A_PACKAGE_DEFINED"]},
+    {"id": "B_OBJECT_CONTRACTIVE", "short_name": "Contractive objecthood", "assumptions": ["A_FIN", "A_PACKAGE_DEFINED", "A_PACKAGE_FIXED", "A_PACKAGE_CONTRACTIVE", "A_METRIC_TV"]},
+    {"id": "B_LADDER_IDEM", "short_name": "Idempotent ladder context", "assumptions": ["A_FIN", "A_PACKAGE_DEFINED", "A_PACKAGE_FIXED", "A_PACKAGE_IDEM"]},
+    {"id": "B_LADDER_BOUNDED_INTERFACE", "short_name": "Bounded-interface ladder context", "assumptions": ["A_FIN", "A_PACKAGE_DEFINED", "A_PACKAGE_FIXED", "A_PACKAGE_IDEM", "A_INTERFACE_FIXED", "A_INTERFACE_BOUNDED", "A_DOMAIN_FIXED"]}
+  ]
+}

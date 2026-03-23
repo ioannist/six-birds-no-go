@@ -1,0 +1,365 @@
+{
+  "version": "1",
+  "generated_at_utc": "2026-03-19T15:10:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_bridge_graph_affinity": "docs/project/lean_bridge_graph_affinity.yaml",
+    "lean_count_bounded_interface": "docs/project/lean_count_bounded_interface.yaml",
+    "lean_corollary_bounded_interface": "docs/project/lean_corollary_bounded_interface.yaml",
+    "lean_objecthood_uniqueness": "docs/project/lean_objecthood_uniqueness.yaml",
+    "revision_queue": "docs/project/revision_queue.yaml",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "scope_status": [
+      "fixed"
+    ],
+    "foundation_decision": [
+      "allowed",
+      "deferred",
+      "forbidden"
+    ],
+    "front_goal_status": [
+      "planned_direct",
+      "planned_boundary_decision"
+    ],
+    "milestone_status": [
+      "planned"
+    ]
+  },
+  "current_frontier": {
+    "lean_direct_ids": [
+      "NG_LADDER_IDEM",
+      "NG_FORCE_FOREST",
+      "NG_FORCE_NULL",
+      "NG_LADDER_BOUNDED_INTERFACE",
+      "NG_ARROW_DPI",
+      "NG_PROTOCOL_TRAP",
+      "NG_MACRO_CLOSURE_DEFICIT"
+    ],
+    "lean_auxiliary_ids": [
+      "NG_OBJECT_CONTRACTIVE"
+    ],
+    "lean_missing_ids": [],
+    "note": "The Lean frontier is now explicitly bounded at the objecthood auxiliary boundary.",
+    "auxiliary_ids": [
+      "NG_OBJECT_CONTRACTIVE"
+    ]
+  },
+  "allowed_foundations": [
+    {
+      "foundation_id": "FP_MINIMAL_SCALAR_LOG_LAYER",
+      "decision": "allowed",
+      "summary": "Only the scalar/log operations strictly needed for finite KL and finite variational objectives.",
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "Keep scalar support local to finite audited statements; do not generalize beyond immediate KL/variational consumers."
+    },
+    {
+      "foundation_id": "FP_FINITE_DISTRIBUTIONS",
+      "decision": "allowed",
+      "summary": "Finitely supported laws on `Fin n`.",
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "This is the base probability object for the remaining Lean fronts."
+    },
+    {
+      "foundation_id": "FP_DETERMINISTIC_PUSHFORWARD",
+      "decision": "allowed",
+      "summary": "Deterministic pushforward only.",
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "note": "No generic stochastic channel API is allowed in this phase."
+    },
+    {
+      "foundation_id": "FP_FIXED_HORIZON_PATH_LAWS",
+      "decision": "allowed",
+      "summary": "Finite fixed-horizon path laws only.",
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "note": "Path-space objects stay finite and horizon-bounded."
+    },
+    {
+      "foundation_id": "FP_PATH_REVERSAL",
+      "decision": "allowed",
+      "summary": "Path reversal on finite horizons.",
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "note": "Reversal is scoped to the fixed-horizon path objects above."
+    },
+    {
+      "foundation_id": "FP_FINITE_KL",
+      "decision": "allowed",
+      "summary": "KL on finite support.",
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "No broader entropy family is chartered beyond finite KL needs."
+    },
+    {
+      "foundation_id": "FP_DETERMINISTIC_DPI",
+      "decision": "allowed",
+      "summary": "DPI only for deterministic pushforward, not generic channels.",
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "note": "The allowed theorem bridge is narrow and theorem-driven."
+    },
+    {
+      "foundation_id": "FP_FINITE_MACRO_KERNEL_OBJECTS",
+      "decision": "allowed",
+      "summary": "Finite macro kernels / packaged future law objects only.",
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "These objects exist only to support the closure front's exact finite variational statement."
+    },
+    {
+      "foundation_id": "FP_FINITE_VARIATIONAL_OBJECTIVES",
+      "decision": "allowed",
+      "summary": "Exact finite variational objectives and closed-form minimizers only.",
+      "theorem_consumers": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "This is a closure-specific bridge, not a generic optimization framework."
+    },
+    {
+      "foundation_id": "FP_OBJECTHOOD_METRIC_REVISIT",
+      "decision": "deferred",
+      "summary": "Fuller admissible TV/Dobrushin bridge deferred until after closure decision.",
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "Objecthood stays staged behind the closure feasibility/boundary decision."
+    }
+  ],
+  "forbidden_foundations": [
+    {
+      "foundation_id": "FG_MEASURE_THEORY",
+      "decision": "forbidden",
+      "summary": "No sigma-algebra / measure-theory buildout.",
+      "reason": "The remaining fronts only require finite audited objects; measure-theory drift would exceed the scoped theorem consumers."
+    },
+    {
+      "foundation_id": "FG_PROBABILITY_MONAD",
+      "decision": "forbidden",
+      "summary": "No general probability monad.",
+      "reason": "The deterministic pushforward/path-law layer is sufficient for the targeted fronts."
+    },
+    {
+      "foundation_id": "FG_GENERIC_CHANNEL_DPI",
+      "decision": "forbidden",
+      "summary": "No generic stochastic-channel DPI beyond deterministic pushforward.",
+      "reason": "The charter only authorizes the deterministic case required by DPI and protocol fronts."
+    },
+    {
+      "foundation_id": "FG_GENERIC_INFORMATION_LIBRARY",
+      "decision": "forbidden",
+      "summary": "No entropy/information library beyond immediate theorem consumers.",
+      "reason": "Theorems only need finite KL and nearby scalar/log lemmas."
+    },
+    {
+      "foundation_id": "FG_GENERIC_OPTIMIZATION_LIBRARY",
+      "decision": "forbidden",
+      "summary": "No generic convex/variational optimization library.",
+      "reason": "Closure uses only exact finite objectives with closed-form minimizers."
+    },
+    {
+      "foundation_id": "FG_BROAD_METRIC_LIBRARY",
+      "decision": "forbidden",
+      "summary": "No broad metric-space buildout in this phase.",
+      "reason": "Objecthood remains auxiliary-only and its fuller bridge is explicitly deferred."
+    },
+    {
+      "foundation_id": "FG_UNRELATED_GRAPH_LIBRARY",
+      "decision": "forbidden",
+      "summary": "No unrelated graph-library expansion.",
+      "reason": "Graph Lean work already has its scoped bridge and is not a current frontier target."
+    },
+    {
+      "foundation_id": "FG_UNUSED_FOUNDATIONS",
+      "decision": "forbidden",
+      "summary": "No definition without a near-term theorem consumer.",
+      "reason": "T35 is theorem-driven and forbids library growth without an immediate target."
+    }
+  ],
+  "frontier_targets": [],
+  "milestone_sequence": [
+    {
+      "ticket_id": "T36",
+      "title": "Lean finite distribution / pushforward core",
+      "status": "planned",
+      "depends_on": [],
+      "theorem_targets": [
+        "NG_ARROW_DPI"
+      ],
+      "allowed_foundation_ids": [
+        "FP_MINIMAL_SCALAR_LOG_LAYER",
+        "FP_FINITE_DISTRIBUTIONS",
+        "FP_DETERMINISTIC_PUSHFORWARD"
+      ],
+      "deliverable_intent": "Freeze the minimal finite-law objects and deterministic pushforward definitions used by the DPI/protocol line."
+    },
+    {
+      "ticket_id": "T37",
+      "title": "Lean finite KL + deterministic DPI core",
+      "status": "planned",
+      "depends_on": [
+        "T36"
+      ],
+      "theorem_targets": [
+        "NG_ARROW_DPI"
+      ],
+      "allowed_foundation_ids": [
+        "FP_FIXED_HORIZON_PATH_LAWS",
+        "FP_PATH_REVERSAL",
+        "FP_FINITE_KL",
+        "FP_DETERMINISTIC_DPI"
+      ],
+      "deliverable_intent": "Add finite-horizon path objects, reversal, finite KL, and the deterministic DPI bridge needed for the arrow theorem."
+    },
+    {
+      "ticket_id": "T38",
+      "title": "Lean NG_ARROW_DPI direct pack",
+      "status": "planned",
+      "depends_on": [
+        "T37"
+      ],
+      "theorem_targets": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "allowed_foundation_ids": [
+        "FP_DETERMINISTIC_DPI",
+        "FP_FIXED_HORIZON_PATH_LAWS",
+        "FP_PATH_REVERSAL"
+      ],
+      "deliverable_intent": "Package the direct Lean DPI theorem and expose the reusable deterministic-path spine for the protocol theorem."
+    },
+    {
+      "ticket_id": "T39",
+      "title": "Lean NG_PROTOCOL_TRAP direct bridge",
+      "status": "planned",
+      "depends_on": [
+        "T38"
+      ],
+      "theorem_targets": [
+        "NG_PROTOCOL_TRAP"
+      ],
+      "allowed_foundation_ids": [
+        "FP_FIXED_HORIZON_PATH_LAWS",
+        "FP_PATH_REVERSAL",
+        "FP_DETERMINISTIC_DPI"
+      ],
+      "deliverable_intent": "Formalize the protocol theorem on top of the already-landed deterministic DPI/path-law layer."
+    },
+    {
+      "ticket_id": "T40",
+      "title": "Closure variational feasibility spike",
+      "status": "planned",
+      "depends_on": [
+        "T39"
+      ],
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "allowed_foundation_ids": [
+        "FP_FINITE_MACRO_KERNEL_OBJECTS",
+        "FP_FINITE_VARIATIONAL_OBJECTIVES"
+      ],
+      "deliverable_intent": "Decide whether the closure theorem can be bridged honestly with a finite variational layer under the scoped charter."
+    },
+    {
+      "ticket_id": "T41",
+      "title": "Lean finite macro-kernel variational core",
+      "status": "planned",
+      "depends_on": [
+        "T40"
+      ],
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "allowed_foundation_ids": [
+        "FP_MINIMAL_SCALAR_LOG_LAYER",
+        "FP_FINITE_DISTRIBUTIONS",
+        "FP_FINITE_KL",
+        "FP_FINITE_MACRO_KERNEL_OBJECTS",
+        "FP_FINITE_VARIATIONAL_OBJECTIVES"
+      ],
+      "deliverable_intent": "Implement only the finite macro-kernel and exact minimizer machinery justified by the feasibility spike."
+    },
+    {
+      "ticket_id": "T42",
+      "title": "Lean NG_MACRO_CLOSURE_DEFICIT direct pack or formal-boundary freeze",
+      "status": "planned",
+      "depends_on": [
+        "T41"
+      ],
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "allowed_foundation_ids": [
+        "FP_FINITE_KL",
+        "FP_FINITE_MACRO_KERNEL_OBJECTS",
+        "FP_FINITE_VARIATIONAL_OBJECTIVES"
+      ],
+      "deliverable_intent": "Either land the closure direct pack on the finite variational core or freeze the honest formal boundary explicitly."
+    },
+    {
+      "ticket_id": "T43",
+      "title": "Objecthood TV/Dobrushin bridge spike",
+      "status": "planned",
+      "depends_on": [
+        "T42"
+      ],
+      "theorem_targets": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "allowed_foundation_ids": [
+        "FP_OBJECTHOOD_METRIC_REVISIT"
+      ],
+      "deliverable_intent": "Revisit the fuller objecthood bridge only after the closure decision has fixed how much extra finite analytic machinery is acceptable."
+    },
+    {
+      "ticket_id": "T44",
+      "title": "Lean NG_OBJECT_CONTRACTIVE direct pack or permanent auxiliary boundary",
+      "status": "planned",
+      "depends_on": [
+        "T43"
+      ],
+      "theorem_targets": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "allowed_foundation_ids": [
+        "FP_OBJECTHOOD_METRIC_REVISIT"
+      ],
+      "deliverable_intent": "Either upgrade objecthood to a direct theorem-facing Lean pack or freeze the permanent auxiliary boundary honestly."
+    }
+  ],
+  "charter_rules": [
+    "Every new foundation piece must have a near-term theorem consumer.",
+    "Deterministic, fixed-horizon, and finite-support results are preferred over broader abstractions.",
+    "No broad abstraction project is authorized by this charter.",
+    "The closure decision gates the fuller objecthood bridge.",
+    "Theorem statuses must not change in T35.",
+    "This charter is fixed unless later explicitly revised."
+  ]
+}

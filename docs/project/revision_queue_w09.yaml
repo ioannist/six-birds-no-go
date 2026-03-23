@@ -1,0 +1,99 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-20T20:07:33Z",
+  "source_context": {
+    "source_open_queue": "docs/project/revision_queue_w08.yaml",
+    "source_claim_matrix": "results/W08/claim_audit_matrix.json",
+    "source_section_matrix": "results/W08/section_audit_matrix.json",
+    "source_draft": "paper/draft_v1.md",
+    "target_draft": "paper/draft_v2.md",
+    "internal_draft_lineage": "docs/project/internal_draft_lineage.yaml",
+    "legacy_t45_draft_archive": "paper/legacy_internal/draft_v2_t45.md",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "closure_status": [
+      "closed"
+    ],
+    "blocking": [
+      "yes",
+      "no"
+    ],
+    "queue_status": [
+      "closed"
+    ]
+  },
+  "resolution_summary": {
+    "current_draft": "paper/draft_v2.md",
+    "original_revision_item_count": 5,
+    "closed_item_count": 5,
+    "blocking_open_count": 0,
+    "queue_status": "closed",
+    "note": "This artifact records the closure of the W08 queue against the revised current internal draft. No queue item may remain implicit after this pass."
+  },
+  "revision_items": [
+    {
+      "revision_id": "W08-REV-001",
+      "original_source_matrix": "claim",
+      "original_source_id": "NG_LADDER_IDEM.core",
+      "original_severity": "high",
+      "original_blocking": "yes",
+      "closure_status": "closed",
+      "resolution_locations": [
+        "paper/draft_v2.md#theorem-7-ng_ladder_idem",
+        "paper/draft_v2.md#appendix-b-lean-support-and-proof-dependency-map"
+      ],
+      "resolution_note": "Section 7 and Appendix B now state directly that the idempotence theorem itself has direct Lean support, aligning formal-status wording with the frozen support map."
+    },
+    {
+      "revision_id": "W08-REV-002",
+      "original_source_matrix": "claim",
+      "original_source_id": "NG_FORCE_NULL.guardrail",
+      "original_severity": "medium",
+      "original_blocking": "no",
+      "closure_status": "closed",
+      "resolution_locations": [
+        "paper/draft_v2.md#theorem-4-ng_force_null"
+      ],
+      "resolution_note": "The null-force guardrail now ties threshold fragility explicitly to the T15 threshold sweep and to the exact-support theorem object."
+    },
+    {
+      "revision_id": "W08-REV-003",
+      "original_source_matrix": "claim",
+      "original_source_id": "NG_OBJECT_CONTRACTIVE.guardrail",
+      "original_severity": "medium",
+      "original_blocking": "no",
+      "closure_status": "closed",
+      "resolution_locations": [
+        "paper/draft_v2.md#6-objecthood-under-contraction"
+      ],
+      "resolution_note": "Section 6 now states proxy-clustering exclusion as an explicit theorem-evidence guardrail."
+    },
+    {
+      "revision_id": "W08-REV-004",
+      "original_source_matrix": "section",
+      "original_source_id": "S6_OBJECTHOOD",
+      "original_severity": "medium",
+      "original_blocking": "no",
+      "closure_status": "closed",
+      "resolution_locations": [
+        "paper/draft_v2.md#6-objecthood-under-contraction"
+      ],
+      "resolution_note": "Section 6 now restores the missing proxy-clustering exclusion responsibility required by the frozen section contract."
+    },
+    {
+      "revision_id": "W08-REV-005",
+      "original_source_matrix": "section",
+      "original_source_id": "A2_LEAN",
+      "original_severity": "medium",
+      "original_blocking": "no",
+      "closure_status": "closed",
+      "resolution_locations": [
+        "paper/draft_v2.md#appendix-b-lean-support-and-proof-dependency-map"
+      ],
+      "resolution_note": "Appendix B now states the objecthood permanent boundary explicitly rather than relying on implication."
+    }
+  ]
+}

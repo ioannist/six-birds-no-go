@@ -1,0 +1,430 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T05:09:19Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "fragility_summary": "results/T15/fragility_summary.json",
+    "primitive_coverage": "results/T14/primitive_coverage.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "claim_status_enums": {
+    "claim_class": [
+      "core",
+      "guardrail",
+      "nonclaim"
+    ],
+    "freeze_status": [
+      "frozen",
+      "blocked",
+      "deferred"
+    ],
+    "support_grade": [
+      "direct",
+      "evidence_only",
+      "insufficient"
+    ],
+    "paper_use": [
+      "main_text",
+      "appendix",
+      "discussion"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "NG_ARROW_DPI.core",
+      "theorem_id": "NG_ARROW_DPI",
+      "claim_class": "core",
+      "claim_text": "Honest deterministic coarse observation cannot increase path-reversal KL; zero micro arrow forces zero macro arrow.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T08/arrow_metrics.json",
+        "results/master/witness_manifest.json",
+        "docs/project/theorem_pack_arrow_protocol.yaml",
+        "results/T22/dpi_protocol_pack_summary.json",
+        "docs/project/lean_kl_dpi_core.yaml",
+        "docs/project/lean_arrow_dpi.yaml",
+        "results/T37/lean_kl_dpi_core_summary.json",
+        "results/T38/lean_arrow_dpi_summary.json"
+      ],
+      "guardrail_refs": [
+        "NG_ARROW_DPI.guardrail"
+      ],
+      "blockers": [
+        "Initial-law and proxy guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_14_arrow_protocol_guardrail_hold",
+        "action": "Preserve stationary-initial-law, honest-observation, and anti-proxy guardrails explicitly in paper assembly for the arrow/protocol fronts."
+      },
+      "paper_use": "main_text",
+      "note": "Core theorem-facing claim frozen at current support grade."
+    },
+    {
+      "claim_id": "NG_PROTOCOL_TRAP.core",
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "claim_class": "core",
+      "claim_text": "Under stationary initialization, a reversible autonomous phase-lift with shared stationary structure cannot generate an honest coarse arrow; apparent stroboscopic ratchets require real drive, external scheduling, or asymmetric initialization.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T08/arrow_metrics.json",
+        "results/master/witness_manifest.json",
+        "docs/project/theorem_pack_arrow_protocol.yaml",
+        "results/T22/dpi_protocol_pack_summary.json",
+        "docs/project/lean_arrow_dpi.yaml",
+        "docs/project/lean_protocol_trap.yaml",
+        "results/T38/lean_arrow_dpi_summary.json",
+        "results/T39/lean_protocol_trap_summary.json"
+      ],
+      "guardrail_refs": [
+        "NG_PROTOCOL_TRAP.guardrail"
+      ],
+      "blockers": [
+        "Stationary-initial-law scope must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_14_arrow_protocol_guardrail_hold",
+        "action": "Preserve stationary-initial-law, honest-observation, and anti-proxy guardrails explicitly in paper assembly for the arrow/protocol fronts."
+      },
+      "paper_use": "main_text",
+      "note": "Core theorem-facing claim frozen at current support grade."
+    },
+    {
+      "claim_id": "NG_FORCE_FOREST.core",
+      "theorem_id": "NG_FORCE_FOREST",
+      "claim_class": "core",
+      "claim_text": "Forest support kills cycle-space obstruction: cycle rank zero forbids force-like cycle drive.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/master/witness_manifest.json",
+        "results/T14/primitive_coverage.json",
+        "docs/project/theorem_pack_graph_affinity.yaml",
+        "results/T23/graph_affinity_pack_summary.json",
+        "docs/project/lean_bridge_graph_affinity.yaml",
+        "results/T27/lean_graph_bridge_summary.json"
+      ],
+      "guardrail_refs": [
+        "NG_FORCE_FOREST.guardrail"
+      ],
+      "blockers": [
+        "Exact-support and threshold guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_10_graph_scope_guardrail_freeze",
+        "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
+      },
+      "paper_use": "main_text",
+      "note": "Core theorem-facing claim frozen at current support grade."
+    },
+    {
+      "claim_id": "NG_FORCE_NULL.core",
+      "theorem_id": "NG_FORCE_NULL",
+      "claim_class": "core",
+      "claim_text": "Exact 1-form / null-affinity class has zero cycle affinity and no steady nonconservative drive.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/master/witness_manifest.json",
+        "results/T14/primitive_coverage.json",
+        "docs/project/theorem_pack_graph_affinity.yaml",
+        "results/T23/graph_affinity_pack_summary.json",
+        "docs/project/lean_bridge_graph_affinity.yaml",
+        "results/T27/lean_graph_bridge_summary.json"
+      ],
+      "guardrail_refs": [
+        "NG_FORCE_NULL.guardrail"
+      ],
+      "blockers": [
+        "Exact bidirected-support and no-regularization guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_10_graph_scope_guardrail_freeze",
+        "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
+      },
+      "paper_use": "main_text",
+      "note": "Core theorem-facing claim frozen at current support grade."
+    },
+    {
+      "claim_id": "NG_MACRO_CLOSURE_DEFICIT.core",
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "claim_class": "core",
+      "claim_text": "Positive closure deficit forbids an exact closed macro law under the chosen packaging, and the best macro kernel attains the variational minimum.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T09/closure_metrics.json",
+        "results/master/witness_manifest.json",
+        "docs/project/theorem_pack_closure.yaml",
+        "results/T24/closure_pack_summary.json",
+        "docs/project/lean_closure_feasibility.yaml",
+        "docs/project/lean_closure_variational_core.yaml",
+        "docs/project/lean_closure_direct.yaml",
+        "results/T40/lean_closure_feasibility_summary.json",
+        "results/T41/lean_closure_variational_core_summary.json",
+        "results/T42/lean_closure_direct_pack_summary.json"
+      ],
+      "guardrail_refs": [
+        "NG_MACRO_CLOSURE_DEFICIT.guardrail"
+      ],
+      "blockers": [
+        "Fixed-lens/fixed-lag/current-law and anti-proxy scope remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_18_closure_scope_guardrail_hold",
+        "action": "Preserve fixed-lens/fixed-lag/current-law and anti-proxy guardrails explicitly in paper assembly for the closure front."
+      },
+      "paper_use": "main_text",
+      "note": "Core theorem-facing claim frozen at current support grade."
+    },
+    {
+      "claim_id": "NG_OBJECT_CONTRACTIVE.core",
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "claim_class": "core",
+      "claim_text": "Strictly contractive packaging yields a unique fixed distribution and rules out multiple well-separated robust packaged objects at that scale.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "docs/project/lean_objecthood_uniqueness.yaml",
+        "docs/project/lean_objecthood_formal_boundary.md",
+        "docs/project/lean_objecthood_tv_feasibility.yaml",
+        "docs/project/lean_objecthood_tv_formal_boundary.md",
+        "docs/project/lean_objecthood_direct.yaml",
+        "results/T30/lean_objecthood_uniqueness_summary.json",
+        "results/T43/lean_objecthood_tv_feasibility_summary.json",
+        "results/T44/lean_objecthood_direct_pack_summary.json"
+      ],
+      "guardrail_refs": [
+        "NG_OBJECT_CONTRACTIVE.guardrail"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "main_text",
+      "note": "Core theorem-facing claim frozen at current support grade; the strict-contraction uniqueness Lean core is attached, but the full TV/Dobrushin bridge remains pending."
+    },
+    {
+      "claim_id": "NG_LADDER_IDEM.core",
+      "theorem_id": "NG_LADDER_IDEM",
+      "claim_class": "core",
+      "claim_text": "Fixed idempotent packaging saturates after one step; repeated packaging alone cannot generate an open-ended ladder.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T11/definability_metrics.json",
+        "results/master/witness_manifest.json"
+      ],
+      "guardrail_refs": [],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "main_text",
+      "note": "Core theorem-facing claim frozen at current support grade."
+    },
+    {
+      "claim_id": "NG_LADDER_BOUNDED_INTERFACE.core",
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "claim_class": "core",
+      "claim_text": "Fixed bounded interface plus fixed idempotent packaging and fixed domain forbids unbounded internal definable laddering.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T11/definability_metrics.json",
+        "results/T14/primitive_coverage.json",
+        "results/master/witness_manifest.json",
+        "docs/project/theorem_pack_bounded_interface.yaml",
+        "results/T26/bounded_interface_pack_summary.json",
+        "docs/project/lean_count_bounded_interface.yaml",
+        "results/T28/lean_finite_lens_count_summary.json",
+        "docs/project/lean_corollary_bounded_interface.yaml",
+        "results/T29/lean_bounded_interface_corollary_summary.json"
+      ],
+      "guardrail_refs": [],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "main_text",
+      "note": "Core theorem-facing claim frozen at current support grade; the direct Lean bounded-interface no-ladder corollary is now attached."
+    },
+    {
+      "claim_id": "NG_LADDER_BOUNDED_INTERFACE.guardrail",
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "claim_class": "guardrail",
+      "claim_text": "Bounded-interface no-ladder applies only while lens, domain, and packaging remain fixed; strict lens/domain extension changes the theory rather than violating the theorem.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "docs/project/theorem_pack_bounded_interface.yaml",
+        "results/T11/no_ladder_demos.json",
+        "results/T14/primitive_coverage.json",
+        "docs/project/lean_corollary_bounded_interface.yaml",
+        "results/T29/lean_bounded_interface_corollary_summary.json"
+      ],
+      "guardrail_refs": [],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Scope-preserving guardrail for fixed-theory bounded-interface claims."
+    },
+    {
+      "claim_id": "NG_ARROW_DPI.guardrail",
+      "theorem_id": "NG_ARROW_DPI",
+      "claim_class": "guardrail",
+      "claim_text": "Fitted first-order macro proxies are not theorem-level arrow audits and can create or distort macro arrow claims; zero-arrow corollaries are initial-law dependent and must be stated with explicit initialization scope.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T15/adversarial_cases.json:proxy_spurious_macro_arrow_nonstationary",
+        "results/T15/adversarial_cases.json:proxy_underestimates_nonmarkov_macro_arrow"
+      ],
+      "guardrail_refs": [
+        "results/T15/fragility_summary.json"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Guardrail claim frozen to constrain proxy interpretation."
+    },
+    {
+      "claim_id": "NG_PROTOCOL_TRAP.guardrail",
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "claim_class": "guardrail",
+      "claim_text": "Protocol-trap claims must be stated on the lifted chain or honest observed path law, under stationary or reversal-compatible initial-law scope; fitted stroboscopic proxies are not admissible theorem evidence.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T15/fragility_summary.json:fitted_markov_proxy_can_create_or_distort_macro_arrow",
+        "docs/project/lean_arrow_dpi.yaml",
+        "docs/project/lean_protocol_trap.yaml",
+        "results/T38/lean_arrow_dpi_summary.json",
+        "results/T39/lean_protocol_trap_summary.json"
+      ],
+      "guardrail_refs": [
+        "results/T15/fragility_summary.json"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Guardrail claim frozen to constrain proxy interpretation."
+    },
+    {
+      "claim_id": "NG_FORCE_FOREST.guardrail",
+      "theorem_id": "NG_FORCE_FOREST",
+      "claim_class": "guardrail",
+      "claim_text": "Thresholded support graphs are proxy diagnostics only; floors can create spurious one-way behavior and false forest/cycle interpretations.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T15/threshold_sweep.csv:tiny_reversible_triangle:floor=1/100"
+      ],
+      "guardrail_refs": [
+        "results/T15/fragility_summary.json"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Guardrail claim frozen to constrain proxy interpretation."
+    },
+    {
+      "claim_id": "NG_FORCE_NULL.guardrail",
+      "theorem_id": "NG_FORCE_NULL",
+      "claim_class": "guardrail",
+      "claim_text": "Thresholding or regularization can distort exactness and affinity interpretation; theorem claims must use exact bidirected support and exact ratio-form exactness.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T15/threshold_sweep.csv:tiny_reversible_triangle:floor=1/100"
+      ],
+      "guardrail_refs": [
+        "results/T15/fragility_summary.json"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Guardrail claim frozen to constrain proxy interpretation."
+    },
+    {
+      "claim_id": "NG_MACRO_CLOSURE_DEFICIT.guardrail",
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "claim_class": "guardrail",
+      "claim_text": "Closure claims must use exact packaged future laws and exact variational evaluation; proxy macro fits are not admissible theorem evidence.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T15/fragility_summary.json:fitted_markov_proxy_can_create_or_distort_macro_arrow",
+        "results/T24/closure_attribution_resolution.json",
+        "docs/project/lean_closure_variational_core.yaml",
+        "results/T41/lean_closure_variational_core_summary.json"
+      ],
+      "guardrail_refs": [
+        "results/T15/fragility_summary.json"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Guardrail claim frozen to constrain proxy interpretation."
+    },
+    {
+      "claim_id": "NG_OBJECT_CONTRACTIVE.guardrail",
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "claim_class": "guardrail",
+      "claim_text": "Theorem objecthood claims must use admissible total-variation/Dobrushin metric assumptions; proxy clustering metrics are not theorem evidence, and poor proxy metrics can create spurious multiplicity artifacts.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T15/objecthood_metric_sweep.csv",
+        "results/T15/adversarial_cases.json:poor_metric_splits_unique_object",
+        "results/T25/objecthood_metric_guardrails_resolution.json"
+      ],
+      "guardrail_refs": [
+        "results/T15/fragility_summary.json"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Guardrail claim frozen to constrain proxy interpretation."
+    },
+    {
+      "claim_id": "NG_MACRO_CLOSURE_DEFICIT.primitive_attribution_gap",
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "claim_class": "nonclaim",
+      "claim_text": "Historical gap resolved: a rewrite-only local derived contrast now isolates positive-vs-zero closure deficit within the exact/null-affinity regime.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T14/primitive_coverage.json",
+        "docs/project/readiness_checklist.yaml",
+        "results/T24/closure_attribution_resolution.json",
+        "docs/project/theorem_pack_closure.yaml"
+      ],
+      "guardrail_refs": [
+        "NG_MACRO_CLOSURE_DEFICIT.guardrail"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Historical gap-claim ID retained for provenance; now records resolved local attribution rather than an active blocker."
+    },
+    {
+      "claim_id": "NG_OBJECT_CONTRACTIVE.metric_regime_gap",
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "claim_class": "nonclaim",
+      "claim_text": "Historical gap resolved: the theorem front now fixes admissible objecthood metric/regime to total variation with lambda < 1 contraction and excludes proxy clustering metrics.",
+      "freeze_status": "frozen",
+      "support_grade": "direct",
+      "evidence_refs": [
+        "results/T15/objecthood_metric_sweep.csv",
+        "docs/project/readiness_checklist.yaml",
+        "docs/project/theorem_pack_objecthood.yaml",
+        "results/T25/objecthood_metric_guardrails_resolution.json"
+      ],
+      "guardrail_refs": [
+        "NG_OBJECT_CONTRACTIVE.guardrail"
+      ],
+      "blockers": [],
+      "next_ticket": null,
+      "paper_use": "discussion",
+      "note": "Historical gap-claim ID retained for provenance; now records resolution rather than an active blocker."
+    }
+  ]
+}

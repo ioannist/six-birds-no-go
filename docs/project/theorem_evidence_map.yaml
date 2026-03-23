@@ -1,0 +1,220 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-20T10:58:00Z",
+  "source_context": {
+    "paper_asset_freeze": "docs/project/paper_asset_freeze.yaml",
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "vision_present": true,
+    "vision_path": "vision.md",
+    "paper_narrative_charter": "docs/project/paper_narrative_charter.yaml",
+    "background_citation_map": "docs/project/background_citation_map.yaml",
+    "caption_registry": "docs/project/caption_registry.yaml",
+    "draft_v3": "paper/draft_v3.md",
+    "w01_section_contracts_summary": "results/W01/section_contracts_summary.json",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json"
+  },
+  "status_enums": {
+    "mapping_status": [
+      "fixed"
+    ],
+    "callout_kind": [
+      "figure",
+      "table"
+    ],
+    "alignment_status": [
+      "fixed"
+    ]
+  },
+  "claim_bindings": [
+    {
+      "claim_id": "NG_ARROW_DPI.core",
+      "theorem_id": "NG_ARROW_DPI",
+      "claim_class": "core",
+      "paper_use": "main_text",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "primary_evidence_handle": "results/T08/arrow_metrics.json",
+      "primary_callout_id": "FIG-2",
+      "primary_callout_kind": "figure",
+      "mapping_status": "fixed",
+      "note": "Primary theorem metric bound to shared arrow/protocol figure."
+    },
+    {
+      "claim_id": "NG_PROTOCOL_TRAP.core",
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "claim_class": "core",
+      "paper_use": "main_text",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "primary_evidence_handle": "results/T15/initial_distribution_sweep.csv",
+      "primary_callout_id": "FIG-2",
+      "primary_callout_kind": "figure",
+      "mapping_status": "fixed",
+      "note": "Initialization-scope asset bound to shared arrow/protocol figure."
+    },
+    {
+      "claim_id": "NG_FORCE_FOREST.core",
+      "theorem_id": "NG_FORCE_FOREST",
+      "claim_class": "core",
+      "paper_use": "main_text",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "primary_evidence_handle": "results/T14/primitive_coverage.json",
+      "primary_callout_id": "FIG-3",
+      "primary_callout_kind": "figure",
+      "mapping_status": "fixed",
+      "note": "Primitive coverage bound to graph/affinity figure."
+    },
+    {
+      "claim_id": "NG_FORCE_NULL.core",
+      "theorem_id": "NG_FORCE_NULL",
+      "claim_class": "core",
+      "paper_use": "main_text",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "primary_evidence_handle": "results/master/witness_metrics.csv",
+      "primary_callout_id": "FIG-3",
+      "primary_callout_kind": "figure",
+      "mapping_status": "fixed",
+      "note": "Witness-metric contrast bound to graph/affinity figure."
+    },
+    {
+      "claim_id": "NG_MACRO_CLOSURE_DEFICIT.core",
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "claim_class": "core",
+      "paper_use": "main_text",
+      "section_id": "S5_CLOSURE",
+      "primary_evidence_handle": "results/T09/closure_metrics.json",
+      "primary_callout_id": "FIG-4",
+      "primary_callout_kind": "figure",
+      "mapping_status": "fixed",
+      "note": "Closure metrics bound to closure figure."
+    },
+    {
+      "claim_id": "NG_OBJECT_CONTRACTIVE.core",
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "claim_class": "core",
+      "paper_use": "main_text",
+      "section_id": "S6_OBJECTHOOD",
+      "primary_evidence_handle": "results/T10/objecthood_metrics.json",
+      "primary_callout_id": "FIG-5",
+      "primary_callout_kind": "figure",
+      "mapping_status": "fixed",
+      "note": "Objecthood metric asset bound to objecthood figure."
+    },
+    {
+      "claim_id": "NG_LADDER_IDEM.core",
+      "theorem_id": "NG_LADDER_IDEM",
+      "claim_class": "core",
+      "paper_use": "main_text",
+      "section_id": "S7_LADDER",
+      "primary_evidence_handle": "results/T11/no_ladder_demos.json",
+      "primary_callout_id": "FIG-6",
+      "primary_callout_kind": "figure",
+      "mapping_status": "fixed",
+      "note": "No-ladder demo bound to ladder figure."
+    },
+    {
+      "claim_id": "NG_LADDER_BOUNDED_INTERFACE.core",
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "claim_class": "core",
+      "paper_use": "main_text",
+      "section_id": "S7_LADDER",
+      "primary_evidence_handle": "results/T11/definability_metrics.json",
+      "primary_callout_id": "TBL-6",
+      "primary_callout_kind": "table",
+      "mapping_status": "fixed",
+      "note": "Definability count asset bound to ladder table."
+    },
+    {
+      "claim_id": "NG_ARROW_DPI.guardrail",
+      "theorem_id": "NG_ARROW_DPI",
+      "claim_class": "guardrail",
+      "paper_use": "discussion",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "primary_evidence_handle": "results/T15/adversarial_cases.json",
+      "primary_callout_id": "TBL-2",
+      "primary_callout_kind": "table",
+      "mapping_status": "fixed",
+      "note": "Proxy-arrow guardrail bound to arrow/protocol table."
+    },
+    {
+      "claim_id": "NG_PROTOCOL_TRAP.guardrail",
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "claim_class": "guardrail",
+      "paper_use": "discussion",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "primary_evidence_handle": "results/T15/initial_distribution_sweep.csv",
+      "primary_callout_id": "TBL-2",
+      "primary_callout_kind": "table",
+      "mapping_status": "fixed",
+      "note": "Initialization-scope guardrail bound to arrow/protocol table."
+    },
+    {
+      "claim_id": "NG_FORCE_FOREST.guardrail",
+      "theorem_id": "NG_FORCE_FOREST",
+      "claim_class": "guardrail",
+      "paper_use": "discussion",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "primary_evidence_handle": "results/T15/threshold_sweep.csv",
+      "primary_callout_id": "TBL-3",
+      "primary_callout_kind": "table",
+      "mapping_status": "fixed",
+      "note": "Threshold fragility guardrail bound to graph/affinity table."
+    },
+    {
+      "claim_id": "NG_FORCE_NULL.guardrail",
+      "theorem_id": "NG_FORCE_NULL",
+      "claim_class": "guardrail",
+      "paper_use": "discussion",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "primary_evidence_handle": "results/T15/threshold_sweep.csv",
+      "primary_callout_id": "TBL-3",
+      "primary_callout_kind": "table",
+      "mapping_status": "fixed",
+      "note": "Exactness/regularization guardrail bound to graph/affinity table."
+    },
+    {
+      "claim_id": "NG_MACRO_CLOSURE_DEFICIT.guardrail",
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "claim_class": "guardrail",
+      "paper_use": "discussion",
+      "section_id": "S5_CLOSURE",
+      "primary_evidence_handle": "results/T09/grid_check.json",
+      "primary_callout_id": "TBL-4",
+      "primary_callout_kind": "table",
+      "mapping_status": "fixed",
+      "note": "Exact packaged-future guardrail bound to closure table."
+    },
+    {
+      "claim_id": "NG_OBJECT_CONTRACTIVE.guardrail",
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "claim_class": "guardrail",
+      "paper_use": "discussion",
+      "section_id": "S6_OBJECTHOOD",
+      "primary_evidence_handle": "results/T15/objecthood_metric_sweep.csv",
+      "primary_callout_id": "TBL-5",
+      "primary_callout_kind": "table",
+      "mapping_status": "fixed",
+      "note": "Metric/proxy guardrail bound to objecthood table."
+    },
+    {
+      "claim_id": "NG_LADDER_BOUNDED_INTERFACE.guardrail",
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "claim_class": "guardrail",
+      "paper_use": "discussion",
+      "section_id": "S7_LADDER",
+      "primary_evidence_handle": "results/T11/no_ladder_demos.json",
+      "primary_callout_id": "FIG-6",
+      "primary_callout_kind": "figure",
+      "mapping_status": "fixed",
+      "note": "Scope-preservation guardrail bound to ladder figure."
+    }
+  ],
+  "mapping_policy": {
+    "bind_only_frozen_core_and_guardrail_claims": true,
+    "one_primary_evidence_per_claim": true,
+    "one_primary_callout_per_claim": true,
+    "background_papers_not_claim_evidence": true,
+    "objecthood_boundary_does_not_change_claim_evidence": true,
+    "status": "fixed"
+  }
+}

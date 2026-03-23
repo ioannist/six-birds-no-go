@@ -1,0 +1,69 @@
+{
+  "version": "T41",
+  "generated_at_utc": "2026-03-19T10:46:37Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_closure": "docs/project/theorem_pack_closure.yaml",
+    "lean_closure_feasibility": "docs/project/lean_closure_feasibility.yaml",
+    "lean_probability_core": "docs/project/lean_probability_core.yaml",
+    "lean_kl_dpi_core": "docs/project/lean_kl_dpi_core.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "closure_deficit_module": "src/sixbirds_nogo/closure_deficit.py",
+    "t09_closure_metrics": "results/T09/closure_metrics.json",
+    "t09_grid_check": "results/T09/grid_check.json",
+    "t24_attribution_resolution": "results/T24/closure_attribution_resolution.json",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "bridge_status": [
+      "core_ready"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "bridge_status": "core_ready",
+      "bridge_statement": "For a fixed finite lens, lag, and current micro law, exact packaged future laws and finite macro kernels admit a closure-local variational objective with a closed-form best macro kernel, giving direct Lean support for the closure front's internal variational core.",
+      "prerequisites": [
+        "finite exact laws",
+        "finite KL core",
+        "deterministic lens",
+        "fixed-horizon path laws",
+        "fixed current micro law",
+        "fixed lag"
+      ],
+      "direct_corollaries": [
+        "exact packaged future law family",
+        "exact macro current and pair laws",
+        "closed-form best macro kernel row formula",
+        "exact variational objective",
+        "best-kernel minimization theorem",
+        "best-gap wrapper"
+      ],
+      "scope_limits": [
+        "fixed lens only",
+        "fixed lag only",
+        "fixed current micro law only",
+        "primitive attribution out of scope",
+        "full closure variational identity/corollary still pending",
+        "no generic optimization library"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteProbabilityCore.lean",
+        "lean/SixBirdsNoGo/FiniteKLDPI.lean",
+        "lean/SixBirdsNoGo/ClosureVariationalCore.lean",
+        "lean/SixBirdsNoGo/ClosureVariationalCoreExample.lean"
+      ],
+      "readiness_delta": {
+        "lean_support_before": "missing",
+        "lean_support_after": "direct",
+        "variational_core_formalized": true,
+        "full_theorem_wrapper_pending": false
+      },
+      "remaining_blockers": [],
+      "next_ticket": null
+    }
+  ]
+}

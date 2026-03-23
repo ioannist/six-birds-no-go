@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T17:59:54Z",
+  "source_context": {
+    "draft_v3": "paper/draft_v3.md",
+    "caption_registry": "docs/project/caption_registry.yaml",
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "paper_asset_freeze": "docs/project/paper_asset_freeze.yaml",
+    "theorem_evidence_map": "docs/project/theorem_evidence_map.yaml",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "metadata_status": [
+      "fixed"
+    ],
+    "submission_mode": [
+      "anonymous_ready"
+    ]
+  },
+  "frozen_identity": {
+    "title": "Six Birds: No-Go Theorems for Audited Emergence",
+    "short_title": "Six Birds: No-Go Theorems for Audited Emergence",
+    "current_internal_manuscript": "paper/draft_v3.md",
+    "outward_manuscript_path": "paper/submission_bundle/manuscript_submission.md",
+    "abstract_source": "paper/draft_v3.md#abstract",
+    "metadata_status": "fixed"
+  },
+  "keyword_list": [
+    "finite audited systems",
+    "no-go theorems",
+    "data processing inequality",
+    "cycle obstruction",
+    "closure deficit",
+    "objecthood",
+    "laddering",
+    "emergence"
+  ],
+  "final_lean_status_snapshot": {
+    "direct_ids": [
+      "NG_LADDER_IDEM",
+      "NG_FORCE_FOREST",
+      "NG_FORCE_NULL",
+      "NG_LADDER_BOUNDED_INTERFACE",
+      "NG_ARROW_DPI",
+      "NG_PROTOCOL_TRAP",
+      "NG_MACRO_CLOSURE_DEFICIT"
+    ],
+    "auxiliary_ids": [
+      "NG_OBJECT_CONTRACTIVE"
+    ],
+    "missing_ids": [],
+    "note": "Objecthood remains auxiliary-only by permanent boundary."
+  },
+  "submission_policy": {
+    "submission_mode": "anonymous_ready",
+    "authorship_embedded": false,
+    "venue_specific_metadata_embedded": false,
+    "cover_note_required": true,
+    "archive_manifest_required": true,
+    "note": "Authorship and venue-specific metadata are intentionally left outside the repository package."
+  }
+}

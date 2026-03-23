@@ -1,0 +1,51 @@
+\section{Introduction}\label{sec:introduction}
+
+Many ``emergent'' claims in finite-state modeling take the form:
+after coarse observation, one can attribute a directed arrow of time, a force-like drive, a stable macro-law, or an agent-like persistence to a system that was specified only microscopically.
+This paper isolates a family of finite \emph{no-go} statements showing that several such attributions are impossible unless specific structural primitives are present.
+The point is not metaphysical; it is bookkeeping.
+We work entirely with finite objects (finite sets, kernels, deterministic maps) and with audits that can be evaluated exactly.
+
+\paragraph{Six primitives (grammar, not section structure).}
+We use the following six primitives as a vocabulary for what may be added to a finite audited package.
+They are recorded per witness and used only to state contrasts; they are not treated as mutually exclusive or exhaustive.
+\begin{enumerate}
+  \item \emph{Rewrite:} state updates that change which microstate is represented (e.g.\ deterministic rewrites or state relabelings that alter future conditionals).
+  \item \emph{Gating:} deletion or suppression of transitions (support-level constraints).
+  \item \emph{Holonomy / protocol structure:} hidden cyclic or protocol coordinates whose evolution can be invisible to the observation.
+  \item \emph{Staging / refinement:} state-splitting or refinement that introduces additional internal degrees of freedom.
+  \item \emph{Packaging:} deterministic endomaps or simplex operators that ``compress'' state or distributions, typically studied via idempotence and contraction.
+  \item \emph{Drive:} explicit breaking of detailed balance / nonreversibility, producing nonzero affinities.
+\end{enumerate}
+
+\paragraph{Honest vs.\ proxy macro-quantities.}
+Coarse quantities are defined by deterministic pushforward of the micro path law along an observation map.
+In particular, for a lens $f:X\to Y$ we define the observed process $Y_t=f(X_t)$ and the observed path law as the pushforward of the micro path law.
+When a first-order macro Markov chain on $Y$ is introduced, it is used as an auxiliary approximation rather than as the theorem object.
+
+\paragraph{Main results (eight fronts).}
+All results are stated for finite systems and deterministic lenses.
+The theorem statements are collected in Section~\ref{sec:main-results}, and the later theorem-front sections refer back to those labels.
+In one line each, the fronts are:
+\begin{itemize}
+  \item \emph{Arrow/DPI:} deterministic observation cannot increase forward--reverse path-space KL; equality holds for identity observation. (\thmNGArrowDPI)
+  \item \emph{Protocol trap:} holonomy can produce apparent protocol structure without honest entropy production, under a stationary initialization scope. (\thmNGProtocolTrap)
+  \item \emph{Force implies cycles:} nontrivial force-like structure requires non-forest support (positive cycle rank). (\thmNGForceForest)
+  \item \emph{Null force under exactness:} if the log-ratio 1-form is exact (potential), cycle affinities vanish. (\thmNGForceNull)
+  \item \emph{Closure deficit:} coarse closure deficit is a conditional-information obstruction characterized by a finite variational best macro kernel. (\thmNGMacroClosureDeficit)
+  \item \emph{Objecthood (bounded):} strict contraction implies at most one fixed distribution; the theorem front addresses uniqueness and separation in the contractive total-variation regime. (\thmNGObjectContractive)
+  \item \emph{Idempotence no-ladder:} idempotent packaging stabilizes after one step (no iterate ladder). (\thmNGLadderIdem)
+  \item \emph{Bounded-interface no-ladder:} with a fixed finite interface, definability is bounded by $2^{|\mathrm{im}(f)|}$ and no unbounded predicate ladder can arise without leaving the interface scope. (\thmNGLadderBoundedInterface)
+\end{itemize}
+
+\paragraph{Relation to prior Six Birds papers.}
+The present paper is a consolidation into a single no-go package with a uniform finite semantics and an auditable witness suite.
+The historical Six Birds line developed semantics for packaging, coarse-graining, directionality, protocol, closure, objecthood, and observable taxonomy; here we restrict to the finite setting and package the obstruction layer.
+The cited papers are used only as background and historical context; see \citep{SB_FOUNDATIONS,SB_LAY,SB_PROTOCOL_TRAP,SB_CAST,SB_THROW,SB_CLASSIFY}.
+
+\paragraph{Paper organization.}
+Section~\ref{sec:setup} fixes notation and defines the audits.
+Section~\ref{sec:main-results} collects the formal theorem statements in one place.
+Sections~\ref{sec:arrow-protocol}--\ref{sec:bounded-interface} develop the eight fronts in order: arrow/protocol, graph/affinity, closure, objecthood, and bounded-interface laddering.
+The appendices record routine finite calculations and derivations that support the main proofs.
+Supplementary material records provenance, computational audit artifacts, and formalization status; it is not required for the statements and proofs in the main text.

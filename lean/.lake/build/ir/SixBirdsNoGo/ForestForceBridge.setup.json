@@ -1,0 +1,11 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.ForestForceBridge",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.TreeExactness":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/TreeExactness.olean"],
+  "SixBirdsNoGo.ClosedWalkExactness":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosedWalkExactness.olean"]},
+ "dynlibs": []}

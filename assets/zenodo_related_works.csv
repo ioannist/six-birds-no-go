@@ -1,0 +1,24 @@
+relation,identifier,scheme,resource_type,bibkey,title
+Cites,arXiv:2602.00134,arXiv,other,SB_FOUNDATIONS,Six Birds: Foundations of Emergence Calculus
+Cites,10.5281/zenodo.18906902,DOI,other,SB_PROTOCOL_TRAP,Six Birds Protocol Trap: Holonomy Without Entropy Production
+Cites,10.5281/zenodo.18926433,DOI,other,SB_CAST,To Cast a Stone with Six Birds: A Closure Deficit Account of Randomness under Packaging and Budget
+Cites,10.5281/zenodo.18439737,DOI,other,SB_THROW,To Throw a Stone with Six Birds: On Agents and Agenthood
+Cites,10.5281/zenodo.19047665,DOI,other,SB_CLASSIFY,To Classify a Stone with Six Birds: Primitive Activation and Observable Separation of Layer Birth Classes
+Cites,10.1214/aoms/1177729694,DOI,publication-article,KullbackLeibler1951,On Information and Sufficiency
+Cites,978-0-471-24195-9,ISBN,publication-book,CoverThomas2006,Elements of Information Theory
+Cites,978-0-521-63396-3,ISBN,publication-book,Norris1997,Markov Chains
+Cites,978-1-4704-2962-1,ISBN,publication-book,LevinPeresWilmer2017,Markov Chains and Mixing Times
+Cites,10.1007/978-3-662-53622-3,DOI,publication-book,Diestel2017,Graph Theory
+Cites,978-0-521-45897-9,ISBN,publication-book,Biggs1993,Algebraic Graph Theory
+Cites,10.1023/A:1021726930037,DOI,publication-article,MaesNetocny2003,Time-Reversal and Entropy
+Cites,10.1088/0034-4885/75/12/126001,DOI,publication-article,Seifert2012,"Stochastic Thermodynamics, Fluctuation Theorems and Molecular Machines"
+Cites,10.1103/PhysRevE.85.041125,DOI,publication-article,Esposito2012,Stochastic Thermodynamics under Coarse Graining
+Cites,10.1103/RevModPhys.48.571,DOI,publication-article,Schnakenberg1976,Network Theory of Microscopic and Macroscopic Behavior of Master Equation Systems
+Cites,10.1137/18M1223101,DOI,publication-article,Lim2020Hodge,Hodge Laplacians on Graphs
+Cites,978-0-486-68616-1,ISBN,publication-book,KemenySnell1960,Finite Markov Chains
+Cites,10.2307/3215175,DOI,publication-article,Buchholz1994,Exact and Ordinary Lumpability in Finite Markov Chains
+Cites,10.1214/aop/1176996454,DOI,publication-article,Csiszar1975,I-Divergence Geometry of Probability Distributions and Minimization Problems
+Cites,10.1137/1101006,DOI,publication-article,Dobrushin1956,Central Limit Theorem for Nonstationary Markov Chains. I
+Cites,978-0-387-29765-1,ISBN,publication-book,Seneta2006,Non-Negative Matrices and Markov Chains
+Cites,978-0-471-27601-9,ISBN,publication-book,Kelly1979,Reversibility and Stochastic Networks
+Cites,10.1145/1232420.1232424,DOI,publication-article,FosterEtAl2007,Combinators for Bidirectional Tree Transformations: A Linguistic Approach to the View-Update Problem

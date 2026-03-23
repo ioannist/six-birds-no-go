@@ -1,0 +1,27 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:40Z",
+  "theorem_count": 1,
+  "updated_theorem_ids": [
+    "NG_LADDER_BOUNDED_INTERFACE"
+  ],
+  "lean_direct_total": 7,
+  "lean_auxiliary_total": 1,
+  "lean_missing_total": 0,
+  "counting_core_formalized": true,
+  "assignment_family_count_eq_two_pow": true,
+  "surjective_lens_equiv_explicit": true,
+  "bounded_interface_still_auxiliary": false,
+  "full_corollary_pending": false,
+  "lake_build_status": "passed",
+  "reproduce_includes_t20": true,
+  "reproduce_includes_t21": true,
+  "reproduce_includes_t22": true,
+  "reproduce_includes_t23": true,
+  "reproduce_includes_t24": true,
+  "reproduce_includes_t25": true,
+  "reproduce_includes_t26": true,
+  "reproduce_includes_t27": true,
+  "reproduce_includes_t28": true,
+  "vision_present": true,
+  "status": "success"
+}

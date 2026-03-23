@@ -1,0 +1,279 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-20T09:35:06Z",
+  "source_context": {
+    "draft_v3": "paper/draft_v3.md",
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "paper_asset_freeze": "docs/project/paper_asset_freeze.yaml",
+    "theorem_evidence_map": "docs/project/theorem_evidence_map.yaml",
+    "revision_queue_v2": "docs/project/revision_queue_v2.yaml",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "background_citation_map": "docs/project/background_citation_map.yaml",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "charter_status": [
+      "fixed"
+    ],
+    "citation_scope": [
+      "background_only"
+    ],
+    "section_status": [
+      "fixed"
+    ]
+  },
+  "governing_thesis": {
+    "paper_identity": "This is the paper where Six Birds stops being only a language for emergence and becomes an audited obstruction calculus.",
+    "one_line_formula": "The six primitives are the grammar of closure; the no-go theorems are the constitution of falsifiability.",
+    "opening_problem_statement": "Emergence theories become unfalsifiable when every failed emergence claim can be rescued by hidden storage, hidden protocol, hidden drive, hidden packaging, or a better coarse description. The paper therefore asks under which exact conditions directionality, force-like behavior, exact macro closure, robust objecthood, or internal laddering are impossible in a finite audited theory package.",
+    "contribution_statement": "The present paper is the negative complement to the constructive Six Birds line: it publishes a short list of universal failure conditions, each with explicit antecedents and explicit escape routes.",
+    "charter_status": "fixed"
+  },
+  "primitive_grammar": {
+    "placement_section_id": "S1_INTRO",
+    "placement_note": "The six primitives must appear once, early, in the introduction before the full theorem-front map is developed. They must not determine the manuscript section order.",
+    "primitive_entries": [
+      {
+        "primitive_id": "P1",
+        "short_name": "operator rewrite",
+        "description": "local rule change or transformation of update structure"
+      },
+      {
+        "primitive_id": "P2",
+        "short_name": "gating / support restriction",
+        "description": "restriction or modulation of accessible support or transitions"
+      },
+      {
+        "primitive_id": "P3",
+        "short_name": "protocol holonomy / route mismatch",
+        "description": "path- or route-dependent mismatch between local steps and net evolution"
+      },
+      {
+        "primitive_id": "P4",
+        "short_name": "sectors and staging structure",
+        "description": "sector, refinement, or staged organization of evolution"
+      },
+      {
+        "primitive_id": "P5",
+        "short_name": "packaging",
+        "description": "construction or maintenance of a theory object via a package operator"
+      },
+      {
+        "primitive_id": "P6",
+        "short_name": "audit / accounting",
+        "description": "conservation, bookkeeping, or audit structure attached to the package"
+      }
+    ],
+    "p6_drive_note": "P6_drive is the directed-circulation specialization of the audit/accounting primitive and should be named when genuine nonequilibrium drive is discussed.",
+    "early_primitives_paragraph": "Six Birds supplies the closure grammar used throughout. The six primitives are P1 operator rewrite, P2 gating/support restriction, P3 protocol holonomy or route mismatch, P4 sectors and staging structure, P5 packaging, and P6 audit/accounting, with P6_drive reserved for the genuine directed-circulation specialization. Earlier papers developed this vocabulary as the positive language of emergence. The present paper uses the same vocabulary in a different register: not to narrate how layer birth can occur, but to state when arrow, force-like behavior, exact macro closure, robust objecthood, and internal laddering are impossible unless some primitive-level escape route is activated.",
+    "charter_status": "fixed"
+  },
+  "historical_positioning": {
+    "historical_bridge_paragraph": "Read against the earlier Six Birds papers, this manuscript is the negative complement to a constructive program. Foundations of Emergence Calculus established the closure grammar and fixed-point picture of theories. To Lay a Stone supplied the finite-state semantics that makes the audits exact. Protocol Trap showed that route dependence alone is not an arrow certificate. To Cast a Stone isolated closure deficit as the right language for macro-law failure under packaging. To Throw a Stone pushed the framework into theory objects and objecthood. To Classify a Stone clarified that primitive vocabulary and observable taxonomy are not the same thing. The present paper asks the complementary question: once that apparatus is in place, what does it let us rule out sharply?",
+    "citation_policy": "Historical background only; these papers motivate the narrative, vocabulary, and framing but do not replace theorem packs, exact assets, or frozen evidence handles as theorem support.",
+    "anti_survey_rule": "The manuscript must not read as a survey, retrospective, or repository summary.",
+    "charter_status": "fixed"
+  },
+  "section_narrative_spine": [
+    {
+      "section_id": "S1_INTRO",
+      "narrative_role": "Open on falsifiability pressure, then present the theorem map of the paper.",
+      "reader_question": "Why does the Six Birds program need universal no-go theorems now?",
+      "must_do": [
+        "state that emergence theories become unfalsifiable unless they publish sharp failure conditions",
+        "state that this paper is the negative complement to the earlier constructive line",
+        "place the six-primitives paragraph early",
+        "frame the body by theorem fronts rather than primitives"
+      ],
+      "must_not_do": [
+        "do not sound like a survey",
+        "do not organize the introduction around P1 through P6 one by one"
+      ],
+      "historical_citation_ids": [
+        "SB_FOUNDATIONS",
+        "SB_LAY",
+        "SB_CLASSIFY"
+      ],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "S2_SETUP",
+      "narrative_role": "State the honesty contract: finite audited theory package, exact audits, and honest-versus-proxy separation.",
+      "reader_question": "What counts as theorem evidence in this paper?",
+      "must_do": [
+        "define the finite theory package and exact audit families",
+        "make the honest-versus-proxy rule explicit",
+        "keep notation and scope conventions compact"
+      ],
+      "must_not_do": [
+        "do not relist the six primitives as if they were section headings",
+        "do not let proxies appear as theorem evidence"
+      ],
+      "historical_citation_ids": [
+        "SB_FOUNDATIONS",
+        "SB_LAY"
+      ],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "S3_ARROW_PROTOCOL",
+      "narrative_role": "Tell a single story about apparent directionality: honest observation cannot create arrow, and reversible autonomous lifts cannot honestly ratchet under scoped initialization.",
+      "reader_question": "When is a time-arrow claim merely an observation or protocol artifact?",
+      "must_do": [
+        "present NG_ARROW_DPI and NG_PROTOCOL_TRAP as one front-level argument",
+        "keep stationary or reversal-compatible initial-law scope explicit",
+        "keep anti-proxy clauses explicit"
+      ],
+      "must_not_do": [
+        "do not treat fitted stroboscopic proxies as theorem evidence",
+        "do not blur the ArrowDPI theorem and the protocol theorem into one statement"
+      ],
+      "historical_citation_ids": [
+        "SB_LAY",
+        "SB_PROTOCOL_TRAP"
+      ],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "S4_GRAPH_AFFINITY",
+      "narrative_role": "Strip force-like language of metaphor and rest it on cycle space and exactness.",
+      "reader_question": "When can a system not support genuine cycle-based drive?",
+      "must_do": [
+        "separate the forest obstruction from the null-affinity obstruction",
+        "keep threshold and regularization guardrails explicit"
+      ],
+      "must_not_do": [
+        "do not let thresholded support serve as the theorem object"
+      ],
+      "historical_citation_ids": [
+        "SB_FOUNDATIONS"
+      ],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "S5_CLOSURE",
+      "narrative_role": "Make closure the variational center of gravity: exact macro-law failure under fixed packaging.",
+      "reader_question": "When does a packaged level fail to support an exact closed macro law?",
+      "must_do": [
+        "present the theorem core as a variational statement",
+        "keep attribution history separate from theorem content",
+        "preserve fixed-lens, fixed-lag, fixed-current-law scope"
+      ],
+      "must_not_do": [
+        "do not collapse primitive attribution into the theorem statement",
+        "do not use proxy macro fits as theorem evidence"
+      ],
+      "historical_citation_ids": [
+        "SB_CAST"
+      ],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "S6_OBJECTHOOD",
+      "narrative_role": "Use objecthood as the paper\u2019s honesty test: analytically direct, formally bounded.",
+      "reader_question": "When does an admissible contraction regime forbid multiple robust objects at a scale?",
+      "must_do": [
+        "state the admissible TV/Dobrushin regime analytically",
+        "state clearly that Lean support is auxiliary-only by permanent boundary",
+        "keep proxy clustering outside theorem evidence"
+      ],
+      "must_not_do": [
+        "do not describe objecthood as Lean-direct",
+        "do not let noncontractive contextual examples become theorem counterexamples"
+      ],
+      "historical_citation_ids": [
+        "SB_THROW"
+      ],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "S7_LADDER",
+      "narrative_role": "Use laddering as the anti-teleology climax: fixed packages and fixed interfaces block open-ended internal layering.",
+      "reader_question": "When is open-ended internal laddering impossible inside a fixed theory?",
+      "must_do": [
+        "combine idempotent saturation and bounded-interface no-ladder clearly",
+        "make strict extension the explicit escape route"
+      ],
+      "must_not_do": [
+        "do not describe strict lens or domain extension as internal laddering"
+      ],
+      "historical_citation_ids": [
+        "SB_FOUNDATIONS",
+        "SB_CLASSIFY"
+      ],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "S8_DISCUSSION",
+      "narrative_role": "Clarify the minimal escape routes rather than sounding anti-emergence.",
+      "reader_question": "What do these no-go theorems leave open?",
+      "must_do": [
+        "name the minimal escape routes for each front",
+        "state that the paper is anti-vagueness rather than anti-emergence"
+      ],
+      "must_not_do": [
+        "do not sound defensive",
+        "do not imply that all constructive emergence claims are ruled out"
+      ],
+      "historical_citation_ids": [],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "A1_ARTIFACTS",
+      "narrative_role": "Function as a compliance section for evidence provenance.",
+      "reader_question": "How is every theorem claim tied to one evidence handle and one callout decision?",
+      "must_do": [
+        "show the frozen theorem-evidence discipline",
+        "explain why excluded assets remain non-manuscript support only"
+      ],
+      "must_not_do": [
+        "do not read like a repository dump"
+      ],
+      "historical_citation_ids": [],
+      "section_status": "fixed"
+    },
+    {
+      "section_id": "A2_LEAN",
+      "narrative_role": "Function as a compliance section for formal support and explicit boundaries.",
+      "reader_question": "Which fronts are direct, and which front is deliberately bounded?",
+      "must_do": [
+        "state the final Lean support distribution explicitly",
+        "keep the objecthood permanent boundary explicit"
+      ],
+      "must_not_do": [
+        "do not blur the uniqueness core with the full objecthood theorem"
+      ],
+      "historical_citation_ids": [],
+      "section_status": "fixed"
+    }
+  ],
+  "lean_status_reflection": {
+    "direct_ids": [
+      "NG_LADDER_IDEM",
+      "NG_FORCE_FOREST",
+      "NG_FORCE_NULL",
+      "NG_LADDER_BOUNDED_INTERFACE",
+      "NG_ARROW_DPI",
+      "NG_PROTOCOL_TRAP",
+      "NG_MACRO_CLOSURE_DEFICIT"
+    ],
+    "auxiliary_only_ids": [
+      "NG_OBJECT_CONTRACTIVE"
+    ],
+    "missing_ids": [],
+    "reflection_sentence": "Seven fronts are direct, one front is auxiliary-only by deliberate scope control.",
+    "objecthood_boundary_sentence": "Objecthood must be described as analytically direct but Lean auxiliary-only by permanent boundary; it must never be described as Lean-direct.",
+    "charter_status": "fixed"
+  },
+  "writing_rules": [
+    "Open on falsifiability pressure rather than on framework exposition.",
+    "List the six primitives once, early, as the grammar of closure.",
+    "Organize the body by theorem fronts rather than by primitives.",
+    "Treat the earlier Six Birds papers as historical background only.",
+    "Do not let the manuscript read as a survey or retrospective.",
+    "Keep objecthood as the one deliberate formal boundary rather than a hidden gap.",
+    "Use the discussion to name minimal escape routes rather than to sound anti-emergence.",
+    "Use Appendix A and Appendix B as compliance sections for provenance and formal support."
+  ]
+}

@@ -1,0 +1,21 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.ClosureDirectPackExample",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.FiniteProbabilityCoreExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCoreExample.olean"],
+  "SixBirdsNoGo.FiniteProbabilityCore":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCore.olean"],
+  "SixBirdsNoGo.FiniteKLDPIExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteKLDPIExample.olean"],
+  "SixBirdsNoGo.FiniteKLDPI":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteKLDPI.olean"],
+  "SixBirdsNoGo.ClosureVariationalCoreExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosureVariationalCoreExample.olean"],
+  "SixBirdsNoGo.ClosureVariationalCore":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosureVariationalCore.olean"],
+  "SixBirdsNoGo.ClosureDirectPack":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosureDirectPack.olean"]},
+ "dynlibs": []}

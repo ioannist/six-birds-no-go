@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T16:00:00Z",
+  "source_context": {
+    "source_queue": "docs/project/revision_queue.yaml",
+    "source_red_team_summary": "results/T34/red_team_summary.json",
+    "source_draft": "paper/draft_v1.md",
+    "target_draft": "paper/draft_v2.md",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "closure_status": ["closed"],
+    "blocking": ["yes", "no"]
+  },
+  "resolution_summary": {
+    "original_revision_item_count": 3,
+    "closed_item_count": 3,
+    "blocking_open_count": 0
+  },
+  "revision_items": [
+    {
+      "revision_id": "REV-001",
+      "original_issue_type": "front_taxonomy_mismatch",
+      "original_section_id": "ABSTRACT",
+      "original_blocking": "no",
+      "closure_status": "closed",
+      "resolution_locations": ["paper/draft_v2.md#abstract"],
+      "resolution_note": "The abstract now names five theorem sections and explicitly includes closure in the front map."
+    },
+    {
+      "revision_id": "REV-002",
+      "original_issue_type": "scope_omission",
+      "original_section_id": "ABSTRACT",
+      "original_blocking": "yes",
+      "closure_status": "closed",
+      "resolution_locations": ["paper/draft_v2.md#abstract"],
+      "resolution_note": "The abstract now restores the full fixed-lens/fixed-domain/fixed-idempotent-package antecedent for the bounded-interface theorem."
+    },
+    {
+      "revision_id": "REV-003",
+      "original_issue_type": "appendix_alignment",
+      "original_section_id": "A2_LEAN",
+      "original_blocking": "no",
+      "closure_status": "closed",
+      "resolution_locations": ["paper/draft_v2.md#appendix-b-lean-support-and-proof-dependency-map", "paper/draft_v2.md#6-objecthood-under-contraction"],
+      "resolution_note": "Appendix B and Section 6 now distinguish the direct uniqueness-core Lean result from the permanent auxiliary boundary for the full objecthood theorem front."
+    }
+  ]
+}

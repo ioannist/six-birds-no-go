@@ -1,0 +1,115 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-20T09:35:06Z",
+  "source_context": {
+    "paper_narrative_charter": "docs/project/paper_narrative_charter.yaml",
+    "draft_v3": "paper/draft_v3.md",
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "citation_scope": [
+      "background_only"
+    ],
+    "placement_status": [
+      "fixed"
+    ]
+  },
+  "citation_entries": [
+    {
+      "citation_id": "SB_FOUNDATIONS",
+      "paper_title": "Six Birds: Foundations of Emergence Calculus",
+      "historical_role": "foundational_grammar",
+      "citation_scope": "background_only",
+      "required_section_ids": [
+        "S1_INTRO",
+        "S2_SETUP"
+      ],
+      "optional_section_ids": [
+        "S7_LADDER"
+      ],
+      "narrative_function": "Provides the closure grammar, fixed-point picture of theories, and primitive vocabulary.",
+      "note": "Use for vocabulary provenance and historical positioning, not as theorem evidence.",
+      "placement_status": "fixed"
+    },
+    {
+      "citation_id": "SB_LAY",
+      "paper_title": "To Lay a Stone with Six Birds: Finite-State Semantics for Packaging, Directionality, and Coarse Graining",
+      "historical_role": "finite_audit_semantics",
+      "citation_scope": "background_only",
+      "required_section_ids": [
+        "S2_SETUP"
+      ],
+      "optional_section_ids": [
+        "S1_INTRO",
+        "S3_ARROW_PROTOCOL",
+        "S5_CLOSURE"
+      ],
+      "narrative_function": "Provides the finite audited semantics and no-smuggling exact audit discipline.",
+      "note": "Use when explaining why the paper\u2019s audits are exact and finite.",
+      "placement_status": "fixed"
+    },
+    {
+      "citation_id": "SB_PROTOCOL_TRAP",
+      "paper_title": "Six Birds Protocol Trap: Holonomy Without Entropy Production",
+      "historical_role": "protocol_correction",
+      "citation_scope": "background_only",
+      "required_section_ids": [
+        "S3_ARROW_PROTOCOL"
+      ],
+      "optional_section_ids": [
+        "S8_DISCUSSION"
+      ],
+      "narrative_function": "Provides the historical correction that route dependence alone is not a certificate of real arrow.",
+      "note": "Use only as background to the protocol theorem front.",
+      "placement_status": "fixed"
+    },
+    {
+      "citation_id": "SB_CAST",
+      "paper_title": "To Cast a Stone with Six Birds: A Closure Deficit Account of Randomness under Packaging and Budget",
+      "historical_role": "closure_background",
+      "citation_scope": "background_only",
+      "required_section_ids": [
+        "S5_CLOSURE"
+      ],
+      "optional_section_ids": [
+        "S8_DISCUSSION"
+      ],
+      "narrative_function": "Provides closure deficit as the background language for macro-law failure under packaging.",
+      "note": "Use for historical framing of the closure front, not as theorem evidence.",
+      "placement_status": "fixed"
+    },
+    {
+      "citation_id": "SB_THROW",
+      "paper_title": "To Throw a Stone with Six Birds: On Agents and Agenthood",
+      "historical_role": "objecthood_background",
+      "citation_scope": "background_only",
+      "required_section_ids": [
+        "S6_OBJECTHOOD"
+      ],
+      "optional_section_ids": [
+        "A2_LEAN"
+      ],
+      "narrative_function": "Provides the theory-object / agenthood background that motivates why objecthood matters as a theorem-facing notion.",
+      "note": "Use for historical background while keeping the final permanent Lean boundary explicit.",
+      "placement_status": "fixed"
+    },
+    {
+      "citation_id": "SB_CLASSIFY",
+      "paper_title": "To Classify a Stone with Six Birds: Primitive Activation and Observable Separation of Layer Birth Classes",
+      "historical_role": "primitive_taxonomy_background",
+      "citation_scope": "background_only",
+      "required_section_ids": [
+        "S1_INTRO"
+      ],
+      "optional_section_ids": [
+        "S2_SETUP",
+        "S7_LADDER"
+      ],
+      "narrative_function": "Provides the background lesson that primitive vocabulary and observable taxonomy are not the same thing.",
+      "note": "Use to justify organizing the manuscript by theorem fronts rather than by primitives.",
+      "placement_status": "fixed"
+    }
+  ]
+}

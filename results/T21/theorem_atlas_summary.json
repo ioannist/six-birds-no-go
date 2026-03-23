@@ -1,0 +1,15 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:39Z",
+  "theorem_count": 8,
+  "claim_count": 17,
+  "frozen_claim_count": 17,
+  "blocked_claim_count": 0,
+  "deferred_claim_count": 0,
+  "guardrail_claim_count": 7,
+  "direct_core_count": 8,
+  "evidence_only_core_count": 0,
+  "vision_present": true,
+  "reproduce_includes_t20": true,
+  "reproduce_includes_t21": true,
+  "status": "success"
+}

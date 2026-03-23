@@ -1,0 +1,49 @@
+{
+  "generated_at_utc": "2026-03-23T16:03:54Z",
+  "queue_id": "revision_queue_r15_v1",
+  "items": [
+    {
+      "issue_id": "R14-001",
+      "status": "closed",
+      "severity": "low",
+      "closed_by_revision": "R15",
+      "files_touched": [
+        "paper/sections/03_main_results.tex"
+      ],
+      "resolution_note": "Replaced internal production language with a standard main-results opening sentence."
+    },
+    {
+      "issue_id": "R14-002",
+      "status": "closed",
+      "severity": "medium",
+      "closed_by_revision": "R15",
+      "files_touched": [
+        "docs/project/theorem_statement_sheet.yaml",
+        "paper/generated/theorem_statements.tex"
+      ],
+      "resolution_note": "Removed the internal theorem-id reference from NG_PROTOCOL_TRAP and stated the observed-arrow consequence directly."
+    },
+    {
+      "issue_id": "R14-003",
+      "status": "closed",
+      "severity": "blocking",
+      "closed_by_revision": "R15",
+      "files_touched": [
+        "docs/project/theorem_statement_sheet.yaml",
+        "paper/generated/theorem_statements.tex",
+        "paper/sections/06_closure.tex"
+      ],
+      "resolution_note": "Added positive stationary mass to the closure positivity clause and aligned the proof with that hypothesis."
+    },
+    {
+      "issue_id": "R14-004",
+      "status": "closed",
+      "severity": "high",
+      "closed_by_revision": "R15",
+      "files_touched": [
+        "paper/sections/07_objecthood.tex"
+      ],
+      "resolution_note": "Made the objecthood formalization boundary explicit: uniqueness core only is formalized; the TV/Dobrushin epsilon-stability layer is auxiliary-only."
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:39Z",
+  "outcome_mode": "resolved_by_local_isolator",
+  "base_case": {
+    "witness_id": "zero_closure_deficit_lumpable",
+    "lens_id": "macro_AB",
+    "tau": 1,
+    "closure": {
+      "kind": "zero",
+      "support_mismatch_count": 0,
+      "log_terms": [],
+      "decimal_value": "0",
+      "precision": 80
+    },
+    "best_gap": {
+      "kind": "zero",
+      "support_mismatch_count": 0,
+      "log_terms": [],
+      "decimal_value": "0",
+      "precision": 80
+    },
+    "strong_lumpable": true,
+    "best_kernel_rows": [
+      [
+        "1/2",
+        "1/2"
+      ],
+      [
+        "1/2",
+        "1/2"
+      ]
+    ],
+    "packaged_future_laws": {
+      "A0": [
+        "1/2",
+        "1/2"
+      ],
+      "A1": [
+        "1/2",
+        "1/2"
+      ],
+      "B0": [
+        "1/2",
+        "1/2"
+      ],
+      "B1": [
+        "1/2",
+        "1/2"
+      ]
+    },
+    "packaged_future_distinct_count": 1,
+    "cycle_rank": 1,
+    "max_cycle_affinity": "0/1",
+    "exactness_flag": true
+  },
+  "local_isolator": {
+    "variant_id": "zero_closure_deficit_lumpable__rewrite_A1_to_B1",
+    "parent_witness_id": "zero_closure_deficit_lumpable",
+    "lens_id": "macro_AB",
+    "tau": 1,
+    "states": [
+      "A0",
+      "A1",
+      "B0",
+      "B1"
+    ],
+    "matrix": [
+      [
+        "0/1",
+        "1/2",
+        "1/2",
+        "0/1"
+      ],
+      [
+        "0/1",
+        "0/1",
+        "0/1",
+        "1/1"
+      ],
+      [
+        "1/2",
+        "0/1",
+        "0/1",
+        "1/2"
+      ],
+      [
+        "0/1",
+        "1/2",
+        "1/2",
+        "0/1"
+      ]
+    ],
+    "stationary_distribution": [
+      "1/8",
+      "1/4",
+      "1/4",
+      "3/8"
+    ],
+    "closure": {
+      "kind": "finite_positive",
+      "support_mismatch_count": 0,
+      "log_terms": [
+        {
+          "ratio": "3/5",
+          "coeff": "1/16"
+        },
+        {
+          "ratio": "6/5",
+          "coeff": "1/4"
+        },
+        {
+          "ratio": "3/1",
+          "coeff": "1/16"
+        }
+      ],
+      "decimal_value": "0.082317055754871094564787702577307643909933569564683069832977911401727831790758992",
+      "precision": 80
+    },
+    "best_gap": {
+      "kind": "finite_positive",
+      "support_mismatch_count": 0,
+      "log_terms": [
+        {
+          "ratio": "3/5",
+          "coeff": "1/16"
+        },
+        {
+          "ratio": "6/5",
+          "coeff": "1/4"
+        },
+        {
+          "ratio": "3/1",
+          "coeff": "1/16"
+        }
+      ],
+      "decimal_value": "0.082317055754871094564787702577307643909933569564683069832977911401727831790758992",
+      "precision": 80
+    },
+    "strong_lumpable": false,
+    "best_kernel_rows": [
+      [
+        "1/6",
+        "5/6"
+      ],
+      [
+        "1/2",
+        "1/2"
+      ]
+    ],
+    "packaged_future_laws": {
+      "A0": [
+        "1/2",
+        "1/2"
+      ],
+      "A1": [
+        "0/1",
+        "1/1"
+      ],
+      "B0": [
+        "1/2",
+        "1/2"
+      ],
+      "B1": [
+        "1/2",
+        "1/2"
+      ]
+    },
+    "packaged_future_distinct_count": 2,
+    "cycle_rank": 1,
+    "max_cycle_affinity": "0/1",
+    "exactness_flag": true
+  },
+  "historical_positive_case": {
+    "witness_id": "positive_closure_deficit",
+    "lens_id": "macro_AB",
+    "tau": 1,
+    "closure": {
+      "kind": "finite_positive",
+      "support_mismatch_count": 0,
+      "log_terms": [
+        {
+          "ratio": "3/4",
+          "coeff": "1/5"
+        },
+        {
+          "ratio": "3/2",
+          "coeff": "2/5"
+        }
+      ],
+      "decimal_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+      "precision": 80
+    },
+    "best_gap": {
+      "kind": "finite_positive",
+      "support_mismatch_count": 0,
+      "log_terms": [
+        {
+          "ratio": "3/4",
+          "coeff": "1/5"
+        },
+        {
+          "ratio": "3/2",
+          "coeff": "2/5"
+        }
+      ],
+      "decimal_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+      "precision": 80
+    },
+    "note": "Historical seeded positive witness remains valid theorem-front evidence."
+  },
+  "primitive_delta": {
+    "rewrite": "off_to_on",
+    "gating": "same_off",
+    "holonomy": "same_off",
+    "staging": "same_off",
+    "packaging": "same_off",
+    "drive": "same_off"
+  },
+  "resolution_note": "Earlier closure primitive-attribution gap is resolved locally by a rewrite-only nonlumpable contrast within the exact/null-affinity regime.",
+  "status": "success"
+}

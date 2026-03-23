@@ -1,0 +1,36 @@
+{
+  "expected_theorem_ids": null,
+  "forbidden_tokens_main": [
+    "TODO",
+    "FIXME",
+    "DRAFT",
+    "XXX",
+    "PLACEHOLDER",
+    "\\[\\s*FIG-[^\\]]+\\]",
+    "\\[\\s*TBL-[^\\]]+\\]"
+  ],
+  "forbidden_repo_paths_in_main": [
+    "docs/",
+    "results/",
+    "src/",
+    "scripts/",
+    "paper/",
+    "\\.lean\\b",
+    "SixBirdsNoGo\\b"
+  ],
+  "forbidden_in_theorem_statements": [
+    "docs/",
+    "results/",
+    "src/",
+    "scripts/",
+    "paper/",
+    "\\.lean\\b",
+    "SixBirdsNoGo\\b"
+  ],
+  "proof_reference_patterns": [
+    "Proof of Theorem~\\\\ref\\{<LABEL>\\}",
+    "\\\\ref\\{<LABEL>\\}",
+    "\\\\Cref\\{<LABEL>\\}"
+  ],
+  "required_notation_definition_policy": "For each theorem required_notation id, the corresponding symbol_latex must appear in paper/math_rewrite/macros.tex or paper/math_rewrite/sections/02_setup.tex before Section 3."
+}

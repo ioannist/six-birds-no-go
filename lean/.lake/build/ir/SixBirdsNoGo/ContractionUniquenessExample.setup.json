@@ -1,0 +1,9 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.ContractionUniquenessExample",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.ContractionUniqueness":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ContractionUniqueness.olean"]},
+ "dynlibs": []}

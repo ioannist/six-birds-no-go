@@ -1,0 +1,102 @@
+{
+  "allowed_roots": {
+    "docs": {
+      "extensions": [
+        ".md",
+        ".txt",
+        ".json",
+        ".yml",
+        ".yaml"
+      ]
+    },
+    "scripts": {
+      "extensions": [
+        ".sh",
+        ".py",
+        ".txt",
+        ".md"
+      ]
+    },
+    "src": {
+      "extensions": [
+        ".py",
+        ".txt",
+        ".md",
+        ".toml"
+      ]
+    },
+    "tests": {
+      "extensions": [
+        ".py",
+        ".txt",
+        ".md"
+      ]
+    },
+    "configs": {
+      "extensions": [
+        ".yaml",
+        ".yml",
+        ".json",
+        ".toml",
+        ".txt",
+        ".md"
+      ]
+    },
+    "results": {
+      "extensions": [
+        ".json",
+        ".csv",
+        ".md",
+        ".txt",
+        ".tex",
+        ".pdf",
+        ".log",
+        ".bbl",
+        ".blg",
+        ".zip"
+      ]
+    },
+    "lean": {
+      "extensions": [
+        ".lean",
+        ".toml",
+        ".md",
+        ".txt"
+      ],
+      "filenames": [
+        "lean-toolchain"
+      ]
+    },
+    "paper": {
+      "extensions": [
+        ".md",
+        ".txt",
+        ".tex",
+        ".bib",
+        ".pdf"
+      ]
+    }
+  },
+  "allowed_root_files": [
+    "README.md",
+    "plan.md",
+    ".package-repo-snapshot.json",
+    ".gitignore",
+    "pyproject.toml",
+    "Makefile",
+    "vision.md"
+  ],
+  "exclude_dirs": [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".ipynb_checkpoints",
+    "build",
+    "dist",
+    "tmp"
+  ]
+}

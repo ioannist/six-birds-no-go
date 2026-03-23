@@ -1,0 +1,47 @@
+{
+  "generated_at_utc": "2026-03-23T16:21:36Z",
+  "theorem_count_expected": 8,
+  "theorem_count_found": 8,
+  "labels_missing": [],
+  "labels_duplicate": [],
+  "numbering_missing": [],
+  "proof_missing_labels": [],
+  "proof_coverage_map": {
+    "thm:NG_ARROW_DPI": [
+      "paper/sections/04_arrow_and_protocol.tex"
+    ],
+    "thm:NG_PROTOCOL_TRAP": [
+      "paper/sections/04_arrow_and_protocol.tex"
+    ],
+    "thm:NG_FORCE_FOREST": [
+      "paper/appendices/appendix_b_graph_exactness.tex",
+      "paper/sections/05_graph_and_affinity.tex"
+    ],
+    "thm:NG_FORCE_NULL": [
+      "paper/appendices/appendix_b_graph_exactness.tex",
+      "paper/sections/05_graph_and_affinity.tex"
+    ],
+    "thm:NG_MACRO_CLOSURE_DEFICIT": [
+      "paper/sections/06_closure.tex"
+    ],
+    "thm:NG_OBJECT_CONTRACTIVE": [
+      "paper/sections/07_objecthood.tex"
+    ],
+    "thm:NG_LADDER_IDEM": [
+      "paper/sections/08_bounded_interface.tex"
+    ],
+    "thm:NG_LADDER_BOUNDED_INTERFACE": [
+      "paper/appendices/appendix_d_packaging_definability.tex",
+      "paper/sections/08_bounded_interface.tex"
+    ]
+  },
+  "notation_missing": [],
+  "forbidden_token_hits": [],
+  "repo_path_hits_main": [],
+  "theorem_statement_repo_hits": [],
+  "main_build_ok": true,
+  "supplement_build_ok": true,
+  "main_pdf_bytes": 429399,
+  "supplement_pdf_bytes": 281570,
+  "status": "success"
+}
