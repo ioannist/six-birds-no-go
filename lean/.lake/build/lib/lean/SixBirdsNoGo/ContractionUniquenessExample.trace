@@ -1,0 +1,32 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["2b8819a25e269968.olean"],
+  "i": "428f1a0a52c88bd2.ilean",
+  "c": "9c01baf3471dc298.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/ContractionUniquenessExample.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ContractionUniquenessExample.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ContractionUniquenessExample.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/ContractionUniquenessExample.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/ContractionUniquenessExample.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["SixBirdsNoGo.ContractionUniquenessExample:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["SixBirdsNoGo.ContractionUniqueness transitive imports (legacy)",
+         "00000000000006bb"],
+        ["SixBirdsNoGo.ContractionUniqueness:importAllArts",
+         "95a3e960c83dca7c"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/ContractionUniquenessExample.lean",
+   "3d982ef457261b34"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "ea7018b7ae0a1fcc"}

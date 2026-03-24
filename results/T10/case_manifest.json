@@ -1,0 +1,13 @@
+{
+  "witness_ids": [
+    "contractive_unique_object",
+    "noncontractive_multiobject",
+    "fixed_idempotent_no_ladder",
+    "lens_extension_escape"
+  ],
+  "grid_denominator": 4,
+  "epsilon": "1/4",
+  "generation_timestamp_utc": "2026-03-17T08:31:43Z",
+  "row_count": 4,
+  "grid_case_count": 1
+}

@@ -1,0 +1,63 @@
+{
+  "version": "T39",
+  "generated_at_utc": "2026-03-19T00:00:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_arrow_protocol": "docs/project/theorem_pack_arrow_protocol.yaml",
+    "lean_arrow_dpi": "docs/project/lean_arrow_dpi.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "bridge_status": [
+      "direct_ready"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "bridge_status": "direct_ready",
+      "bridge_statement": "A stationary-initialized reversible autonomous lifted path law remains reversal-invariant under honest deterministic observation, giving direct Lean support for the protocol-trap front.",
+      "prerequisites": [
+        "autonomous lifted system",
+        "fixed-horizon lifted path law",
+        "stationary or reversal-compatible initialized micro path law",
+        "honest deterministic observation",
+        "ArrowDPI bridge"
+      ],
+      "direct_corollaries": [
+        "lifted-system specialization of ArrowDPI",
+        "stationary lifted micro-reversibility implies honest macro reversibility",
+        "theorem-facing protocol no-honest-arrow wrapper"
+      ],
+      "scope_limits": [
+        "autonomous lifted systems only",
+        "stationary or reversal-compatible initialization only",
+        "honest deterministic observation only",
+        "no fitted stroboscopic proxy",
+        "no arbitrary nonstationary starts",
+        "no external scheduling / drive theorem in this bridge"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/ArrowDPI.lean",
+        "lean/SixBirdsNoGo/ArrowDPIExample.lean",
+        "lean/SixBirdsNoGo/ProtocolTrap.lean",
+        "lean/SixBirdsNoGo/ProtocolTrapExample.lean"
+      ],
+      "readiness_delta": {
+        "lean_support_before": "missing",
+        "lean_support_after": "direct"
+      },
+      "remaining_blockers": [
+        "Stationary-initial-law and honest-observation guardrails must remain explicit in paper assembly.",
+        "Fitted stroboscopic proxies remain outside theorem evidence."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_14_arrow_protocol_guardrail_hold",
+        "action": "Preserve stationary-initial-law, honest-observation, and anti-proxy guardrails explicitly in paper assembly for the arrow/protocol fronts."
+      }
+    }
+  ]
+}

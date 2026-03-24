@@ -1,0 +1,89 @@
+\section{Variational closure identities}\label{app:varclosure}
+
+This appendix records the finite variational calculations used by the closure front.
+
+\begin{proof}[Proof of Lemma~\ref{lem:closure_kl_mixture}]
+Expand both Kullback--Leibler sums on the finite support:
+\begin{align*}
+\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,Q\right)
+&=
+\sum_{i\in I}\sum_{\omega\in\Omega}
+w_i P_i(\omega)\log\frac{P_i(\omega)}{Q(\omega)},\\
+\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right)
+&=
+\sum_{i\in I}\sum_{\omega\in\Omega}
+w_i P_i(\omega)\log\frac{P_i(\omega)}{R(\omega)}.
+\end{align*}
+Subtracting the second identity from the first gives
+\[
+\sum_{i\in I}\sum_{\omega\in\Omega}
+w_i P_i(\omega)\log\frac{R(\omega)}{Q(\omega)}
+=
+\sum_{\omega\in\Omega}
+\left(\sum_{i\in I} w_i P_i(\omega)\right)\log\frac{R(\omega)}{Q(\omega)}.
+\]
+Since $\sum_i w_i P_i(\omega)=W R(\omega)$ by definition of $R$, this becomes
+\[
+W\sum_{\omega\in\Omega} R(\omega)\log\frac{R(\omega)}{Q(\omega)}
+=
+W\,D_{\mathrm{KL}}\!\left(R\,\middle\|\,Q\right).
+\]
+Rearranging yields the displayed identity.
+Because Kullback--Leibler divergence is nonnegative, the final term is minimized at $Q=R$, and then the minimum value is exactly $\sum_i w_i D_{\mathrm{KL}}(P_i\,\|\,R)$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:closure_best_macro_kernel}]
+Decompose the objective by macro fibers:
+\[
+\mathcal L_\tau(K)
+=
+\sum_{y\in Y}\sum_{x:\Pi(x)=y}
+\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,K(y,\cdot)\right).
+\]
+Fix a macrostate $y$ with $\mu(\Pi^{-1}(y))>0$.
+Apply Lemma~\ref{lem:closure_kl_mixture} on the fiber $\Pi^{-1}(y)$ with indices $i=x$, weights $w_x=\mu(x)$, laws $P_x=p_x^{(\tau)}$, and comparison law $Q=K(y,\cdot)$.
+The corresponding mixture law is
+\[
+R_y
+=
+\frac{1}{\sum_{x:\Pi(x)=y}\mu(x)}
+\sum_{x:\Pi(x)=y}\mu(x)\,p_x^{(\tau)}.
+\]
+By the finite law of total probability and the identity $Y_t=\Pi(X_t)$, this mixture is exactly $\mathrm{Law}(Y_{t+\tau}\mid Y_t=y)=\bar p_y^{(\tau)}$.
+Hence the minimizing row is $K(y,\cdot)=\bar p_y^{(\tau)}$, and the minimum contribution of the fiber is
+\[
+\sum_{x:\Pi(x)=y}
+\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_y^{(\tau)}\right).
+\]
+Summing over all $y$ gives the formula for $\min_K \mathcal L_\tau(K)$.
+If $\mu(\Pi^{-1}(y))=0$, the row $K(y,\cdot)$ contributes zero and may be chosen arbitrarily; setting it to $\bar p_y^{(\tau)}$ still gives a minimizer.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:closure_cmi_identity}]
+Expand conditional mutual information into a finite sum:
+\[
+I(X_t;Y_{t+\tau}\mid Y_t)
+=
+\sum_{x\in X}\sum_{y\in Y}\sum_{y'\in Y}
+\Pr[X_t=x,Y_t=y,Y_{t+\tau}=y']
+\log\frac{\Pr[Y_{t+\tau}=y'\mid X_t=x,Y_t=y]}{\Pr[Y_{t+\tau}=y'\mid Y_t=y]}.
+\]
+Because $Y_t=\Pi(X_t)$ is a deterministic function of $X_t$, the joint probability vanishes unless $y=\Pi(x)$, and conditioning on $(X_t=x,Y_t=\Pi(x))$ is the same as conditioning on $X_t=x$ alone.
+Therefore the sum reduces to
+\[
+\sum_{x\in X}\sum_{y'\in Y}
+\Pr[X_t=x,Y_{t+\tau}=y']
+\log\frac{\Pr[Y_{t+\tau}=y'\mid X_t=x]}{\Pr[Y_{t+\tau}=y'\mid Y_t=\Pi(x)]}.
+\]
+Using stationarity, $\Pr[X_t=x]=\mu(x)$.
+Using the definitions of $p_x^{(\tau)}$ and $\bar p_{\Pi(x)}^{(\tau)}$, this becomes
+\[
+\sum_{x\in X}\mu(x)\sum_{y'\in Y}
+p_x^{(\tau)}(y')
+\log\frac{p_x^{(\tau)}(y')}{\bar p_{\Pi(x)}^{(\tau)}(y')}.
+\]
+This is exactly
+\[
+\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
+\]
+\end{proof}

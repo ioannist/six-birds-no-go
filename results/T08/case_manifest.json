@@ -1,0 +1,37 @@
+{
+  "generated_at_utc": "2026-03-17T06:56:33Z",
+  "case_matrix": [
+    {
+      "witness_id": "hidden_clock_reversible",
+      "lens_id": "identity"
+    },
+    {
+      "witness_id": "hidden_clock_reversible",
+      "lens_id": "observe_x_binary"
+    },
+    {
+      "witness_id": "hidden_clock_reversible",
+      "lens_id": "observe_clock_3"
+    },
+    {
+      "witness_id": "hidden_clock_driven",
+      "lens_id": "identity"
+    },
+    {
+      "witness_id": "hidden_clock_driven",
+      "lens_id": "observe_x_binary"
+    },
+    {
+      "witness_id": "hidden_clock_driven",
+      "lens_id": "observe_clock_3"
+    }
+  ],
+  "horizons": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "precision": 80,
+  "row_count": 24
+}

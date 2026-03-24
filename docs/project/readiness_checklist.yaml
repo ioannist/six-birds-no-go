@@ -1,0 +1,511 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T05:09:19Z",
+  "source_context": {
+    "theorem_registry": "configs/theorems.yaml",
+    "master_manifest": "results/master/witness_manifest.json",
+    "primitive_coverage": "results/T14/primitive_coverage.json",
+    "fragility_summary": "results/T15/fragility_summary.json",
+    "lean_files": [
+      "lean/SixBirdsNoGo/Idempotence.lean",
+      "lean/SixBirdsNoGo/TreeExactness.lean",
+      "lean/SixBirdsNoGo/ClosedWalkExactness.lean"
+    ],
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "analytic_support": [
+      "present",
+      "partial",
+      "missing"
+    ],
+    "computational_support": [
+      "present",
+      "partial",
+      "missing"
+    ],
+    "lean_support": [
+      "direct",
+      "auxiliary_only",
+      "missing"
+    ],
+    "witness_coverage": [
+      "covered",
+      "partial",
+      "missing"
+    ],
+    "proxy_risk": [
+      "low",
+      "medium",
+      "high"
+    ]
+  },
+  "theorems": [
+    {
+      "theorem_id": "NG_ARROW_DPI",
+      "short_name": "No fake arrows under honest coarse-graining",
+      "analytic_support": {
+        "status": "present",
+        "evidence": [
+          "configs/theorems.yaml:NG_ARROW_DPI",
+          "results/master/witness_manifest.json",
+          "results/T15/adversarial_cases.json",
+          "docs/project/theorem_pack_arrow_protocol.yaml",
+          "results/T22/dpi_protocol_pack_summary.json"
+        ],
+        "note": "Direct analytic theorem pack is frozen; honest/proxy and initial-law guardrails are explicit."
+      },
+      "computational_support": {
+        "status": "present",
+        "evidence": [
+          "src/sixbirds_nogo/arrow.py",
+          "scripts/run_t08_arrow_suite.py",
+          "results/master/witness_manifest.json"
+        ],
+        "note": "Honest micro/macro arrow and DPI checks are executable."
+      },
+      "lean_support": {
+        "status": "direct",
+        "evidence": [
+          "lean/SixBirdsNoGo/FiniteKLDPI.lean",
+          "lean/SixBirdsNoGo/FiniteKLDPIExample.lean",
+          "lean/SixBirdsNoGo/ArrowDPI.lean",
+          "lean/SixBirdsNoGo/ArrowDPIExample.lean",
+          "docs/project/lean_kl_dpi_core.yaml",
+          "docs/project/lean_arrow_dpi.yaml",
+          "results/T37/lean_kl_dpi_core_summary.json",
+          "results/T38/lean_arrow_dpi_summary.json"
+        ],
+        "note": "Direct Lean support packages honest deterministic path-law DPI, reverse/pushforward commutation, and an equality-form zero-arrow preservation corollary; protocol-specific initial-law scope now remains explicit only as a paper-assembly guardrail."
+      },
+      "witness_coverage": {
+        "status": "covered",
+        "evidence": [
+          "hidden_clock_reversible",
+          "hidden_clock_driven",
+          "results/T12/witness_manifest.json"
+        ],
+        "note": "Required witness contexts are present and executed."
+      },
+      "proxy_risk": {
+        "status": "high",
+        "evidence": [
+          "results/T15/adversarial_cases.json:proxy_spurious_macro_arrow_nonstationary",
+          "results/T15/adversarial_cases.json:proxy_underestimates_nonmarkov_macro_arrow"
+        ],
+        "note": "Proxy-arrow distortion risk is material if fitted Markov proxy is misused."
+      },
+      "blockers": [
+        "Initial-law and proxy guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_14_arrow_protocol_guardrail_hold",
+        "action": "Preserve stationary-initial-law, honest-observation, and anti-proxy guardrails explicitly in paper assembly for the arrow/protocol fronts."
+      }
+    },
+    {
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "short_name": "No autonomous ratchet from reversible hidden clock",
+      "analytic_support": {
+        "status": "present",
+        "evidence": [
+          "configs/theorems.yaml:NG_PROTOCOL_TRAP",
+          "results/master/witness_manifest.json",
+          "docs/project/theorem_pack_arrow_protocol.yaml",
+          "results/T22/dpi_protocol_pack_summary.json"
+        ],
+        "note": "Direct analytic theorem pack is frozen under stationary or reversal-compatible initial-law scope with explicit guardrails."
+      },
+      "computational_support": {
+        "status": "present",
+        "evidence": [
+          "src/sixbirds_nogo/arrow.py",
+          "results/master/witness_manifest.json",
+          "results/T14/primitive_coverage.json"
+        ],
+        "note": "Protocol trap witness comparisons and arrow checks run end-to-end."
+      },
+      "lean_support": {
+        "status": "direct",
+        "evidence": [
+          "lean/SixBirdsNoGo/ArrowDPI.lean",
+          "lean/SixBirdsNoGo/ArrowDPIExample.lean",
+          "lean/SixBirdsNoGo/ProtocolTrap.lean",
+          "lean/SixBirdsNoGo/ProtocolTrapExample.lean",
+          "docs/project/lean_arrow_dpi.yaml",
+          "docs/project/lean_protocol_trap.yaml",
+          "results/T38/lean_arrow_dpi_summary.json",
+          "results/T39/lean_protocol_trap_summary.json"
+        ],
+        "note": "Direct Lean support now packages the stationary-initialized lifted-system no-honest-arrow corollary on top of the ArrowDPI bridge."
+      },
+      "witness_coverage": {
+        "status": "covered",
+        "evidence": [
+          "hidden_clock_reversible",
+          "hidden_clock_driven",
+          "results/T12/witness_manifest.json"
+        ],
+        "note": "Driven vs reversible hidden-clock contrast is covered."
+      },
+      "proxy_risk": {
+        "status": "medium",
+        "evidence": [
+          "results/T15/fragility_summary.json"
+        ],
+        "note": "Proxy sensitivity exists but honest signal remains robust with current witness set."
+      },
+      "blockers": [
+        "Stationary/reversal-compatible initial-law scope must remain explicit in paper assembly.",
+        "Fitted stroboscopic proxies remain outside theorem evidence."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_14_arrow_protocol_guardrail_hold",
+        "action": "Preserve stationary-initial-law, honest-observation, and anti-proxy guardrails explicitly in paper assembly for the arrow/protocol fronts."
+      }
+    },
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "short_name": "No force-like cycle drive on forests",
+      "analytic_support": {
+        "status": "present",
+        "evidence": [
+          "configs/theorems.yaml:NG_FORCE_FOREST",
+          "results/T14/primitive_coverage.json",
+          "docs/project/theorem_pack_graph_affinity.yaml",
+          "results/T23/graph_affinity_pack_summary.json"
+        ],
+        "note": "Direct analytic theorem pack is now frozen using cycle-rank/forest obstruction with explicit threshold guardrails."
+      },
+      "computational_support": {
+        "status": "present",
+        "evidence": [
+          "src/sixbirds_nogo/graph_cycle.py",
+          "src/sixbirds_nogo/affinity.py",
+          "results/master/witness_manifest.json"
+        ],
+        "note": "Cycle-rank/affinity/exactness audits are implemented and exercised."
+      },
+      "lean_support": {
+        "status": "direct",
+        "evidence": [
+          "lean/SixBirdsNoGo/ForestForceBridge.lean",
+          "lean/SixBirdsNoGo/ForestForceBridgeExample.lean",
+          "docs/project/lean_bridge_graph_affinity.yaml",
+          "results/T27/lean_graph_bridge_summary.json"
+        ],
+        "note": "Direct Lean bridge now packages rooted-tree exactness into the forest/no-force front."
+      },
+      "witness_coverage": {
+        "status": "covered",
+        "evidence": [
+          "rev_tree_4",
+          "biased_cycle_3",
+          "rev_tree_4__rewrite_add_cd",
+          "biased_cycle_3__gated_path"
+        ],
+        "note": "Witness and derived-variant contrast coverage is present."
+      },
+      "proxy_risk": {
+        "status": "high",
+        "evidence": [
+          "results/T15/threshold_sweep.csv",
+          "results/T15/fragility_summary.json"
+        ],
+        "note": "Threshold/regularization can create spurious one-way support interpretations."
+      },
+      "blockers": [
+        "Exact-support and threshold guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_10_graph_scope_guardrail_freeze",
+        "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
+      }
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "short_name": "No steady drive in null-affinity class",
+      "analytic_support": {
+        "status": "present",
+        "evidence": [
+          "configs/theorems.yaml:NG_FORCE_NULL",
+          "results/master/witness_manifest.json",
+          "docs/project/theorem_pack_graph_affinity.yaml",
+          "results/T23/graph_affinity_pack_summary.json"
+        ],
+        "note": "Direct analytic theorem pack is now frozen using exactness/null-affinity obstruction with explicit threshold/regularization guardrails."
+      },
+      "computational_support": {
+        "status": "present",
+        "evidence": [
+          "src/sixbirds_nogo/affinity.py",
+          "results/master/witness_manifest.json",
+          "results/T14/primitive_coverage.json"
+        ],
+        "note": "Null-affinity and exactness diagnostics are fully executable."
+      },
+      "lean_support": {
+        "status": "direct",
+        "evidence": [
+          "lean/SixBirdsNoGo/NullForceBridge.lean",
+          "lean/SixBirdsNoGo/NullForceBridgeExample.lean",
+          "docs/project/lean_bridge_graph_affinity.yaml",
+          "results/T27/lean_graph_bridge_summary.json"
+        ],
+        "note": "Direct Lean bridge now packages exact-potential/zero-closed-walk consequences into the null-force front."
+      },
+      "witness_coverage": {
+        "status": "covered",
+        "evidence": [
+          "rev_cycle_3",
+          "biased_cycle_3",
+          "results/T12/witness_manifest.json"
+        ],
+        "note": "Reversible vs driven cycle witnesses cover this front."
+      },
+      "proxy_risk": {
+        "status": "high",
+        "evidence": [
+          "results/T15/threshold_sweep.csv",
+          "results/T15/fragility_summary.json"
+        ],
+        "note": "Thresholding/regularization can distort affinity/exactness interpretation."
+      },
+      "blockers": [
+        "Exact bidirected-support and no-regularization guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_10_graph_scope_guardrail_freeze",
+        "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
+      }
+    },
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "short_name": "Positive closure deficit blocks exact macro-law",
+      "analytic_support": {
+        "status": "present",
+        "evidence": [
+          "configs/theorems.yaml:NG_MACRO_CLOSURE_DEFICIT",
+          "src/sixbirds_nogo/closure_deficit.py",
+          "results/T09/closure_metrics.json",
+          "docs/project/theorem_pack_closure.yaml",
+          "results/T24/closure_pack_summary.json"
+        ],
+        "note": "Direct analytic theorem pack is now frozen; the earlier primitive-attribution gap is resolved locally by a rewrite-only isolator."
+      },
+      "computational_support": {
+        "status": "present",
+        "evidence": [
+          "src/sixbirds_nogo/closure_deficit.py",
+          "scripts/run_t09_closure_suite.py",
+          "results/T09/closure_metrics.json"
+        ],
+        "note": "Closure deficit and best-gap are exact and reproducible."
+      },
+      "lean_support": {
+        "status": "direct",
+        "evidence": [
+          "lean/SixBirdsNoGo/ClosureVariationalCore.lean",
+          "lean/SixBirdsNoGo/ClosureVariationalCoreExample.lean",
+          "lean/SixBirdsNoGo/ClosureDirectPack.lean",
+          "lean/SixBirdsNoGo/ClosureDirectPackExample.lean",
+          "docs/project/lean_closure_feasibility.yaml",
+          "docs/project/lean_closure_variational_core.yaml",
+          "docs/project/lean_closure_direct.yaml",
+          "results/T40/lean_closure_feasibility_summary.json",
+          "results/T41/lean_closure_variational_core_summary.json",
+          "results/T42/lean_closure_direct_pack_summary.json"
+        ],
+        "note": "The direct closure theorem wrapper is now formalized from the finite variational core."
+      },
+      "witness_coverage": {
+        "status": "covered",
+        "evidence": [
+          "zero_closure_deficit_lumpable",
+          "positive_closure_deficit",
+          "results/T12/witness_manifest.json",
+          "results/T24/closure_attribution_resolution.json"
+        ],
+        "note": "Positive-vs-zero closure witness coverage is present."
+      },
+      "proxy_risk": {
+        "status": "medium",
+        "evidence": [
+          "results/T15/fragility_summary.json"
+        ],
+        "note": "Proxy influence exists but honest closure calculations remain exact."
+      },
+      "blockers": [
+        "Fixed-lens/fixed-lag/current-law and anti-proxy scope must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_18_closure_scope_guardrail_hold",
+        "action": "Preserve fixed-lens/fixed-lag/current-law and anti-proxy guardrails explicitly in paper assembly for the closure front."
+      }
+    },
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "short_name": "Contraction forbids multiple robust objects",
+      "analytic_support": {
+        "status": "present",
+        "evidence": [
+          "configs/theorems.yaml:NG_OBJECT_CONTRACTIVE",
+          "src/sixbirds_nogo/objecthood.py",
+          "results/T10/objecthood_metrics.json",
+          "docs/project/theorem_pack_objecthood.yaml",
+          "results/T25/objecthood_pack_summary.json"
+        ],
+        "note": "Direct analytic theorem pack is now frozen under explicit TV/Dobrushin admissible metric/regime assumptions; proxy multiplicity artifacts are excluded by guardrail."
+      },
+      "computational_support": {
+        "status": "present",
+        "evidence": [
+          "src/sixbirds_nogo/objecthood.py",
+          "scripts/run_t10_objecthood_suite.py",
+          "results/T10/objecthood_metrics.json"
+        ],
+        "note": "Contraction/fixed-point/separation-bound audits are implemented and reproducible."
+      },
+      "lean_support": {
+        "status": "auxiliary_only",
+        "evidence": [
+          "lean/SixBirdsNoGo/ContractionUniqueness.lean",
+          "lean/SixBirdsNoGo/ContractionUniquenessExample.lean",
+          "docs/project/lean_objecthood_uniqueness.yaml",
+          "docs/project/lean_objecthood_formal_boundary.md",
+          "docs/project/lean_objecthood_tv_feasibility.yaml",
+          "docs/project/lean_objecthood_tv_formal_boundary.md",
+          "docs/project/lean_objecthood_direct.yaml",
+          "results/T30/lean_objecthood_uniqueness_summary.json",
+          "results/T43/lean_objecthood_tv_feasibility_summary.json",
+          "results/T44/lean_objecthood_direct_pack_summary.json"
+        ],
+        "note": "The uniqueness core is the permanent Lean boundary for objecthood."
+      },
+      "witness_coverage": {
+        "status": "covered",
+        "evidence": [
+          "contractive_unique_object",
+          "noncontractive_multiobject",
+          "results/T12/witness_manifest.json"
+        ],
+        "note": "Contraction-regime contrast witnesses are covered."
+      },
+      "proxy_risk": {
+        "status": "high",
+        "evidence": [
+          "results/T15/objecthood_metric_sweep.csv",
+          "results/T15/adversarial_cases.json:poor_metric_splits_unique_object",
+          "results/T25/objecthood_metric_guardrails_resolution.json"
+        ],
+        "note": "Metric-choice fragility can create apparent multiplicity artifacts."
+      },
+      "blockers": [],
+      "next_ticket": null
+    },
+    {
+      "theorem_id": "NG_LADDER_IDEM",
+      "short_name": "Idempotent packaging saturates immediately",
+      "analytic_support": {
+        "status": "present",
+        "evidence": [
+          "configs/theorems.yaml:NG_LADDER_IDEM",
+          "src/sixbirds_nogo/definability.py",
+          "lean/SixBirdsNoGo/Idempotence.lean"
+        ],
+        "note": "Strongest front: analytic statement, computational evidence, and direct Lean support are aligned."
+      },
+      "computational_support": {
+        "status": "present",
+        "evidence": [
+          "src/sixbirds_nogo/packaging.py",
+          "src/sixbirds_nogo/definability.py",
+          "results/T11/no_ladder_demos.json"
+        ],
+        "note": "Immediate saturation/no-ladder behavior is executable and reproducible."
+      },
+      "lean_support": {
+        "status": "direct",
+        "evidence": [
+          "lean/SixBirdsNoGo/Idempotence.lean"
+        ],
+        "note": "Direct iterate-saturation theorem is formalized."
+      },
+      "witness_coverage": {
+        "status": "covered",
+        "evidence": [
+          "fixed_idempotent_no_ladder",
+          "lens_extension_escape",
+          "results/T12/witness_manifest.json"
+        ],
+        "note": "Coverage includes support and contrast witnesses."
+      },
+      "proxy_risk": {
+        "status": "low",
+        "evidence": [
+          "results/T15/fragility_summary.json"
+        ],
+        "note": "Current diagnostics do not show material theorem-front proxy threat."
+      },
+      "blockers": [],
+      "next_ticket": null
+    },
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "short_name": "Bounded fixed interface forbids unbounded laddering",
+      "analytic_support": {
+        "status": "present",
+        "evidence": [
+          "configs/theorems.yaml:NG_LADDER_BOUNDED_INTERFACE",
+          "results/T11/definability_metrics.json",
+          "docs/project/theorem_pack_bounded_interface.yaml",
+          "results/T26/bounded_interface_pack_summary.json"
+        ],
+        "note": "Direct analytic theorem pack is now frozen by combining exact definability count, fixed interface/domain, and idempotent saturation; strict extension is explicitly scoped outside theorem."
+      },
+      "computational_support": {
+        "status": "present",
+        "evidence": [
+          "src/sixbirds_nogo/definability.py",
+          "scripts/run_t11_definability_suite.py",
+          "results/T11/no_ladder_demos.json"
+        ],
+        "note": "Interface-size/definability/no-ladder computations are present and deterministic."
+      },
+      "lean_support": {
+        "status": "direct",
+        "evidence": [
+          "lean/SixBirdsNoGo/Idempotence.lean",
+          "lean/SixBirdsNoGo/FiniteLensDefinability.lean",
+          "lean/SixBirdsNoGo/FiniteLensDefinabilityExample.lean",
+          "lean/SixBirdsNoGo/BoundedInterfaceNoLadder.lean",
+          "lean/SixBirdsNoGo/BoundedInterfaceNoLadderExample.lean",
+          "docs/project/lean_count_bounded_interface.yaml",
+          "docs/project/lean_corollary_bounded_interface.yaml",
+          "results/T28/lean_finite_lens_count_summary.json",
+          "results/T29/lean_bounded_interface_corollary_summary.json"
+        ],
+        "note": "The full bounded-interface no-ladder corollary is directly formalized in Lean by combining the finite-lens count core with idempotent stabilization under fixed lens/domain/package scope."
+      },
+      "witness_coverage": {
+        "status": "covered",
+        "evidence": [
+          "fixed_idempotent_no_ladder",
+          "lens_extension_escape",
+          "results/T12/witness_manifest.json"
+        ],
+        "note": "Core witness pair and extension escape are covered."
+      },
+      "proxy_risk": {
+        "status": "low",
+        "evidence": [
+          "results/T15/fragility_summary.json"
+        ],
+        "note": "Current proxy diagnostics do not show material risk on this front."
+      },
+      "blockers": [],
+      "next_ticket": null
+    }
+  ]
+}

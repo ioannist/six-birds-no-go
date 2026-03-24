@@ -1,0 +1,27 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:39Z",
+  "theorem_count": 1,
+  "updated_theorem_ids": [
+    "NG_LADDER_BOUNDED_INTERFACE"
+  ],
+  "analytic_present_total": 8,
+  "overall_direct_core_count": 8,
+  "pack_direct_core_count": 1,
+  "fixed_interface_frozen": true,
+  "fixed_domain_frozen": true,
+  "fixed_package_frozen": true,
+  "definability_bound_explicit": true,
+  "idempotent_saturation_explicit": true,
+  "extension_escape_scoped_outside_theorem": true,
+  "theorem_guardrails_frozen": true,
+  "low_proxy_risk_preserved": true,
+  "reproduce_includes_t20": true,
+  "reproduce_includes_t21": true,
+  "reproduce_includes_t22": true,
+  "reproduce_includes_t23": true,
+  "reproduce_includes_t24": true,
+  "reproduce_includes_t25": true,
+  "reproduce_includes_t26": true,
+  "vision_present": true,
+  "status": "success"
+}

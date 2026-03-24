@@ -1,0 +1,28 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:39Z",
+  "theorem_count": 1,
+  "updated_theorem_ids": [
+    "NG_OBJECT_CONTRACTIVE"
+  ],
+  "analytic_present_total": 8,
+  "overall_direct_core_count": 8,
+  "pack_direct_core_count": 1,
+  "regime_resolution_mode": "resolved_by_metric_regime_freeze",
+  "metric_regime_gap_resolved": true,
+  "admissible_metric_frozen": true,
+  "admissible_regime_frozen": true,
+  "proxy_metric_excluded": true,
+  "theorem_guardrails_frozen": true,
+  "theorem_metric_cluster_count": 1,
+  "proxy_metric_cluster_count": 2,
+  "approximate_bound_holds": true,
+  "contextual_noncontractive_outside_regime": true,
+  "reproduce_includes_t20": true,
+  "reproduce_includes_t21": true,
+  "reproduce_includes_t22": true,
+  "reproduce_includes_t23": true,
+  "reproduce_includes_t24": true,
+  "reproduce_includes_t25": true,
+  "vision_present": true,
+  "status": "success"
+}

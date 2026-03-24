@@ -1,0 +1,34 @@
+{
+  "generated_at_utc": "2026-03-24T08:57:58Z",
+  "tool_versions": {
+    "latexmk": "Latexmk, John Collins, 20 November 2021. Version 4.76",
+    "pdflatex": "pdfTeX 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian)",
+    "bibtex": "BibTeX 0.99d (TeX Live 2022/dev/Debian)"
+  },
+  "files": {
+    "main.pdf": {
+      "sha256": "5a9851f873f61401211eaa341fd4e3a7262f97d4f8c7c28a26ba9da720789140",
+      "bytes": 429399
+    },
+    "main_flat.tex": {
+      "sha256": "279b65466edaee44e0714e3c9657594a7eda4412cc9db3984a818eedc5f2eefc",
+      "bytes": 62865
+    },
+    "supplement.pdf": {
+      "sha256": "f194c04ff1cf58553a50e870ffebc30b4d99374c133d0d44255a8f3d6ba091ac",
+      "bytes": 282290
+    },
+    "supplement_flat.tex": {
+      "sha256": "c7e407d92bdb421d8899cb8103c4cf9b676e2037c60fca071ca14456824c59b6",
+      "bytes": 24836
+    },
+    "source.zip": {
+      "sha256": "a39f2a96ecdc05d4e0f1a2afcbbe75e311c0da62174c5dbd3fbfcbd95cf1b402",
+      "bytes": 625144
+    },
+    "build_instructions.txt": {
+      "sha256": "a13c1f7a7a2a7ee5acdf4a4ec424c34d3dfae3666c41987366566c312c6bcad1",
+      "bytes": 175
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["fcf67e082ca5df95.olean"],
+  "i": "6819899f534a2e89.ilean",
+  "c": "5b9fa4f9874bcd3d.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/FiniteLensDefinability.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteLensDefinability.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteLensDefinability.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/FiniteLensDefinability.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/FiniteLensDefinability.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "SixBirdsNoGo/FiniteLensDefinability.lean:64:14: try 'simp' instead of 'simpa'\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"}],
+ "inputs":
+ [["SixBirdsNoGo.FiniteLensDefinability:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports", "00000000000006bb"]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/FiniteLensDefinability.lean",
+   "62fcec4404fa82bc"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "5837705a9223db68"}

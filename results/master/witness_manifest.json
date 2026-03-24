@@ -1,0 +1,1246 @@
+{
+  "generation_timestamp_utc": "2026-03-23T16:01:38Z",
+  "precision": 80,
+  "eps_grid_denominator": 4,
+  "eps_epsilon": "1/4",
+  "witness_count": 11,
+  "success_count": 11,
+  "partial_count": 0,
+  "failed_count": 0,
+  "unexplained_missing_count": 0,
+  "rows": [
+    {
+      "witness_id": "rev_tree_4",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": null,
+      "representative_lens_id": "identity",
+      "required_audit_count": 3,
+      "executed_audit_count": 3,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "computed",
+          "value": 0,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "max_cycle_affinity": {
+          "status": "computed",
+          "value": "0",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "exactness_flag": {
+          "status": "computed",
+          "value": true,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "fixed_point_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "eps_stable_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 16,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 4,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "forest / no-cycle support"
+    },
+    {
+      "witness_id": "rev_cycle_3",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_FORCE_NULL"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": null,
+      "representative_lens_id": "identity",
+      "required_audit_count": 3,
+      "executed_audit_count": 3,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "computed",
+          "value": 1,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "max_cycle_affinity": {
+          "status": "computed",
+          "value": "0",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "exactness_flag": {
+          "status": "computed",
+          "value": true,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "fixed_point_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "eps_stable_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 8,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 3,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "cyclic support with exact one-form"
+    },
+    {
+      "witness_id": "biased_cycle_3",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_FORCE_NULL",
+        "NG_FORCE_FOREST"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": null,
+      "representative_lens_id": "identity",
+      "required_audit_count": 3,
+      "executed_audit_count": 3,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "computed",
+          "value": 1,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "max_cycle_affinity": {
+          "status": "computed",
+          "value": "7",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "exactness_flag": {
+          "status": "computed",
+          "value": false,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "fixed_point_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "eps_stable_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 8,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 3,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "nonzero cycle affinity on support"
+    },
+    {
+      "witness_id": "hidden_clock_reversible",
+      "kind": "phase_lift_markov",
+      "theorem_targets": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "identity",
+        "observe_x_binary",
+        "observe_clock_3"
+      ],
+      "package_id": null,
+      "representative_lens_id": "observe_clock_3",
+      "required_audit_count": 4,
+      "executed_audit_count": 4,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "computed",
+          "value": 1,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "max_cycle_affinity": {
+          "status": "computed",
+          "value": "0",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "exactness_flag": {
+          "status": "computed",
+          "value": true,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "micro_arrow_kl": {
+          "status": "computed",
+          "value": "0",
+          "kind": "zero",
+          "context": {
+            "horizon": "3"
+          },
+          "explanation": ""
+        },
+        "macro_arrow_kl": {
+          "status": "computed",
+          "value": "0",
+          "kind": "zero",
+          "context": {
+            "lens_id": "observe_clock_3",
+            "horizon": "3"
+          },
+          "explanation": ""
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "fixed_point_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "eps_stable_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 8,
+          "kind": null,
+          "context": {
+            "lens_id": "observe_clock_3"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 3,
+          "kind": null,
+          "context": {
+            "lens_id": "observe_clock_3"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "cyclic support with exact one-form"
+    },
+    {
+      "witness_id": "hidden_clock_driven",
+      "kind": "phase_lift_markov",
+      "theorem_targets": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "identity",
+        "observe_x_binary",
+        "observe_clock_3"
+      ],
+      "package_id": null,
+      "representative_lens_id": "observe_clock_3",
+      "required_audit_count": 4,
+      "executed_audit_count": 4,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "computed",
+          "value": 1,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "max_cycle_affinity": {
+          "status": "computed",
+          "value": "15",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "exactness_flag": {
+          "status": "computed",
+          "value": false,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "micro_arrow_kl": {
+          "status": "computed",
+          "value": "0.69314718055994530941723212145817656807550013436025525412068000949339362196969471",
+          "kind": "finite_positive",
+          "context": {
+            "horizon": "3"
+          },
+          "explanation": ""
+        },
+        "macro_arrow_kl": {
+          "status": "computed",
+          "value": "0.68031112166068706294654263772746959459262050224247274941474149079907151785914482",
+          "kind": "finite_positive",
+          "context": {
+            "lens_id": "observe_clock_3",
+            "horizon": "3"
+          },
+          "explanation": ""
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "fixed_point_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "eps_stable_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 8,
+          "kind": null,
+          "context": {
+            "lens_id": "observe_clock_3"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 3,
+          "kind": null,
+          "context": {
+            "lens_id": "observe_clock_3"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "nonzero cycle affinity on support"
+    },
+    {
+      "witness_id": "zero_closure_deficit_lumpable",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "macro_AB"
+      ],
+      "package_id": null,
+      "representative_lens_id": "macro_AB",
+      "required_audit_count": 2,
+      "executed_audit_count": 2,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "computed",
+          "value": 1,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "max_cycle_affinity": {
+          "status": "computed",
+          "value": "0",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "exactness_flag": {
+          "status": "computed",
+          "value": true,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "computed",
+          "value": "0",
+          "kind": "zero",
+          "context": {
+            "lens_id": "macro_AB",
+            "tau": "1"
+          },
+          "explanation": ""
+        },
+        "best_macro_gap": {
+          "status": "computed",
+          "value": "0",
+          "kind": "zero",
+          "context": {
+            "lens_id": "macro_AB",
+            "tau": "1"
+          },
+          "explanation": ""
+        },
+        "contraction_lambda": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "fixed_point_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "eps_stable_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 4,
+          "kind": null,
+          "context": {
+            "lens_id": "macro_AB"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 2,
+          "kind": null,
+          "context": {
+            "lens_id": "macro_AB"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "idempotent bounded-interface saturation"
+    },
+    {
+      "witness_id": "positive_closure_deficit",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "macro_AB"
+      ],
+      "package_id": null,
+      "representative_lens_id": "macro_AB",
+      "required_audit_count": 2,
+      "executed_audit_count": 2,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "computed",
+          "value": 1,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "max_cycle_affinity": {
+          "status": "computed",
+          "value": "0",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "exactness_flag": {
+          "status": "computed",
+          "value": true,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "computed",
+          "value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+          "kind": "finite_positive",
+          "context": {
+            "lens_id": "macro_AB",
+            "tau": "1"
+          },
+          "explanation": ""
+        },
+        "best_macro_gap": {
+          "status": "computed",
+          "value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+          "kind": "finite_positive",
+          "context": {
+            "lens_id": "macro_AB",
+            "tau": "1"
+          },
+          "explanation": ""
+        },
+        "contraction_lambda": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "fixed_point_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "eps_stable_count": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_packaging"
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 4,
+          "kind": null,
+          "context": {
+            "lens_id": "macro_AB"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 2,
+          "kind": null,
+          "context": {
+            "lens_id": "macro_AB"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "positive closure deficit / best-gap obstruction"
+    },
+    {
+      "witness_id": "contractive_unique_object",
+      "kind": "packaging_endomap",
+      "theorem_targets": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": "pkg_contract",
+      "representative_lens_id": "identity",
+      "required_audit_count": 2,
+      "executed_audit_count": 2,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "max_cycle_affinity": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "exactness_flag": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "computed",
+          "value": "0",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "fixed_point_count": {
+          "status": "computed",
+          "value": 1,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "eps_stable_count": {
+          "status": "computed",
+          "value": 3,
+          "kind": null,
+          "context": {
+            "denominator": 4,
+            "epsilon": "1/4"
+          },
+          "explanation": ""
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 4,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 2,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "strict contraction with unique fixed distribution"
+    },
+    {
+      "witness_id": "noncontractive_multiobject",
+      "kind": "packaging_endomap",
+      "theorem_targets": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": "pkg_multi",
+      "representative_lens_id": "identity",
+      "required_audit_count": 2,
+      "executed_audit_count": 2,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "max_cycle_affinity": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "exactness_flag": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "computed",
+          "value": "1",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "fixed_point_count": {
+          "status": "computed",
+          "value": 2,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "eps_stable_count": {
+          "status": "computed",
+          "value": 9,
+          "kind": null,
+          "context": {
+            "denominator": 4,
+            "epsilon": "1/4"
+          },
+          "explanation": ""
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 8,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 3,
+          "kind": null,
+          "context": {
+            "lens_id": "identity"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "baseline executable witness with satisfied audits"
+    },
+    {
+      "witness_id": "fixed_idempotent_no_ladder",
+      "kind": "packaging_endomap",
+      "theorem_targets": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "base_binary"
+      ],
+      "package_id": "pkg_fixed",
+      "representative_lens_id": "base_binary",
+      "required_audit_count": 3,
+      "executed_audit_count": 3,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "max_cycle_affinity": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "exactness_flag": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "computed",
+          "value": "1",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "fixed_point_count": {
+          "status": "computed",
+          "value": 2,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "eps_stable_count": {
+          "status": "computed",
+          "value": 9,
+          "kind": null,
+          "context": {
+            "denominator": 4,
+            "epsilon": "1/4"
+          },
+          "explanation": ""
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 4,
+          "kind": null,
+          "context": {
+            "lens_id": "base_binary"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 2,
+          "kind": null,
+          "context": {
+            "lens_id": "base_binary"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "idempotent bounded-interface saturation"
+    },
+    {
+      "witness_id": "lens_extension_escape",
+      "kind": "extension_witness",
+      "theorem_targets": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "execution_status": "success",
+      "lens_ids": [
+        "base_binary",
+        "extended_ternary"
+      ],
+      "package_id": "pkg_fixed",
+      "representative_lens_id": "extended_ternary",
+      "required_audit_count": 5,
+      "executed_audit_count": 5,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "metrics": {
+        "cycle_rank": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "max_cycle_affinity": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "exactness_flag": {
+          "status": "not_applicable",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_applicable:no_chain"
+        },
+        "micro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_micro_arrow_context"
+        },
+        "macro_arrow_kl": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_macro_arrow_context"
+        },
+        "closure_deficit": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_closure_context"
+        },
+        "best_macro_gap": {
+          "status": "not_requested",
+          "value": null,
+          "kind": null,
+          "context": null,
+          "explanation": "not_requested:no_registered_best_gap_context"
+        },
+        "contraction_lambda": {
+          "status": "computed",
+          "value": "1",
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "fixed_point_count": {
+          "status": "computed",
+          "value": 2,
+          "kind": null,
+          "context": null,
+          "explanation": ""
+        },
+        "eps_stable_count": {
+          "status": "computed",
+          "value": 9,
+          "kind": null,
+          "context": {
+            "denominator": 4,
+            "epsilon": "1/4"
+          },
+          "explanation": ""
+        },
+        "definable_predicate_count": {
+          "status": "computed",
+          "value": 8,
+          "kind": null,
+          "context": {
+            "lens_id": "extended_ternary"
+          },
+          "explanation": ""
+        },
+        "interface_size": {
+          "status": "computed",
+          "value": 3,
+          "kind": null,
+          "context": {
+            "lens_id": "extended_ternary"
+          },
+          "explanation": ""
+        }
+      },
+      "strongest_signal": "lens extension raises interface and definable capacity"
+    }
+  ]
+}

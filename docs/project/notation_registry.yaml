@@ -1,0 +1,356 @@
+{
+  "registry_id": "notation_registry_v1",
+  "notation": [
+    {
+      "notation_id": "N.state_space.X",
+      "symbol_latex": "\\X",
+      "name": "micro state space",
+      "kind": "finite_set",
+      "definition_latex": "\\X\\text{ is a finite set.}",
+      "definition_text": "Finite microstate space.",
+      "notes": "Used globally."
+    },
+    {
+      "notation_id": "N.state_space.Y",
+      "symbol_latex": "\\Y",
+      "name": "macro or observed state space",
+      "kind": "finite_set",
+      "definition_latex": "\\Y\\text{ is a finite set.}",
+      "definition_text": "Finite observed or packaged state space.",
+      "notes": "Used for coarse or packaged states."
+    },
+    {
+      "notation_id": "N.sample_space.Omega",
+      "symbol_latex": "\\Omega",
+      "name": "sample space",
+      "kind": "finite_set",
+      "definition_latex": "\\Omega\\text{ denotes the ambient finite sample space when a generic finite probability space is needed.}",
+      "definition_text": "Ambient finite sample space.",
+      "notes": "Used only when a theorem is stated on a generic finite probability space."
+    },
+    {
+      "notation_id": "N.simplex.DeltaX",
+      "symbol_latex": "\\D(\\X)",
+      "name": "probability simplex on X",
+      "kind": "simplex",
+      "definition_latex": "\\D(\\X):=\\{\\mu:\\X\\to[0,1] : \\sum_{x\\in\\X} \\mu(x)=1\\}",
+      "definition_text": "Probability simplex on the finite set X.",
+      "notes": "Used for laws on microstates."
+    },
+    {
+      "notation_id": "N.distribution.mu",
+      "symbol_latex": "\\mu",
+      "name": "initial law",
+      "kind": "distribution",
+      "definition_latex": "\\mu\\in\\D(\\X)",
+      "definition_text": "Initial distribution on X.",
+      "notes": "Used for initial data in path-law and closure statements."
+    },
+    {
+      "notation_id": "N.distribution.nu",
+      "symbol_latex": "\\nu",
+      "name": "generic law on Y",
+      "kind": "distribution",
+      "definition_latex": "\\nu\\in\\D(\\Y)",
+      "definition_text": "Generic distribution on Y.",
+      "notes": "Used in contraction and objecthood statements."
+    },
+    {
+      "notation_id": "N.distribution.pi",
+      "symbol_latex": "\\pi",
+      "name": "stationary law",
+      "kind": "distribution",
+      "definition_latex": "\\pi P = \\pi",
+      "definition_text": "Stationary distribution for a stochastic matrix.",
+      "notes": "Used in reversible and stationary formulations."
+    },
+    {
+      "notation_id": "N.kernel.P",
+      "symbol_latex": "P",
+      "name": "micro transition kernel",
+      "kind": "stochastic_matrix",
+      "definition_latex": "P:\\X\\times\\X\\to[0,1]\\text{ is row-stochastic}",
+      "definition_text": "Finite Markov kernel on X.",
+      "notes": "Used for micro dynamics and path laws."
+    },
+    {
+      "notation_id": "N.kernel.K",
+      "symbol_latex": "K",
+      "name": "candidate macro kernel",
+      "kind": "stochastic_matrix",
+      "definition_latex": "K:\\Y\\times\\Y\\to[0,1]\\text{ is row-stochastic}",
+      "definition_text": "Finite stochastic kernel on Y.",
+      "notes": "Used in the closure variational problem."
+    },
+    {
+      "notation_id": "N.path_space.XpowTplus1",
+      "symbol_latex": "\\X^{T+1}",
+      "name": "length-T path space",
+      "kind": "path_space",
+      "definition_latex": "\\X^{T+1}=\\{x_{0:T}: x_t\\in\\X\\text{ for }0\\le t\\le T\\}",
+      "definition_text": "Finite path space of trajectories of length T.",
+      "notes": "Used in path-reversal statements."
+    },
+    {
+      "notation_id": "N.horizon.T",
+      "symbol_latex": "T",
+      "name": "path horizon",
+      "kind": "integer",
+      "definition_latex": "T\\in\\mathbb{N}",
+      "definition_text": "Finite path horizon.",
+      "notes": "Used in path-law statements."
+    },
+    {
+      "notation_id": "N.horizon.tau",
+      "symbol_latex": "\\tau",
+      "name": "lag parameter",
+      "kind": "integer",
+      "definition_latex": "\\tau\\in\\mathbb{N}_{\\ge 1}",
+      "definition_text": "Positive lag used in closure and packaged-future laws.",
+      "notes": "Used in closure and lagged macro statements."
+    },
+    {
+      "notation_id": "N.pushforward.pushf",
+      "symbol_latex": "\\push{f}",
+      "name": "pushforward under f",
+      "kind": "map",
+      "definition_latex": "(\\push{f}\\mu)(y)=\\sum_{x:f(x)=y} \\mu(x)",
+      "definition_text": "Pushforward of a law along a deterministic map f.",
+      "notes": "Matches the existing rewrite-lane macro."
+    },
+    {
+      "notation_id": "N.path_reversal.revT",
+      "symbol_latex": "\\mathrm{rev}_T",
+      "name": "path reversal map",
+      "kind": "map",
+      "definition_latex": "\\mathrm{rev}_T(x_0,\\dots,x_T)=(x_T,\\dots,x_0)",
+      "definition_text": "Reversal map on finite paths of length T.",
+      "notes": "Used in arrow and reversibility statements."
+    },
+    {
+      "notation_id": "N.info.KL",
+      "symbol_latex": "\\KL(P\\|Q)",
+      "name": "Kullback-Leibler divergence",
+      "kind": "information_divergence",
+      "definition_latex": "\\KL(P\\|Q):=\\sum_{\\omega\\in\\Omega} P(\\omega)\\log\\!\\frac{P(\\omega)}{Q(\\omega)}",
+      "definition_text": "Finite-support KL divergence.",
+      "notes": "Defined only when Q is positive on the support of P."
+    },
+    {
+      "notation_id": "N.info.TV",
+      "symbol_latex": "\\TV(\\mu,\\nu)",
+      "name": "total variation distance",
+      "kind": "metric",
+      "definition_latex": "\\TV(\\mu,\\nu):=\\frac{1}{2}\\sum_{y\\in\\Y} |\\mu(y)-\\nu(y)|",
+      "definition_text": "Total variation distance on a finite state space.",
+      "notes": "Used for contraction and epsilon-stability."
+    },
+    {
+      "notation_id": "N.info.lambda",
+      "symbol_latex": "\\lambda(P)",
+      "name": "Dobrushin contraction coefficient",
+      "kind": "coefficient",
+      "definition_latex": "\\lambda(P):=\\sup_{\\nu\\neq \\nu'} \\frac{\\TV(\\nu P,\\nu' P)}{\\TV(\\nu,\\nu')}",
+      "definition_text": "Dobrushin contraction coefficient in total variation.",
+      "notes": "Equivalent finite formulas are allowed."
+    },
+    {
+      "notation_id": "N.graph.G",
+      "symbol_latex": "G=(V,E)",
+      "name": "finite graph",
+      "kind": "graph",
+      "definition_latex": "G=(V,E)\\text{ with finite vertex set }V\\text{ and edge set }E",
+      "definition_text": "Finite graph used for support or cycle arguments.",
+      "notes": "Used in graph and affinity theorems."
+    },
+    {
+      "notation_id": "N.graph.V",
+      "symbol_latex": "V",
+      "name": "vertex set",
+      "kind": "finite_set",
+      "definition_latex": "V\\text{ is the vertex set of }G",
+      "definition_text": "Vertex set of the graph G.",
+      "notes": "Used in graph-language statements."
+    },
+    {
+      "notation_id": "N.graph.E",
+      "symbol_latex": "E",
+      "name": "edge set",
+      "kind": "finite_set",
+      "definition_latex": "E\\subseteq \\{\\{u,v\\}:u,v\\in V\\}",
+      "definition_text": "Edge set of the graph G.",
+      "notes": "Used in graph-language statements."
+    },
+    {
+      "notation_id": "N.graph.forest",
+      "symbol_latex": "\\text{forest}",
+      "name": "forest",
+      "kind": "graph_property",
+      "definition_latex": "G\\text{ is a forest if it has no undirected cycles.}",
+      "definition_text": "A finite graph with no cycles.",
+      "notes": "Used in the forest exactness theorem."
+    },
+    {
+      "notation_id": "N.graph.tree",
+      "symbol_latex": "\\text{tree}",
+      "name": "tree",
+      "kind": "graph_property",
+      "definition_latex": "G\\text{ is a tree if it is connected and acyclic.}",
+      "definition_text": "Connected finite forest.",
+      "notes": "Used implicitly in the tree exactness proof ingredient."
+    },
+    {
+      "notation_id": "N.graph.edge_label.a",
+      "symbol_latex": "a(u,v)",
+      "name": "antisymmetric edge label",
+      "kind": "edge_function",
+      "definition_latex": "a(u,v)=-a(v,u)\\text{ on oriented edges}",
+      "definition_text": "Antisymmetric real-valued label on oriented edges.",
+      "notes": "Used for affinities and exactness statements."
+    },
+    {
+      "notation_id": "N.graph.potential.phi",
+      "symbol_latex": "\\phi",
+      "name": "graph potential",
+      "kind": "potential",
+      "definition_latex": "\\phi:V\\to\\mathbb{R}",
+      "definition_text": "Potential on graph vertices.",
+      "notes": "Used to express exact edge labels."
+    },
+    {
+      "notation_id": "N.graph.closed_walk",
+      "symbol_latex": "v_0,\\dots,v_k=v_0",
+      "name": "closed walk",
+      "kind": "walk",
+      "definition_latex": "(v_0,\\dots,v_k)\\text{ with }v_k=v_0\\text{ and }\\{v_i,v_{i+1}\\}\\in E",
+      "definition_text": "Closed walk in the graph.",
+      "notes": "Used in cycle-sum statements."
+    },
+    {
+      "notation_id": "N.graph.cycle_affinity",
+      "symbol_latex": "\\sum_{i=0}^{k-1} a(v_i,v_{i+1})",
+      "name": "cycle sum / affinity",
+      "kind": "cycle_sum",
+      "definition_latex": "\\sum_{i=0}^{k-1} a(v_i,v_{i+1})",
+      "definition_text": "Closed-walk sum of the antisymmetric edge labels.",
+      "notes": "Zero for exact forms."
+    },
+    {
+      "notation_id": "N.packaging.Pi",
+      "symbol_latex": "\\Pi",
+      "name": "deterministic packaging map",
+      "kind": "map",
+      "definition_latex": "\\Pi:\\X\\to\\Y",
+      "definition_text": "Deterministic packaging map from micro to macro states.",
+      "notes": "Used in closure statements."
+    },
+    {
+      "notation_id": "N.closure.packaged_future",
+      "symbol_latex": "p_x^{(\\tau)}",
+      "name": "packaged future law",
+      "kind": "conditional_law",
+      "definition_latex": "p_x^{(\\tau)}(y'):=\\Pr[\\Pi(X_{t+\\tau})=y'\\mid X_t=x]",
+      "definition_text": "Exact packaged future law at lag tau given current microstate x.",
+      "notes": "Used in the closure variational identity."
+    },
+    {
+      "notation_id": "N.closure.objective",
+      "symbol_latex": "\\mathcal{L}_\\tau(K)",
+      "name": "closure variational objective",
+      "kind": "objective",
+      "definition_latex": "\\mathcal{L}_\\tau(K):=\\sum_{x\\in\\X} \\mu(x)\\,\\KL(p_x^{(\\tau)}\\|K_{\\Pi(x)})",
+      "definition_text": "Weighted KL mismatch objective over candidate macro kernels.",
+      "notes": "Used in the closure theorem."
+    },
+    {
+      "notation_id": "N.closure.deficit",
+      "symbol_latex": "\\mathrm{CD}_\\tau(\\Pi)",
+      "name": "closure deficit",
+      "kind": "information_quantity",
+      "definition_latex": "\\mathrm{CD}_\\tau(\\Pi):=I(X_t;\\Pi(X_{t+\\tau})\\mid \\Pi(X_t))",
+      "definition_text": "Closure deficit as conditional information at lag tau.",
+      "notes": "Equivalent to the variational minimum in the closure theorem."
+    },
+    {
+      "notation_id": "N.info.conditional_mutual_information",
+      "symbol_latex": "I(X_t;\\Pi(X_{t+\\tau})\\mid \\Pi(X_t))",
+      "name": "conditional mutual information",
+      "kind": "information_quantity",
+      "definition_latex": "I(A;B\\mid C)=\\sum_{a,b,c} p(a,b,c)\\log\\!\\frac{p(a,b\\mid c)}{p(a\\mid c)p(b\\mid c)}",
+      "definition_text": "Finite conditional mutual information.",
+      "notes": "Used for the closure-deficit definition."
+    },
+    {
+      "notation_id": "N.endomap.e",
+      "symbol_latex": "e",
+      "name": "idempotent endomap",
+      "kind": "map",
+      "definition_latex": "e:S\\to S",
+      "definition_text": "Endomap used in idempotence and laddering statements.",
+      "notes": "Used in the idempotent saturation theorem."
+    },
+    {
+      "notation_id": "N.endomap.idempotent",
+      "symbol_latex": "e\\circ e=e",
+      "name": "idempotence relation",
+      "kind": "equation",
+      "definition_latex": "e\\circ e=e",
+      "definition_text": "Idempotence of the map e.",
+      "notes": "Used as the hypothesis of NG_LADDER_IDEM."
+    },
+    {
+      "notation_id": "N.definability.gof",
+      "symbol_latex": "g\\circ f",
+      "name": "f-definable predicate",
+      "kind": "predicate",
+      "definition_latex": "g\\circ f:\\X\\to\\{0,1\\}\\text{ for some }g:\\Y\\to\\{0,1\\}",
+      "definition_text": "Predicate definable through the fixed interface f.",
+      "notes": "Used in the bounded-interface theorem."
+    },
+    {
+      "notation_id": "N.definability.Def",
+      "symbol_latex": "\\mathrm{Def}(f)",
+      "name": "family of definable predicates",
+      "kind": "family",
+      "definition_latex": "\\mathrm{Def}(f):=\\{g\\circ f : g:\\Y\\to\\{0,1\\}\\}",
+      "definition_text": "All predicates definable through f.",
+      "notes": "Used in the bounded-interface counting theorem."
+    },
+    {
+      "notation_id": "N.image.imf",
+      "symbol_latex": "|\\mathrm{im}(f)|",
+      "name": "image size of f",
+      "kind": "cardinality",
+      "definition_latex": "|\\mathrm{im}(f)|=|\\{f(x):x\\in\\X\\}|",
+      "definition_text": "Cardinality of the image of the deterministic lens f.",
+      "notes": "Used in the definability counting formula."
+    },
+    {
+      "notation_id": "N.map.ell",
+      "symbol_latex": "\\ell",
+      "name": "deterministic observation lens",
+      "kind": "map",
+      "definition_latex": "\\ell:\\X\\to\\Y",
+      "definition_text": "Deterministic observation or coarse-graining lens.",
+      "notes": "Used in arrow and protocol statements."
+    },
+    {
+      "notation_id": "N.pathlaw.micro",
+      "symbol_latex": "\\mathbf{P}^{(T)}_{\\mu,P}",
+      "name": "micro path law",
+      "kind": "path_distribution",
+      "definition_latex": "\\mathbf{P}^{(T)}_{\\mu,P}(x_{0:T})=\\mu(x_0)\\prod_{t=0}^{T-1} P(x_t,x_{t+1})",
+      "definition_text": "Exact finite path law determined by the initial law and micro kernel.",
+      "notes": "Used in arrow and protocol statements."
+    },
+    {
+      "notation_id": "N.operator.TP",
+      "symbol_latex": "T_P",
+      "name": "Markov operator on laws",
+      "kind": "operator",
+      "definition_latex": "T_P(\\nu)=\\nu P",
+      "definition_text": "Action of the kernel P on distributions.",
+      "notes": "Used in the contractive objecthood theorem."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "generation_timestamp_utc": "2026-03-23T16:01:39Z",
+  "fragility_count": 5,
+  "entries": [
+    {
+      "fragility_id": "stationary_zero_arrow_is_fragile_to_initial_distribution",
+      "category": "initial_distribution",
+      "severity": "high",
+      "evidence_refs": [
+        "initial_distribution_sweep:hidden_clock_reversible:identity:h3"
+      ],
+      "note": "Stationary initialization gives zero arrow while basis-state initializations yield infinite arrow at the same horizon."
+    },
+    {
+      "fragility_id": "macro_arrow_depends_strongly_on_lens_choice",
+      "category": "lens_choice",
+      "severity": "high",
+      "evidence_refs": [
+        "horizon_lens_sweep:hidden_clock_driven:h3:identity|observe_x_binary|observe_clock_3"
+      ],
+      "note": "At fixed witness and horizon, macro arrow is positive for identity/observe_clock_3 but zero for observe_x_binary."
+    },
+    {
+      "fragility_id": "fitted_markov_proxy_can_create_or_distort_macro_arrow",
+      "category": "proxy_fit",
+      "severity": "high",
+      "evidence_refs": [
+        "adversarial_cases:proxy_spurious_macro_arrow_nonstationary",
+        "adversarial_cases:proxy_underestimates_nonmarkov_macro_arrow"
+      ],
+      "note": "Fitted first-order macro proxy can create spurious macro arrow or materially underestimate honest macro arrow."
+    },
+    {
+      "fragility_id": "threshold_floors_can_introduce_spurious_one_way_support",
+      "category": "thresholding",
+      "severity": "medium",
+      "evidence_refs": [
+        "threshold_sweep:tiny_reversible_triangle:floor=1/100"
+      ],
+      "note": "Applying floor threshold introduces one-way edges in a chain with originally exact reversible support."
+    },
+    {
+      "fragility_id": "object_multiplicity_can_be_metric_artifact",
+      "category": "metric_choice",
+      "severity": "medium",
+      "evidence_refs": [
+        "objecthood_metric_sweep:contractive_unique_object:tv_vs_support_signature"
+      ],
+      "note": "Cluster count changes from 1 to 2 when switching from TV metric to support-signature metric."
+    }
+  ]
+}

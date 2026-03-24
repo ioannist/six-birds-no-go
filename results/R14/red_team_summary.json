@@ -1,0 +1,17 @@
+{
+  "generated_at_utc": "2026-03-24T08:57:57Z",
+  "theorem_count_audited": 8,
+  "section_count_audited": 14,
+  "issue_count": 1,
+  "severity_counts": {
+    "high": 1
+  },
+  "category_counts": {
+    "objecthood_boundary": 1
+  },
+  "blocking_issue_count": 0,
+  "main_build_ok": true,
+  "supplement_build_ok": true,
+  "hidden_gap_count": 0,
+  "status": "success"
+}

@@ -1,0 +1,586 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-20T10:58:00Z",
+  "source_context": {
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "raw_asset_window_paths": [
+      "results/T08",
+      "results/T09",
+      "results/T10",
+      "results/T11",
+      "results/T12",
+      "results/master",
+      "results/T14",
+      "results/T15"
+    ],
+    "vision_present": true,
+    "vision_path": "vision.md",
+    "paper_narrative_charter": "docs/project/paper_narrative_charter.yaml",
+    "background_citation_map": "docs/project/background_citation_map.yaml",
+    "caption_registry": "docs/project/caption_registry.yaml",
+    "draft_v3": "paper/draft_v3.md",
+    "w01_section_contracts_summary": "results/W01/section_contracts_summary.json",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "t46_caption_summary": "results/T46/caption_appendix_polish_summary.json"
+  },
+  "status_enums": {
+    "asset_status": [
+      "frozen"
+    ],
+    "asset_decision_type": [
+      "repo_asset",
+      "authored_schematic",
+      "derived_documentation_table"
+    ],
+    "exclusion_reason": [
+      "duplicate_format",
+      "pipeline_bookkeeping",
+      "superseded_by_master",
+      "exploratory_not_selected",
+      "prose_duplicate"
+    ],
+    "alignment_status": [
+      "fixed"
+    ]
+  },
+  "inclusion_policy": {
+    "primary_evidence_must_come_from_included_assets": true,
+    "theorem_pack_docs_not_primary_assets": true,
+    "duplicate_policy": "Prefer the structured JSON/CSV artifact that is actually selected.",
+    "manifest_policy": "Pipeline/case manifests are not paper assets unless explicitly selected.",
+    "extension_note": "Non-raw callouts such as authored schematics / derived documentation tables are frozen explicitly outside the raw asset window."
+  },
+  "included_assets": [
+    {
+      "asset_id": "ASSET-T08-ARROW-METRICS",
+      "path": "results/T08/arrow_metrics.json",
+      "origin_ticket": "T08",
+      "asset_status": "frozen",
+      "paper_role": "main_figure_asset",
+      "bound_callouts": [
+        "FIG-2"
+      ],
+      "bound_claim_ids": [
+        "NG_ARROW_DPI.core"
+      ],
+      "note": "Primary arrow metric asset for honest DPI theorem."
+    },
+    {
+      "asset_id": "ASSET-T09-CLOSURE-METRICS",
+      "path": "results/T09/closure_metrics.json",
+      "origin_ticket": "T09",
+      "asset_status": "frozen",
+      "paper_role": "main_figure_asset",
+      "bound_callouts": [
+        "FIG-4"
+      ],
+      "bound_claim_ids": [
+        "NG_MACRO_CLOSURE_DEFICIT.core"
+      ],
+      "note": "Primary closure-variational figure asset."
+    },
+    {
+      "asset_id": "ASSET-T09-GRID-CHECK",
+      "path": "results/T09/grid_check.json",
+      "origin_ticket": "T09",
+      "asset_status": "frozen",
+      "paper_role": "main_table_asset",
+      "bound_callouts": [
+        "TBL-4"
+      ],
+      "bound_claim_ids": [
+        "NG_MACRO_CLOSURE_DEFICIT.guardrail"
+      ],
+      "note": "Primary closure guardrail/support table asset."
+    },
+    {
+      "asset_id": "ASSET-T10-OBJECTHOOD-METRICS",
+      "path": "results/T10/objecthood_metrics.json",
+      "origin_ticket": "T10",
+      "asset_status": "frozen",
+      "paper_role": "main_figure_asset",
+      "bound_callouts": [
+        "FIG-5"
+      ],
+      "bound_claim_ids": [
+        "NG_OBJECT_CONTRACTIVE.core"
+      ],
+      "note": "Primary objecthood theorem metric asset."
+    },
+    {
+      "asset_id": "ASSET-T10-STABILITY-GRID",
+      "path": "results/T10/stability_grid.json",
+      "origin_ticket": "T10",
+      "asset_status": "frozen",
+      "paper_role": "supporting_asset",
+      "bound_callouts": [
+        "FIG-5",
+        "TBL-5"
+      ],
+      "bound_claim_ids": [],
+      "note": "Supporting stability-grid asset for objecthood theorem context."
+    },
+    {
+      "asset_id": "ASSET-T11-DEFINABILITY-METRICS",
+      "path": "results/T11/definability_metrics.json",
+      "origin_ticket": "T11",
+      "asset_status": "frozen",
+      "paper_role": "main_table_asset",
+      "bound_callouts": [
+        "TBL-6"
+      ],
+      "bound_claim_ids": [
+        "NG_LADDER_BOUNDED_INTERFACE.core"
+      ],
+      "note": "Primary bounded-interface count-core table asset."
+    },
+    {
+      "asset_id": "ASSET-T11-NO-LADDER-DEMOS",
+      "path": "results/T11/no_ladder_demos.json",
+      "origin_ticket": "T11",
+      "asset_status": "frozen",
+      "paper_role": "main_figure_asset",
+      "bound_callouts": [
+        "FIG-6",
+        "TBL-6"
+      ],
+      "bound_claim_ids": [
+        "NG_LADDER_IDEM.core",
+        "NG_LADDER_BOUNDED_INTERFACE.guardrail"
+      ],
+      "note": "Primary no-ladder/extension-escape figure asset."
+    },
+    {
+      "asset_id": "ASSET-T13-WITNESS-METRICS",
+      "path": "results/master/witness_metrics.csv",
+      "origin_ticket": "T13",
+      "asset_status": "frozen",
+      "paper_role": "main_table_asset",
+      "bound_callouts": [
+        "TBL-1",
+        "FIG-3"
+      ],
+      "bound_claim_ids": [
+        "NG_FORCE_NULL.core"
+      ],
+      "note": "Primary theorem-front snapshot table asset and graph support comparator."
+    },
+    {
+      "asset_id": "ASSET-T13-WITNESS-MANIFEST",
+      "path": "results/master/witness_manifest.json",
+      "origin_ticket": "T13",
+      "asset_status": "frozen",
+      "paper_role": "appendix_provenance",
+      "bound_callouts": [
+        "TBL-A1"
+      ],
+      "bound_claim_ids": [],
+      "note": "Primary appendix provenance asset."
+    },
+    {
+      "asset_id": "ASSET-T14-PRIMITIVE-COVERAGE",
+      "path": "results/T14/primitive_coverage.json",
+      "origin_ticket": "T14",
+      "asset_status": "frozen",
+      "paper_role": "main_figure_asset",
+      "bound_callouts": [
+        "FIG-3"
+      ],
+      "bound_claim_ids": [
+        "NG_FORCE_FOREST.core"
+      ],
+      "note": "Primary graph/affinity contrast figure asset."
+    },
+    {
+      "asset_id": "ASSET-T15-ADVERSARIAL-CASES",
+      "path": "results/T15/adversarial_cases.json",
+      "origin_ticket": "T15",
+      "asset_status": "frozen",
+      "paper_role": "main_table_asset",
+      "bound_callouts": [
+        "TBL-2"
+      ],
+      "bound_claim_ids": [
+        "NG_ARROW_DPI.guardrail"
+      ],
+      "note": "Primary arrow/protocol guardrail table asset."
+    },
+    {
+      "asset_id": "ASSET-T15-HORIZON-LENS-SWEEP",
+      "path": "results/T15/horizon_lens_sweep.csv",
+      "origin_ticket": "T15",
+      "asset_status": "frozen",
+      "paper_role": "main_figure_asset",
+      "bound_callouts": [
+        "FIG-2"
+      ],
+      "bound_claim_ids": [],
+      "note": "Primary arrow/protocol figure asset."
+    },
+    {
+      "asset_id": "ASSET-T15-INITIAL-DISTRIBUTION-SWEEP",
+      "path": "results/T15/initial_distribution_sweep.csv",
+      "origin_ticket": "T15",
+      "asset_status": "frozen",
+      "paper_role": "supporting_asset",
+      "bound_callouts": [
+        "FIG-2",
+        "TBL-2"
+      ],
+      "bound_claim_ids": [
+        "NG_PROTOCOL_TRAP.core",
+        "NG_PROTOCOL_TRAP.guardrail"
+      ],
+      "note": "Primary protocol-trap scope asset reused across figure and table."
+    },
+    {
+      "asset_id": "ASSET-T15-THRESHOLD-SWEEP",
+      "path": "results/T15/threshold_sweep.csv",
+      "origin_ticket": "T15",
+      "asset_status": "frozen",
+      "paper_role": "main_table_asset",
+      "bound_callouts": [
+        "TBL-3"
+      ],
+      "bound_claim_ids": [
+        "NG_FORCE_FOREST.guardrail",
+        "NG_FORCE_NULL.guardrail"
+      ],
+      "note": "Primary graph guardrail table asset."
+    },
+    {
+      "asset_id": "ASSET-T15-OBJECTHOOD-METRIC-SWEEP",
+      "path": "results/T15/objecthood_metric_sweep.csv",
+      "origin_ticket": "T15",
+      "asset_status": "frozen",
+      "paper_role": "main_table_asset",
+      "bound_callouts": [
+        "TBL-5"
+      ],
+      "bound_claim_ids": [
+        "NG_OBJECT_CONTRACTIVE.guardrail"
+      ],
+      "note": "Primary objecthood guardrail matrix asset."
+    }
+  ],
+  "excluded_assets": [
+    {
+      "path": "results/T08/arrow_metrics.csv",
+      "origin_ticket": "T08",
+      "exclusion_reason": "duplicate_format",
+      "note": "CSV mirror excluded in favor of selected JSON artifact."
+    },
+    {
+      "path": "results/T08/case_manifest.json",
+      "origin_ticket": "T08",
+      "exclusion_reason": "pipeline_bookkeeping",
+      "note": "Case manifest is pipeline bookkeeping, not a paper asset."
+    },
+    {
+      "path": "results/T09/case_manifest.json",
+      "origin_ticket": "T09",
+      "exclusion_reason": "pipeline_bookkeeping",
+      "note": "Case manifest is pipeline bookkeeping, not a paper asset."
+    },
+    {
+      "path": "results/T09/closure_metrics.csv",
+      "origin_ticket": "T09",
+      "exclusion_reason": "duplicate_format",
+      "note": "CSV mirror excluded in favor of selected JSON artifact."
+    },
+    {
+      "path": "results/T10/case_manifest.json",
+      "origin_ticket": "T10",
+      "exclusion_reason": "pipeline_bookkeeping",
+      "note": "Case manifest is pipeline bookkeeping, not a paper asset."
+    },
+    {
+      "path": "results/T10/objecthood_metrics.csv",
+      "origin_ticket": "T10",
+      "exclusion_reason": "duplicate_format",
+      "note": "CSV mirror excluded in favor of selected JSON artifact."
+    },
+    {
+      "path": "results/T11/case_manifest.json",
+      "origin_ticket": "T11",
+      "exclusion_reason": "pipeline_bookkeeping",
+      "note": "Case manifest is pipeline bookkeeping, not a paper asset."
+    },
+    {
+      "path": "results/T11/definability_metrics.csv",
+      "origin_ticket": "T11",
+      "exclusion_reason": "duplicate_format",
+      "note": "CSV mirror excluded in favor of selected JSON artifact."
+    },
+    {
+      "path": "results/T11/random_checks.json",
+      "origin_ticket": "T11",
+      "exclusion_reason": "exploratory_not_selected",
+      "note": "Exploratory random-check output is not selected for paper assets."
+    },
+    {
+      "path": "results/T12/witness_manifest.json",
+      "origin_ticket": "T12",
+      "exclusion_reason": "superseded_by_master",
+      "note": "Superseded by results/master/witness_manifest.json."
+    },
+    {
+      "path": "results/T12/witness_summary.csv",
+      "origin_ticket": "T12",
+      "exclusion_reason": "superseded_by_master",
+      "note": "Superseded by results/master/witness_metrics.csv."
+    },
+    {
+      "path": "results/T14/primitive_matrix.csv",
+      "origin_ticket": "T14",
+      "exclusion_reason": "exploratory_not_selected",
+      "note": "Coverage JSON selected instead of primitive matrix CSV."
+    },
+    {
+      "path": "results/T15/case_manifest.json",
+      "origin_ticket": "T15",
+      "exclusion_reason": "pipeline_bookkeeping",
+      "note": "Case manifest is pipeline bookkeeping, not a paper asset."
+    },
+    {
+      "path": "results/T15/fragility_notes.md",
+      "origin_ticket": "T15",
+      "exclusion_reason": "prose_duplicate",
+      "note": "Narrative fragility notes are not frozen paper assets."
+    },
+    {
+      "path": "results/T15/fragility_summary.json",
+      "origin_ticket": "T15",
+      "exclusion_reason": "exploratory_not_selected",
+      "note": "Guardrail-relevant but not selected as a primary paper asset."
+    },
+    {
+      "path": "results/T15/perturbation_sweep.csv",
+      "origin_ticket": "T15",
+      "exclusion_reason": "exploratory_not_selected",
+      "note": "Exploratory perturbation sweep is not selected for paper assets."
+    }
+  ],
+  "callout_bindings": [
+    {
+      "callout_id": "FIG-1",
+      "asset_decision_type": "authored_schematic",
+      "section_id": "S2_SETUP",
+      "theorem_ids": [],
+      "primary_source_ref": "authored:theory-package-and-audit-convention-schematic",
+      "supporting_source_refs": [
+        "docs/project/theorem_atlas.yaml",
+        "docs/project/claim_audit_freeze.yaml"
+      ],
+      "note": "Non-raw schematic frozen explicitly."
+    },
+    {
+      "callout_id": "FIG-2",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "primary_source_ref": "results/T15/horizon_lens_sweep.csv",
+      "supporting_source_refs": [
+        "results/T08/arrow_metrics.json",
+        "results/T15/initial_distribution_sweep.csv"
+      ],
+      "note": "Shared arrow/protocol figure decision."
+    },
+    {
+      "callout_id": "FIG-3",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "theorem_ids": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL"
+      ],
+      "primary_source_ref": "results/T14/primitive_coverage.json",
+      "supporting_source_refs": [
+        "results/master/witness_metrics.csv"
+      ],
+      "note": "Shared graph/affinity figure decision."
+    },
+    {
+      "callout_id": "FIG-4",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S5_CLOSURE",
+      "theorem_ids": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "primary_source_ref": "results/T09/closure_metrics.json",
+      "supporting_source_refs": [
+        "results/T09/grid_check.json"
+      ],
+      "note": "Closure figure decision."
+    },
+    {
+      "callout_id": "FIG-5",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S6_OBJECTHOOD",
+      "theorem_ids": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "primary_source_ref": "results/T10/objecthood_metrics.json",
+      "supporting_source_refs": [
+        "results/T10/stability_grid.json"
+      ],
+      "note": "Objecthood figure decision."
+    },
+    {
+      "callout_id": "FIG-6",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S7_LADDER",
+      "theorem_ids": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "results/T11/no_ladder_demos.json",
+      "supporting_source_refs": [
+        "results/T11/definability_metrics.json"
+      ],
+      "note": "Shared ladder figure decision."
+    },
+    {
+      "callout_id": "TBL-1",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S1_INTRO",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL",
+        "NG_MACRO_CLOSURE_DEFICIT",
+        "NG_OBJECT_CONTRACTIVE",
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "results/master/witness_metrics.csv",
+      "supporting_source_refs": [
+        "results/master/witness_manifest.json"
+      ],
+      "note": "Intro theorem-support snapshot table decision."
+    },
+    {
+      "callout_id": "TBL-2",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "primary_source_ref": "results/T15/adversarial_cases.json",
+      "supporting_source_refs": [
+        "results/T15/initial_distribution_sweep.csv"
+      ],
+      "note": "Arrow/protocol guardrail table decision."
+    },
+    {
+      "callout_id": "TBL-3",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "theorem_ids": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL"
+      ],
+      "primary_source_ref": "results/T15/threshold_sweep.csv",
+      "supporting_source_refs": [
+        "results/T14/primitive_coverage.json"
+      ],
+      "note": "Graph/affinity guardrail table decision."
+    },
+    {
+      "callout_id": "TBL-4",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S5_CLOSURE",
+      "theorem_ids": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "primary_source_ref": "results/T09/grid_check.json",
+      "supporting_source_refs": [
+        "results/T09/closure_metrics.json"
+      ],
+      "note": "Closure guardrail/support table decision."
+    },
+    {
+      "callout_id": "TBL-5",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S6_OBJECTHOOD",
+      "theorem_ids": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "primary_source_ref": "results/T15/objecthood_metric_sweep.csv",
+      "supporting_source_refs": [
+        "results/T10/stability_grid.json"
+      ],
+      "note": "Objecthood guardrail matrix table decision."
+    },
+    {
+      "callout_id": "TBL-6",
+      "asset_decision_type": "repo_asset",
+      "section_id": "S7_LADDER",
+      "theorem_ids": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "results/T11/definability_metrics.json",
+      "supporting_source_refs": [
+        "results/T11/no_ladder_demos.json"
+      ],
+      "note": "Ladder count-core/corollary table decision."
+    },
+    {
+      "callout_id": "TBL-A1",
+      "asset_decision_type": "repo_asset",
+      "section_id": "A1_ARTIFACTS",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL",
+        "NG_MACRO_CLOSURE_DEFICIT",
+        "NG_OBJECT_CONTRACTIVE",
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "results/master/witness_manifest.json",
+      "supporting_source_refs": [
+        "results/master/witness_metrics.csv"
+      ],
+      "note": "Appendix provenance map table decision."
+    },
+    {
+      "callout_id": "TBL-A2",
+      "asset_decision_type": "derived_documentation_table",
+      "section_id": "A2_LEAN",
+      "theorem_ids": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL",
+        "NG_MACRO_CLOSURE_DEFICIT",
+        "NG_OBJECT_CONTRACTIVE",
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "primary_source_ref": "derived:lean-support-and-proof-dependency-map",
+      "supporting_source_refs": [
+        "docs/project/readiness_checklist.yaml",
+        "docs/project/theorem_atlas.yaml"
+      ],
+      "note": "Derived documentation table frozen explicitly."
+    }
+  ],
+  "alignment_policy": {
+    "theorem_front_body_organization": "theorem_fronts",
+    "background_papers_not_primary_assets": true,
+    "callout_ids_from_section_contracts": true,
+    "caption_registry_alignment_required": true,
+    "current_internal_draft": "paper/draft_v3.md",
+    "status": "fixed"
+  }
+}

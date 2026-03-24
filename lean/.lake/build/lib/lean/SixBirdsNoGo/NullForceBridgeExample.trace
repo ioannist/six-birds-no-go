@@ -1,0 +1,31 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["c78cb21066f8ee5a.olean"],
+  "i": "56a2a4babad78c7f.ilean",
+  "c": "6d4df65214f7a9ea.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/NullForceBridgeExample.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/NullForceBridgeExample.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/NullForceBridgeExample.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/NullForceBridgeExample.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/NullForceBridgeExample.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["SixBirdsNoGo.NullForceBridgeExample:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["SixBirdsNoGo.NullForceBridge transitive imports (legacy)",
+         "97c710254fcfcbed"],
+        ["SixBirdsNoGo.NullForceBridge:importAllArts", "4c712dcdccfcaf01"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/NullForceBridgeExample.lean",
+   "b7aa66b73d8aa36c"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "9bba8632242c2290"}

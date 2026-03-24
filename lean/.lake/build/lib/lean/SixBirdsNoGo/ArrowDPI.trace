@@ -1,0 +1,34 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["a05413e6d6cd6b3a.olean"],
+  "i": "d9fe0bfe1bb8c6c8.ilean",
+  "c": "2fd61da594c892ab.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/ArrowDPI.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ArrowDPI.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ArrowDPI.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/ArrowDPI.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/ArrowDPI.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "SixBirdsNoGo/ArrowDPI.lean:34:20: try 'simp' instead of 'simpa'\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"}],
+ "inputs":
+ [["SixBirdsNoGo.ArrowDPI:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["SixBirdsNoGo.FiniteKLDPI transitive imports (legacy)",
+         "0c2b529cca837392"],
+        ["SixBirdsNoGo.FiniteKLDPI:importAllArts", "d4a9e6046d0fdd38"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/ArrowDPI.lean",
+   "8f51498569ea9689"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "48db6ada6bb79d91"}

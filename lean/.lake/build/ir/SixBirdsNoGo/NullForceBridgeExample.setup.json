@@ -1,0 +1,11 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.NullForceBridgeExample",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.NullForceBridge":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/NullForceBridge.olean"],
+  "SixBirdsNoGo.ClosedWalkExactness":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosedWalkExactness.olean"]},
+ "dynlibs": []}

@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-18T08:12:42Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_graph_affinity": "docs/project/theorem_pack_graph_affinity.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "bridge_status": [
+      "direct_ready",
+      "blocked",
+      "deferred"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "bridge_status": "direct_ready",
+      "bridge_statement": "Rooted-tree path labels induce an exact potential, and the induced label on path-vertices has zero closed-walk sum, giving direct Lean support for the forest/no-force front.",
+      "prerequisites": [
+        "rooted tree",
+        "path-sum potential",
+        "closed-walk exactness"
+      ],
+      "direct_corollaries": [
+        "induced label exactness",
+        "child-step label agreement",
+        "zero closed-walk sum on the induced label"
+      ],
+      "scope_limits": [
+        "rooted-tree/path-vertex representation only",
+        "no general graph library",
+        "cycle-rank/exact-support interpretation remains in the analytic pack"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/ForestForceBridge.lean",
+        "lean/SixBirdsNoGo/ForestForceBridgeExample.lean",
+        "lean/SixBirdsNoGo/TreeExactness.lean",
+        "lean/SixBirdsNoGo/ClosedWalkExactness.lean"
+      ],
+      "example_refs": [
+        "lean/SixBirdsNoGo/ForestForceBridgeExample.lean"
+      ],
+      "readiness_delta": {
+        "lean_support_before": "auxiliary_only",
+        "lean_support_after": "direct"
+      },
+      "remaining_blockers": [
+        "Exact-support and threshold guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_10_graph_scope_guardrail_freeze",
+        "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
+      }
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "bridge_status": "direct_ready",
+      "bridge_statement": "Exact potential difference on a finite walk labeling forces zero closed-walk sum, giving direct Lean support for the null-force front.",
+      "prerequisites": [
+        "finite walk type",
+        "exact potential difference",
+        "closed-walk exactness"
+      ],
+      "direct_corollaries": [
+        "every closed walk has total sum zero under exact potential difference"
+      ],
+      "scope_limits": [
+        "additive exact-potential encoding only",
+        "no ratio-form / bidirected graph library",
+        "exact-support / no-regularization interpretation remains in the analytic pack"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/NullForceBridge.lean",
+        "lean/SixBirdsNoGo/NullForceBridgeExample.lean",
+        "lean/SixBirdsNoGo/ClosedWalkExactness.lean"
+      ],
+      "example_refs": [
+        "lean/SixBirdsNoGo/NullForceBridgeExample.lean"
+      ],
+      "readiness_delta": {
+        "lean_support_before": "auxiliary_only",
+        "lean_support_after": "direct"
+      },
+      "remaining_blockers": [
+        "Exact bidirected-support and no-regularization guardrails must remain explicit in paper assembly."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_10_graph_scope_guardrail_freeze",
+        "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
+      }
+    }
+  ]
+}

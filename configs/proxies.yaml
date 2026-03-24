@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "proxy_audits": [
+    {
+      "id": "PROXY_MACRO_MARKOV_ARROW",
+      "short_name": "Fitted macro Markov arrow",
+      "class": "fitted_model",
+      "description": "Arrow audit computed from a fitted first-order macro chain rather than honest pushed-forward path law.",
+      "theorem_substitute_for": ["AUDIT_PATH_KL_MACRO_HONEST", "AUDIT_DPI_GAP"],
+      "risks": ["model_misspecification", "hidden_memory_aliasing"],
+      "notes": "Diagnostic proxy only; not admissible as theorem-level audit."
+    },
+    {
+      "id": "PROXY_THRESHOLD_SUPPORT_GRAPH",
+      "short_name": "Thresholded support graph",
+      "class": "numerical_threshold",
+      "description": "Support graph after thresholding tiny edges.",
+      "theorem_substitute_for": ["AUDIT_CYCLE_RANK"],
+      "risks": ["threshold_sensitivity", "false_cycle_deletion_or_creation"],
+      "notes": "Useful for exploratory scans only."
+    },
+    {
+      "id": "PROXY_REGULARIZED_AFFINITY",
+      "short_name": "Regularized affinity",
+      "class": "regularized_estimator",
+      "description": "Cycle affinities after floors/caps or numerical smoothing.",
+      "theorem_substitute_for": ["AUDIT_MAX_CYCLE_AFFINITY", "AUDIT_ONEFORM_EXACTNESS"],
+      "risks": ["bias_from_regularization", "loss_of_exact_null_class"],
+      "notes": "Cannot certify exact null-affinity claims."
+    },
+    {
+      "id": "PROXY_MC_CLOSURE_DEFICIT",
+      "short_name": "MC closure deficit",
+      "class": "stochastic_estimator",
+      "description": "Monte Carlo estimate of closure deficit instead of exact finite-state value.",
+      "theorem_substitute_for": ["AUDIT_CLOSURE_DEFICIT", "AUDIT_BEST_MACRO_GAP"],
+      "risks": ["sampling_error", "rare_path_undercoverage"],
+      "notes": "Estimate quality depends on path coverage guarantees."
+    },
+    {
+      "id": "PROXY_CLUSTERED_OBJECT_COUNT",
+      "short_name": "Clustered object count",
+      "class": "embedding_proxy",
+      "description": "Object multiplicity inferred from clustering/embedding rather than fixed-point and contraction audits.",
+      "theorem_substitute_for": ["AUDIT_FIXED_POINT_COUNT", "AUDIT_CONTRACTION_LAMBDA", "AUDIT_EPS_STABLE_COUNT"],
+      "risks": ["embedding_artifacts", "cluster_resolution_instability"],
+      "notes": "Not equivalent to formal fixed-point multiplicity audits."
+    }
+  ]
+}

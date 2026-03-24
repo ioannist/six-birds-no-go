@@ -1,0 +1,41 @@
+\section{Packaging iterations and definability counts}\label{app:packdef}
+
+This appendix records the finite calculations used by the ladder fronts.
+
+\begin{proof}[Proof of Lemma~\ref{lem:idempotent-iterates}]
+Proceed by induction on $n$.
+For $n=1$ the claim is immediate.
+If $e^{\circ n}=e$, then
+\[
+e^{\circ(n+1)} = e^{\circ n}\circ e = e\circ e = e,
+\]
+using idempotence.
+This proves $e^{\circ n}=e$ for all integers $n\ge 1$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:definability-bijection}]
+Surjectivity: Let $h\in\Def(f)$, so $h=g\circ f$ for some $g:\Y\to\{0,1\}$.
+Define
+\[
+A \coloneqq \{y\in \im(f): g(y)=1\}\subseteq \im(f).
+\]
+For any $x\in\X$ we have $h(x)=g(f(x))=1$ iff $f(x)\in A$, hence $h=\1_A\circ f$.
+
+Injectivity: If $A,B\subseteq \im(f)$ and $\1_A\circ f=\1_B\circ f$, then for any $y\in\im(f)$ pick $x\in\X$ with $f(x)=y$.
+Evaluating at $x$ gives $\1_A(y)=\1_B(y)$, so $A=B$.
+The cardinality statement follows because $|\mathcal P(\im(f))| = 2^{|\im(f)|}$.
+\end{proof}
+
+\begin{proposition}[Finite strictly increasing chains are bounded]\label{prop:definable_chain_bound}
+If $S$ is a finite set, then every strictly increasing chain of distinct elements of $S$ has length at most $|S|$.
+\end{proposition}
+
+\begin{proof}
+A strictly increasing chain of distinct elements is in particular an injective sequence in $S$.
+A finite set of size $|S|$ admits no injective sequence longer than $|S|$.
+\end{proof}
+
+\begin{proof}[Expanded proof of Theorem~\ref{thm:NG_LADDER_BOUNDED_INTERFACE}]
+Lemma~\ref{lem:definability-bijection} identifies $\Def(f)$ with the finite power set $\mathcal P(\im(f))$.
+Therefore Proposition~\ref{prop:definable_chain_bound} applies with $S=\Def(f)$ and shows that no strictly increasing chain of distinct definable predicates can be infinite.
+\end{proof}

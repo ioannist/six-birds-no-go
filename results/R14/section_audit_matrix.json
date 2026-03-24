@@ -1,0 +1,144 @@
+{
+  "generated_at_utc": "2026-03-24T08:57:57Z",
+  "section_count": 14,
+  "sections": [
+    {
+      "section_id": "01_introduction",
+      "path": "paper/sections/01_introduction.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 1,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "02_setup",
+      "path": "paper/sections/02_setup.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 0,
+      "definition_block_count": 1,
+      "issues": []
+    },
+    {
+      "section_id": "03_main_results",
+      "path": "paper/sections/03_main_results.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 2,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "04_arrow_and_protocol",
+      "path": "paper/sections/04_arrow_and_protocol.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [
+        "app:probkl"
+      ],
+      "supplement_mentions": 0,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "05_graph_and_affinity",
+      "path": "paper/sections/05_graph_and_affinity.tex",
+      "definition_before_first_theorem_ref": false,
+      "appendix_refs": [
+        "app:graphexact"
+      ],
+      "supplement_mentions": 0,
+      "definition_block_count": 4,
+      "issues": []
+    },
+    {
+      "section_id": "06_closure",
+      "path": "paper/sections/06_closure.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [
+        "app:varclosure"
+      ],
+      "supplement_mentions": 0,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "07_objecthood",
+      "path": "paper/sections/07_objecthood.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [
+        "app:probkl"
+      ],
+      "supplement_mentions": 0,
+      "definition_block_count": 0,
+      "issues": [
+        "R14-001"
+      ]
+    },
+    {
+      "section_id": "08_bounded_interface",
+      "path": "paper/sections/08_bounded_interface.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [
+        "app:packdef"
+      ],
+      "supplement_mentions": 0,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "09_discussion",
+      "path": "paper/sections/09_discussion.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 1,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "appendix_a_probability_kl",
+      "path": "paper/appendices/appendix_a_probability_kl.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 0,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "appendix_b_graph_exactness",
+      "path": "paper/appendices/appendix_b_graph_exactness.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 0,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "appendix_c_variational_closure",
+      "path": "paper/appendices/appendix_c_variational_closure.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 0,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "appendix_d_packaging_definability",
+      "path": "paper/appendices/appendix_d_packaging_definability.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 0,
+      "definition_block_count": 0,
+      "issues": []
+    },
+    {
+      "section_id": "supplement_overview",
+      "path": "paper/supplement/main.tex",
+      "definition_before_first_theorem_ref": true,
+      "appendix_refs": [],
+      "supplement_mentions": 6,
+      "definition_block_count": 0,
+      "issues": []
+    }
+  ]
+}

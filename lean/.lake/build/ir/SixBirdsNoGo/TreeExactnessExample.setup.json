@@ -1,0 +1,9 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.TreeExactnessExample",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.TreeExactness":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/TreeExactness.olean"]},
+ "dynlibs": []}

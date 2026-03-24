@@ -1,0 +1,150 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-17T21:45:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "master_manifest": "results/master/witness_manifest.json",
+    "t09_closure_metrics": "results/T09/closure_metrics.json",
+    "t09_grid_check": "results/T09/grid_check.json",
+    "t14_primitive_coverage": "results/T14/primitive_coverage.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "pack_status": [
+      "direct_ready",
+      "blocked",
+      "deferred"
+    ],
+    "support_grade": [
+      "direct",
+      "evidence_only",
+      "insufficient"
+    ],
+    "attribution_outcome_mode": [
+      "resolved_by_local_isolator",
+      "blocked_but_sharpened"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "pack_status": "direct_ready",
+      "theorem_statement": "Positive closure deficit forbids an exact closed macro law under the chosen packaging, and the best macro kernel attains the variational minimum.",
+      "theorem_core": {
+        "antecedent": [
+          "finite micro chain",
+          "deterministic lens/packaging interface",
+          "exact packaged future laws p_x^(tau)",
+          "fixed lag tau",
+          "current micro law or stationary initialization when used"
+        ],
+        "conclusion": [
+          "closure deficit equals the variational minimum over macro kernels",
+          "the closed-form best macro kernel attains the minimum",
+          "positive closure deficit forbids an exact closed macro law under the chosen packaging"
+        ],
+        "scope_limits": [
+          "exact packaged future laws and exact variational evaluation only",
+          "fixed lens/lag/package theorem context",
+          "primitive attribution is separate from theorem validity",
+          "no proxy macro fits or heuristic attribution in theorem claim"
+        ]
+      },
+      "proof_spine": [
+        "Define packaged future laws and the exact variational objective.",
+        "Derive the closed-form best macro kernel K* for fixed lens and lag.",
+        "Show closure_deficit = best_macro_gap = V_tau(K*).",
+        "Use zero-deficit witness to certify exact closure.",
+        "Use positive-deficit witness to certify irreducible mismatch.",
+        "Resolve historical primitive-attribution ambiguity with a local rewrite-only isolator without changing theorem content."
+      ],
+      "guardrails": [
+        {
+          "claim_id": "NG_MACRO_CLOSURE_DEFICIT.guardrail",
+          "guardrail_text": "Closure claims must use exact packaged future laws and exact variational evaluation, not proxy macro fits.",
+          "evidence_refs": [
+            "results/T09/closure_metrics.json",
+            "results/T09/grid_check.json"
+          ],
+          "note": "All theorem claims in this front are grounded in exact grouped-ledger KL evaluation."
+        },
+        {
+          "claim_id": "NG_MACRO_CLOSURE_DEFICIT.guardrail",
+          "guardrail_text": "Primitive attribution is separate from theorem validity; a dedicated local rewrite-only isolator resolves the historical attribution ambiguity.",
+          "evidence_refs": [
+            "results/T24/closure_attribution_resolution.json"
+          ],
+          "note": "The core variational theorem stays valid independent of attribution decomposition."
+        }
+      ],
+      "attribution_outcome": {
+        "mode": "resolved_by_local_isolator",
+        "historical_gap_claim_id": "NG_MACRO_CLOSURE_DEFICIT.primitive_attribution_gap",
+        "evidence_ref": "results/T24/closure_attribution_resolution.json",
+        "primitive_delta_summary": "rewrite off_to_on; gating/holonomy/staging/packaging/drive remain off",
+        "resolution_note": "Earlier closure primitive-attribution ambiguity is resolved locally by a rewrite-only nonlumpable contrast inside the exact/null-affinity regime."
+      },
+      "evidence_refs": {
+        "analytic": [
+          "docs/project/theorem_pack_closure.yaml",
+          "results/T24/closure_pack_summary.json"
+        ],
+        "computational": [
+          "results/T09/closure_metrics.json",
+          "results/T09/grid_check.json",
+          "results/master/witness_manifest.json"
+        ],
+        "guardrail": [
+          "results/T24/closure_attribution_resolution.json"
+        ],
+        "lean": [
+          "lean/SixBirdsNoGo/ClosureVariationalCore.lean",
+          "lean/SixBirdsNoGo/ClosureVariationalCoreExample.lean",
+          "lean/SixBirdsNoGo/ClosureDirectPack.lean",
+          "lean/SixBirdsNoGo/ClosureDirectPackExample.lean",
+          "docs/project/lean_closure_feasibility.yaml",
+          "docs/project/lean_closure_variational_core.yaml",
+          "docs/project/lean_closure_direct.yaml",
+          "results/T40/lean_closure_feasibility_summary.json",
+          "results/T41/lean_closure_variational_core_summary.json",
+          "results/T42/lean_closure_direct_pack_summary.json"
+        ],
+        "witness": [
+          "zero_closure_deficit_lumpable",
+          "positive_closure_deficit",
+          "zero_closure_deficit_lumpable__rewrite_A1_to_B1"
+        ]
+      },
+      "readiness_delta": {
+        "analytic_support_before": "partial",
+        "analytic_support_after": "present",
+        "blockers_resolved": [
+          "Direct theorem-facing closure pack is frozen.",
+          "Historical primitive-attribution gap resolved locally by rewrite-only isolator."
+        ],
+        "blockers_remaining": [
+          "Full closure theorem identity/corollary Lean pack still pending."
+        ]
+      },
+      "claim_delta": {
+        "core_claim_id": "NG_MACRO_CLOSURE_DEFICIT.core",
+        "core_support_grade_before": "evidence_only",
+        "core_support_grade_after": "direct",
+        "guardrail_claim_ids": [
+          "NG_MACRO_CLOSURE_DEFICIT.guardrail"
+        ]
+      },
+      "remaining_blockers": [
+        "Fixed-lens/fixed-lag/current-law and anti-proxy scope remain explicit.",
+        "Primitive attribution remains analytically resolved but outside the Lean target."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_18_closure_scope_guardrail_hold",
+        "action": "Preserve fixed-lens/fixed-lag/current-law and anti-proxy guardrails explicitly in paper assembly for the closure front."
+      }
+    }
+  ]
+}

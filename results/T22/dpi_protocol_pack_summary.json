@@ -1,0 +1,18 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:39Z",
+  "theorem_count": 2,
+  "updated_theorem_ids": [
+    "NG_ARROW_DPI",
+    "NG_PROTOCOL_TRAP"
+  ],
+  "analytic_present_total": 8,
+  "overall_direct_core_count": 8,
+  "pack_direct_core_count": 2,
+  "guardrail_claim_count_for_pack": 2,
+  "protocol_scope_has_initial_law": true,
+  "reproduce_includes_t20": true,
+  "reproduce_includes_t21": true,
+  "reproduce_includes_t22": true,
+  "vision_present": true,
+  "status": "success"
+}

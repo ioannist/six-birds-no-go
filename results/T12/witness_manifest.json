@@ -1,0 +1,770 @@
+{
+  "generation_timestamp_utc": "2026-03-23T16:01:38Z",
+  "witness_count": 11,
+  "success_count": 11,
+  "partial_count": 0,
+  "failed_count": 0,
+  "expectation_fail_count": 0,
+  "witnesses": [
+    {
+      "witness_id": "rev_tree_4",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL"
+      ],
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": null,
+      "required_audit_count": 3,
+      "executed_audit_count": 3,
+      "expectation_pass_count": 3,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_CYCLE_RANK",
+          "context": null,
+          "status": "success",
+          "actual": 0,
+          "comparable_value": 0,
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_MAX_CYCLE_AFFINITY",
+          "context": null,
+          "status": "success",
+          "actual": "0/1",
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_ONEFORM_EXACTNESS",
+          "context": null,
+          "status": "success",
+          "actual": true,
+          "comparable_value": true,
+          "expected_relation": "eq",
+          "expected_value": true,
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "rev_cycle_3",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_FORCE_NULL"
+      ],
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": null,
+      "required_audit_count": 3,
+      "executed_audit_count": 3,
+      "expectation_pass_count": 3,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_CYCLE_RANK",
+          "context": null,
+          "status": "success",
+          "actual": 1,
+          "comparable_value": 1,
+          "expected_relation": "eq",
+          "expected_value": "1/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_MAX_CYCLE_AFFINITY",
+          "context": null,
+          "status": "success",
+          "actual": "0/1",
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_ONEFORM_EXACTNESS",
+          "context": null,
+          "status": "success",
+          "actual": true,
+          "comparable_value": true,
+          "expected_relation": "eq",
+          "expected_value": true,
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "biased_cycle_3",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_FORCE_NULL",
+        "NG_FORCE_FOREST"
+      ],
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": null,
+      "required_audit_count": 3,
+      "executed_audit_count": 3,
+      "expectation_pass_count": 3,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_CYCLE_RANK",
+          "context": null,
+          "status": "success",
+          "actual": 1,
+          "comparable_value": 1,
+          "expected_relation": "eq",
+          "expected_value": "1/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_MAX_CYCLE_AFFINITY",
+          "context": null,
+          "status": "success",
+          "actual": "7/1",
+          "comparable_value": "7/1",
+          "expected_relation": "gt",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_ONEFORM_EXACTNESS",
+          "context": null,
+          "status": "success",
+          "actual": false,
+          "comparable_value": false,
+          "expected_relation": "eq",
+          "expected_value": false,
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "hidden_clock_reversible",
+      "kind": "phase_lift_markov",
+      "theorem_targets": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "lens_ids": [
+        "identity",
+        "observe_x_binary",
+        "observe_clock_3"
+      ],
+      "package_id": null,
+      "required_audit_count": 4,
+      "executed_audit_count": 4,
+      "expectation_pass_count": 4,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_PATH_KL_MICRO",
+          "context": {
+            "horizon": "3"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "zero",
+            "support_mismatch_count": 0,
+            "log_terms": [],
+            "decimal_value": "0",
+            "precision": 80
+          },
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+          "context": {
+            "lens_id": "observe_x_binary",
+            "horizon": "3"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "zero",
+            "support_mismatch_count": 0,
+            "log_terms": [],
+            "decimal_value": "0",
+            "precision": 80
+          },
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+          "context": {
+            "lens_id": "observe_clock_3",
+            "horizon": "3"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "zero",
+            "support_mismatch_count": 0,
+            "log_terms": [],
+            "decimal_value": "0",
+            "precision": 80
+          },
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_PHASE_LIFT_REVERSIBILITY",
+          "context": null,
+          "status": "success",
+          "actual": true,
+          "comparable_value": true,
+          "expected_relation": "eq",
+          "expected_value": true,
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "hidden_clock_driven",
+      "kind": "phase_lift_markov",
+      "theorem_targets": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "lens_ids": [
+        "identity",
+        "observe_x_binary",
+        "observe_clock_3"
+      ],
+      "package_id": null,
+      "required_audit_count": 4,
+      "executed_audit_count": 4,
+      "expectation_pass_count": 4,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_PATH_KL_MICRO",
+          "context": {
+            "horizon": "3"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "finite_positive",
+            "support_mismatch_count": 0,
+            "log_terms": [
+              {
+                "ratio": "1/8",
+                "coeff": "1/27"
+              },
+              {
+                "ratio": "1/2",
+                "coeff": "2/9"
+              },
+              {
+                "ratio": "2/1",
+                "coeff": "4/9"
+              },
+              {
+                "ratio": "8/1",
+                "coeff": "8/27"
+              }
+            ],
+            "decimal_value": "0.69314718055994530941723212145817656807550013436025525412068000949339362196969471",
+            "precision": 80
+          },
+          "comparable_value": "0.69314718055994530941723212145817656807550013436025525412068000949339362196969471",
+          "expected_relation": "gt",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+          "context": {
+            "lens_id": "observe_x_binary",
+            "horizon": "3"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "zero",
+            "support_mismatch_count": 0,
+            "log_terms": [],
+            "decimal_value": "0",
+            "precision": 80
+          },
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+          "context": {
+            "lens_id": "observe_clock_3",
+            "horizon": "3"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "finite_positive",
+            "support_mismatch_count": 0,
+            "log_terms": [
+              {
+                "ratio": "1/8",
+                "coeff": "1/27"
+              },
+              {
+                "ratio": "1/2",
+                "coeff": "11/54"
+              },
+              {
+                "ratio": "2/1",
+                "coeff": "11/27"
+              },
+              {
+                "ratio": "8/1",
+                "coeff": "8/27"
+              }
+            ],
+            "decimal_value": "0.68031112166068706294654263772746959459262050224247274941474149079907151785914482",
+            "precision": 80
+          },
+          "comparable_value": "0.68031112166068706294654263772746959459262050224247274941474149079907151785914482",
+          "expected_relation": "gt",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_PHASE_LIFT_REVERSIBILITY",
+          "context": null,
+          "status": "success",
+          "actual": false,
+          "comparable_value": false,
+          "expected_relation": "eq",
+          "expected_value": false,
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "zero_closure_deficit_lumpable",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "lens_ids": [
+        "macro_AB"
+      ],
+      "package_id": null,
+      "required_audit_count": 2,
+      "executed_audit_count": 2,
+      "expectation_pass_count": 2,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_CLOSURE_DEFICIT",
+          "context": {
+            "lens_id": "macro_AB",
+            "tau": "1"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "zero",
+            "support_mismatch_count": 0,
+            "log_terms": [],
+            "decimal_value": "0",
+            "precision": 80
+          },
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_BEST_MACRO_GAP",
+          "context": {
+            "lens_id": "macro_AB",
+            "tau": "1"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "zero",
+            "support_mismatch_count": 0,
+            "log_terms": [],
+            "decimal_value": "0",
+            "precision": 80
+          },
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "positive_closure_deficit",
+      "kind": "markov_chain",
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "lens_ids": [
+        "macro_AB"
+      ],
+      "package_id": null,
+      "required_audit_count": 2,
+      "executed_audit_count": 2,
+      "expectation_pass_count": 2,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_CLOSURE_DEFICIT",
+          "context": {
+            "lens_id": "macro_AB",
+            "tau": "1"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "finite_positive",
+            "support_mismatch_count": 0,
+            "log_terms": [
+              {
+                "ratio": "3/4",
+                "coeff": "1/5"
+              },
+              {
+                "ratio": "3/2",
+                "coeff": "2/5"
+              }
+            ],
+            "decimal_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+            "precision": 80
+          },
+          "comparable_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+          "expected_relation": "gt",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_BEST_MACRO_GAP",
+          "context": {
+            "lens_id": "macro_AB",
+            "tau": "1"
+          },
+          "status": "success",
+          "actual": {
+            "kind": "finite_positive",
+            "support_mismatch_count": 0,
+            "log_terms": [
+              {
+                "ratio": "3/4",
+                "coeff": "1/5"
+              },
+              {
+                "ratio": "3/2",
+                "coeff": "2/5"
+              }
+            ],
+            "decimal_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+            "precision": 80
+          },
+          "comparable_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+          "expected_relation": "gt",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "contractive_unique_object",
+      "kind": "packaging_endomap",
+      "theorem_targets": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": "pkg_contract",
+      "required_audit_count": 2,
+      "executed_audit_count": 2,
+      "expectation_pass_count": 2,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_CONTRACTION_LAMBDA",
+          "context": {
+            "package_id": "pkg_contract"
+          },
+          "status": "success",
+          "actual": "0/1",
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_FIXED_POINT_COUNT",
+          "context": {
+            "package_id": "pkg_contract",
+            "space": "distribution_simplex"
+          },
+          "status": "success",
+          "actual": 1,
+          "comparable_value": 1,
+          "expected_relation": "eq",
+          "expected_value": "1/1",
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "noncontractive_multiobject",
+      "kind": "packaging_endomap",
+      "theorem_targets": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "lens_ids": [
+        "identity"
+      ],
+      "package_id": "pkg_multi",
+      "required_audit_count": 2,
+      "executed_audit_count": 2,
+      "expectation_pass_count": 2,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_FIXED_POINT_COUNT",
+          "context": {
+            "package_id": "pkg_multi",
+            "space": "microstate_endomap"
+          },
+          "status": "success",
+          "actual": 2,
+          "comparable_value": 2,
+          "expected_relation": "eq",
+          "expected_value": "2/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_IDEMPOTENCE_DEFECT",
+          "context": {
+            "package_id": "pkg_multi"
+          },
+          "status": "success",
+          "actual": "0/1",
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "fixed_idempotent_no_ladder",
+      "kind": "packaging_endomap",
+      "theorem_targets": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "lens_ids": [
+        "base_binary"
+      ],
+      "package_id": "pkg_fixed",
+      "required_audit_count": 3,
+      "executed_audit_count": 3,
+      "expectation_pass_count": 3,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_IDEMPOTENCE_DEFECT",
+          "context": {
+            "package_id": "pkg_fixed"
+          },
+          "status": "success",
+          "actual": "0/1",
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_INTERFACE_SIZE",
+          "context": {
+            "lens_id": "base_binary"
+          },
+          "status": "success",
+          "actual": 2,
+          "comparable_value": 2,
+          "expected_relation": "eq",
+          "expected_value": "2/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_DEFINABLE_PREDICATE_COUNT",
+          "context": {
+            "lens_id": "base_binary"
+          },
+          "status": "success",
+          "actual": 4,
+          "comparable_value": 4,
+          "expected_relation": "eq",
+          "expected_value": "4/1",
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "witness_id": "lens_extension_escape",
+      "kind": "extension_witness",
+      "theorem_targets": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "lens_ids": [
+        "base_binary",
+        "extended_ternary"
+      ],
+      "package_id": "pkg_fixed",
+      "required_audit_count": 5,
+      "executed_audit_count": 5,
+      "expectation_pass_count": 5,
+      "expectation_fail_count": 0,
+      "error_count": 0,
+      "execution_status": "success",
+      "audit_results": [
+        {
+          "audit_id": "AUDIT_IDEMPOTENCE_DEFECT",
+          "context": {
+            "package_id": "pkg_fixed"
+          },
+          "status": "success",
+          "actual": "0/1",
+          "comparable_value": "0/1",
+          "expected_relation": "eq",
+          "expected_value": "0/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_INTERFACE_SIZE",
+          "context": {
+            "lens_id": "base_binary"
+          },
+          "status": "success",
+          "actual": 2,
+          "comparable_value": 2,
+          "expected_relation": "eq",
+          "expected_value": "2/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_DEFINABLE_PREDICATE_COUNT",
+          "context": {
+            "lens_id": "base_binary"
+          },
+          "status": "success",
+          "actual": 4,
+          "comparable_value": 4,
+          "expected_relation": "eq",
+          "expected_value": "4/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_INTERFACE_SIZE",
+          "context": {
+            "lens_id": "extended_ternary"
+          },
+          "status": "success",
+          "actual": 3,
+          "comparable_value": 3,
+          "expected_relation": "eq",
+          "expected_value": "3/1",
+          "expectation_satisfied": true,
+          "error": null
+        },
+        {
+          "audit_id": "AUDIT_DEFINABLE_PREDICATE_COUNT",
+          "context": {
+            "lens_id": "extended_ternary"
+          },
+          "status": "success",
+          "actual": 8,
+          "comparable_value": 8,
+          "expected_relation": "eq",
+          "expected_value": "8/1",
+          "expectation_satisfied": true,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

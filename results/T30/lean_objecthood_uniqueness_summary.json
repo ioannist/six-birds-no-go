@@ -1,0 +1,33 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:41Z",
+  "theorem_count": 1,
+  "updated_theorem_ids": [
+    "NG_OBJECT_CONTRACTIVE"
+  ],
+  "outcome_mode": "direct_uniqueness_theorem",
+  "lean_direct_total": 7,
+  "lean_auxiliary_total": 1,
+  "lean_missing_total": 0,
+  "direct_uniqueness_theorem_present": true,
+  "formal_boundary_note_present": true,
+  "objecthood_lean_status_after": "auxiliary_only",
+  "strict_contraction_on_ne_explicit": true,
+  "at_most_one_fixed_point_formalized": true,
+  "discrete_model_example_present": true,
+  "formal_boundary_frozen": true,
+  "full_tv_bound_bridge_pending": false,
+  "lake_build_status": "passed",
+  "reproduce_includes_t20": true,
+  "reproduce_includes_t21": true,
+  "reproduce_includes_t22": true,
+  "reproduce_includes_t23": true,
+  "reproduce_includes_t24": true,
+  "reproduce_includes_t25": true,
+  "reproduce_includes_t26": true,
+  "reproduce_includes_t27": true,
+  "reproduce_includes_t28": true,
+  "reproduce_includes_t29": true,
+  "reproduce_includes_t30": true,
+  "vision_present": true,
+  "status": "success"
+}

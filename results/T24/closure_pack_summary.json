@@ -1,0 +1,23 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:39Z",
+  "theorem_count": 1,
+  "updated_theorem_ids": [
+    "NG_MACRO_CLOSURE_DEFICIT"
+  ],
+  "analytic_present_total": 8,
+  "overall_direct_core_count": 8,
+  "pack_direct_core_count": 1,
+  "attribution_outcome_mode": "resolved_by_local_isolator",
+  "primitive_attribution_resolved": true,
+  "local_isolator_present": true,
+  "local_isolator_rewrite_only": true,
+  "local_isolator_positive_closure": true,
+  "local_isolator_preserves_exact_null_force_context": true,
+  "reproduce_includes_t20": true,
+  "reproduce_includes_t21": true,
+  "reproduce_includes_t22": true,
+  "reproduce_includes_t23": true,
+  "reproduce_includes_t24": true,
+  "vision_present": true,
+  "status": "success"
+}

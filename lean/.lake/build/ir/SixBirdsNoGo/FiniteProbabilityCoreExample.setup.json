@@ -1,0 +1,9 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.FiniteProbabilityCoreExample",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.FiniteProbabilityCore":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCore.olean"]},
+ "dynlibs": []}

@@ -1,0 +1,71 @@
+{
+  "witness_id": "contractive_unique_object",
+  "denominator": 4,
+  "epsilon": "1/4",
+  "grid_points": [
+    {
+      "point": [
+        "0/1",
+        "1/1"
+      ],
+      "residual": "3/4",
+      "stable": false
+    },
+    {
+      "point": [
+        "1/4",
+        "3/4"
+      ],
+      "residual": "1/2",
+      "stable": false
+    },
+    {
+      "point": [
+        "1/2",
+        "1/2"
+      ],
+      "residual": "1/4",
+      "stable": true
+    },
+    {
+      "point": [
+        "3/4",
+        "1/4"
+      ],
+      "residual": "0/1",
+      "stable": true
+    },
+    {
+      "point": [
+        "1/1",
+        "0/1"
+      ],
+      "residual": "1/4",
+      "stable": true
+    }
+  ],
+  "stable_points": [
+    [
+      "1/2",
+      "1/2"
+    ],
+    [
+      "3/4",
+      "1/4"
+    ],
+    [
+      "1/1",
+      "0/1"
+    ]
+  ],
+  "bound_check": {
+    "lambda_coeff": "0/1",
+    "epsilon": "1/4",
+    "residual_a": "1/4",
+    "residual_b": "1/4",
+    "premises_hold": true,
+    "lhs_tv": "1/2",
+    "rhs_bound": "1/2",
+    "holds": true
+  }
+}

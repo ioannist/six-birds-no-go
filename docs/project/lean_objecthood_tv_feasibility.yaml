@@ -1,0 +1,201 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T15:10:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_objecthood": "docs/project/theorem_pack_objecthood.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_objecthood_uniqueness": "docs/project/lean_objecthood_uniqueness.yaml",
+    "t10_objecthood_metrics": "results/T10/objecthood_metrics.json",
+    "t10_stability_grid": "results/T10/stability_grid.json",
+    "t15_objecthood_metric_sweep": "results/T15/objecthood_metric_sweep.csv",
+    "t15_adversarial_cases": "results/T15/adversarial_cases.json",
+    "lean_probability_scope_charter": "docs/project/lean_probability_scope_charter.yaml",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "decision_mode": [
+      "proceed_to_tv_bridge",
+      "freeze_boundary_now"
+    ],
+    "obligation_status": [
+      "already_formalized",
+      "needed_narrow",
+      "requires_forbidden_expansion",
+      "out_of_scope"
+    ],
+    "frontier_status": [
+      "unchanged"
+    ],
+    "boundary_status": [
+      "frozen"
+    ]
+  },
+  "current_frontier_snapshot": {
+    "direct_ids": [
+      "NG_LADDER_IDEM",
+      "NG_FORCE_FOREST",
+      "NG_FORCE_NULL",
+      "NG_LADDER_BOUNDED_INTERFACE",
+      "NG_ARROW_DPI",
+      "NG_PROTOCOL_TRAP",
+      "NG_MACRO_CLOSURE_DEFICIT"
+    ],
+    "auxiliary_ids": [
+      "NG_OBJECT_CONTRACTIVE"
+    ],
+    "missing_ids": [],
+    "status": "unchanged",
+    "note": "Objecthood is now the only non-direct Lean front."
+  },
+  "theorem_target": {
+    "theorem_id": "NG_OBJECT_CONTRACTIVE",
+    "current_lean_status": "auxiliary_only",
+    "theorem_statement": "Under total-variation/Dobrushin contraction with lambda < 1, packaging has a unique fixed distribution, and any two epsilon-stable packaged states satisfy the sharp TV separation bound, ruling out multiple well-separated robust objects at that scale.",
+    "analytic_status": "present",
+    "uniqueness_core_status": "Direct uniqueness core already formalized in T30.",
+    "note": "The remaining target is the admissible TV/Dobrushin + epsilon-stable bridge, not the uniqueness core."
+  },
+  "decision_policy": {
+    "proceed_only_if_all_missing_obligations_narrow": true,
+    "forbid_broad_metric_library": true,
+    "forbid_broad_analysis_layer": true,
+    "forbid_generic_fixed_point_library": true,
+    "proxy_metrics_out_of_scope": true,
+    "noncontractive_context_out_of_scope": true,
+    "no_status_changes_in_t43": true,
+    "note": "This spike is a theorem-driven boundary decision, not a library-expansion ticket."
+  },
+  "obligation_matrix": [
+    {
+      "obligation_id": "OBJ_BASE_FINITE_LAWS",
+      "description": "Existing finite-law substrate for finitely supported exact laws.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_DISTRIBUTIONS"
+      ],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "T36/T37/T42 already provide the finite exact law substrate."
+    },
+    {
+      "obligation_id": "OBJ_STRICT_CONTRACTION_UNIQUENESS_CORE",
+      "description": "Strict-contraction uniqueness core already formalized for the objecthood front.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_FINITE_DISTRIBUTIONS"
+      ],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "T30 already formalizes the uniqueness core used as the admissible starting point."
+    },
+    {
+      "obligation_id": "OBJ_TV_DISTANCE_ON_FINITE_LAWS",
+      "description": "Exact total-variation distance on finite laws.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_OBJECTHOOD_METRIC_REVISIT",
+        "FP_FINITE_DISTRIBUTIONS"
+      ],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "This can be stated as a finite law-level quantity without a broad metric-space library."
+    },
+    {
+      "obligation_id": "OBJ_TV_TRIANGLE_AND_ZERO_LEMMAS",
+      "description": "Triangle inequality and zero/self lemmas sufficient for the theorem front.",
+      "status": "already_formalized",
+      "required_foundation_ids": [
+        "FP_OBJECTHOOD_METRIC_REVISIT",
+        "FP_FINITE_DISTRIBUTIONS"
+      ],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "Only the finite TV lemmas actually consumed by the theorem are needed."
+    },
+    {
+      "obligation_id": "OBJ_DOBRUSHIN_CONTRACTION_INTERFACE",
+      "description": "Admissible TV/Dobrushin contraction interface on the theorem object.",
+      "status": "requires_forbidden_expansion",
+      "required_foundation_ids": [
+        "FP_OBJECTHOOD_METRIC_REVISIT",
+        "FP_FINITE_DISTRIBUTIONS"
+      ],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "A faithful admissible TV/Dobrushin layer would require a broader metric/analysis interface than this repo allows."
+    },
+    {
+      "obligation_id": "OBJ_FIXED_DISTRIBUTION_ON_FINITE_LAWS",
+      "description": "Fixed-distribution predicate in the same finite law space.",
+      "status": "needed_narrow",
+      "required_foundation_ids": [
+        "FP_OBJECTHOOD_METRIC_REVISIT",
+        "FP_FINITE_DISTRIBUTIONS"
+      ],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "A local fixed-distribution predicate over finite laws remains narrow."
+    },
+    {
+      "obligation_id": "OBJ_TV_EPS_STABILITY_PREDICATE",
+      "description": "Epsilon-stability defined in the admissible theorem metric.",
+      "status": "needed_narrow",
+      "required_foundation_ids": [
+        "FP_OBJECTHOOD_METRIC_REVISIT",
+        "FP_FINITE_DISTRIBUTIONS"
+      ],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "This is a local theorem-facing predicate built directly on finite TV distance."
+    },
+    {
+      "obligation_id": "OBJ_APPROXIMATE_OBJECT_SEPARATION_BOUND",
+      "description": "Exact theorem-facing separation bound from contraction plus epsilon-stability.",
+      "status": "requires_forbidden_expansion",
+      "required_foundation_ids": [
+        "FP_OBJECTHOOD_METRIC_REVISIT",
+        "FP_FINITE_DISTRIBUTIONS"
+      ],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "The theorem-facing separation proof would require the broader forbidden metric/analysis expansion."
+    },
+    {
+      "obligation_id": "OBJ_PROXY_AND_NONCONTRACTIVE_CONTEXT_OUT_OF_SCOPE",
+      "description": "Proxy clustering and noncontractive contextual cases remain outside the Lean theorem target.",
+      "status": "out_of_scope",
+      "required_foundation_ids": [],
+      "theorem_consumers": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "note": "Proxy clustering and noncontractive contextual cases remain outside the admissible theorem regime."
+    }
+  ],
+  "decision": {
+    "decision_mode": "freeze_boundary_now",
+    "rationale": "At least one remaining theorem-core obligation would require a forbidden broad metric or analysis expansion, so the uniqueness core is frozen as the permanent boundary.",
+    "next_ticket_id": null,
+    "next_ticket_title": null,
+    "t44_branch": "freeze_permanent_auxiliary_boundary",
+    "formal_boundary_note_ref": "docs/project/lean_objecthood_tv_formal_boundary.md",
+    "status": "frozen"
+  },
+  "non_goals": [
+    "proxy clustering metrics are not part of the Lean target",
+    "noncontractive contextual cases are not part of the Lean target",
+    "no broad metric-space library",
+    "no broad real-analysis layer",
+    "no generic fixed-point library",
+    "no theorem status changes in T43"
+  ]
+}

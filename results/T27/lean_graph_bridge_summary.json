@@ -1,0 +1,28 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:39Z",
+  "theorem_count": 2,
+  "updated_theorem_ids": [
+    "NG_FORCE_FOREST",
+    "NG_FORCE_NULL"
+  ],
+  "lean_direct_total": 7,
+  "lean_auxiliary_total": 1,
+  "lean_missing_total": 0,
+  "forest_direct": true,
+  "null_direct": true,
+  "forest_bridge_uses_tree_exactness": true,
+  "forest_bridge_has_zero_closed_walk_corollary": true,
+  "null_bridge_uses_closed_walk_exactness": true,
+  "lake_build_passed": true,
+  "lake_build_status": "passed",
+  "reproduce_includes_t20": true,
+  "reproduce_includes_t21": true,
+  "reproduce_includes_t22": true,
+  "reproduce_includes_t23": true,
+  "reproduce_includes_t24": true,
+  "reproduce_includes_t25": true,
+  "reproduce_includes_t26": true,
+  "reproduce_includes_t27": true,
+  "vision_present": true,
+  "status": "success"
+}

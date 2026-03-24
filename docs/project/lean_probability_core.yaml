@@ -1,0 +1,86 @@
+{
+  "version": "T36",
+  "generated_at_utc": "2026-03-19T15:10:00Z",
+  "source_context": {
+    "scope_charter": "docs/project/lean_probability_scope_charter.yaml",
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "component_status": [
+      "formalized",
+      "pending"
+    ],
+    "frontier_status": [
+      "unchanged"
+    ]
+  },
+  "implemented_foundations": [
+    {
+      "foundation_id": "FP_FINITE_DISTRIBUTIONS",
+      "component_status": "formalized",
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteProbabilityCore.lean",
+        "lean/SixBirdsNoGo/FiniteProbabilityCoreExample.lean"
+      ],
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "Exact finitely supported laws are formalized as explicit weighted finite-entry objects over finite states and path states."
+    },
+    {
+      "foundation_id": "FP_DETERMINISTIC_PUSHFORWARD",
+      "component_status": "formalized",
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteProbabilityCore.lean",
+        "lean/SixBirdsNoGo/FiniteProbabilityCoreExample.lean"
+      ],
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "note": "Deterministic pushforward is formalized for state laws and lifted path laws with exact mass preservation."
+    },
+    {
+      "foundation_id": "FP_FIXED_HORIZON_PATH_LAWS",
+      "component_status": "formalized",
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteProbabilityCore.lean",
+        "lean/SixBirdsNoGo/FiniteProbabilityCoreExample.lean"
+      ],
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "Fixed-horizon path laws, exact marginals, and two-time marginals are formalized as the finite substrate for later path-law and closure work."
+    }
+  ],
+  "pending_foundations": [],
+  "frontier_status_snapshot": {
+    "direct_ids": [
+      "NG_LADDER_IDEM",
+      "NG_FORCE_FOREST",
+      "NG_FORCE_NULL",
+      "NG_LADDER_BOUNDED_INTERFACE",
+      "NG_ARROW_DPI",
+      "NG_PROTOCOL_TRAP",
+      "NG_MACRO_CLOSURE_DEFICIT"
+    ],
+    "auxiliary_ids": [
+      "NG_OBJECT_CONTRACTIVE"
+    ],
+    "missing_ids": [],
+    "status": "unchanged"
+  },
+  "milestone_handoff": {
+    "next_ticket_id": null,
+    "next_ticket_title": null,
+    "note": "The Lean frontier is explicitly bounded at the objecthood auxiliary boundary."
+  }
+}

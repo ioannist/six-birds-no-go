@@ -1,0 +1,262 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[landscape,margin=0.75in]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{orcidlink}
+\setlength{\emergencystretch}{3em}
+
+\renewcommand{\texttt}[1]{{\ttfamily\hyphenchar\font=`\-\relax
+   \def\_{\textunderscore\penalty50 }\def\/{\char`\/\penalty50 }#1}}
+
+\title{Six Birds: No-Go Theorems for Audited Emergence: Supplement}
+\author{Ioannis Tsiokos\,\orcidlink{0009-0009-7659-5964}}
+\date{March 23, 2026}
+
+\begin{document}
+\maketitle
+\section*{How to use this supplement}
+This supplement collects the repo-facing apparatus that accompanies the main theorem paper.
+The source repository for the paper, supplement, and reproducibility artifacts is available at \url{https://github.com/ioannist/six-birds-no-go}.
+It has two purposes.
+First, it records provenance, evidence bindings, reproducibility commands, and fragility guardrails in one place.
+Second, it summarizes the distribution of Lean support across the eight theorem fronts without interrupting the mathematical flow of the main text.
+
+The main paper is intended to stand on its own as a theorem paper.
+The present supplement is therefore organized around audit and provenance questions: where each claim is bound, which frozen assets support it, which reproduce steps build the relevant summaries, and where the formal boundary is explicitly frozen.
+ \section{Provenance narrative}
+The theorem line is assembled from a fixed project spine.
+The theorem order and section homes come from \texttt{docs/project/theorem\_atlas.yaml}.
+The formal statements used in the LaTeX theorem blocks come from \texttt{docs/project/theorem\_statement\_sheet.yaml}, and notation is stabilized in \texttt{docs/project/notation\_registry.yaml}.
+
+Claim-level bindings are frozen in \texttt{docs/project/claim\_audit\_freeze.yaml} and \texttt{docs/project/theorem\_evidence\_map.yaml}.
+Asset choices are frozen in \texttt{docs/project/paper\_asset\_freeze.yaml} and \texttt{docs/project/caption\_registry.yaml}.
+Readiness and formal-support status are tracked in \texttt{docs/project/readiness\_checklist.yaml} together with the per-front Lean bridge files under \texttt{docs/project/lean\_*.yaml}.
+
+The supplement tables below therefore do not introduce new mathematical claims.
+They record how the frozen theorem fronts, claim rows, assets, and executable audit artifacts are aligned in the packaged repo state.
+ \section{Theorem--evidence map}
+This section records the frozen claim bindings, evidence handles, and asset/callout decisions used by the theorem fronts.
+The first table is generated from \texttt{docs/project/theorem\_evidence\_map.yaml}, \texttt{docs/project/paper\_asset\_freeze.yaml}, and \texttt{docs/project/caption\_registry.yaml}.
+The second table summarizes the frozen callout bindings and their primary sources.
+
+{\footnotesize
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.17\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth} >{\raggedright\arraybackslash}p{0.19\textwidth}}
+\caption{Claim-level theorem--evidence bindings.}\label{tab:evidence-map}\\
+\toprule
+Theorem & Claim & Primary handle & Evidence artifacts & Asset / callout decision\\
+\midrule
+\endfirsthead
+\toprule
+Theorem & Claim & Primary handle & Evidence artifacts & Asset / callout decision\\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page}\\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{NG\_ARROW\_DPI} & \texttt{NG\_ARROW\_DPI.core} & \texttt{results/T08/arrow\_metrics.json} & \texttt{results/T08/arrow\_metrics.json}; \texttt{results/T15/initial\_distribution\_sweep.csv} & FIG-2:repo\_asset; Figure 2 ([FIG-2]). Hidden-clock DPI / protocol matrix: honest observ…\\
+\texttt{NG\_PROTOCOL\_TRAP} & \texttt{NG\_PROTOCOL\_TRAP.core} & \texttt{results/T15/initial\_distribution\_sweep.csv} & \texttt{results/T15/initial\_distribution\_sweep.csv}; \texttt{results/T08/arrow\_metrics.json} & FIG-2:repo\_asset; Figure 2 ([FIG-2]). Hidden-clock DPI / protocol matrix: honest observ…\\
+\texttt{NG\_FORCE\_FOREST} & \texttt{NG\_FORCE\_FOREST.core} & \texttt{results/T14/primitive\_coverage.json} & \texttt{results/T14/primitive\_coverage.json}; \texttt{results/master/witness\_metrics.csv} & FIG-3:repo\_asset; Figure 3 ([FIG-3]). Graph / affinity contrasts: forest support remove…\\
+\texttt{NG\_FORCE\_NULL} & \texttt{NG\_FORCE\_NULL.core} & \texttt{results/master/witness\_metrics.csv} & \texttt{results/master/witness\_metrics.csv} & FIG-3:repo\_asset; Figure 3 ([FIG-3]). Graph / affinity contrasts: forest support remove…\\
+\texttt{NG\_MACRO\_CLOSURE\_DEFICIT} & \texttt{NG\_MACRO\_CLOSURE\_DEFICIT.core} & \texttt{results/T09/closure\_metrics.json} & \texttt{results/T09/closure\_metrics.json}; \texttt{results/T09/grid\_check.json} & FIG-4:repo\_asset; Figure 4 ([FIG-4]). Closure front: exact packaged future laws define …\\
+\texttt{NG\_OBJECT\_CONTRACTIVE} & \texttt{NG\_OBJECT\_CONTRACTIVE.core} & \texttt{results/T10/objecthood\_metrics.json} & \texttt{results/T10/objecthood\_metrics.json}; \texttt{results/T10/stability\_grid.json} & FIG-5:repo\_asset; Figure 5 ([FIG-5]). Objecthood front: in the admissible total-variati…\\
+\texttt{NG\_LADDER\_IDEM} & \texttt{NG\_LADDER\_IDEM.core} & \texttt{results/T11/no\_ladder\_demos.json} & \texttt{results/T11/no\_ladder\_demos.json}; \texttt{results/T11/definability\_metrics.json} & FIG-6:repo\_asset; Figure 6 ([FIG-6]). Ladder front: fixed idempotent packaging saturate…\\
+\texttt{NG\_LADDER\_BOUNDED\_INTERFACE} & \texttt{NG\_LADDER\_BOUNDED\_INTERFACE.core} & \texttt{results/T11/definability\_metrics.json} & \texttt{results/T11/definability\_metrics.json}; \texttt{results/T11/no\_ladder\_demos.json} & TBL-6:repo\_asset; Table 6 ([TBL-6]). Ladder theorem evidence, count core, and corollary…\\
+\texttt{NG\_ARROW\_DPI} & \texttt{NG\_ARROW\_DPI.guardrail} & \texttt{results/T15/adversarial\_cases.json} & \texttt{results/T15/adversarial\_cases.json}; \texttt{results/T15/initial\_distribution\_sweep.csv} & TBL-2:repo\_asset; Table 2 ([TBL-2]). Arrow / protocol theorem evidence and guardrails: …\\
+\texttt{NG\_PROTOCOL\_TRAP} & \texttt{NG\_PROTOCOL\_TRAP.guardrail} & \texttt{results/T15/initial\_distribution\_sweep.csv} & \texttt{results/T15/initial\_distribution\_sweep.csv} & TBL-2:repo\_asset; Table 2 ([TBL-2]). Arrow / protocol theorem evidence and guardrails: …\\
+\texttt{NG\_FORCE\_FOREST} & \texttt{NG\_FORCE\_FOREST.guardrail} & \texttt{results/T15/threshold\_sweep.csv} & \texttt{results/T15/threshold\_sweep.csv}; \texttt{results/T14/primitive\_coverage.json} & TBL-3:repo\_asset; Table 3 ([TBL-3]). Graph / affinity theorem evidence and guardrails: …\\
+\texttt{NG\_FORCE\_NULL} & \texttt{NG\_FORCE\_NULL.guardrail} & \texttt{results/T15/threshold\_sweep.csv} & \texttt{results/T15/threshold\_sweep.csv}; \texttt{results/T14/primitive\_coverage.json} & TBL-3:repo\_asset; Table 3 ([TBL-3]). Graph / affinity theorem evidence and guardrails: …\\
+\texttt{NG\_MACRO\_CLOSURE\_DEFICIT} & \texttt{NG\_MACRO\_CLOSURE\_DEFICIT.guardrail} & \texttt{results/T09/grid\_check.json} & \texttt{results/T09/grid\_check.json}; \texttt{results/T09/closure\_metrics.json} & TBL-4:repo\_asset; Table 4 ([TBL-4]). Closure theorem evidence and provenance: the direc…\\
+\texttt{NG\_OBJECT\_CONTRACTIVE} & \texttt{NG\_OBJECT\_CONTRACTIVE.guardrail} & \texttt{results/T15/objecthood\_metric\_sweep.csv} & \texttt{results/T15/objecthood\_metric\_sweep.csv}; \texttt{results/T10/stability\_grid.json} & TBL-5:repo\_asset; Table 5 ([TBL-5]). Objecthood admissible regime and guardrail matrix:…\\
+\texttt{NG\_LADDER\_BOUNDED\_INTERFACE} & \texttt{NG\_LADDER\_BOUNDED\_INTERFACE.guardrail} & \texttt{results/T11/no\_ladder\_demos.json} & \texttt{results/T11/no\_ladder\_demos.json}; \texttt{results/T11/definability\_metrics.json} & FIG-6:repo\_asset; Figure 6 ([FIG-6]). Ladder front: fixed idempotent packaging saturate…\\
+\end{longtable}
+}
+ 
+{\scriptsize
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.06\textwidth} >{\raggedright\arraybackslash}p{0.14\textwidth} >{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.33\textwidth}}
+\caption{Frozen callout bindings and caption decisions.}\label{tab:callout-map}\\
+\toprule
+Callout & Theorem ids & Primary source & Supporting refs & Caption / note\\
+\midrule
+\endfirsthead
+\toprule
+Callout & Theorem ids & Primary source & Supporting refs & Caption / note\\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page}\\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{FIG-1} & none & \texttt{authored:theory-package-and-audit-convention-schematic} & \texttt{docs/project/theorem\_atlas.yaml}; \texttt{docs/project/claim\_audit\_freeze.yaml} & Figure 1 ([FIG-1]). Finite audited theory package and audit-convention schematic: microstate s…\\
+\texttt{FIG-2} & \texttt{NG\_ARROW\_DPI}; \texttt{NG\_PROTOCOL\_TRAP} & \texttt{results/T15/horizon\_lens\_sweep.csv} & \texttt{results/T08/arrow\_metrics.json}; \texttt{results/T15/initial\_distribution\_sweep.csv} & Figure 2 ([FIG-2]). Hidden-clock DPI / protocol matrix: honest observed path-reversal KL can s…\\
+\texttt{FIG-3} & \texttt{NG\_FORCE\_FOREST}; \texttt{NG\_FORCE\_NULL} & \texttt{results/T14/primitive\_coverage.json} & \texttt{results/master/witness\_metrics.csv} & Figure 3 ([FIG-3]). Graph / affinity contrasts: forest support removes cycle-space obstruction…\\
+\texttt{FIG-4} & \texttt{NG\_MACRO\_CLOSURE\_DEFICIT} & \texttt{results/T09/closure\_metrics.json} & \texttt{results/T09/grid\_check.json} & Figure 4 ([FIG-4]). Closure front: exact packaged future laws define the finite variational ob…\\
+\texttt{FIG-5} & \texttt{NG\_OBJECT\_CONTRACTIVE} & \texttt{results/T10/objecthood\_metrics.json} & \texttt{results/T10/stability\_grid.json} & Figure 5 ([FIG-5]). Objecthood front: in the admissible total-variation regime, contraction yi…\\
+\texttt{FIG-6} & \texttt{NG\_LADDER\_IDEM}; \texttt{NG\_LADDER\_BOUNDED\_INTERFACE} & \texttt{results/T11/no\_ladder\_demos.json} & \texttt{results/T11/definability\_metrics.json} & Figure 6 ([FIG-6]). Ladder front: fixed idempotent packaging saturates after one step, bounded…\\
+\texttt{TBL-1} & \texttt{NG\_ARROW\_DPI}; \texttt{NG\_PROTOCOL\_TRAP}; \texttt{NG\_FORCE\_FOREST}; \texttt{NG\_FORCE\_NULL}; +4 more & \texttt{results/master/witness\_metrics.csv} & \texttt{results/master/witness\_manifest.json} & Table 1 ([TBL-1]). Theorem front map and support snapshot: the eight theorem fronts, their sec…\\
+\texttt{TBL-2} & \texttt{NG\_ARROW\_DPI}; \texttt{NG\_PROTOCOL\_TRAP} & \texttt{results/T15/adversarial\_cases.json} & \texttt{results/T15/initial\_distribution\_sweep.csv} & Table 2 ([TBL-2]). Arrow / protocol theorem evidence and guardrails: the paper binds the arrow…\\
+\texttt{TBL-3} & \texttt{NG\_FORCE\_FOREST}; \texttt{NG\_FORCE\_NULL} & \texttt{results/T15/threshold\_sweep.csv} & \texttt{results/T14/primitive\_coverage.json} & Table 3 ([TBL-3]). Graph / affinity theorem evidence and guardrails: exact-support cycle infor…\\
+\texttt{TBL-4} & \texttt{NG\_MACRO\_CLOSURE\_DEFICIT} & \texttt{results/T09/grid\_check.json} & \texttt{results/T09/closure\_metrics.json} & Table 4 ([TBL-4]). Closure theorem evidence and provenance: the direct pack uses exact variati…\\
+\texttt{TBL-5} & \texttt{NG\_OBJECT\_CONTRACTIVE} & \texttt{results/T15/objecthood\_metric\_sweep.csv} & \texttt{results/T10/stability\_grid.json} & Table 5 ([TBL-5]). Objecthood admissible regime and guardrail matrix: exact contraction metric…\\
+\texttt{TBL-6} & \texttt{NG\_LADDER\_IDEM}; \texttt{NG\_LADDER\_BOUNDED\_INTERFACE} & \texttt{results/T11/definability\_metrics.json} & \texttt{results/T11/no\_ladder\_demos.json} & Table 6 ([TBL-6]). Ladder theorem evidence, count core, and corollary map: no-ladder demos, ex…\\
+\texttt{TBL-A1} & \texttt{NG\_ARROW\_DPI}; \texttt{NG\_PROTOCOL\_TRAP}; \texttt{NG\_FORCE\_FOREST}; \texttt{NG\_FORCE\_NULL}; +4 more & \texttt{results/master/witness\_manifest.json} & \texttt{results/master/witness\_metrics.csv} & Table A1 ([TBL-A1]). Artifact and evidence provenance map: each frozen core or guardrail claim…\\
+\texttt{TBL-A2} & \texttt{NG\_ARROW\_DPI}; \texttt{NG\_PROTOCOL\_TRAP}; \texttt{NG\_FORCE\_FOREST}; \texttt{NG\_FORCE\_NULL}; +4 more & \texttt{derived:lean-support-and-proof-dependency-map} & \texttt{docs/project/readiness\_checklist.yaml}; \texttt{docs/project/theorem\_atlas.yaml} & Table A2 ([TBL-A2]). Lean support and proof dependency map: seven fronts are direct, objecthoo…\\
+\end{longtable}
+}
+  \section{Computational audit and artifact manifest}
+The canonical command for rebuilding the computational side of the project is \texttt{make reproduce}.
+That command drives the reproducibility pipeline, refreshes theorem-pack summaries, Lean summaries, and rewrite-lane validations, and writes a manifest at \texttt{results/manifest/artifact\_manifest.json}.
+The pipeline is deterministic up to the frozen repo contents and toolchain recorded in the manifest.
+
+{\footnotesize
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.58\textwidth}}
+\caption{Reproducibility manifest overview.}\label{tab:manifest-overview}\\
+\toprule
+Field & Value\\
+\midrule
+\endfirsthead
+\toprule
+Field & Value\\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{Continued on next page}\\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+Canonical command & \texttt{make reproduce}\\
+Manifest status & success\\
+Generated at UTC & \texttt{2026-03-22T07:25:15Z}\\
+Total pipeline steps & 62\\
+Hashed files & 350\\
+Failed steps & 0\\
+\end{longtable}
+}
+ 
+The table below lists the theorem-pack and Lean-check steps that are directly relevant to theorem evidence in the main paper, together with the summary JSON outputs they refresh.
+
+{\footnotesize
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}p{0.10\textwidth} >{\raggedright\arraybackslash}p{0.32\textwidth} >{\raggedright\arraybackslash}p{0.26\textwidth}}
+\caption{Theorem-pack and Lean-check steps relevant to theorem evidence.}\label{tab:relevant-steps}\\
+\toprule
+Step & Status & Command & Summary outputs\\
+\midrule
+\endfirsthead
+\toprule
+Step & Status & Command & Summary outputs\\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{Continued on next page}\\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{run\_t15\_robustness\_suite} & passed & \texttt{python3 scripts/run\_t15\_robustness\_suite.py} & \texttt{results/T15/fragility\_summary.json}\\
+\texttt{run\_t22\_dpi\_protocol\_pack} & passed & \texttt{python3 scripts/run\_t22\_dpi\_protocol\_pack.py} & \texttt{results/T22/dpi\_protocol\_pack\_summary.json}\\
+\texttt{run\_t23\_graph\_affinity\_pack} & passed & \texttt{python3 scripts/run\_t23\_graph\_affinity\_pack.py} & \texttt{results/T23/graph\_affinity\_pack\_summary.json}\\
+\texttt{run\_t24\_closure\_pack} & passed & \texttt{python3 scripts/run\_t24\_closure\_pack.py} & \texttt{results/T24/closure\_pack\_summary.json}\\
+\texttt{run\_t25\_objecthood\_pack} & passed & \texttt{python3 scripts/run\_t25\_objecthood\_pack.py} & \texttt{results/T25/objecthood\_pack\_summary.json}\\
+\texttt{run\_t26\_bounded\_interface\_pack} & passed & \texttt{python3 scripts/run\_t26\_bounded\_interface\_pack.py} & \texttt{results/T26/bounded\_interface\_pack\_summary.json}\\
+\texttt{run\_t27\_lean\_graph\_bridge} & passed & \texttt{python3 scripts/run\_t27\_lean\_graph\_bridge.py} & \texttt{results/T27/lean\_graph\_bridge\_summary.json}\\
+\texttt{run\_t28\_lean\_finite\_lens\_count} & passed & \texttt{python3 scripts/run\_t28\_lean\_finite\_lens\_count.py} & \texttt{results/T28/lean\_finite\_lens\_count\_summary.json}\\
+\texttt{run\_t29\_lean\_bounded\_interface\_corollary} & passed & \texttt{python3 scripts/run\_t29\_lean\_bounded\_interface\_corollary.py} & \texttt{results/T29/lean\_bounded\_interface\_corollary\_summary.json}\\
+\texttt{run\_t30\_lean\_objecthood\_uniqueness} & passed & \texttt{python3 scripts/run\_t30\_lean\_objecthood\_uniqueness.py} & \texttt{results/T30/lean\_objecthood\_uniqueness\_summary.json}\\
+\texttt{run\_t31\_paper\_skeleton} & passed & \texttt{python3 scripts/run\_t31\_paper\_skeleton.py} & \texttt{results/T31/paper\_skeleton\_summary.json}\\
+\texttt{run\_t32\_asset\_freeze} & passed & \texttt{python3 scripts/run\_t32\_asset\_freeze.py} & \texttt{results/T32/asset\_freeze\_summary.json}\\
+\texttt{run\_t33\_draft\_v1} & passed & \texttt{python3 scripts/run\_t33\_draft\_v1.py} & \texttt{results/T33/draft\_v1\_summary.json}\\
+\texttt{run\_t34\_red\_team\_review} & passed & \texttt{python3 scripts/run\_t34\_red\_team\_review.py} & \texttt{results/T34/red\_team\_summary.json}\\
+\texttt{run\_t35\_scope\_charter} & passed & \texttt{python3 scripts/run\_t35\_scope\_charter.py} & \texttt{results/T35/lean\_probability\_scope\_charter\_summary.json}\\
+\texttt{run\_t36\_lean\_probability\_core} & passed & \texttt{python3 scripts/run\_t36\_lean\_probability\_core.py} & \texttt{results/T36/lean\_probability\_core\_summary.json}\\
+\texttt{run\_t37\_lean\_kl\_dpi\_core} & passed & \texttt{python3 scripts/run\_t37\_lean\_kl\_dpi\_core.py} & \texttt{results/T37/lean\_kl\_dpi\_core\_summary.json}\\
+\texttt{run\_t38\_lean\_arrow\_dpi} & passed & \texttt{python3 scripts/run\_t38\_lean\_arrow\_dpi.py} & \texttt{results/T38/lean\_arrow\_dpi\_summary.json}\\
+\texttt{run\_t39\_lean\_protocol\_trap} & passed & \texttt{python3 scripts/run\_t39\_lean\_protocol\_trap.py} & \texttt{results/T39/lean\_protocol\_trap\_summary.json}\\
+\texttt{run\_t40\_closure\_feasibility} & passed & \texttt{python3 scripts/run\_t40\_closure\_feasibility.py} & \texttt{results/T40/lean\_closure\_feasibility\_summary.json}\\
+\texttt{run\_t41\_lean\_closure\_variational\_core} & passed & \texttt{python3 scripts/run\_t41\_lean\_closure\_variational\_core.py} & \texttt{results/T41/lean\_closure\_variational\_core\_summary.json}\\
+\texttt{run\_t42\_lean\_closure\_direct\_pack} & passed & \texttt{python3 scripts/run\_t42\_lean\_closure\_direct\_pack.py} & \texttt{results/T42/lean\_closure\_direct\_pack\_summary.json}\\
+\texttt{run\_t43\_objecthood\_tv\_feasibility} & passed & \texttt{python3 scripts/run\_t43\_objecthood\_tv\_feasibility.py} & \texttt{results/T43/lean\_objecthood\_tv\_feasibility\_summary.json}\\
+\texttt{run\_t44\_lean\_objecthood\_direct\_pack} & passed & \texttt{python3 scripts/run\_t44\_lean\_objecthood\_direct\_pack.py} & \texttt{results/T44/lean\_objecthood\_direct\_pack\_summary.json}\\
+\end{longtable}
+}
+  \section{Fragility diagnostics}
+The main paper states theorem objects in exact finite terms.
+The fragility layer records where nearby proxy choices can distort interpretation without changing the underlying theorem statements.
+The frozen source for this section is \texttt{results/T15/fragility\_summary.json}, together with the guardrail claims in \texttt{docs/project/claim\_audit\_freeze.yaml}.
+
+The dominant risks are: changing the initial law in stationary arrow claims, changing the observation lens, fitting first-order macro proxies, thresholding exact support graphs, and switching to non-admissible objecthood metrics.
+Each such move is a scope change or a proxy diagnostic, not an in-theorem modification of the audited object.
+
+{\footnotesize
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}p{0.08\textwidth} >{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth}}
+\caption{Fragility items and their frozen guardrails.}\label{tab:fragility-map}\\
+\toprule
+Fragility item & Severity & Affected claims & Guardrail claim & Mitigation / note\\
+\midrule
+\endfirsthead
+\toprule
+Fragility item & Severity & Affected claims & Guardrail claim & Mitigation / note\\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page}\\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{stationary\_zero\_arrow\_is\_fragile\_to\_initial\_distribution} & high & \texttt{NG\_PROTOCOL\_TRAP.core} & \texttt{NG\_PROTOCOL\_TRAP.guardrail} & Protocol-trap claims must be stated on the lifted chain or honest observed path law, under sta…\\
+\texttt{macro\_arrow\_depends\_strongly\_on\_lens\_choice} & high & \texttt{NG\_ARROW\_DPI.core}; \texttt{NG\_PROTOCOL\_TRAP.core} & \texttt{NG\_ARROW\_DPI.guardrail} & Fitted first-order macro proxies are not theorem-level arrow audits and can create or distort …\\
+\texttt{fitted\_markov\_proxy\_can\_create\_or\_distort\_macro\_arrow} & high & \texttt{NG\_ARROW\_DPI.guardrail}; \texttt{NG\_PROTOCOL\_TRAP.guardrail}; \texttt{NG\_MACRO\_CLOSURE\_DEFICIT.guardrail} & \texttt{NG\_ARROW\_DPI.guardrail} & Fitted first-order macro proxies are not theorem-level arrow audits and can create or distort …\\
+\texttt{threshold\_floors\_can\_introduce\_spurious\_one\_way\_support} & medium & \texttt{NG\_FORCE\_FOREST.guardrail}; \texttt{NG\_FORCE\_NULL.guardrail} & \texttt{NG\_FORCE\_NULL.guardrail} & Thresholding or regularization can distort exactness and affinity interpretation; theorem clai…\\
+\texttt{object\_multiplicity\_can\_be\_metric\_artifact} & medium & \texttt{NG\_OBJECT\_CONTRACTIVE.guardrail} & \texttt{NG\_OBJECT\_CONTRACTIVE.guardrail} & Theorem objecthood claims must use admissible total-variation/Dobrushin metric assumptions; pr…\\
+\end{longtable}
+}
+  \section{Formalization support map}
+This section summarizes the distribution of Lean support across the eight theorem fronts.
+The table is generated from \texttt{docs/project/readiness\_checklist.yaml} together with the frozen Lean bridge files under \texttt{docs/project/lean\_*.yaml}.
+
+{\scriptsize
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.10\textwidth} >{\raggedright\arraybackslash}p{0.38\textwidth} >{\raggedright\arraybackslash}p{0.24\textwidth}}
+\caption{Lean support distribution across theorem fronts.}\label{tab:lean-map}\\
+\toprule
+Theorem & Lean status & Lean modules & Boundary note\\
+\midrule
+\endfirsthead
+\toprule
+Theorem & Lean status & Lean modules & Boundary note\\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{Continued on next page}\\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{NG\_ARROW\_DPI} & direct & \texttt{lean/SixBirdsNoGo/FiniteKLDPI.lean}; \texttt{lean/SixBirdsNoGo/FiniteKLDPIExample.lean}; \texttt{lean/SixBirdsNoGo/ArrowDPI.lean}; +1 more & Direct support recorded in the frozen bridge files.\\
+\texttt{NG\_PROTOCOL\_TRAP} & direct & \texttt{lean/SixBirdsNoGo/ArrowDPI.lean}; \texttt{lean/SixBirdsNoGo/ArrowDPIExample.lean}; \texttt{lean/SixBirdsNoGo/ProtocolTrap.lean}; +1 more & Direct support recorded in the frozen bridge files.\\
+\texttt{NG\_FORCE\_FOREST} & direct & \texttt{lean/SixBirdsNoGo/ForestForceBridge.lean}; \texttt{lean/SixBirdsNoGo/ForestForceBridgeExample.lean} & Direct support recorded in the frozen bridge files.\\
+\texttt{NG\_FORCE\_NULL} & direct & \texttt{lean/SixBirdsNoGo/NullForceBridge.lean}; \texttt{lean/SixBirdsNoGo/NullForceBridgeExample.lean} & Direct support recorded in the frozen bridge files.\\
+\texttt{NG\_MACRO\_CLOSURE\_DEFICIT} & direct & \texttt{lean/SixBirdsNoGo/ClosureVariationalCore.lean}; \texttt{lean/SixBirdsNoGo/ClosureVariationalCoreExample.lean}; \texttt{lean/SixBirdsNoGo/ClosureDirectPack.lean}; +1 more & Direct support recorded in the frozen bridge files.\\
+\texttt{NG\_OBJECT\_CONTRACTIVE} & auxiliary\_only & \texttt{lean/SixBirdsNoGo/ContractionUniqueness.lean}; \texttt{lean/SixBirdsNoGo/ContractionUniquenessExample.lean} & Boundary note: uniqueness core only; broader TV/Dobrushin plus epsilon-stability package is no…\\
+\texttt{NG\_LADDER\_IDEM} & direct & \texttt{lean/SixBirdsNoGo/Idempotence.lean} & Direct support recorded in the frozen bridge files.\\
+\texttt{NG\_LADDER\_BOUNDED\_INTERFACE} & direct & \texttt{lean/SixBirdsNoGo/Idempotence.lean}; \texttt{lean/SixBirdsNoGo/FiniteLensDefinability.lean}; \texttt{lean/SixBirdsNoGo/FiniteLensDefinabilityExample.lean}; +2 more & Direct support recorded in the frozen bridge files.\\
+\end{longtable}
+}
+ 
+For \texttt{NG\_OBJECT\_CONTRACTIVE}, the permanent boundary is explicit.
+The uniqueness-from-strict-contraction core is formalized, but the broader total-variation/Dobrushin plus $\varepsilon$-stability package used in the paper is not Lean-direct and remains frozen behind the objecthood TV boundary note.
+ \end{document}

@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-19T15:10:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_objecthood": "docs/project/theorem_pack_objecthood.yaml",
+    "lean_objecthood_tv_feasibility": "docs/project/lean_objecthood_tv_feasibility.yaml",
+    "lean_objecthood_uniqueness": "docs/project/lean_objecthood_uniqueness.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "t10_objecthood_metrics": "results/T10/objecthood_metrics.json",
+    "t15_objecthood_metric_sweep": "results/T15/objecthood_metric_sweep.csv",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "outcome_mode": [
+      "direct_theorem_pack",
+      "permanent_auxiliary_boundary"
+    ],
+    "bridge_status": [
+      "direct_ready",
+      "boundary_frozen"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "outcome_mode": "permanent_auxiliary_boundary",
+      "bridge_status": "boundary_frozen",
+      "bridge_statement": "The current Lean objecthood boundary stops at the strict-contraction uniqueness core; the full admissible TV/Dobrushin + epsilon-stable theorem is deliberately frozen out to avoid forbidden broad expansion.",
+      "prerequisites": [
+        "finite exact laws",
+        "strict-contraction uniqueness core"
+      ],
+      "direct_corollaries": [
+        "at most one fixed distribution in the retained uniqueness-core regime"
+      ],
+      "scope_limits": [
+        "proxy metrics out of scope",
+        "noncontractive contextual cases out of scope",
+        "direct TV/Dobrushin pack not landed",
+        "no broad metric or analysis library"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/ContractionUniqueness.lean",
+        "lean/SixBirdsNoGo/ContractionUniquenessExample.lean",
+        "docs/project/lean_objecthood_uniqueness.yaml",
+        "docs/project/lean_objecthood_formal_boundary.md",
+        "docs/project/lean_objecthood_tv_feasibility.yaml",
+        "docs/project/lean_objecthood_tv_formal_boundary.md"
+      ],
+      "readiness_delta": {
+        "lean_support_before": "auxiliary_only",
+        "lean_support_after": "auxiliary_only",
+        "direct_pack_formalized": false,
+        "permanent_boundary": true
+      },
+      "remaining_blockers": [],
+      "next_ticket": null
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-18T09:00:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_bounded_interface": "docs/project/theorem_pack_bounded_interface.yaml",
+    "lean_count_bounded_interface": "docs/project/lean_count_bounded_interface.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "bridge_status": [
+      "direct_ready",
+      "blocked",
+      "deferred"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "bridge_status": "direct_ready",
+      "bridge_statement": "For a fixed surjective finite lens on a fixed domain and an idempotent endomap on that domain, the exact definable family has size 2^{|im(f)|} and the observed interface profile stabilizes after one step, so no unbounded internal definable laddering occurs under the fixed lens/domain/package.",
+      "prerequisites": [
+        "idempotent endomap",
+        "finite-lens definability count core",
+        "observed interface profile",
+        "fixed finite deterministic lens"
+      ],
+      "direct_corollaries": [
+        "observed image-profile stabilization after one step",
+        "observed definable-predicate stabilization after one step",
+        "direct bounded-interface no-ladder corollary",
+        "retained exact count core 2^k"
+      ],
+      "scope_limits": [
+        "fixed lens/interface only",
+        "fixed domain only",
+        "fixed package only",
+        "strict extension remains outside theorem scope",
+        "no heuristic capacity analogies"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/Idempotence.lean",
+        "lean/SixBirdsNoGo/FiniteLensDefinability.lean",
+        "lean/SixBirdsNoGo/FiniteLensDefinabilityExample.lean",
+        "lean/SixBirdsNoGo/BoundedInterfaceNoLadder.lean",
+        "lean/SixBirdsNoGo/BoundedInterfaceNoLadderExample.lean"
+      ],
+      "readiness_delta": {
+        "lean_support_before": "auxiliary_only",
+        "lean_support_after": "direct",
+        "count_core_retained": true,
+        "full_corollary_formalized": true
+      },
+      "remaining_blockers": [],
+      "next_ticket": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "generated_at_utc": "2026-03-20T21:28:31Z",
+  "policy": "frozen_prose_line",
+  "files": [
+    {
+      "path": "paper/draft_v1.md",
+      "sha256": "f9ba37ff84d60c4d9f806d265a3c56fc0d478d6f16ee7539cfadba32f92fe7e6",
+      "bytes": 43066
+    },
+    {
+      "path": "paper/draft_v2.md",
+      "sha256": "606a3cc728995bb0fb69f193b883084f3c79b24a9c039c3163a780fba5ca6ce6",
+      "bytes": 43390
+    },
+    {
+      "path": "paper/draft_v3.md",
+      "sha256": "6ab7476d941376b4d06db432024204afb100b13720dd4229f79b89ddfa6f2b9f",
+      "bytes": 36122
+    },
+    {
+      "path": "paper/writing_track/draft_v1.md",
+      "sha256": "425bc7149094bf11c03a15d9cdec28bcc5be291eb2b7796b080a357b599280ca",
+      "bytes": 14444
+    },
+    {
+      "path": "paper/writing_track/draft_v2.md",
+      "sha256": "1b3035a732938693878d579aecb31155b7a583712a96117acddef6a4cf5265ef",
+      "bytes": 24797
+    },
+    {
+      "path": "paper/writing_track/draft_v3.md",
+      "sha256": "b0156f5d37254ed1f010c5999901e266335a4bef1b8d3be5bb474357097d7a7b",
+      "bytes": 35487
+    },
+    {
+      "path": "paper/writing_track/draft_v4.md",
+      "sha256": "b0007029979e15303bff3d6f627990e92d6ae08d58868112ffaa7d747114c963",
+      "bytes": 42998
+    },
+    {
+      "path": "docs/project/paper_narrative_charter.yaml",
+      "sha256": "7f98566b32fcef834f60d7765b8a04f6c52575af4bd0365fe53b34728fbb28a5",
+      "bytes": 13745
+    },
+    {
+      "path": "docs/project/paper_section_contracts.yaml",
+      "sha256": "a4c1895ee2e6c9a3cfc7be61d265290114bc6348ab4df6efcc06c398915dc2c7",
+      "bytes": 18539
+    },
+    {
+      "path": "docs/project/paper_asset_freeze.yaml",
+      "sha256": "ab4c57be0bebb0dfaa83a8928c8ada16cbe6fddeffd0c934e592801d1e525f09",
+      "bytes": 18341
+    },
+    {
+      "path": "docs/project/theorem_evidence_map.yaml",
+      "sha256": "dc2d834dc8c742227dcc76ee3bdfb7e4b8c841fbf4bdf69e2d250c84b1abf81a",
+      "bytes": 8174
+    },
+    {
+      "path": "docs/project/caption_registry.yaml",
+      "sha256": "e21202aef216516afd0d0520862a09abd0d50d60bdd2dfdb4b55a188b97a3012",
+      "bytes": 10421
+    },
+    {
+      "path": "docs/project/theorem_atlas.yaml",
+      "sha256": "f144168b969cba7ddd040344c200fc790798ca23c7056cca95737cac45f23120",
+      "bytes": 35415
+    },
+    {
+      "path": "docs/project/claim_audit_freeze.yaml",
+      "sha256": "3446ae89d2d627e114e51b146deddb3e6bc3095b20edb4a40e6b6f60ab138a23",
+      "bytes": 18413
+    }
+  ]
+}

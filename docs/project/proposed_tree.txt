@@ -1,0 +1,9 @@
+.
+|-- src/
+|-- tests/
+|-- configs/
+|-- results/
+|-- docs/
+|   |-- research-log/
+|   `-- project/
+|-- lean/

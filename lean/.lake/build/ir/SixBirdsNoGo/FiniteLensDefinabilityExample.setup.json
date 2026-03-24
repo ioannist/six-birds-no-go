@@ -1,0 +1,9 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.FiniteLensDefinabilityExample",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.FiniteLensDefinability":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteLensDefinability.olean"]},
+ "dynlibs": []}

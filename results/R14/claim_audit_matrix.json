@@ -1,0 +1,265 @@
+{
+  "generated_at_utc": "2026-03-24T08:57:57Z",
+  "theorem_count": 8,
+  "claims": [
+    {
+      "theorem_id": "NG_ARROW_DPI",
+      "statement_source": {
+        "path": "docs/project/theorem_statement_sheet.yaml",
+        "macro_path": "paper/generated/theorem_statements.tex",
+        "macro_name": "\\ThmStmtNGARROWDPI",
+        "formal_statement_sha256": "5ecdd92ee2842ac5db957c7b86d4fc8ee6d2949fd58d3e76783f97379c0b2db6"
+      },
+      "precision_checks": {
+        "hypotheses_count": 2,
+        "conclusions_count": 1,
+        "initialization_scope_present": true,
+        "undefined_notation_tokens": []
+      },
+      "proof_coverage_checks": {
+        "proof_exists": true,
+        "proof_files": [
+          "paper/sections/04_arrow_and_protocol.tex"
+        ],
+        "gap_phrase_hits": []
+      },
+      "appendix_dependency": {
+        "referenced_appendices": [
+          "app:probkl"
+        ],
+        "implicit_dependency_without_pointer": false
+      },
+      "supplement_dependency": [],
+      "risk_grade": "low",
+      "issues": []
+    },
+    {
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "statement_source": {
+        "path": "docs/project/theorem_statement_sheet.yaml",
+        "macro_path": "paper/generated/theorem_statements.tex",
+        "macro_name": "\\ThmStmtNGPROTOCOLTRAP",
+        "formal_statement_sha256": "0b7930180531f2aa9aefbcfe0b62bed1c475df1ae739236aca1e26d89afd9a65"
+      },
+      "precision_checks": {
+        "hypotheses_count": 2,
+        "conclusions_count": 2,
+        "initialization_scope_present": true,
+        "undefined_notation_tokens": []
+      },
+      "proof_coverage_checks": {
+        "proof_exists": true,
+        "proof_files": [
+          "paper/sections/04_arrow_and_protocol.tex"
+        ],
+        "gap_phrase_hits": []
+      },
+      "appendix_dependency": {
+        "referenced_appendices": [
+          "app:probkl"
+        ],
+        "implicit_dependency_without_pointer": false
+      },
+      "supplement_dependency": [],
+      "risk_grade": "low",
+      "issues": []
+    },
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "statement_source": {
+        "path": "docs/project/theorem_statement_sheet.yaml",
+        "macro_path": "paper/generated/theorem_statements.tex",
+        "macro_name": "\\ThmStmtNGFORCEFOREST",
+        "formal_statement_sha256": "8b917dd6715f8ab7c47cb43ed36f342cb1b4365fcaf139521b88fee62be805b3"
+      },
+      "precision_checks": {
+        "hypotheses_count": 2,
+        "conclusions_count": 1,
+        "initialization_scope_present": true,
+        "undefined_notation_tokens": []
+      },
+      "proof_coverage_checks": {
+        "proof_exists": true,
+        "proof_files": [
+          "paper/appendices/appendix_b_graph_exactness.tex",
+          "paper/sections/05_graph_and_affinity.tex"
+        ],
+        "gap_phrase_hits": []
+      },
+      "appendix_dependency": {
+        "referenced_appendices": [
+          "app:graphexact"
+        ],
+        "implicit_dependency_without_pointer": false
+      },
+      "supplement_dependency": [],
+      "risk_grade": "low",
+      "issues": []
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "statement_source": {
+        "path": "docs/project/theorem_statement_sheet.yaml",
+        "macro_path": "paper/generated/theorem_statements.tex",
+        "macro_name": "\\ThmStmtNGFORCENULL",
+        "formal_statement_sha256": "dbef2364868ab751765376ebcca2ca3764195996aa15a351fac93d0917392470"
+      },
+      "precision_checks": {
+        "hypotheses_count": 2,
+        "conclusions_count": 1,
+        "initialization_scope_present": true,
+        "undefined_notation_tokens": []
+      },
+      "proof_coverage_checks": {
+        "proof_exists": true,
+        "proof_files": [
+          "paper/appendices/appendix_b_graph_exactness.tex",
+          "paper/sections/05_graph_and_affinity.tex"
+        ],
+        "gap_phrase_hits": []
+      },
+      "appendix_dependency": {
+        "referenced_appendices": [
+          "app:graphexact"
+        ],
+        "implicit_dependency_without_pointer": false
+      },
+      "supplement_dependency": [],
+      "risk_grade": "low",
+      "issues": []
+    },
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "statement_source": {
+        "path": "docs/project/theorem_statement_sheet.yaml",
+        "macro_path": "paper/generated/theorem_statements.tex",
+        "macro_name": "\\ThmStmtNGMACROCLOSUREDEFICIT",
+        "formal_statement_sha256": "957468d03774d7197c60468fbfdf15db9646b07a366b3aa4a5667c635bc71726"
+      },
+      "precision_checks": {
+        "hypotheses_count": 2,
+        "conclusions_count": 2,
+        "initialization_scope_present": true,
+        "undefined_notation_tokens": []
+      },
+      "proof_coverage_checks": {
+        "proof_exists": true,
+        "proof_files": [
+          "paper/sections/06_closure.tex"
+        ],
+        "gap_phrase_hits": []
+      },
+      "appendix_dependency": {
+        "referenced_appendices": [
+          "app:varclosure"
+        ],
+        "implicit_dependency_without_pointer": false
+      },
+      "supplement_dependency": [],
+      "risk_grade": "low",
+      "issues": []
+    },
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "statement_source": {
+        "path": "docs/project/theorem_statement_sheet.yaml",
+        "macro_path": "paper/generated/theorem_statements.tex",
+        "macro_name": "\\ThmStmtNGOBJECTCONTRACTIVE",
+        "formal_statement_sha256": "b5624bdf69f4b3d49155e5970bfceed26ff74bd7b0da6a6ff2335231480d56a2"
+      },
+      "precision_checks": {
+        "hypotheses_count": 2,
+        "conclusions_count": 2,
+        "initialization_scope_present": true,
+        "undefined_notation_tokens": []
+      },
+      "proof_coverage_checks": {
+        "proof_exists": true,
+        "proof_files": [
+          "paper/sections/07_objecthood.tex"
+        ],
+        "gap_phrase_hits": []
+      },
+      "appendix_dependency": {
+        "referenced_appendices": [
+          "app:probkl"
+        ],
+        "implicit_dependency_without_pointer": false
+      },
+      "supplement_dependency": [],
+      "risk_grade": "medium",
+      "issues": [
+        "R14-001"
+      ]
+    },
+    {
+      "theorem_id": "NG_LADDER_IDEM",
+      "statement_source": {
+        "path": "docs/project/theorem_statement_sheet.yaml",
+        "macro_path": "paper/generated/theorem_statements.tex",
+        "macro_name": "\\ThmStmtNGLADDERIDEM",
+        "formal_statement_sha256": "70c784b77a59ad646c55936f82731050f612225cd9c325f488db2270396365d3"
+      },
+      "precision_checks": {
+        "hypotheses_count": 2,
+        "conclusions_count": 1,
+        "initialization_scope_present": true,
+        "undefined_notation_tokens": []
+      },
+      "proof_coverage_checks": {
+        "proof_exists": true,
+        "proof_files": [
+          "paper/sections/08_bounded_interface.tex"
+        ],
+        "gap_phrase_hits": []
+      },
+      "appendix_dependency": {
+        "referenced_appendices": [
+          "app:packdef"
+        ],
+        "implicit_dependency_without_pointer": false
+      },
+      "supplement_dependency": [],
+      "risk_grade": "low",
+      "issues": []
+    },
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "statement_source": {
+        "path": "docs/project/theorem_statement_sheet.yaml",
+        "macro_path": "paper/generated/theorem_statements.tex",
+        "macro_name": "\\ThmStmtNGLADDERBOUNDEDINTERFACE",
+        "formal_statement_sha256": "2ada76cb9f46a551c042ca437881eaecd3c51c1f7d945459121683ecadcf49bc"
+      },
+      "precision_checks": {
+        "hypotheses_count": 2,
+        "conclusions_count": 2,
+        "initialization_scope_present": true,
+        "undefined_notation_tokens": []
+      },
+      "proof_coverage_checks": {
+        "proof_exists": true,
+        "proof_files": [
+          "paper/appendices/appendix_d_packaging_definability.tex",
+          "paper/sections/08_bounded_interface.tex"
+        ],
+        "gap_phrase_hits": [
+          {
+            "file": "paper/appendices/appendix_d_packaging_definability.tex",
+            "line": 4,
+            "text": "For $n=1$ the claim is immediate."
+          }
+        ]
+      },
+      "appendix_dependency": {
+        "referenced_appendices": [
+          "app:packdef"
+        ],
+        "implicit_dependency_without_pointer": false
+      },
+      "supplement_dependency": [],
+      "risk_grade": "medium",
+      "issues": []
+    }
+  ]
+}

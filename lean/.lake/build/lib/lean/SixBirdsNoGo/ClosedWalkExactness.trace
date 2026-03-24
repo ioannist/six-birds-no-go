@@ -1,0 +1,31 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["a62162cf6d3b402a.olean"],
+  "i": "ae8242fd0a4514e5.ilean",
+  "c": "2511ef8f780c40b1.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/repos/six-birds-no-go/lean/.lake/build/lib/lean /home/ioannis/.elan/toolchains/leanprover--lean4---v4.28.0/bin/lean /home/repos/six-birds-no-go/lean/SixBirdsNoGo/ClosedWalkExactness.lean -o /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosedWalkExactness.olean -i /home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ClosedWalkExactness.ilean -c /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/ClosedWalkExactness.c --setup /home/repos/six-birds-no-go/lean/.lake/build/ir/SixBirdsNoGo/ClosedWalkExactness.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "SixBirdsNoGo/ClosedWalkExactness.lean:64:14: try 'simp' instead of 'simpa'\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`",
+   "level": "warning"}],
+ "inputs":
+ [["SixBirdsNoGo.ClosedWalkExactness:deps",
+   [["deps",
+     [["sixbirdsnogo/SixBirdsNoGo:extraDep",
+       [["@sixbirdsnogo:extraDep", "00000000000006bb"]]],
+      ["imports", "00000000000006bb"]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.28.0, commit 7e01a1bf5c70fc6167d49c345d3bf80596e9a79b",
+   "a96bc04a2e5e9630"],
+  ["/home/repos/six-birds-no-go/lean/SixBirdsNoGo/ClosedWalkExactness.lean",
+   "8c9cbbb6d981a0a3"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "c6b108d33dfe5536"}

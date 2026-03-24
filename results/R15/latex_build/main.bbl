@@ -1,0 +1,146 @@
+\begin{thebibliography}{24}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Biggs(1993)]{Biggs1993}
+Norman Biggs.
+\newblock \emph{Algebraic Graph Theory}.
+\newblock Cambridge Mathematical Library. Cambridge University Press,
+  Cambridge, 2 edition, 1993.
+
+\bibitem[Buchholz(1994)]{Buchholz1994}
+Peter Buchholz.
+\newblock Exact and ordinary lumpability in finite markov chains.
+\newblock \emph{Journal of Applied Probability}, 31\penalty0 (1):\penalty0
+  59--75, 1994.
+
+\bibitem[Cover and Thomas(2006)]{CoverThomas2006}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley-Interscience, Hoboken, NJ, 2 edition, 2006.
+
+\bibitem[Csisz{\'a}r(1975)]{Csiszar1975}
+Imre Csisz{\'a}r.
+\newblock I-divergence geometry of probability distributions and minimization
+  problems.
+\newblock \emph{The Annals of Probability}, 3\penalty0 (1):\penalty0 146--158,
+  1975.
+
+\bibitem[Diestel(2017)]{Diestel2017}
+Reinhard Diestel.
+\newblock \emph{Graph Theory}, volume 173 of \emph{Graduate Texts in
+  Mathematics}.
+\newblock Springer, 5 edition, 2017.
+\newblock \doi{10.1007/978-3-662-53622-3}.
+
+\bibitem[Dobrushin(1956)]{Dobrushin1956}
+R.~L. Dobrushin.
+\newblock Central limit theorem for nonstationary markov chains. i.
+\newblock \emph{Theory of Probability and Its Applications}, 1\penalty0
+  (1):\penalty0 65--80, 1956.
+
+\bibitem[Esposito(2012)]{Esposito2012}
+Massimiliano Esposito.
+\newblock Stochastic thermodynamics under coarse graining.
+\newblock \emph{Physical Review E}, 85\penalty0 (4):\penalty0 041125, 2012.
+
+\bibitem[Foster et~al.(2007)Foster, Greenwald, Moore, Pierce, and
+  Schmitt]{FosterEtAl2007}
+J.~Nathan Foster, Michael~B. Greenwald, Jonathan~T. Moore, Benjamin~C. Pierce,
+  and Alan Schmitt.
+\newblock Combinators for bidirectional tree transformations: A linguistic
+  approach to the view-update problem.
+\newblock \emph{ACM Transactions on Programming Languages and Systems},
+  29\penalty0 (3):\penalty0 17, 2007.
+
+\bibitem[Kelly(1979)]{Kelly1979}
+Frank~P. Kelly.
+\newblock \emph{Reversibility and Stochastic Networks}.
+\newblock Wiley, Chichester, 1979.
+
+\bibitem[Kemeny and Snell(1960)]{KemenySnell1960}
+John~G. Kemeny and J.~Laurie Snell.
+\newblock \emph{Finite Markov Chains}.
+\newblock D. Van Nostrand, Princeton, NJ, 1960.
+
+\bibitem[Kullback and Leibler(1951)]{KullbackLeibler1951}
+Solomon Kullback and Richard~A. Leibler.
+\newblock On information and sufficiency.
+\newblock \emph{The Annals of Mathematical Statistics}, 22\penalty0
+  (1):\penalty0 79--86, 1951.
+\newblock \doi{10.1214/aoms/1177729694}.
+
+\bibitem[Levin et~al.(2017)Levin, Peres, and Wilmer]{LevinPeresWilmer2017}
+David~A. Levin, Yuval Peres, and Elizabeth~L. Wilmer.
+\newblock \emph{Markov Chains and Mixing Times}.
+\newblock American Mathematical Society, Providence, RI, 2 edition, 2017.
+
+\bibitem[Lim(2020)]{Lim2020Hodge}
+Lek-Heng Lim.
+\newblock Hodge laplacians on graphs.
+\newblock \emph{SIAM Review}, 62\penalty0 (3):\penalty0 685--715, 2020.
+
+\bibitem[Maes and Neto{\v c}n{\'y}(2003)]{MaesNetocny2003}
+Christian Maes and Karel Neto{\v c}n{\'y}.
+\newblock Time-reversal and entropy.
+\newblock \emph{Journal of Statistical Physics}, 110\penalty0 (1--2):\penalty0
+  269--310, 2003.
+
+\bibitem[Norris(1997)]{Norris1997}
+J.~R. Norris.
+\newblock \emph{Markov Chains}.
+\newblock Cambridge University Press, Cambridge, 1997.
+
+\bibitem[Schnakenberg(1976)]{Schnakenberg1976}
+J{\"u}rgen Schnakenberg.
+\newblock Network theory of microscopic and macroscopic behavior of master
+  equation systems.
+\newblock \emph{Reviews of Modern Physics}, 48\penalty0 (4):\penalty0 571--585,
+  1976.
+
+\bibitem[Seifert(2012)]{Seifert2012}
+Udo Seifert.
+\newblock Stochastic thermodynamics, fluctuation theorems and molecular
+  machines.
+\newblock \emph{Reports on Progress in Physics}, 75\penalty0 (12):\penalty0
+  126001, 2012.
+
+\bibitem[Seneta(2006)]{Seneta2006}
+Eugene Seneta.
+\newblock \emph{Non-Negative Matrices and Markov Chains}.
+\newblock Springer, New York, revised edition, 2006.
+
+\bibitem[Tsiokos(2026{\natexlab{a}})]{SB_CAST}
+Ioannis Tsiokos.
+\newblock To cast a stone with six birds: A closure deficit account of
+  randomness under packaging and budget, 2026{\natexlab{a}}.
+
+\bibitem[Tsiokos(2026{\natexlab{b}})]{SB_CLASSIFY}
+Ioannis Tsiokos.
+\newblock To classify a stone with six birds: Primitive activation and
+  observable separation of layer birth classes, 2026{\natexlab{b}}.
+
+\bibitem[Tsiokos(2026{\natexlab{c}})]{SB_FOUNDATIONS}
+Ioannis Tsiokos.
+\newblock Six birds: Foundations of emergence calculus, 2026{\natexlab{c}}.
+
+\bibitem[Tsiokos(2026{\natexlab{d}})]{SB_LAY}
+Ioannis Tsiokos.
+\newblock To lay a stone with six birds: Finite-state semantics for packaging,
+  directionality, and coarse graining, 2026{\natexlab{d}}.
+\newblock Preprint.
+
+\bibitem[Tsiokos(2026{\natexlab{e}})]{SB_PROTOCOL_TRAP}
+Ioannis Tsiokos.
+\newblock Six birds protocol trap: Holonomy without entropy production,
+  2026{\natexlab{e}}.
+
+\bibitem[Tsiokos(2026{\natexlab{f}})]{SB_THROW}
+Ioannis Tsiokos.
+\newblock To throw a stone with six birds: On agents and agenthood,
+  2026{\natexlab{f}}.
+
+\end{thebibliography}

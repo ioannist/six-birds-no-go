@@ -1,0 +1,187 @@
+{
+  "generated_at_utc": "2026-03-22T08:09:17Z",
+  "section_unit_count": 11,
+  "rows": [
+    {
+      "section_id": "ABSTRACT",
+      "title": "Abstract",
+      "section_type": "front_matter",
+      "checks": {
+        "required_content_present": false,
+        "responsibilities_covered": false,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "revise",
+      "revision_ids": [
+        "REV-001",
+        "REV-002"
+      ],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "S1_INTRO",
+      "title": "Introduction and theorem map",
+      "section_type": "front_matter",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "S2_SETUP",
+      "title": "Formal setup, audits, and scope conventions",
+      "section_type": "setup",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "S3_ARROW_PROTOCOL",
+      "title": "Arrow and protocol obstructions",
+      "section_type": "theorem_section",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "S4_GRAPH_AFFINITY",
+      "title": "Graph and affinity obstructions",
+      "section_type": "theorem_section",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "S5_CLOSURE",
+      "title": "Closure obstruction",
+      "section_type": "theorem_section",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "S6_OBJECTHOOD",
+      "title": "Objecthood under contraction",
+      "section_type": "theorem_section",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "S7_LADDER",
+      "title": "Laddering and interface bounds",
+      "section_type": "theorem_section",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "S8_DISCUSSION",
+      "title": "Discussion, falsifiability, and escape routes",
+      "section_type": "discussion",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "A1_ARTIFACTS",
+      "title": "Artifact and evidence provenance",
+      "section_type": "appendix",
+      "checks": {
+        "required_content_present": true,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": true,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    },
+    {
+      "section_id": "A2_LEAN",
+      "title": "Lean support and proof dependency map",
+      "section_type": "appendix",
+      "checks": {
+        "required_content_present": false,
+        "responsibilities_covered": true,
+        "required_callouts_present": true,
+        "excluded_content_respected": true,
+        "readiness_blockers_accounted_for": false,
+        "fragilities_accounted_for": true
+      },
+      "audit_status": "revise",
+      "revision_ids": [
+        "REV-003"
+      ],
+      "note": "Section audit generated from draft-v1 against frozen contracts, blockers, and fragilities."
+    }
+  ]
+}

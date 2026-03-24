@@ -1,0 +1,157 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-22T08:09:22Z",
+  "source_context": {
+    "current_internal_draft": "paper/draft_v1.md",
+    "internal_draft_lineage": "docs/project/internal_draft_lineage.yaml",
+    "paper_narrative_charter": "docs/project/paper_narrative_charter.yaml",
+    "background_citation_map": "docs/project/background_citation_map.yaml",
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "paper_asset_freeze": "docs/project/paper_asset_freeze.yaml",
+    "theorem_evidence_map": "docs/project/theorem_evidence_map.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "t15_fragility_summary": "results/T15/fragility_summary.json",
+    "t15_fragility_notes": "results/T15/fragility_notes.md",
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "historical_t34_summary": "results/T34/red_team_summary.json",
+    "historical_t34_queue": "docs/project/revision_queue.yaml",
+    "historical_t45_queue": "docs/project/revision_queue_v2.yaml",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "severity": [
+      "high",
+      "medium",
+      "low"
+    ],
+    "blocking": [
+      "yes",
+      "no"
+    ],
+    "closure_status": [
+      "open"
+    ],
+    "source_matrix": [
+      "claim",
+      "section"
+    ],
+    "issue_status": [
+      "needs_revision"
+    ],
+    "queue_status": [
+      "active"
+    ]
+  },
+  "queue_summary": {
+    "current_draft": "paper/draft_v1.md",
+    "audited_claim_count": 15,
+    "audited_section_unit_count": 11,
+    "revision_item_count": 5,
+    "blocking_item_count": 1,
+    "hidden_gap_count": 0,
+    "queue_status": "active",
+    "note": "Every detected issue in the claim and section audit matrices must appear here as an explicit revision item. If no issues are detected, the queue may be empty, but hidden_gap_count must still be zero."
+  },
+  "revision_items": [
+    {
+      "revision_id": "W08-REV-001",
+      "source_matrix": "claim",
+      "source_id": "NG_LADDER_IDEM.core",
+      "issue_type": "formal_status_alignment",
+      "severity": "high",
+      "blocking": "yes",
+      "affected_section_ids": [
+        "S7_LADDER",
+        "A2_LEAN"
+      ],
+      "affected_claim_ids": [
+        "NG_LADDER_IDEM.core"
+      ],
+      "evidence_refs": [
+        "results/T44/lean_objecthood_direct_pack_summary.json"
+      ],
+      "recommended_action": "Restore theorem/front formal-status wording to match the frozen T44 state.",
+      "closure_status": "open",
+      "note": "Core-claim formal-status wording does not match the frozen support state."
+    },
+    {
+      "revision_id": "W08-REV-002",
+      "source_matrix": "claim",
+      "source_id": "NG_FORCE_NULL.guardrail",
+      "issue_type": "fragility_alignment",
+      "severity": "medium",
+      "blocking": "no",
+      "affected_section_ids": [
+        "S4_GRAPH_AFFINITY"
+      ],
+      "affected_claim_ids": [
+        "NG_FORCE_NULL.guardrail"
+      ],
+      "evidence_refs": [
+        "results/T15/threshold_sweep.csv"
+      ],
+      "recommended_action": "Make the mapped fragility source explicit in the theorem guardrail prose.",
+      "closure_status": "open",
+      "note": "Mapped fragility source is not reflected clearly enough in the current draft."
+    },
+    {
+      "revision_id": "W08-REV-003",
+      "source_matrix": "claim",
+      "source_id": "NG_OBJECT_CONTRACTIVE.guardrail",
+      "issue_type": "scope_guardrail_alignment",
+      "severity": "medium",
+      "blocking": "no",
+      "affected_section_ids": [
+        "S6_OBJECTHOOD"
+      ],
+      "affected_claim_ids": [
+        "NG_OBJECT_CONTRACTIVE.guardrail"
+      ],
+      "evidence_refs": [
+        "results/T15/objecthood_metric_sweep.csv"
+      ],
+      "recommended_action": "Restore the explicit guardrail wording required by the frozen claim.",
+      "closure_status": "open",
+      "note": "Guardrail or scope wording is not explicit enough in the current draft."
+    },
+    {
+      "revision_id": "W08-REV-004",
+      "source_matrix": "section",
+      "source_id": "S6_OBJECTHOOD",
+      "issue_type": "missing_responsibility",
+      "severity": "medium",
+      "blocking": "no",
+      "affected_section_ids": [
+        "S6_OBJECTHOOD"
+      ],
+      "affected_claim_ids": [],
+      "evidence_refs": [
+        "paper/draft_v1.md"
+      ],
+      "recommended_action": "Restore the missing responsibility anchors required by the frozen section contract.",
+      "closure_status": "open",
+      "note": "One or more section responsibilities are missing from the current draft."
+    },
+    {
+      "revision_id": "W08-REV-005",
+      "source_matrix": "section",
+      "source_id": "A2_LEAN",
+      "issue_type": "missing_responsibility",
+      "severity": "medium",
+      "blocking": "no",
+      "affected_section_ids": [
+        "A2_LEAN"
+      ],
+      "affected_claim_ids": [],
+      "evidence_refs": [
+        "paper/draft_v1.md"
+      ],
+      "recommended_action": "Restore the missing responsibility anchors required by the frozen section contract.",
+      "closure_status": "open",
+      "note": "One or more section responsibilities are missing from the current draft."
+    }
+  ]
+}

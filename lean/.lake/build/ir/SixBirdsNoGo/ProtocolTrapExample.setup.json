@@ -1,0 +1,21 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.ProtocolTrapExample",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.ProtocolTrap":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ProtocolTrap.olean"],
+  "SixBirdsNoGo.FiniteProbabilityCoreExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCoreExample.olean"],
+  "SixBirdsNoGo.FiniteProbabilityCore":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCore.olean"],
+  "SixBirdsNoGo.FiniteKLDPIExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteKLDPIExample.olean"],
+  "SixBirdsNoGo.FiniteKLDPI":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteKLDPI.olean"],
+  "SixBirdsNoGo.ArrowDPIExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ArrowDPIExample.olean"],
+  "SixBirdsNoGo.ArrowDPI":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/ArrowDPI.olean"]},
+ "dynlibs": []}

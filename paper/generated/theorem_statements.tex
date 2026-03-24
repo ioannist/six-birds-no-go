@@ -1,0 +1,31 @@
+\newcommand{\ThmStmtNGARROWDPI}{%
+Let $\mu\in\D(\X)$, let $P:\X\times\X\to[0,1]$ be row-stochastic, and let $T\ge 1$. Define the micro path law on $\X^{T+1}$ by \[\mathbf{P}^{(T)}_{\mu,P}(x_{0:T})=\mu(x_0)\prod_{t=0}^{T-1}P(x_t,x_{t+1}).\] Let $\mathrm{rev}_T(x_{0:T})=(x_T,\dots,x_0)$ and let $\ell:\X\to\Y$ be deterministic with pointwise extension $\ell^{(T)}(x_{0:T})=(\ell(x_0),\dots,\ell(x_T))$. Then \[\KL\!\Big((\ell^{(T)})_{\#}\mathbf{P}^{(T)}_{\mu,P}\ \Big\|\ (\mathrm{rev}_T)_{\#}(\ell^{(T)})_{\#}\mathbf{P}^{(T)}_{\mu,P}\Big)\ \le\ \KL\!\Big(\mathbf{P}^{(T)}_{\mu,P}\ \Big\|\ (\mathrm{rev}_T)_{\#}\mathbf{P}^{(T)}_{\mu,P}\Big).\]
+}
+
+\newcommand{\ThmStmtNGPROTOCOLTRAP}{%
+Let $\tilde\X$ be finite, let $\tilde P: \tilde\X\times\tilde\X\to[0,1]$ be row-stochastic, and let $\tilde\pi$ be a stationary distribution satisfying detailed balance $\tilde\pi(x)\tilde P(x,x')=\tilde\pi(x')\tilde P(x',x)$ for all $x,x'\in\tilde\X$. Then for every horizon $T\ge 1$, \[ (\mathrm{rev}_T)_{\#}\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}=\mathbf{P}^{(T)}_{\tilde\pi,\tilde P} \qquad\Rightarrow\qquad \KL\!\Big(\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}\ \Big\|\ (\mathrm{rev}_T)_{\#}\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}\Big)=0.\] Moreover, for every deterministic observation $\ell:\tilde\X\to\Y$, \[ \KL\!\Big((\ell^{(T)})_{\#}\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}\ \Big\|\ (\mathrm{rev}_T)_{\#}(\ell^{(T)})_{\#}\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}\Big)=0.\]
+}
+
+\newcommand{\ThmStmtNGFORCEFOREST}{%
+Let $G=(V,E)$ be a finite undirected forest. Let $a$ be an antisymmetric function on oriented edges, so that $a(u,v)=-a(v,u)$ and $a(u,v)=0$ whenever $\{u,v\}\notin E$. Then there exists a potential $\phi:V\to\mathbb{R}$ such that for every oriented edge $(u,v)$, \[ a(u,v)=\phi(v)-\phi(u).\]
+}
+
+\newcommand{\ThmStmtNGFORCENULL}{%
+Assume $a(u,v)=\phi(v)-\phi(u)$ on oriented edges of a finite graph. Then for every closed walk $v_0,\dots,v_k=v_0$, \[ \sum_{i=0}^{k-1} a(v_i,v_{i+1}) = 0.\]
+}
+
+\newcommand{\ThmStmtNGMACROCLOSUREDEFICIT}{%
+Let $(\X,P)$ be a finite Markov chain, let $\mu\in\D(\X)$, let $\Pi:\X\to\Y$ be deterministic, and fix $\tau\ge 1$. For each $x\in\X$, define the packaged future law \[ p_x^{(\tau)}(y') := \Pr_{\mu,P}[\Pi(X_{t+\tau})=y' \mid X_t=x].\] For a candidate macro kernel $K:\Y\times\Y\to[0,1]$, define \[ \mathcal{L}_\tau(K) := \sum_{x\in \X} \mu(x)\,\KL\!\big(p_x^{(\tau)} \mid K_{\Pi(x)}\big).\] Define the closure deficit by \[ \mathrm{CD}_\tau(\Pi) := I\!\big(X_t;\Pi(X_{t+\tau})\,\big|\,\Pi(X_t)\big).\] Then the kernel \[ K^\star_y(y') := \Pr_{\mu,P}[\Pi(X_{t+\tau})=y' \mid \Pi(X_t)=y] \] satisfies \[ \mathrm{CD}_\tau(\Pi)=\min_K \mathcal{L}_\tau(K)=\mathcal{L}_\tau(K^\star).\] Moreover, if there exist $x,x'\in\X$ with $\Pi(x)=\Pi(x')$, $\mu(x)>0$, $\mu(x')>0$, and $p_x^{(\tau)}\neq p_{x'}^{(\tau)}$, then $\mathrm{CD}_\tau(\Pi)>0$.
+}
+
+\newcommand{\ThmStmtNGOBJECTCONTRACTIVE}{%
+Let $P$ be a stochastic matrix on finite $\Y$. Let $T_P:\D(\Y)\to\D(\Y)$ be the operator $\nu\mapsto \nu P$, and let $\lambda(P)$ be the Dobrushin contraction coefficient in total variation. Assume $\lambda(P)<1$. If $\nu,\nu'\in\D(\Y)$ satisfy the $\varepsilon$-stability bounds \[ \TV(\nu,\nu P)\le \varepsilon, \qquad \TV(\nu',\nu'P)\le \varepsilon,\] then \[ \TV(\nu,\nu') \le \frac{2\varepsilon}{1-\lambda(P)}.\] In particular, if $\varepsilon=0$, the stationary distribution is unique.
+}
+
+\newcommand{\ThmStmtNGLADDERIDEM}{%
+Let $e:S\to S$ satisfy $e\circ e=e$. Then for all integers $n\ge 1$, \[ e^{\circ n}=e.\]
+}
+
+\newcommand{\ThmStmtNGLADDERBOUNDEDINTERFACE}{%
+Let $f:\X\to\Y$ be deterministic with finite image $\mathrm{im}(f)$. Define \[ \mathrm{Def}(f):=\{g\circ f : g:\Y\to\{0,1\}\}.\] Then \[ |\mathrm{Def}(f)| = 2^{|\mathrm{im}(f)|}.\] Consequently, if $|\mathrm{im}(f)|<\infty$, there is no infinite strictly increasing sequence of pairwise distinct $f$-definable predicates.
+}

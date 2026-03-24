@@ -1,0 +1,38 @@
+{
+  "generated_at_utc": "2026-03-24T08:57:57Z",
+  "added_bib_keys": [
+    "MaesNetocny2003",
+    "Seifert2012",
+    "Esposito2012",
+    "Schnakenberg1976",
+    "Lim2020Hodge",
+    "KemenySnell1960",
+    "Buchholz1994",
+    "Csiszar1975",
+    "Dobrushin1956",
+    "Seneta2006",
+    "Kelly1979",
+    "FosterEtAl2007"
+  ],
+  "main_citations_present": {
+    "MaesNetocny2003": true,
+    "Seifert2012": true,
+    "Esposito2012": true,
+    "Schnakenberg1976": true,
+    "Lim2020Hodge": true,
+    "KemenySnell1960": true,
+    "Buchholz1994": true,
+    "Csiszar1975": true,
+    "Dobrushin1956": true,
+    "Seneta2006": true,
+    "Kelly1979": true,
+    "FosterEtAl2007": true
+  },
+  "main_build_ok": true,
+  "supp_build_ok": true,
+  "missing_bib_keys": [],
+  "placeholder_citation_keys": [],
+  "main_pdf_bytes": 429399,
+  "supplement_pdf_bytes": 282290,
+  "status": "success"
+}

@@ -1,0 +1,306 @@
+{
+  "generated_at_utc": "2026-03-22T08:09:17Z",
+  "frozen_claim_count": 15,
+  "rows": [
+    {
+      "claim_id": "NG_ARROW_DPI.core",
+      "theorem_id": "NG_ARROW_DPI",
+      "claim_class": "core",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "primary_callout_id": "FIG-2",
+      "primary_evidence_handle": "results/T08/arrow_metrics.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_PROTOCOL_TRAP.core",
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "claim_class": "core",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "primary_callout_id": "FIG-2",
+      "primary_evidence_handle": "results/T15/initial_distribution_sweep.csv",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_FORCE_FOREST.core",
+      "theorem_id": "NG_FORCE_FOREST",
+      "claim_class": "core",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "primary_callout_id": "FIG-3",
+      "primary_evidence_handle": "results/T14/primitive_coverage.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_FORCE_NULL.core",
+      "theorem_id": "NG_FORCE_NULL",
+      "claim_class": "core",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "primary_callout_id": "FIG-3",
+      "primary_evidence_handle": "results/master/witness_metrics.csv",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_MACRO_CLOSURE_DEFICIT.core",
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "claim_class": "core",
+      "section_id": "S5_CLOSURE",
+      "primary_callout_id": "FIG-4",
+      "primary_evidence_handle": "results/T09/closure_metrics.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_OBJECT_CONTRACTIVE.core",
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "claim_class": "core",
+      "section_id": "S6_OBJECTHOOD",
+      "primary_callout_id": "FIG-5",
+      "primary_evidence_handle": "results/T10/objecthood_metrics.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_LADDER_IDEM.core",
+      "theorem_id": "NG_LADDER_IDEM",
+      "claim_class": "core",
+      "section_id": "S7_LADDER",
+      "primary_callout_id": "FIG-6",
+      "primary_evidence_handle": "results/T11/no_ladder_demos.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_LADDER_BOUNDED_INTERFACE.core",
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "claim_class": "core",
+      "section_id": "S7_LADDER",
+      "primary_callout_id": "TBL-6",
+      "primary_evidence_handle": "results/T11/definability_metrics.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_LADDER_BOUNDED_INTERFACE.guardrail",
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "claim_class": "guardrail",
+      "section_id": "S7_LADDER",
+      "primary_callout_id": "FIG-6",
+      "primary_evidence_handle": "results/T11/no_ladder_demos.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_ARROW_DPI.guardrail",
+      "theorem_id": "NG_ARROW_DPI",
+      "claim_class": "guardrail",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "primary_callout_id": "TBL-2",
+      "primary_evidence_handle": "results/T15/adversarial_cases.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_PROTOCOL_TRAP.guardrail",
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "claim_class": "guardrail",
+      "section_id": "S3_ARROW_PROTOCOL",
+      "primary_callout_id": "TBL-2",
+      "primary_evidence_handle": "results/T15/initial_distribution_sweep.csv",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_FORCE_FOREST.guardrail",
+      "theorem_id": "NG_FORCE_FOREST",
+      "claim_class": "guardrail",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "primary_callout_id": "TBL-3",
+      "primary_evidence_handle": "results/T15/threshold_sweep.csv",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_FORCE_NULL.guardrail",
+      "theorem_id": "NG_FORCE_NULL",
+      "claim_class": "guardrail",
+      "section_id": "S4_GRAPH_AFFINITY",
+      "primary_callout_id": "TBL-3",
+      "primary_evidence_handle": "results/T15/threshold_sweep.csv",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_MACRO_CLOSURE_DEFICIT.guardrail",
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "claim_class": "guardrail",
+      "section_id": "S5_CLOSURE",
+      "primary_callout_id": "TBL-4",
+      "primary_evidence_handle": "results/T09/grid_check.json",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    },
+    {
+      "claim_id": "NG_OBJECT_CONTRACTIVE.guardrail",
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "claim_class": "guardrail",
+      "section_id": "S6_OBJECTHOOD",
+      "primary_callout_id": "TBL-5",
+      "primary_evidence_handle": "results/T15/objecthood_metric_sweep.csv",
+      "checks": {
+        "home_present": true,
+        "primary_callout_present": true,
+        "primary_evidence_binding_valid": true,
+        "claim_textually_supported": true,
+        "scope_or_guardrail_supported": true,
+        "support_status_not_overclaimed": true,
+        "lean_status_not_overclaimed": true
+      },
+      "audit_status": "pass",
+      "revision_ids": [],
+      "note": "Claim audit generated from theorem home, callout map, readiness, and draft text."
+    }
+  ]
+}

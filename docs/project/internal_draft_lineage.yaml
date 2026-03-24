@@ -1,0 +1,65 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-20T00:00:00Z",
+  "source_context": {
+    "writing_track_manifest": "docs/project/writing_track_manifest.yaml",
+    "current_writing_track_source": "paper/writing_track/draft_v4.md",
+    "historical_internal_drafts": [
+      "paper/draft_v1.md",
+      "paper/draft_v3.md"
+    ],
+    "t44_objecthood_summary": "results/T44/lean_objecthood_direct_pack_summary.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "lineage_status": [
+      "fixed"
+    ]
+  },
+  "active_internal_draft": {
+    "path": "paper/draft_v2.md",
+    "assembled_from": "paper/draft_v1.md",
+    "note": "This is the revised internal draft produced by the W09 revision pass.",
+    "status": "fixed"
+  },
+  "legacy_archives": [
+    {
+      "legacy_id": "T33_DRAFT_V1",
+      "source_path": "paper/draft_v1.md",
+      "archived_path": "paper/legacy_internal/draft_v1_t33.md",
+      "note": "Archived before W07 assembly to preserve the historical T33 draft line.",
+      "status": "fixed"
+    },
+    {
+      "legacy_id": "T45_DRAFT_V2",
+      "source_path": "paper/draft_v2.md",
+      "archived_path": "paper/legacy_internal/draft_v2_t45.md",
+      "note": "Archived before W09 revision to preserve the historical T45 draft_v2 line.",
+      "status": "fixed"
+    }
+  ],
+  "writing_track_history": [
+    {
+      "path": "paper/writing_track/draft_v1.md",
+      "role": "front_matter_setup",
+      "status": "fixed"
+    },
+    {
+      "path": "paper/writing_track/draft_v2.md",
+      "role": "theorem_pack_i",
+      "status": "fixed"
+    },
+    {
+      "path": "paper/writing_track/draft_v3.md",
+      "role": "theorem_pack_ii",
+      "status": "fixed"
+    },
+    {
+      "path": "paper/writing_track/draft_v4.md",
+      "role": "discussion_appendices_complete",
+      "status": "fixed"
+    }
+  ],
+  "note": "The W-series now uses paper/draft_v2.md as the canonical internal draft path. The earlier T33 draft_v1 and T45 draft_v2 are archived explicitly, paper/draft_v1 remains preserved as the first complete internal draft, and the writing-track drafts remain preserved as construction history."
+}

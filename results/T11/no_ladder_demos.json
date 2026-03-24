@@ -1,0 +1,105 @@
+{
+  "generated_at_utc": "2026-03-23T16:01:38Z",
+  "fixed_interface_reports": [
+    {
+      "package_id": "pkg_fixed",
+      "lens_id": "base_binary",
+      "state_count": 3,
+      "interface_size": 2,
+      "definable_predicate_count": 4,
+      "formula_definable_predicate_count": 4,
+      "idempotence_defect": "0/1",
+      "signature_sequence": [
+        [
+          "0",
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "1",
+          "1"
+        ]
+      ],
+      "stabilization_step": 0,
+      "no_new_signatures_after_step1": true,
+      "no_ladder_holds": true
+    },
+    {
+      "package_id": "pkg_fixed",
+      "lens_id": "extended_ternary",
+      "state_count": 3,
+      "interface_size": 3,
+      "definable_predicate_count": 8,
+      "formula_definable_predicate_count": 8,
+      "idempotence_defect": "0/1",
+      "signature_sequence": [
+        [
+          "0",
+          "1",
+          "2"
+        ],
+        [
+          "0",
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "1",
+          "1"
+        ]
+      ],
+      "stabilization_step": 1,
+      "no_new_signatures_after_step1": true,
+      "no_ladder_holds": true
+    }
+  ],
+  "extension_escape_report": {
+    "base_lens_id": "base_binary",
+    "extended_lens_id": "extended_ternary",
+    "strict_refinement": true,
+    "factor_map": {
+      "0": "0",
+      "1": "1",
+      "2": "1"
+    },
+    "base_interface_size": 2,
+    "extended_interface_size": 3,
+    "base_definable_count": 4,
+    "extended_definable_count": 8,
+    "gained_predicate_count": 4,
+    "gained_predicates": [
+      [
+        "z"
+      ],
+      [
+        "y"
+      ],
+      [
+        "x",
+        "z"
+      ],
+      [
+        "x",
+        "y"
+      ]
+    ],
+    "escape_present": true
+  }
+}

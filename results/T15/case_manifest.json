@@ -1,0 +1,12 @@
+{
+  "generation_timestamp_utc": "2026-03-23T16:01:39Z",
+  "precision": 80,
+  "max_horizon": 5,
+  "horizon_row_count": 36,
+  "initial_row_count": 11,
+  "perturbation_row_count": 12,
+  "threshold_row_count": 4,
+  "objecthood_row_count": 2,
+  "adversarial_case_count": 4,
+  "fragility_count": 5
+}

@@ -1,0 +1,12 @@
+witness_id,kind,lens_count,has_chain,has_packaging,required_audit_count,executed_audit_count,expectation_pass_count,expectation_fail_count,error_count,execution_status
+rev_tree_4,markov_chain,1,true,false,3,3,3,0,0,success
+rev_cycle_3,markov_chain,1,true,false,3,3,3,0,0,success
+biased_cycle_3,markov_chain,1,true,false,3,3,3,0,0,success
+hidden_clock_reversible,phase_lift_markov,3,true,false,4,4,4,0,0,success
+hidden_clock_driven,phase_lift_markov,3,true,false,4,4,4,0,0,success
+zero_closure_deficit_lumpable,markov_chain,1,true,false,2,2,2,0,0,success
+positive_closure_deficit,markov_chain,1,true,false,2,2,2,0,0,success
+contractive_unique_object,packaging_endomap,1,false,true,2,2,2,0,0,success
+noncontractive_multiobject,packaging_endomap,1,false,true,2,2,2,0,0,success
+fixed_idempotent_no_ladder,packaging_endomap,1,false,true,3,3,3,0,0,success
+lens_extension_escape,extension_witness,2,false,true,5,5,5,0,0,success

@@ -1,0 +1,1156 @@
+{
+  "version": "1.0",
+  "numeric_encoding": "rational_string_v1",
+  "witnesses": [
+    {
+      "id": "rev_tree_4",
+      "short_name": "Reversible tree on four states",
+      "kind": "markov_chain",
+      "microstate_space": {
+        "states": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "size": 4
+      },
+      "dynamics": {
+        "family": "discrete_markov",
+        "row_states": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "matrix": [
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "0",
+            "1/3",
+            "1/3"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ]
+        ],
+        "stationary_distribution": [
+          "1/6",
+          "1/2",
+          "1/6",
+          "1/6"
+        ]
+      },
+      "lenses": [
+        {
+          "id": "identity",
+          "mapping": {
+            "a": "a",
+            "b": "b",
+            "c": "c",
+            "d": "d"
+          }
+        }
+      ],
+      "packaging": null,
+      "theorem_targets": [
+        "NG_FORCE_FOREST",
+        "NG_FORCE_NULL"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_FORCE_FOREST",
+            "role": "supports"
+          },
+          {
+            "theorem_id": "NG_FORCE_NULL",
+            "role": "supports"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_CYCLE_RANK",
+            "relation": "eq",
+            "value": "0"
+          },
+          {
+            "audit_id": "AUDIT_MAX_CYCLE_AFFINITY",
+            "relation": "eq",
+            "value": "0"
+          },
+          {
+            "audit_id": "AUDIT_ONEFORM_EXACTNESS",
+            "relation": "eq",
+            "value": true
+          }
+        ]
+      },
+      "tags": [
+        "tree",
+        "reversible",
+        "finite_markov"
+      ]
+    },
+    {
+      "id": "rev_cycle_3",
+      "short_name": "Reversible three-cycle",
+      "kind": "markov_chain",
+      "microstate_space": {
+        "states": [
+          "0",
+          "1",
+          "2"
+        ],
+        "size": 3
+      },
+      "dynamics": {
+        "family": "discrete_markov",
+        "row_states": [
+          "0",
+          "1",
+          "2"
+        ],
+        "matrix": [
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "stationary_distribution": [
+          "1/3",
+          "1/3",
+          "1/3"
+        ]
+      },
+      "lenses": [
+        {
+          "id": "identity",
+          "mapping": {
+            "0": "0",
+            "1": "1",
+            "2": "2"
+          }
+        }
+      ],
+      "packaging": null,
+      "theorem_targets": [
+        "NG_FORCE_NULL"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_FORCE_NULL",
+            "role": "supports"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_CYCLE_RANK",
+            "relation": "eq",
+            "value": "1"
+          },
+          {
+            "audit_id": "AUDIT_MAX_CYCLE_AFFINITY",
+            "relation": "eq",
+            "value": "0"
+          },
+          {
+            "audit_id": "AUDIT_ONEFORM_EXACTNESS",
+            "relation": "eq",
+            "value": true
+          }
+        ]
+      },
+      "tags": [
+        "cycle",
+        "reversible",
+        "finite_markov"
+      ]
+    },
+    {
+      "id": "biased_cycle_3",
+      "short_name": "Biased three-cycle",
+      "kind": "markov_chain",
+      "microstate_space": {
+        "states": [
+          "0",
+          "1",
+          "2"
+        ],
+        "size": 3
+      },
+      "dynamics": {
+        "family": "discrete_markov",
+        "row_states": [
+          "0",
+          "1",
+          "2"
+        ],
+        "matrix": [
+          [
+            "0",
+            "2/3",
+            "1/3"
+          ],
+          [
+            "1/3",
+            "0",
+            "2/3"
+          ],
+          [
+            "2/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "stationary_distribution": [
+          "1/3",
+          "1/3",
+          "1/3"
+        ]
+      },
+      "lenses": [
+        {
+          "id": "identity",
+          "mapping": {
+            "0": "0",
+            "1": "1",
+            "2": "2"
+          }
+        }
+      ],
+      "packaging": null,
+      "theorem_targets": [
+        "NG_FORCE_NULL",
+        "NG_FORCE_FOREST"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_FORCE_NULL",
+            "role": "contrast"
+          },
+          {
+            "theorem_id": "NG_FORCE_FOREST",
+            "role": "contrast"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_CYCLE_RANK",
+            "relation": "eq",
+            "value": "1"
+          },
+          {
+            "audit_id": "AUDIT_MAX_CYCLE_AFFINITY",
+            "relation": "gt",
+            "value": "0"
+          },
+          {
+            "audit_id": "AUDIT_ONEFORM_EXACTNESS",
+            "relation": "eq",
+            "value": false
+          }
+        ]
+      },
+      "tags": [
+        "cycle",
+        "driven",
+        "finite_markov"
+      ]
+    },
+    {
+      "id": "hidden_clock_reversible",
+      "short_name": "Reversible hidden clock lift",
+      "kind": "phase_lift_markov",
+      "microstate_space": {
+        "states": [
+          "L0",
+          "R0",
+          "R1",
+          "L1"
+        ],
+        "size": 4
+      },
+      "dynamics": {
+        "family": "discrete_markov",
+        "row_states": [
+          "L0",
+          "R0",
+          "R1",
+          "L1"
+        ],
+        "matrix": [
+          [
+            "0",
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "stationary_distribution": [
+          "1/4",
+          "1/4",
+          "1/4",
+          "1/4"
+        ]
+      },
+      "phase_structure": {
+        "phase_states": [
+          "0",
+          "1"
+        ],
+        "factorization": {
+          "L0": {
+            "obs": "L",
+            "phase": "0"
+          },
+          "R0": {
+            "obs": "R",
+            "phase": "0"
+          },
+          "R1": {
+            "obs": "R",
+            "phase": "1"
+          },
+          "L1": {
+            "obs": "L",
+            "phase": "1"
+          }
+        }
+      },
+      "lenses": [
+        {
+          "id": "identity",
+          "mapping": {
+            "L0": "L0",
+            "R0": "R0",
+            "R1": "R1",
+            "L1": "L1"
+          }
+        },
+        {
+          "id": "observe_x_binary",
+          "mapping": {
+            "L0": "L",
+            "L1": "L",
+            "R0": "R",
+            "R1": "R"
+          }
+        },
+        {
+          "id": "observe_clock_3",
+          "mapping": {
+            "L0": "A",
+            "R0": "A",
+            "R1": "B",
+            "L1": "C"
+          }
+        }
+      ],
+      "packaging": null,
+      "theorem_targets": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_ARROW_DPI",
+            "role": "supports"
+          },
+          {
+            "theorem_id": "NG_PROTOCOL_TRAP",
+            "role": "supports"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_PATH_KL_MICRO",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "horizon": "3"
+            }
+          },
+          {
+            "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "lens_id": "observe_x_binary",
+              "horizon": "3"
+            }
+          },
+          {
+            "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "lens_id": "observe_clock_3",
+              "horizon": "3"
+            }
+          },
+          {
+            "audit_id": "AUDIT_PHASE_LIFT_REVERSIBILITY",
+            "relation": "eq",
+            "value": true
+          }
+        ]
+      },
+      "tags": [
+        "hidden_clock",
+        "reversible_lift",
+        "finite_markov"
+      ]
+    },
+    {
+      "id": "hidden_clock_driven",
+      "short_name": "Driven hidden clock lift",
+      "kind": "phase_lift_markov",
+      "microstate_space": {
+        "states": [
+          "L0",
+          "R0",
+          "R1",
+          "L1"
+        ],
+        "size": 4
+      },
+      "dynamics": {
+        "family": "discrete_markov",
+        "row_states": [
+          "L0",
+          "R0",
+          "R1",
+          "L1"
+        ],
+        "matrix": [
+          [
+            "0",
+            "2/3",
+            "0",
+            "1/3"
+          ],
+          [
+            "1/3",
+            "0",
+            "2/3",
+            "0"
+          ],
+          [
+            "0",
+            "1/3",
+            "0",
+            "2/3"
+          ],
+          [
+            "2/3",
+            "0",
+            "1/3",
+            "0"
+          ]
+        ],
+        "stationary_distribution": [
+          "1/4",
+          "1/4",
+          "1/4",
+          "1/4"
+        ]
+      },
+      "phase_structure": {
+        "phase_states": [
+          "0",
+          "1"
+        ],
+        "factorization": {
+          "L0": {
+            "obs": "L",
+            "phase": "0"
+          },
+          "R0": {
+            "obs": "R",
+            "phase": "0"
+          },
+          "R1": {
+            "obs": "R",
+            "phase": "1"
+          },
+          "L1": {
+            "obs": "L",
+            "phase": "1"
+          }
+        }
+      },
+      "lenses": [
+        {
+          "id": "identity",
+          "mapping": {
+            "L0": "L0",
+            "R0": "R0",
+            "R1": "R1",
+            "L1": "L1"
+          }
+        },
+        {
+          "id": "observe_x_binary",
+          "mapping": {
+            "L0": "L",
+            "L1": "L",
+            "R0": "R",
+            "R1": "R"
+          }
+        },
+        {
+          "id": "observe_clock_3",
+          "mapping": {
+            "L0": "A",
+            "R0": "A",
+            "R1": "B",
+            "L1": "C"
+          }
+        }
+      ],
+      "packaging": null,
+      "theorem_targets": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_ARROW_DPI",
+            "role": "supports"
+          },
+          {
+            "theorem_id": "NG_PROTOCOL_TRAP",
+            "role": "contrast"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_PATH_KL_MICRO",
+            "relation": "gt",
+            "value": "0",
+            "context": {
+              "horizon": "3"
+            }
+          },
+          {
+            "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "lens_id": "observe_x_binary",
+              "horizon": "3"
+            }
+          },
+          {
+            "audit_id": "AUDIT_PATH_KL_MACRO_HONEST",
+            "relation": "gt",
+            "value": "0",
+            "context": {
+              "lens_id": "observe_clock_3",
+              "horizon": "3"
+            }
+          },
+          {
+            "audit_id": "AUDIT_PHASE_LIFT_REVERSIBILITY",
+            "relation": "eq",
+            "value": false
+          }
+        ]
+      },
+      "tags": [
+        "hidden_clock",
+        "driven_lift",
+        "finite_markov"
+      ]
+    },
+    {
+      "id": "zero_closure_deficit_lumpable",
+      "short_name": "Zero closure deficit lumpable system",
+      "kind": "markov_chain",
+      "microstate_space": {
+        "states": [
+          "A0",
+          "A1",
+          "B0",
+          "B1"
+        ],
+        "size": 4
+      },
+      "dynamics": {
+        "family": "discrete_markov",
+        "row_states": [
+          "A0",
+          "A1",
+          "B0",
+          "B1"
+        ],
+        "matrix": [
+          [
+            "0",
+            "1/2",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "stationary_distribution": [
+          "1/4",
+          "1/4",
+          "1/4",
+          "1/4"
+        ]
+      },
+      "lenses": [
+        {
+          "id": "macro_AB",
+          "mapping": {
+            "A0": "A",
+            "A1": "A",
+            "B0": "B",
+            "B1": "B"
+          }
+        }
+      ],
+      "packaging": null,
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+            "role": "contrast"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_CLOSURE_DEFICIT",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "lens_id": "macro_AB",
+              "tau": "1"
+            }
+          },
+          {
+            "audit_id": "AUDIT_BEST_MACRO_GAP",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "lens_id": "macro_AB",
+              "tau": "1"
+            }
+          }
+        ]
+      },
+      "tags": [
+        "closure",
+        "lumpable",
+        "finite_markov"
+      ]
+    },
+    {
+      "id": "positive_closure_deficit",
+      "short_name": "Positive closure deficit system",
+      "kind": "markov_chain",
+      "microstate_space": {
+        "states": [
+          "A0",
+          "A1",
+          "B0",
+          "B1"
+        ],
+        "size": 4
+      },
+      "dynamics": {
+        "family": "discrete_markov",
+        "row_states": [
+          "A0",
+          "A1",
+          "B0",
+          "B1"
+        ],
+        "matrix": [
+          [
+            "1/2",
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "stationary_distribution": [
+          "2/5",
+          "1/5",
+          "1/5",
+          "1/5"
+        ]
+      },
+      "lenses": [
+        {
+          "id": "macro_AB",
+          "mapping": {
+            "A0": "A",
+            "A1": "A",
+            "B0": "B",
+            "B1": "B"
+          }
+        }
+      ],
+      "packaging": null,
+      "theorem_targets": [
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+            "role": "supports"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_CLOSURE_DEFICIT",
+            "relation": "gt",
+            "value": "0",
+            "context": {
+              "lens_id": "macro_AB",
+              "tau": "1"
+            }
+          },
+          {
+            "audit_id": "AUDIT_BEST_MACRO_GAP",
+            "relation": "gt",
+            "value": "0",
+            "context": {
+              "lens_id": "macro_AB",
+              "tau": "1"
+            }
+          }
+        ]
+      },
+      "tags": [
+        "closure",
+        "non_lumpable",
+        "finite_markov"
+      ]
+    },
+    {
+      "id": "contractive_unique_object",
+      "short_name": "Contractive packaging with unique object",
+      "kind": "packaging_endomap",
+      "microstate_space": {
+        "states": [
+          "u",
+          "v"
+        ],
+        "size": 2
+      },
+      "dynamics": null,
+      "lenses": [
+        {
+          "id": "identity",
+          "mapping": {
+            "u": "u",
+            "v": "v"
+          }
+        }
+      ],
+      "packaging": {
+        "id": "pkg_contract",
+        "family": "stochastic_operator",
+        "action": "row_distribution_left_multiply",
+        "row_states": [
+          "u",
+          "v"
+        ],
+        "matrix": [
+          [
+            "3/4",
+            "1/4"
+          ],
+          [
+            "3/4",
+            "1/4"
+          ]
+        ]
+      },
+      "theorem_targets": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_OBJECT_CONTRACTIVE",
+            "role": "supports"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_CONTRACTION_LAMBDA",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "package_id": "pkg_contract"
+            }
+          },
+          {
+            "audit_id": "AUDIT_FIXED_POINT_COUNT",
+            "relation": "eq",
+            "value": "1",
+            "context": {
+              "package_id": "pkg_contract",
+              "space": "distribution_simplex"
+            }
+          }
+        ]
+      },
+      "tags": [
+        "contractive",
+        "unique_fixed_point",
+        "packaging"
+      ]
+    },
+    {
+      "id": "noncontractive_multiobject",
+      "short_name": "Noncontractive packaging with multiple fixed points",
+      "kind": "packaging_endomap",
+      "microstate_space": {
+        "states": [
+          "u",
+          "v",
+          "w"
+        ],
+        "size": 3
+      },
+      "dynamics": null,
+      "lenses": [
+        {
+          "id": "identity",
+          "mapping": {
+            "u": "u",
+            "v": "v",
+            "w": "w"
+          }
+        }
+      ],
+      "packaging": {
+        "id": "pkg_multi",
+        "family": "state_map",
+        "mapping": {
+          "u": "u",
+          "v": "v",
+          "w": "u"
+        }
+      },
+      "theorem_targets": [
+        "NG_OBJECT_CONTRACTIVE"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_OBJECT_CONTRACTIVE",
+            "role": "contrast"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_FIXED_POINT_COUNT",
+            "relation": "eq",
+            "value": "2",
+            "context": {
+              "package_id": "pkg_multi",
+              "space": "microstate_endomap"
+            }
+          },
+          {
+            "audit_id": "AUDIT_IDEMPOTENCE_DEFECT",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "package_id": "pkg_multi"
+            }
+          }
+        ]
+      },
+      "tags": [
+        "noncontractive",
+        "multiobject",
+        "packaging"
+      ]
+    },
+    {
+      "id": "fixed_idempotent_no_ladder",
+      "short_name": "Fixed idempotent packaging without laddering",
+      "kind": "packaging_endomap",
+      "microstate_space": {
+        "states": [
+          "x",
+          "y",
+          "z"
+        ],
+        "size": 3
+      },
+      "dynamics": null,
+      "lenses": [
+        {
+          "id": "base_binary",
+          "mapping": {
+            "x": "0",
+            "y": "1",
+            "z": "1"
+          }
+        }
+      ],
+      "packaging": {
+        "id": "pkg_fixed",
+        "family": "state_map",
+        "mapping": {
+          "x": "x",
+          "y": "y",
+          "z": "y"
+        }
+      },
+      "theorem_targets": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_LADDER_IDEM",
+            "role": "supports"
+          },
+          {
+            "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+            "role": "supports"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_IDEMPOTENCE_DEFECT",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "package_id": "pkg_fixed"
+            }
+          },
+          {
+            "audit_id": "AUDIT_INTERFACE_SIZE",
+            "relation": "eq",
+            "value": "2",
+            "context": {
+              "lens_id": "base_binary"
+            }
+          },
+          {
+            "audit_id": "AUDIT_DEFINABLE_PREDICATE_COUNT",
+            "relation": "eq",
+            "value": "4",
+            "context": {
+              "lens_id": "base_binary"
+            }
+          }
+        ]
+      },
+      "tags": [
+        "idempotent",
+        "bounded_interface",
+        "no_ladder"
+      ]
+    },
+    {
+      "id": "lens_extension_escape",
+      "short_name": "Lens extension escape witness",
+      "kind": "extension_witness",
+      "microstate_space": {
+        "states": [
+          "x",
+          "y",
+          "z"
+        ],
+        "size": 3
+      },
+      "dynamics": null,
+      "lenses": [
+        {
+          "id": "base_binary",
+          "mapping": {
+            "x": "0",
+            "y": "1",
+            "z": "1"
+          }
+        },
+        {
+          "id": "extended_ternary",
+          "mapping": {
+            "x": "0",
+            "y": "1",
+            "z": "2"
+          }
+        }
+      ],
+      "packaging": {
+        "id": "pkg_fixed",
+        "family": "state_map",
+        "mapping": {
+          "x": "x",
+          "y": "y",
+          "z": "y"
+        }
+      },
+      "extension_pairs": [
+        {
+          "base_lens_id": "base_binary",
+          "extended_lens_id": "extended_ternary"
+        }
+      ],
+      "theorem_targets": [
+        "NG_LADDER_IDEM",
+        "NG_LADDER_BOUNDED_INTERFACE"
+      ],
+      "expected_signatures": {
+        "theorems": [
+          {
+            "theorem_id": "NG_LADDER_IDEM",
+            "role": "contrast"
+          },
+          {
+            "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+            "role": "contrast"
+          }
+        ],
+        "audits": [
+          {
+            "audit_id": "AUDIT_IDEMPOTENCE_DEFECT",
+            "relation": "eq",
+            "value": "0",
+            "context": {
+              "package_id": "pkg_fixed"
+            }
+          },
+          {
+            "audit_id": "AUDIT_INTERFACE_SIZE",
+            "relation": "eq",
+            "value": "2",
+            "context": {
+              "lens_id": "base_binary"
+            }
+          },
+          {
+            "audit_id": "AUDIT_DEFINABLE_PREDICATE_COUNT",
+            "relation": "eq",
+            "value": "4",
+            "context": {
+              "lens_id": "base_binary"
+            }
+          },
+          {
+            "audit_id": "AUDIT_INTERFACE_SIZE",
+            "relation": "eq",
+            "value": "3",
+            "context": {
+              "lens_id": "extended_ternary"
+            }
+          },
+          {
+            "audit_id": "AUDIT_DEFINABLE_PREDICATE_COUNT",
+            "relation": "eq",
+            "value": "8",
+            "context": {
+              "lens_id": "extended_ternary"
+            }
+          }
+        ]
+      },
+      "tags": [
+        "idempotent",
+        "lens_extension",
+        "escape"
+      ]
+    }
+  ]
+}

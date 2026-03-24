@@ -1,0 +1,7 @@
+witness_id,lens_id,state_count,interface_size,exact_definable_count,formula_definable_count,exact_probability,fullspace_sample_count,fullspace_empirical_rate,packaging_id,is_idempotent,saturation_max_step,signature_stabilization_step,no_ladder_holds
+fixed_idempotent_no_ladder,base_binary,3,2,4,4,1/2,8,1/2,pkg_fixed,true,1,0,true
+lens_extension_escape,base_binary,3,2,4,4,1/2,8,1/2,pkg_fixed,true,1,0,true
+lens_extension_escape,extended_ternary,3,3,8,8,1/1,8,1/1,pkg_fixed,true,1,1,true
+hidden_clock_reversible,observe_x_binary,4,2,4,4,1/4,16,1/4,,,,,
+hidden_clock_reversible,observe_clock_3,4,3,8,8,1/2,16,1/2,,,,,
+zero_closure_deficit_lumpable,macro_AB,4,2,4,4,1/4,16,1/4,,,,,

@@ -1,0 +1,96 @@
+\section{Arrow audits and protocol traps}\label{sec:arrow-protocol}
+
+This section proves Theorem~\ref{thm:NG_ARROW_DPI} (deterministic arrow cannot increase under observation) and Theorem~\ref{thm:NG_PROTOCOL_TRAP} (reversible dynamics at stationarity has zero observed arrow).
+All objects and notation are as in Section~\ref{sec:setup}.
+The forward-versus-reversed path-space KL used here is the standard relative-entropy object behind entropy-production and irreversibility diagnostics \citep{Seifert2012,MaesNetocny2003}.
+Under coarse observation such dissipation can be hidden, which is why the honest pushforward convention matters \citep{Esposito2012}.
+The underlying relative-entropy monotonicity is the standard data-processing inequality, and the stationary reversal calculation is standard for reversible chains \citep{CoverThomas2006,Kelly1979}.
+
+\subsection{Deterministic data processing for finite KL}
+
+\begin{lemma}[Deterministic DPI for KL]\label{lem:deterministic_dpi_kl}
+Let $\Omega$ be a finite set and let $g:\Omega\to\Omega'$ be deterministic.
+For any probability laws $P,Q\in\Delta(\Omega)$,
+\[
+D_{\mathrm{KL}}(g_{\#}P \,\|\, g_{\#}Q)\;\le\; D_{\mathrm{KL}}(P\,\|\,Q).
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:probkl}.
+\end{proof}
+
+\subsection{Reversal commutes with pointwise observation}
+
+Fix a horizon $T\ge 0$.
+Let $\mathrm{rev}:X^{T+1}\to X^{T+1}$ denote the coordinate reversal map
+$\mathrm{rev}(x_0,\dots,x_T) := (x_T,\dots,x_0)$.
+Let $f^{(T)}:X^{T+1}\to Y^{T+1}$ denote the pointwise application
+$f^{(T)}(x_0,\dots,x_T):=(f(x_0),\dots,f(x_T))$.
+
+\begin{lemma}[Commutation of reversal and observation]\label{lem:rev_pushforward_commute}
+For any law $P\in\Delta(X^{T+1})$,
+\[
+f^{(T)}_{\#}\big(\mathrm{rev}_{\#}P\big)
+\;=\;
+\mathrm{rev}_{\#}\big(f^{(T)}_{\#}P\big).
+\]
+In particular, for the path law $P_T^{\mu,K}$ from Section~\ref{sec:setup},
+\[
+P_T^{\mu,K,f,\mathrm{rev}} \;=\; \mathrm{rev}_{\#} P_T^{\mu,K,f}
+\;=\; f^{(T)}_{\#}\big(P_T^{\mu,K,\mathrm{rev}}\big).
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:probkl}.
+\end{proof}
+
+\subsection{Proof of the arrow DPI theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:NG_ARROW_DPI}]
+Fix $T\ge 0$ and abbreviate $P := P_T^{\mu,K}\in\Delta(X^{T+1})$ and $Q := P_T^{\mu,K,\mathrm{rev}} = \mathrm{rev}_{\#}P$.
+Apply Lemma~\ref{lem:deterministic_dpi_kl} to $\Omega=X^{T+1}$, $\Omega'=Y^{T+1}$ and $g=f^{(T)}$:
+\[
+D_{\mathrm{KL}}\!\big(f^{(T)}_{\#}P \,\|\, f^{(T)}_{\#}Q\big)
+\le
+D_{\mathrm{KL}}(P\,\|\,Q).
+\]
+By Lemma~\ref{lem:rev_pushforward_commute}, $f^{(T)}_{\#}P = P_T^{\mu,K,f}$ and $f^{(T)}_{\#}Q = P_T^{\mu,K,f,\mathrm{rev}}$.
+Therefore the left-hand side equals $\mathcal{A}_T(\mu,K;f)$ and the right-hand side equals $\mathcal{A}_T(\mu,K)$, proving
+$\mathcal{A}_T(\mu,K;f)\le \mathcal{A}_T(\mu,K)$ as claimed.
+\end{proof}
+
+\subsection{Reversibility at stationarity and the protocol trap}
+
+\begin{lemma}[Detailed balance implies path-law reversal invariance]\label{lem:detailed_balance_path}
+Assume $\pi\in\Delta(X)$ is stationary for $K$ and satisfies detailed balance:
+\[
+\pi(x)\,K(x,x') \;=\; \pi(x')\,K(x',x)
+\qquad\text{for all }x,x'\in X.
+\]
+Then for every $T\ge 0$,
+\[
+P_T^{\pi,K} \;=\; P_T^{\pi,K,\mathrm{rev}}.
+\]
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:probkl}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:NG_PROTOCOL_TRAP}]
+Lemma~\ref{lem:detailed_balance_path} implies $P_T^{\pi,K}=P_T^{\pi,K,\mathrm{rev}}$ for every $T\ge 0$, hence
+$\mathcal{A}_T(\pi,K)=D_{\mathrm{KL}}(P_T^{\pi,K}\,\|\,P_T^{\pi,K,\mathrm{rev}})=0$.
+Applying Theorem~\ref{thm:NG_ARROW_DPI} with initial law $\pi$ gives
+$\mathcal{A}_T(\pi,K;f)\le \mathcal{A}_T(\pi,K)=0$, hence $\mathcal{A}_T(\pi,K;f)=0$.
+\end{proof}
+
+\begin{remark}[What is ruled out, and what is not]\label{rem:protocol_trap_reading}
+Theorem~\ref{thm:NG_PROTOCOL_TRAP} is a statement about an \emph{arrow audit}:
+it rules out certifying irreversibility of the observed process via
+$D_{\mathrm{KL}}(P_T^{\pi,K,f}\,\|\,P_T^{\pi,K,f,\mathrm{rev}})$
+when the underlying system is reversible and started in the stationary law.
+The observed variable $f(x_t)$ may still carry a nontrivial ordering or protocol structure while having zero arrow under stationary reversible dynamics.
+To obtain a nonzero arrow audit one must leave this scope, for example by nonstationary initialization, explicit nonequilibrium forcing, or by switching to a different witness.
+\end{remark}

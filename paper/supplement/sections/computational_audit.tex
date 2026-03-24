@@ -1,0 +1,10 @@
+\section{Computational audit and artifact manifest}
+The canonical command for rebuilding the computational side of the project is \texttt{make reproduce}.
+That command drives the reproducibility pipeline, refreshes theorem-pack summaries, Lean summaries, and rewrite-lane validations, and writes a manifest at \texttt{results/manifest/artifact\_manifest.json}.
+The pipeline is deterministic up to the frozen repo contents and toolchain recorded in the manifest.
+
+\input{generated/manifest_overview_table.tex}
+
+The table below lists the theorem-pack and Lean-check steps that are directly relevant to theorem evidence in the main paper, together with the summary JSON outputs they refresh.
+
+\input{generated/relevant_steps_table.tex}

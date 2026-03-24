@@ -1,0 +1,9 @@
+\section{Fragility diagnostics}
+The main paper states theorem objects in exact finite terms.
+The fragility layer records where nearby proxy choices can distort interpretation without changing the underlying theorem statements.
+The frozen source for this section is \texttt{results/T15/fragility\_summary.json}, together with the guardrail claims in \texttt{docs/project/claim\_audit\_freeze.yaml}.
+
+The dominant risks are: changing the initial law in stationary arrow claims, changing the observation lens, fitting first-order macro proxies, thresholding exact support graphs, and switching to non-admissible objecthood metrics.
+Each such move is a scope change or a proxy diagnostic, not an in-theorem modification of the audited object.
+
+\input{generated/fragility_table.tex}

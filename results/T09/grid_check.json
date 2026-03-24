@@ -1,0 +1,117 @@
+{
+  "generated_at_utc": "2026-03-17T07:57:45Z",
+  "precision": 80,
+  "grid_denominator": 12,
+  "entries": [
+    {
+      "denominator": 12,
+      "total_candidate_count": 169,
+      "finite_candidate_count": 121,
+      "infinite_candidate_count": 48,
+      "analytic_best_kernel": [
+        [
+          "1/2",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1/2"
+        ]
+      ],
+      "analytic_best_gap": {
+        "kind": "zero",
+        "support_mismatch_count": 0,
+        "log_terms": [],
+        "decimal_value": "0",
+        "precision": 80
+      },
+      "grid_best_kernels": [
+        [
+          [
+            "1/2",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2"
+          ]
+        ]
+      ],
+      "grid_best_gap": {
+        "kind": "zero",
+        "support_mismatch_count": 0,
+        "log_terms": [],
+        "decimal_value": "0",
+        "precision": 80
+      },
+      "analytic_best_in_grid_minima": true,
+      "witness_id": "zero_closure_deficit_lumpable",
+      "lens_id": "macro_AB",
+      "tau": 1
+    },
+    {
+      "denominator": 12,
+      "total_candidate_count": 169,
+      "finite_candidate_count": 132,
+      "infinite_candidate_count": 37,
+      "analytic_best_kernel": [
+        [
+          "1/3",
+          "2/3"
+        ],
+        [
+          "1/1",
+          "0/1"
+        ]
+      ],
+      "analytic_best_gap": {
+        "kind": "finite_positive",
+        "support_mismatch_count": 0,
+        "log_terms": [
+          {
+            "ratio": "3/4",
+            "coeff": "1/5"
+          },
+          {
+            "ratio": "3/2",
+            "coeff": "2/5"
+          }
+        ],
+        "decimal_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+        "precision": 80
+      },
+      "grid_best_kernels": [
+        [
+          [
+            "1/3",
+            "2/3"
+          ],
+          [
+            "1/1",
+            "0/1"
+          ]
+        ]
+      ],
+      "grid_best_gap": {
+        "kind": "finite_positive",
+        "support_mismatch_count": 0,
+        "log_terms": [
+          {
+            "ratio": "3/4",
+            "coeff": "1/5"
+          },
+          {
+            "ratio": "3/2",
+            "coeff": "2/5"
+          }
+        ],
+        "decimal_value": "0.10464962875290956730336144498697416832809422720544546774427259258778167835540961",
+        "precision": 80
+      },
+      "analytic_best_in_grid_minima": true,
+      "witness_id": "positive_closure_deficit",
+      "lens_id": "macro_AB",
+      "tau": 1
+    }
+  ]
+}

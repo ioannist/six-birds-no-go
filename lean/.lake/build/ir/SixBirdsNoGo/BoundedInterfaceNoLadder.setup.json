@@ -1,0 +1,11 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.BoundedInterfaceNoLadder",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.Idempotence":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/Idempotence.olean"],
+  "SixBirdsNoGo.FiniteLensDefinability":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteLensDefinability.olean"]},
+ "dynlibs": []}

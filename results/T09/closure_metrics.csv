@@ -1,0 +1,5 @@
+witness_id,lens_id,tau,initial_mode,strong_lumpable,closure_kind,closure_decimal,closure_term_count,best_gap_kind,best_gap_decimal,best_gap_term_count,variational_match,best_kernel_rows,packaged_future_distinct_count
+zero_closure_deficit_lumpable,macro_AB,0,stationary,true,zero,0,0,zero,0,0,true,"[[""1/1"",""0/1""],[""0/1"",""1/1""]]",2
+zero_closure_deficit_lumpable,macro_AB,1,stationary,true,zero,0,0,zero,0,0,true,"[[""1/2"",""1/2""],[""1/2"",""1/2""]]",1
+positive_closure_deficit,macro_AB,0,stationary,false,zero,0,0,zero,0,0,true,"[[""1/1"",""0/1""],[""0/1"",""1/1""]]",2
+positive_closure_deficit,macro_AB,1,stationary,false,finite_positive,0.10464962875290956730336144498697416832809422720544546774427259258778167835540961,2,finite_positive,0.10464962875290956730336144498697416832809422720544546774427259258778167835540961,2,true,"[[""1/3"",""2/3""],[""1/1"",""0/1""]]",3

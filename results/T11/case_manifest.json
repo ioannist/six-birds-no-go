@@ -1,0 +1,54 @@
+{
+  "witness_lens_cases": [
+    {
+      "witness_id": "fixed_idempotent_no_ladder",
+      "lens_id": "base_binary"
+    },
+    {
+      "witness_id": "lens_extension_escape",
+      "lens_id": "base_binary"
+    },
+    {
+      "witness_id": "lens_extension_escape",
+      "lens_id": "extended_ternary"
+    },
+    {
+      "witness_id": "hidden_clock_reversible",
+      "lens_id": "observe_x_binary"
+    },
+    {
+      "witness_id": "hidden_clock_reversible",
+      "lens_id": "observe_clock_3"
+    },
+    {
+      "witness_id": "zero_closure_deficit_lumpable",
+      "lens_id": "macro_AB"
+    }
+  ],
+  "random_check_cases": [
+    {
+      "witness_id": "fixed_idempotent_no_ladder",
+      "lens_id": "base_binary",
+      "sample_count": 8,
+      "replace": false
+    },
+    {
+      "witness_id": "lens_extension_escape",
+      "lens_id": "extended_ternary",
+      "sample_count": 8,
+      "replace": false
+    },
+    {
+      "witness_id": "hidden_clock_reversible",
+      "lens_id": "observe_x_binary",
+      "sample_count": 16,
+      "replace": false
+    }
+  ],
+  "no_ladder_demo_count": 3,
+  "seed": 7,
+  "max_steps": 3,
+  "generation_timestamp_utc": "2026-03-23T16:01:38Z",
+  "row_count": 6,
+  "random_check_count": 3
+}

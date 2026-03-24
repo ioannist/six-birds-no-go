@@ -1,0 +1,63 @@
+{
+  "version": "T38",
+  "generated_at_utc": "2026-03-19T05:09:19Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "theorem_pack_arrow_protocol": "docs/project/theorem_pack_arrow_protocol.yaml",
+    "lean_kl_dpi_core": "docs/project/lean_kl_dpi_core.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "bridge_status": [
+      "direct_ready"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_ARROW_DPI",
+      "bridge_status": "direct_ready",
+      "bridge_statement": "Honest deterministic observation on finite path laws satisfies path-reversal KL data processing, and exact micro reversal-invariance is preserved under honest observation.",
+      "prerequisites": [
+        "finite path laws",
+        "path reversal",
+        "deterministic pushforward",
+        "finite KL",
+        "deterministic DPI"
+      ],
+      "direct_corollaries": [
+        "reverse/pushforward commutation",
+        "deterministic path-law DPI",
+        "equality-form zero-micro-arrow \u21d2 zero-macro-arrow corollary"
+      ],
+      "scope_limits": [
+        "honest deterministic observation only",
+        "fixed-horizon path laws only",
+        "equality-form zero-arrow corollary on exact path laws",
+        "finite-KL / compatibility regime of the current KL core",
+        "no generic channel DPI",
+        "initial-law scope beyond exact path-law equality remains outside this Lean bridge and belongs to the protocol/front guardrail layer"
+      ],
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteKLDPI.lean",
+        "lean/SixBirdsNoGo/FiniteKLDPIExample.lean",
+        "lean/SixBirdsNoGo/ArrowDPI.lean",
+        "lean/SixBirdsNoGo/ArrowDPIExample.lean"
+      ],
+      "readiness_delta": {
+        "lean_support_before": "missing",
+        "lean_support_after": "direct"
+      },
+      "remaining_blockers": [
+        "Initial-law and proxy guardrails must remain explicit in paper assembly.",
+        "Full protocol-lift initial-law scope is now bridged, but the infinite/non-compatible regime is still outside this minimal Lean bridge."
+      ],
+      "next_ticket": {
+        "id": "PLAN_NEXT_14_arrow_protocol_guardrail_hold",
+        "action": "Preserve stationary-initial-law, honest-observation, and anti-proxy guardrails explicitly in paper assembly for the arrow/protocol fronts."
+      }
+    }
+  ]
+}

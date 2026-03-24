@@ -1,0 +1,13 @@
+{"plugins": [],
+ "package": "sixbirdsnogo",
+ "options": {},
+ "name": "SixBirdsNoGo.FiniteKLDPIExample",
+ "isModule": false,
+ "importArts":
+ {"SixBirdsNoGo.FiniteProbabilityCoreExample":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCoreExample.olean"],
+  "SixBirdsNoGo.FiniteProbabilityCore":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteProbabilityCore.olean"],
+  "SixBirdsNoGo.FiniteKLDPI":
+  ["/home/repos/six-birds-no-go/lean/.lake/build/lib/lean/SixBirdsNoGo/FiniteKLDPI.olean"]},
+ "dynlibs": []}

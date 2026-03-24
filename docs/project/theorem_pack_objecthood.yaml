@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-18T00:15:00Z",
+  "source_context": {
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "master_manifest": "results/master/witness_manifest.json",
+    "t10_objecthood_metrics": "results/T10/objecthood_metrics.json",
+    "t10_stability_grid": "results/T10/stability_grid.json",
+    "t15_objecthood_metric_sweep": "results/T15/objecthood_metric_sweep.csv",
+    "t15_adversarial_cases": "results/T15/adversarial_cases.json",
+    "t15_fragility_summary": "results/T15/fragility_summary.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "pack_status": [
+      "direct_ready",
+      "blocked",
+      "deferred"
+    ],
+    "support_grade": [
+      "direct",
+      "evidence_only",
+      "insufficient"
+    ],
+    "regime_resolution_mode": [
+      "resolved_by_metric_regime_freeze",
+      "blocked_but_sharpened"
+    ]
+  },
+  "theorem_fronts": [
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "pack_status": "direct_ready",
+      "theorem_statement": "Under total-variation/Dobrushin contraction with lambda < 1, packaging has a unique fixed distribution, and any two epsilon-stable packaged states satisfy the sharp TV separation bound, ruling out multiple well-separated robust objects at that scale.",
+      "theorem_core": {
+        "antecedent": [
+          "finite packaging operator and induced operator on the simplex",
+          "admissible theorem metric is total variation",
+          "Dobrushin contraction coefficient lambda < 1",
+          "epsilon-stability measured in the same metric when approximate-object corollary is used"
+        ],
+        "conclusion": [
+          "unique fixed distribution",
+          "exact fixed-point count one in the contraction regime",
+          "any two epsilon-stable states satisfy TV(mu, nu) <= 2*epsilon/(1-lambda)",
+          "multiple well-separated robust objects are impossible at that scale in the admissible metric"
+        ],
+        "scope_limits": [
+          "theorem metric fixed to total variation / Dobrushin",
+          "theorem front only claims contraction regime lambda < 1",
+          "noncontractive multi-fixed-point examples are contextual and outside theorem scope",
+          "proxy clustering metrics are excluded from theorem evidence"
+        ]
+      },
+      "proof_spine": [
+        "Move from packaging to the induced operator on distributions.",
+        "Dobrushin lambda < 1 gives strict contraction in total variation.",
+        "Strict contraction yields a unique fixed distribution.",
+        "TV residual inequality yields the approximate-object separation bound.",
+        "Theorem-level objecthood is metric/regime-scoped, not free-form clustering.",
+        "T15 metric sweep shows proxy clustering can spuriously split the unique-object regime and is excluded from theorem evidence."
+      ],
+      "guardrails": [
+        {
+          "claim_id": "NG_OBJECT_CONTRACTIVE.guardrail",
+          "guardrail_text": "Theorem objecthood claims must use admissible total-variation / Dobrushin metric assumptions.",
+          "evidence_refs": [
+            "results/T10/objecthood_metrics.json",
+            "results/T10/stability_grid.json"
+          ],
+          "note": "Contraction/objecthood theorem claims are metric-locked."
+        },
+        {
+          "claim_id": "NG_OBJECT_CONTRACTIVE.guardrail",
+          "guardrail_text": "Proxy clustering metrics such as support-signature clustering are not admissible theorem evidence.",
+          "evidence_refs": [
+            "results/T15/objecthood_metric_sweep.csv",
+            "results/T15/adversarial_cases.json:poor_metric_splits_unique_object"
+          ],
+          "note": "Proxy multiplicity artifacts are diagnostic and excluded from theorem conclusions."
+        },
+        {
+          "claim_id": "NG_OBJECT_CONTRACTIVE.guardrail",
+          "guardrail_text": "Noncontractive multiobject examples are contextual and outside the contraction theorem regime.",
+          "evidence_refs": [
+            "results/master/witness_manifest.json"
+          ],
+          "note": "Noncontractive examples do not contradict the lambda < 1 theorem front."
+        }
+      ],
+      "regime_resolution": {
+        "mode": "resolved_by_metric_regime_freeze",
+        "historical_gap_claim_id": "NG_OBJECT_CONTRACTIVE.metric_regime_gap",
+        "admissible_metric": "total_variation",
+        "admissible_regime": "lambda_lt_1_contraction",
+        "excluded_proxy_metric": "support_signature_clustering",
+        "evidence_ref": "results/T25/objecthood_metric_guardrails_resolution.json",
+        "resolution_note": "Historical metric/regime ambiguity is resolved by freezing admissible theorem metric/regime to TV + lambda<1 and excluding proxy clustering from theorem evidence."
+      },
+      "evidence_refs": {
+        "analytic": [
+          "docs/project/theorem_pack_objecthood.yaml",
+          "results/T25/objecthood_pack_summary.json"
+        ],
+        "computational": [
+          "results/T10/objecthood_metrics.json",
+          "results/T10/stability_grid.json",
+          "results/master/witness_manifest.json"
+        ],
+        "guardrail": [
+          "results/T15/objecthood_metric_sweep.csv",
+          "results/T15/adversarial_cases.json",
+          "results/T25/objecthood_metric_guardrails_resolution.json"
+        ],
+        "lean": [
+          "lean/SixBirdsNoGo/ContractionUniqueness.lean",
+          "lean/SixBirdsNoGo/ContractionUniquenessExample.lean",
+          "docs/project/lean_objecthood_uniqueness.yaml",
+          "docs/project/lean_objecthood_formal_boundary.md",
+          "docs/project/lean_objecthood_tv_feasibility.yaml",
+          "docs/project/lean_objecthood_tv_formal_boundary.md",
+          "docs/project/lean_objecthood_direct.yaml",
+          "results/T30/lean_objecthood_uniqueness_summary.json",
+          "results/T43/lean_objecthood_tv_feasibility_summary.json",
+          "results/T44/lean_objecthood_direct_pack_summary.json"
+        ],
+        "witness": [
+          "contractive_unique_object",
+          "noncontractive_multiobject"
+        ]
+      },
+      "readiness_delta": {
+        "analytic_support_before": "partial",
+        "analytic_support_after": "present",
+        "blockers_resolved": [
+          "Direct theorem-facing objecthood package is frozen.",
+          "Historical metric/regime gap resolved by admissible metric/regime freeze."
+        ],
+        "blockers_remaining": [
+          "Full TV/Dobrushin + epsilon-stable separation Lean bridge still pending."
+        ]
+      },
+      "claim_delta": {
+        "core_claim_id": "NG_OBJECT_CONTRACTIVE.core",
+        "core_support_grade_before": "evidence_only",
+        "core_support_grade_after": "direct",
+        "guardrail_claim_ids": [
+          "NG_OBJECT_CONTRACTIVE.guardrail"
+        ]
+      },
+      "remaining_blockers": [],
+      "next_ticket": null
+    }
+  ]
+}

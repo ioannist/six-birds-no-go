@@ -1,0 +1,109 @@
+\section{Graph structure and affinity}\label{sec:graph-affinity}
+
+This section isolates the graph-theoretic content behind the affinity and force audits.
+We work with finite graphs and antisymmetric edge labellings (discrete $1$-forms).
+The two main results proved here are Theorem~\ref{thm:NG_FORCE_FOREST} and
+Theorem~\ref{thm:NG_FORCE_NULL} from Section~\ref{sec:main-results}.
+
+\subsection{Graphs, antisymmetric $1$-forms, and cycle sums}
+
+Let $G=(V,E)$ be a finite undirected graph.  Write
+\[
+\vec E \;=\; \{(u,v)\in V\times V : \{u,v\}\in E\}
+\]
+for the set of oriented edges.
+
+\begin{definition}[Antisymmetric edge labelling / $1$-form]
+An \emph{antisymmetric edge labelling} on $G$ is a function
+$a:\vec E\to \mathbb{R}$ such that $a(v,u)=-a(u,v)$ for all $(u,v)\in \vec E$.
+\end{definition}
+
+\begin{definition}[Exactness and potentials]
+An antisymmetric labelling $a$ is \emph{exact} if there exists a function
+$\phi:V\to \mathbb{R}$ such that for every $(u,v)\in \vec E$,
+\[
+a(u,v)=\phi(v)-\phi(u).
+\]
+Any such $\phi$ is called a \emph{potential} for $a$.
+\end{definition}
+
+\begin{definition}[Closed-walk sum / cycle affinity]
+Let $w=(v_0,v_1,\dots,v_k)$ be a finite walk with $v_k=v_0$ and
+$\{v_i,v_{i+1}\}\in E$ for all $i$.
+The \emph{closed-walk sum} of $a$ along $w$ is
+\[
+S_a(w)\;=\;\sum_{i=0}^{k-1} a(v_i,v_{i+1}).
+\]
+When $a$ is a log-ratio $1$-form, $S_a(w)$ is the (log) cycle affinity.
+This is the standard cycle-affinity language for finite Markov networks \citep{Schnakenberg1976}.
+\end{definition}
+
+\begin{definition}[Cycle rank]
+Let $c(G)$ be the number of connected components of $G$.
+The \emph{cycle rank} (first Betti number) of $G$ is
+\[
+\beta_1(G)\;=\;|E|-|V|+c(G).
+\]
+In particular, $\beta_1(G)=0$ if and only if every component of $G$ is a tree.
+These cycle-space facts are standard in graph theory; see \citep{Diestel2017,Biggs1993}.
+\end{definition}
+
+\subsection{Forest exactness}
+
+We now prove that on a tree (hence on each component of a forest) every antisymmetric
+edge labelling is potential-generated.
+The potential interpretation of exact antisymmetric edge labellings is also standard in this finite graph setting; see \citep{Diestel2017,Lim2020Hodge}.
+
+\begin{lemma}[Rooted parent map on a tree]\label{lem:tree-parent}
+Let $G=(V,E)$ be a finite tree and fix a root $r\in V$.
+For each vertex $v\neq r$ there exists a unique neighbor $\mathrm{par}(v)$ of $v$
+lying on the unique simple path from $r$ to $v$.
+\end{lemma}
+
+\begin{proof}
+See Appendix~\ref{app:graphexact}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:NG_FORCE_FOREST}]
+Let $G=(V,E)$ be a finite tree with root $r$, and let $a:\vec E\to\mathbb{R}$ be antisymmetric.
+Define $\phi:V\to\mathbb{R}$ by $\phi(r)=0$ and, for $v\neq r$,
+\[
+\phi(v)\;=\;\phi(\mathrm{par}(v)) + a(\mathrm{par}(v),v),
+\]
+where $\mathrm{par}(v)$ is given by Lemma~\ref{lem:tree-parent}.
+The verification that $a(u,v)=\phi(v)-\phi(u)$ on every oriented edge is recorded in Appendix~\ref{app:graphexact}.
+For a forest, apply the same construction componentwise by choosing a root in each component.
+\end{proof}
+
+\subsection{Exactness forces vanishing closed-walk sums}
+
+\begin{proof}[Proof of Theorem~\ref{thm:NG_FORCE_NULL}]
+Assume $a$ is exact: $a(u,v)=\phi(v)-\phi(u)$ for some $\phi:V\to\mathbb{R}$.
+Let $w=(v_0,v_1,\dots,v_k)$ be any closed walk with $v_k=v_0$.
+Then
+\[
+S_a(w)=\sum_{i=0}^{k-1}\bigl(\phi(v_{i+1})-\phi(v_i)\bigr)
+=\phi(v_k)-\phi(v_0)=0.
+\]
+The telescoping calculation is written out in Appendix~\ref{app:graphexact}.
+\end{proof}
+
+\begin{remark}[Connection to log-ratio affinity]
+If $K$ is a Markov kernel on a finite state space with bidirected support graph $G$,
+a common affinity $1$-form is the log-ratio
+\[
+a_K(u,v)=\log\frac{K(u,v)}{K(v,u)}
+\qquad\text{on each bidirected edge.}
+\]
+This is antisymmetric on $\vec E$. Theorems~\ref{thm:NG_FORCE_FOREST} and
+\ref{thm:NG_FORCE_NULL} show that (i) on forest support every such antisymmetric form
+is potential-generated, and (ii) any potential-generated form has zero closed-walk sums,
+so every cycle affinity vanishes.
+\end{remark}
+
+\begin{remark}[Thresholding and regularization]
+The theorems above are statements about the \emph{exact} graph object $(V,E)$ and the
+\emph{exact} antisymmetric data $a$ supported on $\vec E$.
+Graph thresholding or regularization changes $E$ and can change $\beta_1(G)$; such
+modifications lie outside the theorem hypotheses and define different graph objects.
+\end{remark}

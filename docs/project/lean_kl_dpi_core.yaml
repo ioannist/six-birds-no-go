@@ -1,0 +1,112 @@
+{
+  "version": "T37",
+  "generated_at_utc": "2026-03-19T15:10:00Z",
+  "source_context": {
+    "scope_charter": "docs/project/lean_probability_scope_charter.yaml",
+    "lean_probability_core": "docs/project/lean_probability_core.yaml",
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "lean_root": "lean/SixBirdsNoGo.lean",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "component_status": [
+      "formalized",
+      "pending"
+    ],
+    "formalization_mode": [
+      "minimal_scalar_log_interface"
+    ],
+    "frontier_status": [
+      "unchanged"
+    ]
+  },
+  "formalization_boundary": {
+    "formalization_mode": "minimal_scalar_log_interface",
+    "note": "The scalar/log layer is minimal and explicit, and no broad information or analysis library was introduced.",
+    "forbidden_expansions": [
+      "no generic stochastic channels",
+      "no generic entropy/information library",
+      "no broad real-analysis buildout"
+    ]
+  },
+  "implemented_foundations": [
+    {
+      "foundation_id": "FP_MINIMAL_SCALAR_LOG_LAYER",
+      "component_status": "formalized",
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteKLDPI.lean",
+        "lean/SixBirdsNoGo/FiniteKLDPIExample.lean"
+      ],
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "A minimal explicit scalar/log interface is formalized only to support finite KL and deterministic DPI."
+    },
+    {
+      "foundation_id": "FP_PATH_REVERSAL",
+      "component_status": "formalized",
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteKLDPI.lean",
+        "lean/SixBirdsNoGo/FiniteKLDPIExample.lean"
+      ],
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "note": "Fixed-horizon path reversal is formalized locally on the T36 path-state core."
+    },
+    {
+      "foundation_id": "FP_FINITE_KL",
+      "component_status": "formalized",
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteKLDPI.lean",
+        "lean/SixBirdsNoGo/FiniteKLDPIExample.lean"
+      ],
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP",
+        "NG_MACRO_CLOSURE_DEFICIT"
+      ],
+      "note": "Finite KL is formalized over the exact finite law core and the explicit scalar/log interface."
+    },
+    {
+      "foundation_id": "FP_DETERMINISTIC_DPI",
+      "component_status": "formalized",
+      "lean_artifacts": [
+        "lean/SixBirdsNoGo/FiniteKLDPI.lean",
+        "lean/SixBirdsNoGo/FiniteKLDPIExample.lean"
+      ],
+      "theorem_consumers": [
+        "NG_ARROW_DPI",
+        "NG_PROTOCOL_TRAP"
+      ],
+      "note": "Deterministic pushforward DPI is formalized for state laws and path-law pushforward specialization."
+    }
+  ],
+  "pending_foundations": [],
+  "frontier_status_snapshot": {
+    "direct_ids": [
+      "NG_LADDER_IDEM",
+      "NG_FORCE_FOREST",
+      "NG_FORCE_NULL",
+      "NG_LADDER_BOUNDED_INTERFACE",
+      "NG_ARROW_DPI",
+      "NG_PROTOCOL_TRAP",
+      "NG_MACRO_CLOSURE_DEFICIT"
+    ],
+    "auxiliary_ids": [
+      "NG_OBJECT_CONTRACTIVE"
+    ],
+    "missing_ids": [],
+    "status": "unchanged"
+  },
+  "milestone_handoff": {
+    "next_ticket_id": null,
+    "next_ticket_title": null,
+    "note": "The Lean frontier is explicitly bounded at the objecthood auxiliary boundary."
+  }
+}

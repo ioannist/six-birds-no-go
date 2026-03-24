@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-03-18T00:00:00Z",
+  "source_context": {
+    "draft": "paper/draft_v1.md",
+    "paper_section_contracts": "docs/project/paper_section_contracts.yaml",
+    "paper_asset_freeze": "docs/project/paper_asset_freeze.yaml",
+    "theorem_evidence_map": "docs/project/theorem_evidence_map.yaml",
+    "theorem_atlas": "docs/project/theorem_atlas.yaml",
+    "claim_audit_freeze": "docs/project/claim_audit_freeze.yaml",
+    "readiness_checklist": "docs/project/readiness_checklist.yaml",
+    "fragility_summary": "results/T15/fragility_summary.json",
+    "adversarial_cases": "results/T15/adversarial_cases.json",
+    "vision_present": true,
+    "vision_path": "vision.md"
+  },
+  "status_enums": {
+    "audit_status": ["pass", "revise"],
+    "severity": ["high", "medium", "low"],
+    "issue_type": ["front_taxonomy_mismatch", "scope_omission", "guardrail_understated", "support_status_clarity", "readiness_blocker_not_explicit", "fragility_not_explicit", "callout_integration", "appendix_alignment", "discussion_escape_route", "abstract_precision", "other"],
+    "item_state": ["open"],
+    "blocking": ["yes", "no"]
+  },
+  "review_policy": {
+    "audit_all_frozen_claims": true,
+    "audit_all_section_units": true,
+    "audit_all_readiness_blockers": true,
+    "audit_all_t15_fragilities": true,
+    "when_unsure_queue_item": true
+  },
+  "revision_items": [
+    {
+      "revision_id": "REV-001",
+      "severity": "medium",
+      "blocking": "no",
+      "issue_type": "front_taxonomy_mismatch",
+      "section_id": "ABSTRACT",
+      "theorem_id": null,
+      "claim_id": null,
+      "location_anchor": "Abstract sentence on theorem-front organization",
+      "diagnosis": "The abstract says the paper is organized around four fronts: arrow, drive, objecthood, and laddering, but this front map omits closure while the manuscript architecture and theorem atlas also treat closure as its own theorem section/front.",
+      "required_change": "Revise the abstract framing so the front map matches the actual theorem architecture and explicitly includes closure as a theorem front rather than collapsing it into another category.",
+      "evidence_refs": [
+        "paper/draft_v1.md",
+        "docs/project/paper_section_contracts.yaml",
+        "docs/project/theorem_atlas.yaml"
+      ],
+      "source_checks": [
+        "ABSTRACT.required_content_present",
+        "ABSTRACT.responsibilities_covered",
+        "vision_framing_secondary_check"
+      ],
+      "owner": "draft_v1",
+      "item_state": "open"
+    },
+    {
+      "revision_id": "REV-002",
+      "severity": "high",
+      "blocking": "yes",
+      "issue_type": "scope_omission",
+      "section_id": "ABSTRACT",
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "claim_id": "NG_LADDER_BOUNDED_INTERFACE.core",
+      "location_anchor": "Abstract bounded-interface summary sentence",
+      "diagnosis": "The abstract bounded-interface summary omits fixed idempotent packaging from the theorem antecedent, even though the frozen theorem front requires fixed lens/interface, fixed domain, and fixed idempotent packaging.",
+      "required_change": "Restore the full bounded-interface antecedent in the abstract by stating the fixed-lens/fixed-domain/fixed-package scope explicitly rather than summarizing only fixed bounded interface plus fixed domain.",
+      "evidence_refs": [
+        "paper/draft_v1.md",
+        "docs/project/theorem_pack_bounded_interface.yaml",
+        "docs/project/claim_audit_freeze.yaml"
+      ],
+      "source_checks": [
+        "ABSTRACT.required_content_present",
+        "NG_LADDER_BOUNDED_INTERFACE.core.claim_textually_supported",
+        "NG_LADDER_BOUNDED_INTERFACE.core.scope_or_guardrail_supported"
+      ],
+      "owner": "draft_v1",
+      "item_state": "open"
+    },
+    {
+      "revision_id": "REV-003",
+      "severity": "medium",
+      "blocking": "no",
+      "issue_type": "appendix_alignment",
+      "section_id": "A2_LEAN",
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "claim_id": null,
+      "location_anchor": "Appendix B Lean-support status paragraph",
+      "diagnosis": "Appendix B should distinguish the direct uniqueness-core Lean theorem from direct Lean support for the full objecthood theorem front. The current wording risks blurring the uniqueness core with full theorem-front directness.",
+      "required_change": "Restate the Appendix B objecthood note so it explicitly says objecthood remains auxiliary-only in Lean status while preserving that the strict-contraction uniqueness core is direct.",
+      "evidence_refs": [
+        "paper/draft_v1.md",
+        "docs/project/readiness_checklist.yaml",
+        "docs/project/theorem_atlas.yaml",
+        "results/T30/lean_objecthood_uniqueness_summary.json"
+      ],
+      "source_checks": [
+        "A2_LEAN.readiness_blockers_accounted_for",
+        "A2_LEAN.required_content_present",
+        "NG_OBJECT_CONTRACTIVE.core.lean_status_not_overclaimed"
+      ],
+      "owner": "draft_v1",
+      "item_state": "open"
+    }
+  ]
+}

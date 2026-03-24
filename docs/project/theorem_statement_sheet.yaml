@@ -1,0 +1,487 @@
+{
+  "sheet_id": "theorem_statement_sheet_v1",
+  "theorems": [
+    {
+      "theorem_id": "NG_ARROW_DPI",
+      "title": "Arrow cannot increase under honest deterministic observation",
+      "formal_statement_latex": "Let $\\mu\\in\\D(\\X)$, let $P:\\X\\times\\X\\to[0,1]$ be row-stochastic, and let $T\\ge 1$. Define the micro path law on $\\X^{T+1}$ by \\[\\mathbf{P}^{(T)}_{\\mu,P}(x_{0:T})=\\mu(x_0)\\prod_{t=0}^{T-1}P(x_t,x_{t+1}).\\] Let $\\mathrm{rev}_T(x_{0:T})=(x_T,\\dots,x_0)$ and let $\\ell:\\X\\to\\Y$ be deterministic with pointwise extension $\\ell^{(T)}(x_{0:T})=(\\ell(x_0),\\dots,\\ell(x_T))$. Then \\[\\KL\\!\\Big((\\ell^{(T)})_{\\#}\\mathbf{P}^{(T)}_{\\mu,P}\\ \\Big\\|\\ (\\mathrm{rev}_T)_{\\#}(\\ell^{(T)})_{\\#}\\mathbf{P}^{(T)}_{\\mu,P}\\Big)\\ \\le\\ \\KL\\!\\Big(\\mathbf{P}^{(T)}_{\\mu,P}\\ \\Big\\|\\ (\\mathrm{rev}_T)_{\\#}\\mathbf{P}^{(T)}_{\\mu,P}\\Big).\\]",
+      "hypotheses": [
+        {
+          "hid": "H1",
+          "latex": "\\mu\\in\\D(\\X),\\ P:\\X\\times\\X\\to[0,1]\\text{ row-stochastic},\\ T\\ge 1",
+          "prose": "Finite initial law, finite Markov kernel, and finite path horizon."
+        },
+        {
+          "hid": "H2",
+          "latex": "\\ell:\\X\\to\\Y\\text{ deterministic}",
+          "prose": "Observation is an honest deterministic lens."
+        }
+      ],
+      "conclusions": [
+        {
+          "cid": "C1",
+          "latex": "\\KL((\\ell^{(T)})_{\\#}\\mathbf{P}^{(T)}_{\\mu,P}\\| (\\mathrm{rev}_T)_{\\#}(\\ell^{(T)})_{\\#}\\mathbf{P}^{(T)}_{\\mu,P}) \\le \\KL(\\mathbf{P}^{(T)}_{\\mu,P}\\| (\\mathrm{rev}_T)_{\\#}\\mathbf{P}^{(T)}_{\\mu,P})",
+          "prose": "Observed path-reversal KL cannot exceed the micro path-reversal KL."
+        }
+      ],
+      "dependencies": [
+        {
+          "kind": "lemma",
+          "ref": "deterministic_pushforward_dpi",
+          "note": "Finite KL data processing for deterministic pushforwards."
+        }
+      ],
+      "proof_ingredients": [
+        "Represent the observed path law as the deterministic pushforward of the micro path law.",
+        "Apply finite KL data processing under the map \\ell^{(T)}.",
+        "Read the zero-arrow corollary from the inequality when the micro divergence vanishes."
+      ],
+      "required_notation": [
+        "N.state_space.X",
+        "N.state_space.Y",
+        "N.simplex.DeltaX",
+        "N.distribution.mu",
+        "N.kernel.P",
+        "N.path_space.XpowTplus1",
+        "N.horizon.T",
+        "N.path_reversal.revT",
+        "N.info.KL",
+        "N.map.ell",
+        "N.pathlaw.micro"
+      ],
+      "lean_support": {
+        "status": "direct",
+        "modules": [
+          "SixBirdsNoGo.FiniteKLDPI",
+          "SixBirdsNoGo.ArrowDPI"
+        ]
+      },
+      "paper_home": {
+        "section_id": "S1",
+        "section_slug": "arrow-and-protocol"
+      }
+    },
+    {
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "title": "Stationary reversible lift implies zero observed arrow",
+      "formal_statement_latex": "Let $\\tilde\\X$ be finite, let $\\tilde P: \\tilde\\X\\times\\tilde\\X\\to[0,1]$ be row-stochastic, and let $\\tilde\\pi$ be a stationary distribution satisfying detailed balance $\\tilde\\pi(x)\\tilde P(x,x')=\\tilde\\pi(x')\\tilde P(x',x)$ for all $x,x'\\in\\tilde\\X$. Then for every horizon $T\\ge 1$, \\[ (\\mathrm{rev}_T)_{\\#}\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P}=\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P} \\qquad\\Rightarrow\\qquad \\KL\\!\\Big(\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P}\\ \\Big\\|\\ (\\mathrm{rev}_T)_{\\#}\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P}\\Big)=0.\\] Moreover, for every deterministic observation $\\ell:\\tilde\\X\\to\\Y$, \\[ \\KL\\!\\Big((\\ell^{(T)})_{\\#}\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P}\\ \\Big\\|\\ (\\mathrm{rev}_T)_{\\#}(\\ell^{(T)})_{\\#}\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P}\\Big)=0.\\]",
+      "hypotheses": [
+        {
+          "hid": "H1",
+          "latex": "\\tilde\\pi \\tilde P = \\tilde\\pi",
+          "prose": "The lifted chain is stationary under the chosen initial law."
+        },
+        {
+          "hid": "H2",
+          "latex": "\\tilde\\pi(x)\\tilde P(x,x')=\\tilde\\pi(x')\\tilde P(x',x)\\text{ for all }x,x'",
+          "prose": "The lifted chain is reversible in the detailed-balance sense."
+        }
+      ],
+      "conclusions": [
+        {
+          "cid": "C1",
+          "latex": "(\\mathrm{rev}_T)_{\\#}\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P}=\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P}",
+          "prose": "The lifted path law is invariant under path reversal."
+        },
+        {
+          "cid": "C2",
+          "latex": "\\KL(\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P}\\|(\\mathrm{rev}_T)_{\\#}\\mathbf{P}^{(T)}_{\\tilde\\pi,\\tilde P})=0",
+          "prose": "The lifted micro arrow vanishes, and every honest observed arrow also vanishes."
+        }
+      ],
+      "dependencies": [
+        {
+          "kind": "theorem",
+          "ref": "NG_ARROW_DPI",
+          "note": "Transfers zero path-reversal KL through deterministic observation."
+        },
+        {
+          "kind": "lemma",
+          "ref": "reversible_stationary_path_symmetry",
+          "note": "Stationary detailed balance implies exact path-law reversal symmetry."
+        }
+      ],
+      "proof_ingredients": [
+        "Use detailed balance to compare each path with its reversal under the stationary lifted law.",
+        "Conclude exact equality of the path law with its reversed pushforward.",
+        "Apply deterministic data processing to obtain the zero observed-arrow formula for every deterministic observation."
+      ],
+      "required_notation": [
+        "N.horizon.T",
+        "N.distribution.pi",
+        "N.path_reversal.revT",
+        "N.info.KL",
+        "N.map.ell"
+      ],
+      "lean_support": {
+        "status": "direct",
+        "modules": [
+          "SixBirdsNoGo.ArrowDPI",
+          "SixBirdsNoGo.ProtocolTrap"
+        ]
+      },
+      "paper_home": {
+        "section_id": "S1",
+        "section_slug": "arrow-and-protocol"
+      }
+    },
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "title": "Forest exactness theorem",
+      "formal_statement_latex": "Let $G=(V,E)$ be a finite undirected forest. Let $a$ be an antisymmetric function on oriented edges, so that $a(u,v)=-a(v,u)$ and $a(u,v)=0$ whenever $\\{u,v\\}\\notin E$. Then there exists a potential $\\phi:V\\to\\mathbb{R}$ such that for every oriented edge $(u,v)$, \\[ a(u,v)=\\phi(v)-\\phi(u).\\]",
+      "hypotheses": [
+        {
+          "hid": "H1",
+          "latex": "G=(V,E)\\text{ is a finite forest}",
+          "prose": "The exact support graph has no undirected cycles."
+        },
+        {
+          "hid": "H2",
+          "latex": "a(u,v)=-a(v,u)",
+          "prose": "The edge label is antisymmetric on oriented edges."
+        }
+      ],
+      "conclusions": [
+        {
+          "cid": "C1",
+          "latex": "\\exists \\phi:V\\to\\mathbb{R}\\text{ such that }a(u,v)=\\phi(v)-\\phi(u)\\text{ on each oriented edge}",
+          "prose": "Every antisymmetric edge label on a forest is exact."
+        }
+      ],
+      "dependencies": [
+        {
+          "kind": "lemma",
+          "ref": "tree_path_uniqueness",
+          "note": "Forests have unique simple paths inside each connected component."
+        }
+      ],
+      "proof_ingredients": [
+        "Choose a root in each tree component and define the potential by summing labels along the unique root-to-vertex path.",
+        "Use path uniqueness to show the definition is unambiguous.",
+        "Check the edge-difference identity directly on neighboring vertices."
+      ],
+      "required_notation": [
+        "N.graph.G",
+        "N.graph.V",
+        "N.graph.E",
+        "N.graph.forest",
+        "N.graph.edge_label.a",
+        "N.graph.potential.phi"
+      ],
+      "lean_support": {
+        "status": "direct",
+        "modules": [
+          "SixBirdsNoGo.TreeExactness",
+          "SixBirdsNoGo.ForestForceBridge"
+        ]
+      },
+      "paper_home": {
+        "section_id": "S2",
+        "section_slug": "graph-and-affinity"
+      }
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "title": "Exactness kills cycle sums",
+      "formal_statement_latex": "Assume $a(u,v)=\\phi(v)-\\phi(u)$ on oriented edges of a finite graph. Then for every closed walk $v_0,\\dots,v_k=v_0$, \\[ \\sum_{i=0}^{k-1} a(v_i,v_{i+1}) = 0.\\]",
+      "hypotheses": [
+        {
+          "hid": "H1",
+          "latex": "a(u,v)=\\phi(v)-\\phi(u)",
+          "prose": "The edge label is an exact potential difference."
+        },
+        {
+          "hid": "H2",
+          "latex": "v_0,\\dots,v_k=v_0",
+          "prose": "The vertices define a closed walk in the exact support graph."
+        }
+      ],
+      "conclusions": [
+        {
+          "cid": "C1",
+          "latex": "\\sum_{i=0}^{k-1} a(v_i,v_{i+1}) = 0",
+          "prose": "Every closed-walk affinity vanishes under exactness."
+        }
+      ],
+      "dependencies": [
+        {
+          "kind": "lemma",
+          "ref": "telescoping_cycle_sum",
+          "note": "Potential differences telescope along closed walks."
+        }
+      ],
+      "proof_ingredients": [
+        "Expand the cycle sum using the potential representation.",
+        "Telescope the resulting finite sum.",
+        "Use the closed-walk identity v_k=v_0 to conclude zero."
+      ],
+      "required_notation": [
+        "N.graph.edge_label.a",
+        "N.graph.potential.phi",
+        "N.graph.closed_walk",
+        "N.graph.cycle_affinity"
+      ],
+      "lean_support": {
+        "status": "direct",
+        "modules": [
+          "SixBirdsNoGo.ClosedWalkExactness",
+          "SixBirdsNoGo.NullForceBridge"
+        ]
+      },
+      "paper_home": {
+        "section_id": "S2",
+        "section_slug": "graph-and-affinity"
+      }
+    },
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "title": "Variational identity for closure deficit",
+      "formal_statement_latex": "Let $(\\X,P)$ be a finite Markov chain, let $\\mu\\in\\D(\\X)$, let $\\Pi:\\X\\to\\Y$ be deterministic, and fix $\\tau\\ge 1$. For each $x\\in\\X$, define the packaged future law \\[ p_x^{(\\tau)}(y') := \\Pr_{\\mu,P}[\\Pi(X_{t+\\tau})=y' \\mid X_t=x].\\] For a candidate macro kernel $K:\\Y\\times\\Y\\to[0,1]$, define \\[ \\mathcal{L}_\\tau(K) := \\sum_{x\\in \\X} \\mu(x)\\,\\KL\\!\\big(p_x^{(\\tau)} \\mid K_{\\Pi(x)}\\big).\\] Define the closure deficit by \\[ \\mathrm{CD}_\\tau(\\Pi) := I\\!\\big(X_t;\\Pi(X_{t+\\tau})\\,\\big|\\,\\Pi(X_t)\\big).\\] Then the kernel \\[ K^\\star_y(y') := \\Pr_{\\mu,P}[\\Pi(X_{t+\\tau})=y' \\mid \\Pi(X_t)=y] \\] satisfies \\[ \\mathrm{CD}_\\tau(\\Pi)=\\min_K \\mathcal{L}_\\tau(K)=\\mathcal{L}_\\tau(K^\\star).\\] Moreover, if there exist $x,x'\\in\\X$ with $\\Pi(x)=\\Pi(x')$, $\\mu(x)>0$, $\\mu(x')>0$, and $p_x^{(\\tau)}\\neq p_{x'}^{(\\tau)}$, then $\\mathrm{CD}_\\tau(\\Pi)>0$.",
+      "hypotheses": [
+        {
+          "hid": "H1",
+          "latex": "\\mu\\in\\D(\\X),\\ P:\\X\\times\\X\\to[0,1],\\ \\Pi:\\X\\to\\Y,\\ \\tau\\ge 1",
+          "prose": "Finite initial law, finite Markov kernel, deterministic packaging map, and fixed lag."
+        },
+        {
+          "hid": "H2",
+          "latex": "K:\\Y\\times\\Y\\to[0,1]\\text{ row-stochastic}",
+          "prose": "The variational problem ranges over finite macro kernels."
+        }
+      ],
+      "conclusions": [
+        {
+          "cid": "C1",
+          "latex": "\\mathrm{CD}_\\tau(\\Pi)=\\min_K \\mathcal{L}_\\tau(K)=\\mathcal{L}_\\tau(K^\\star)",
+          "prose": "Closure deficit equals the attained minimum of the exact variational objective."
+        },
+        {
+          "cid": "C2",
+          "latex": "\\exists x,x'\\text{ with }\\Pi(x)=\\Pi(x'),\\ \\mu(x)>0,\\ \\mu(x')>0,\\text{ and }p_x^{(\\tau)}\\neq p_{x'}^{(\\tau)} \\Rightarrow \\mathrm{CD}_\\tau(\\Pi)>0",
+          "prose": "Distinct packaged future laws inside a single positive-mass package class force positive closure deficit."
+        }
+      ],
+      "dependencies": [
+        {
+          "kind": "lemma",
+          "ref": "conditional_macro_law_minimizer",
+          "note": "The conditional macro future law minimizes the weighted KL objective."
+        },
+        {
+          "kind": "lemma",
+          "ref": "conditional_information_variational_identity",
+          "note": "Finite conditional mutual information equals the attained KL minimum."
+        }
+      ],
+      "proof_ingredients": [
+        "Write the weighted KL mismatch as a conditional expectation over package classes.",
+        "Minimize rowwise using the conditional packaged future law.",
+        "Identify the minimum with conditional mutual information and derive the positive-deficit corollary from disagreement on positive stationary mass."
+      ],
+      "required_notation": [
+        "N.state_space.X",
+        "N.state_space.Y",
+        "N.simplex.DeltaX",
+        "N.distribution.mu",
+        "N.kernel.P",
+        "N.kernel.K",
+        "N.horizon.tau",
+        "N.packaging.Pi",
+        "N.closure.packaged_future",
+        "N.closure.objective",
+        "N.closure.deficit",
+        "N.info.KL",
+        "N.info.conditional_mutual_information"
+      ],
+      "lean_support": {
+        "status": "direct",
+        "modules": [
+          "SixBirdsNoGo.ClosureVariationalCore",
+          "SixBirdsNoGo.ClosureDirectPack"
+        ]
+      },
+      "paper_home": {
+        "section_id": "S3",
+        "section_slug": "closure"
+      }
+    },
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "title": "Contractive objecthood separation bound",
+      "formal_statement_latex": "Let $P$ be a stochastic matrix on finite $\\Y$. Let $T_P:\\D(\\Y)\\to\\D(\\Y)$ be the operator $\\nu\\mapsto \\nu P$, and let $\\lambda(P)$ be the Dobrushin contraction coefficient in total variation. Assume $\\lambda(P)<1$. If $\\nu,\\nu'\\in\\D(\\Y)$ satisfy the $\\varepsilon$-stability bounds \\[ \\TV(\\nu,\\nu P)\\le \\varepsilon, \\qquad \\TV(\\nu',\\nu'P)\\le \\varepsilon,\\] then \\[ \\TV(\\nu,\\nu') \\le \\frac{2\\varepsilon}{1-\\lambda(P)}.\\] In particular, if $\\varepsilon=0$, the stationary distribution is unique.",
+      "hypotheses": [
+        {
+          "hid": "H1",
+          "latex": "P\\text{ stochastic on finite }\\Y,\\quad \\lambda(P)<1",
+          "prose": "The macro operator is strictly contractive in total variation."
+        },
+        {
+          "hid": "H2",
+          "latex": "\\TV(\\nu,\\nu P)\\le \\varepsilon,\\quad \\TV(\\nu',\\nu'P)\\le \\varepsilon",
+          "prose": "Both candidate packaged states are epsilon-stable in the admissible metric."
+        }
+      ],
+      "conclusions": [
+        {
+          "cid": "C1",
+          "latex": "\\TV(\\nu,\\nu') \\le \\frac{2\\varepsilon}{1-\\lambda(P)}",
+          "prose": "Two epsilon-stable states cannot be too far apart in total variation."
+        },
+        {
+          "cid": "C2",
+          "latex": "\\varepsilon=0 \\Rightarrow \\text{the stationary distribution is unique}",
+          "prose": "Exact stability implies uniqueness of the fixed distribution under strict contraction."
+        }
+      ],
+      "dependencies": [
+        {
+          "kind": "lemma",
+          "ref": "dobrushin_contraction_estimate",
+          "note": "Total variation contracts by at most lambda(P) under one application of P."
+        },
+        {
+          "kind": "lemma",
+          "ref": "triangle_inequality_for_eps_stable_laws",
+          "note": "Combine contraction with the epsilon-stability defects of the two candidate laws."
+        }
+      ],
+      "proof_ingredients": [
+        "Apply the Dobrushin contraction bound to T_P.",
+        "Insert the epsilon-stability defects using the triangle inequality.",
+        "Set epsilon to zero to obtain uniqueness of the stationary distribution."
+      ],
+      "required_notation": [
+        "N.state_space.Y",
+        "N.distribution.nu",
+        "N.info.TV",
+        "N.info.lambda",
+        "N.kernel.P",
+        "N.operator.TP"
+      ],
+      "lean_support": {
+        "status": "auxiliary_boundary",
+        "modules": [
+          "SixBirdsNoGo.ContractionUniqueness"
+        ]
+      },
+      "paper_home": {
+        "section_id": "S4",
+        "section_slug": "objecthood"
+      }
+    },
+    {
+      "theorem_id": "NG_LADDER_IDEM",
+      "title": "Idempotent saturation theorem",
+      "formal_statement_latex": "Let $e:S\\to S$ satisfy $e\\circ e=e$. Then for all integers $n\\ge 1$, \\[ e^{\\circ n}=e.\\]",
+      "hypotheses": [
+        {
+          "hid": "H1",
+          "latex": "e:S\\to S",
+          "prose": "The map acts on a fixed domain."
+        },
+        {
+          "hid": "H2",
+          "latex": "e\\circ e=e",
+          "prose": "The map is idempotent."
+        }
+      ],
+      "conclusions": [
+        {
+          "cid": "C1",
+          "latex": "e^{\\circ n}=e\\text{ for all }n\\ge 1",
+          "prose": "Iterating an idempotent packaging map yields no new iterate after the first step."
+        }
+      ],
+      "dependencies": [
+        {
+          "kind": "lemma",
+          "ref": "induction_on_composition_length",
+          "note": "Simple induction using idempotence."
+        }
+      ],
+      "proof_ingredients": [
+        "Prove the base case n=1 directly.",
+        "Use idempotence to reduce the inductive step from n to n+1.",
+        "Interpret the result as immediate saturation under repeated packaging."
+      ],
+      "required_notation": [
+        "N.endomap.e",
+        "N.endomap.idempotent"
+      ],
+      "lean_support": {
+        "status": "direct",
+        "modules": [
+          "SixBirdsNoGo.Idempotence"
+        ]
+      },
+      "paper_home": {
+        "section_id": "S5",
+        "section_slug": "bounded-interface"
+      }
+    },
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "title": "Finite interface definability bound",
+      "formal_statement_latex": "Let $f:\\X\\to\\Y$ be deterministic with finite image $\\mathrm{im}(f)$. Define \\[ \\mathrm{Def}(f):=\\{g\\circ f : g:\\Y\\to\\{0,1\\}\\}.\\] Then \\[ |\\mathrm{Def}(f)| = 2^{|\\mathrm{im}(f)|}.\\] Consequently, if $|\\mathrm{im}(f)|<\\infty$, there is no infinite strictly increasing sequence of pairwise distinct $f$-definable predicates.",
+      "hypotheses": [
+        {
+          "hid": "H1",
+          "latex": "f:\\X\\to\\Y\\text{ deterministic}",
+          "prose": "The interface is a fixed deterministic lens."
+        },
+        {
+          "hid": "H2",
+          "latex": "|\\mathrm{im}(f)|<\\infty",
+          "prose": "The interface image is finite and bounded."
+        }
+      ],
+      "conclusions": [
+        {
+          "cid": "C1",
+          "latex": "|\\mathrm{Def}(f)| = 2^{|\\mathrm{im}(f)|}",
+          "prose": "The family of interface-definable predicates has exactly the expected finite size."
+        },
+        {
+          "cid": "C2",
+          "latex": "\\text{No infinite strictly increasing chain of pairwise distinct }f\\text{-definable predicates exists}",
+          "prose": "A fixed bounded interface cannot support an infinite internal definability ladder."
+        }
+      ],
+      "dependencies": [
+        {
+          "kind": "lemma",
+          "ref": "definable_predicates_correspond_to_subsets_of_image",
+          "note": "Each definable predicate is uniquely determined by a subset of im(f)."
+        },
+        {
+          "kind": "theorem",
+          "ref": "NG_LADDER_IDEM",
+          "note": "Used in the broader bounded-interface pack to combine finite definability with idempotent stabilization."
+        }
+      ],
+      "proof_ingredients": [
+        "Identify definable predicates with characteristic functions on subsets of the image of f.",
+        "Count those subsets to obtain the exact finite cardinality.",
+        "Use finiteness to rule out an infinite strictly increasing chain of distinct definable predicates."
+      ],
+      "required_notation": [
+        "N.state_space.X",
+        "N.state_space.Y",
+        "N.definability.gof",
+        "N.definability.Def",
+        "N.image.imf"
+      ],
+      "lean_support": {
+        "status": "direct",
+        "modules": [
+          "SixBirdsNoGo.FiniteLensDefinability",
+          "SixBirdsNoGo.BoundedInterfaceNoLadder"
+        ]
+      },
+      "paper_home": {
+        "section_id": "S5",
+        "section_slug": "bounded-interface"
+      }
+    }
+  ]
+}
