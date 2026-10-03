@@ -3,18 +3,18 @@
 \vspace{0.35em}
 
 \begin{abstract}
-Six Birds theory studies finite systems observed through deterministic coarse-grainings (``lenses'') using a small audited vocabulary of primitives.
-This paper proves eight no-go theorems that constrain when common emergence narratives can be made honest in a finite, checkable setting.
-For a finite Markov system and horizon $T$, define an \emph{arrow audit} as the Kullback--Leibler divergence between the observed path law and its time reversal.
-We prove a deterministic data-processing inequality: observation cannot increase arrow.
-As a consequence, any reversible system started in stationarity has zero observed arrow, even when the observation supports nontrivial protocol structure.
-Further results give graph-theoretic obstructions for force-like antisymmetric drives (exactness on forests and zero cycle sums), a finite variational identity for best macro-kernels and closure deficit, and a bounded-interface saturation theorem that prevents unbounded laddering.
-Together these theorems delimit what can and cannot be certified as emergent from audited primitives in finite models.
+When a system is viewed at a coarser scale, it is tempting to say that something new has emerged: a direction of time, a driving force, an autonomous macroscopic law, a stable object, or an open-ended hierarchy of levels.
+Such claims are easy to make and hard to check.
+We study them in the simplest setting in which they can be checked exactly: finite Markov chains observed through deterministic maps, or \emph{lenses}.
+In this setting we prove eight no-go theorems.
+Coarse observation can never increase the arrow of time, measured as the relative entropy between the path law and its time reversal.
+A chain started in a law that satisfies detailed balance shows zero arrow under every lens, however rich the hidden protocol structure it carries.
+On a graph without cycles every antisymmetric edge field is the gradient of a potential, and gradient fields sum to zero around every closed walk, so a force-like cycle affinity needs both a cycle and a non-gradient field.
+For a lumped chain, the best macroscopic transition kernel at a given lag is the conditional law of the future macrostate, and its unavoidable loss is a conditional mutual information, the \emph{closure deficit}; it is strictly positive as soon as two microstates of positive mass in the same macrostate have different macroscopic futures.
+Under strict Dobrushin contraction with coefficient $\lambda<1$, any two $\varepsilon$-approximately stationary laws lie within $2\varepsilon/(1-\lambda)$ of each other in total variation, so such dynamics has at most one stationary law and cannot carry two approximately stationary laws farther apart than this bound.
+Finally, idempotent packaging stabilizes after a single step, and a fixed interface with finite image defines exactly $2^{|\mathrm{im}(f)|}$ predicates, so no unbounded ladder of new distinctions can be built inside it.
+All eight theorems are formalized and machine-checked in Lean~4 with Mathlib.
 \end{abstract}
 
 \vspace{0.2em}
-\noindent\textbf{Keywords:} coarse-graining; finite Markov chains; data processing; exact graph forms; closure deficit; bounded interfaces.
-
-\medskip
-
-\noindent\textbf{Contribution summary.} This paper contributes an audited finite semantics for eight no-go fronts, a unified theorem framework linking arrow, graph exactness, closure, objecthood, and ladder obstructions, and a technical appendix structure that isolates routine derivations from the main proof flow.
+\noindent\textbf{Keywords:} coarse-graining; finite Markov chains; entropy production; data-processing inequality; cycle affinity; lumpability; closure deficit; Dobrushin contraction; formal verification.

@@ -1,157 +1,89 @@
-\section{Finite probability, KL, and contraction calculations}\label{app:probkl}
+\section{Proofs for the arrow and contraction theorems}\label{app:probkl}
 
-This appendix records the finite calculations used by the arrow, protocol, and contraction fronts.
+\subsection{Deterministic data processing}
 
-\begin{proof}[Proof of Lemma~\ref{lem:deterministic_dpi_kl}]
-For $y\in\Omega'$, write $A_y := \{x\in\Omega : g(x)=y\}$ and abbreviate
-$p_x := P(x)$, $q_x := Q(x)$, $p_y := \sum_{x\in A_y} p_x$, $q_y := \sum_{x\in A_y} q_x$.
-By definition,
+\begin{proof}[Proof of \Cref{lem:deterministic_dpi_kl}]
+If $\DKL{p}{q}=\infty$ there is nothing to prove, so assume it is finite; then $q(x)>0$ whenever $p(x)>0$.
+For $y\in\Omega'$ let $A_y=g^{-1}(y)$, $A^+_y=\{x\in A_y:p(x)>0\}$, $p_y=p(A_y)=p(A_y^+)$ and $q_y=q(A_y)$.
+The log-sum inequality \citep{CoverThomas2006} states that for positive numbers $a_i$ and $b_i$,
 \[
-D_{\mathrm{KL}}(g_{\#}P \,\|\, g_{\#}Q)
-= \sum_{y\in\Omega' : p_y>0} p_y \log\!\Big(\frac{p_y}{q_y}\Big).
+  \Bigl(\sum_i a_i\Bigr)\log\frac{\sum_ia_i}{\sum_ib_i}\le\sum_i a_i\log\frac{a_i}{b_i}.
 \]
-For each $y$ with $p_y>0$, the log--sum inequality gives
+Fix $y$ with $p_y>0$.
+Applying the inequality to $a_x=p(x)$ and $b_x=q(x)$ for $x\in A^+_y$, and using $q_y\ge q(A^+_y)>0$ together with the fact that the logarithm is increasing,
 \[
-p_y \log\!\Big(\frac{p_y}{q_y}\Big)
-\le \sum_{x\in A_y : p_x>0} p_x \log\!\Big(\frac{p_x}{q_x}\Big),
+  p_y\log\frac{p_y}{q_y}\le p_y\log\frac{p_y}{q(A^+_y)}\le\sum_{x\in A^+_y}p(x)\log\frac{p(x)}{q(x)}.
 \]
-with the usual convention that the right-hand side is $+\infty$ if some $p_x>0$ but $q_x=0$.
-Summing over $y$ and using that the sets $A_y$ partition $\Omega$ yields
-\[
-D_{\mathrm{KL}}(g_{\#}P \,\|\, g_{\#}Q)
-\le \sum_{x\in\Omega : p_x>0} p_x \log\!\Big(\frac{p_x}{q_x}\Big)
-= D_{\mathrm{KL}}(P\,\|\,Q).
-\]
+In particular $q_y>0$ whenever $p_y>0$, so $\DKL{g_\#p}{g_\#q}$ is the finite sum of the left-hand sides over $y$ with $p_y>0$.
+The sets $A^+_y$ partition $\{x:p(x)>0\}$, so summing over $y$ gives $\DKL{g_{\#}p}{g_{\#}q}\le\DKL{p}{q}$.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:rev_pushforward_commute}]
-The maps $\mathrm{rev}$ and $f^{(T)}$ commute pointwise:
-$f^{(T)}\circ \mathrm{rev} = \mathrm{rev}\circ f^{(T)}$.
-Pushforward respects composition, hence
-\[
-f^{(T)}_{\#}(\mathrm{rev}_{\#}P) = (f^{(T)}\circ \mathrm{rev})_{\#}P
-= (\mathrm{rev}\circ f^{(T)})_{\#}P = \mathrm{rev}_{\#}(f^{(T)}_{\#}P).
-\]
-Substituting $P=P_T^{\mu,K}$ and using the definitions from Section~\ref{sec:setup} gives
-\[
-P_T^{\mu,K,f,\mathrm{rev}} = \mathrm{rev}_{\#} P_T^{\mu,K,f}
-= f^{(T)}_{\#}\big(P_T^{\mu,K,\mathrm{rev}}\big).
-\]
-\end{proof}
+\subsection{Detailed balance and reversed paths}
 
-\begin{proof}[Proof of Lemma~\ref{lem:detailed_balance_path}]
-Fix $T\ge 0$ and a path $\gamma=(x_0,\dots,x_T)\in X^{T+1}$.
-By definition,
-\[
-P_T^{\pi,K}(\gamma)=\pi(x_0)\prod_{t=0}^{T-1} K(x_t,x_{t+1}),
-\qquad
-P_T^{\pi,K,\mathrm{rev}}(\gamma)=P_T^{\pi,K}(x_T,\dots,x_0)
-=\pi(x_T)\prod_{t=0}^{T-1} K(x_{t+1},x_t).
-\]
-Using detailed balance repeatedly,
-\[
-\pi(x_0)K(x_0,x_1)=\pi(x_1)K(x_1,x_0),\;
-\pi(x_1)K(x_1,x_2)=\pi(x_2)K(x_2,x_1),\;\dots
-\]
-Multiplying these identities for $t=0,\dots,T-1$ yields
-\[
-\pi(x_0)\prod_{t=0}^{T-1}K(x_t,x_{t+1})
-=
-\pi(x_T)\prod_{t=0}^{T-1}K(x_{t+1},x_t),
-\]
-which is exactly $P_T^{\pi,K}(\gamma)=P_T^{\pi,K,\mathrm{rev}}(\gamma)$.
-Since this holds for every $\gamma$, the two path laws are equal.
-\end{proof}
-
-\begin{proof}[Proof of Lemma~\ref{lem:objecthood_dobrushin}]
-Fix $A\subseteq Y$ and write $\eta:=\mu-\nu$.
-Since $\eta(Y)=0$, if $y_0\in Y$ is arbitrary then
-\[
-(\mu P)(A)-(\nu P)(A)
-=\sum_{y\in Y}\eta(y)P(y,A)
-=\sum_{y\in Y}\eta(y)\bigl(P(y,A)-P(y_0,A)\bigr).
-\]
-Let $Y_+:=\{y\in Y:\eta(y)\ge 0\}$ and $Y_-:=Y\setminus Y_+$.
-Because $\sum_y \eta(y)=0$,
-\[
-\sum_{y\in Y_+}\eta(y)=\sum_{y\in Y_-}(-\eta(y))=d_{\mathrm{TV}}(\mu,\nu).
-\]
-Hence
+\begin{proof}[Proof of \Cref{lem:detailed_balance_path}]
+Write $w(x_0,\dots,x_T)=\pi(x_0)\prod_{t=0}^{T-1}P(x_t,x_{t+1})$ and $\bar w(x_0,\dots,x_T)=\pi(x_T)\prod_{t=0}^{T-1}P(x_{t+1},x_t)$.
+We show $w=\bar w$ on $X^{T+1}$ by induction on $T$.
+For $T=0$ both equal $\pi(x_0)$.
+Assume the identity for paths of length $T$, and let $(x_0,\dots,x_{T+1})$ be a path.
+Then
 \begin{align*}
-(\mu P)(A)-(\nu P)(A)
-&\le \sum_{y\in Y_+}\eta(y)\sup_{u,v\in Y}\bigl(P(u,A)-P(v,A)\bigr)\\
-&\le d_{\mathrm{TV}}(\mu,\nu)\,\sup_{u,v\in Y}\bigl(P(u,A)-P(v,A)\bigr).
+  w(x_0,\dots,x_{T+1})
+  &=w(x_0,\dots,x_T)\,P(x_T,x_{T+1})
+  =\bar w(x_0,\dots,x_T)\,P(x_T,x_{T+1})\\
+  &=\Bigl(\prod_{t=0}^{T-1}P(x_{t+1},x_t)\Bigr)\,\pi(x_T)P(x_T,x_{T+1})
+  =\Bigl(\prod_{t=0}^{T-1}P(x_{t+1},x_t)\Bigr)\,\pi(x_{T+1})P(x_{T+1},x_T)\\
+  &=\bar w(x_0,\dots,x_{T+1}),
 \end{align*}
-For fixed $u,v$, the variational characterization of total variation gives
-\[
-P(u,A)-P(v,A)\le d_{\mathrm{TV}}\bigl(P(u,\cdot),P(v,\cdot)\bigr)\le \lambda(P).
-\]
-Therefore
-\[
-(\mu P)(A)-(\nu P)(A)\le \lambda(P)\,d_{\mathrm{TV}}(\mu,\nu)
-\qquad\text{for every }A\subseteq Y.
-\]
-Taking the supremum over $A$ yields the stated inequality.
+where the second equality is the induction hypothesis and the fourth is detailed balance for the pair $(x_T,x_{T+1})$.
+Only multiplication is used, so states with $\pi(x)=0$ need no separate treatment.
+Finally, $\mathbf{P}^{\pi,P}_T(\gamma)=w(\gamma)$ and $(\rev_{\#}\mathbf{P}^{\pi,P}_T)(\gamma)=\mathbf{P}^{\pi,P}_T(\rev\gamma)=\bar w(\gamma)$, so the two path laws agree.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:objecthood_unique_fixed}]
-Fix $\mu\in\Delta(Y)$ and set $\mu_t:=\mu P^t$.
-By Lemma~\ref{lem:objecthood_dobrushin},
+Multiplying the $T$ instances of detailed balance along a path instead gives
 \[
-d_{\mathrm{TV}}(\mu_{t+1},\mu_t)
-=d_{\mathrm{TV}}(\mu_tP,\mu_{t-1}P)
-\le \lambda(P)\,d_{\mathrm{TV}}(\mu_t,\mu_{t-1})
+  \pi(x_0)\cdots\pi(x_{T-1})\prod_{t=0}^{T-1}P(x_t,x_{t+1})=\pi(x_1)\cdots\pi(x_T)\prod_{t=0}^{T-1}P(x_{t+1},x_t),
 \]
-for every $t\ge 1$.
-Inducting on $t$ gives
-\[
-d_{\mathrm{TV}}(\mu_{t+1},\mu_t)\le \lambda(P)^t d_{\mathrm{TV}}(\mu P,\mu).
-\]
-Hence for integers $m>n$,
-\begin{align*}
-d_{\mathrm{TV}}(\mu_m,\mu_n)
-&\le \sum_{k=n}^{m-1} d_{\mathrm{TV}}(\mu_{k+1},\mu_k)\\
-&\le d_{\mathrm{TV}}(\mu P,\mu)\sum_{k=n}^{m-1}\lambda(P)^k.
-\end{align*}
-Since $0\le \lambda(P)<1$, the geometric tail tends to zero as $n\to\infty$.
-Thus $(\mu_t)_{t\ge 0}$ is Cauchy in total variation.
-Because $\Delta(Y)$ is a closed subset of the finite-dimensional space $\mathbb{R}^Y$, it is complete for this metric, so there exists $\pi\in\Delta(Y)$ with $\mu_t\to\pi$.
-The map $T(\rho)=\rho P$ is continuous, hence
-\[
-\pi P = \lim_{t\to\infty} \mu_{t+1} = \lim_{t\to\infty}\mu_t = \pi.
-\]
-So $\pi$ is a fixed distribution.
+and cancelling the interior factors $\pi(x_1),\dots,\pi(x_{T-1})$ is valid only when they are nonzero.
+The induction avoids this restriction.
 
-If $\pi'$ is another fixed distribution, then Lemma~\ref{lem:objecthood_dobrushin} gives
-\[
-d_{\mathrm{TV}}(\pi,\pi') = d_{\mathrm{TV}}(\pi P,\pi'P)
-\le \lambda(P)\,d_{\mathrm{TV}}(\pi,\pi').
-\]
-Since $\lambda(P)<1$, this forces $d_{\mathrm{TV}}(\pi,\pi')=0$, hence $\pi=\pi'$.
-This proves uniqueness.
+\subsection{Total variation and Dobrushin contraction}
 
-Finally, applying Lemma~\ref{lem:objecthood_dobrushin} with $\nu=\pi$ and using $\pi P=\pi$ yields
+For $\mu,\nu\in\Delta(S)$ write $\eta=\mu-\nu$ and $\eta^+=\max(\eta,0)$ pointwise.
+Since $\sum_s\eta(s)=0$, the positive and negative parts of $\eta$ have equal mass, so $\sum_s\eta^+(s)=\frac12\sum_s|\eta(s)|=\dTV(\mu,\nu)$.
+For every event $A$, $\mu(A)-\nu(A)=\sum_{s\in A}\eta(s)\le\sum_s\eta^+(s)$, with equality for $A=\{s:\eta(s)>0\}$.
+This proves the event form $\dTV(\mu,\nu)=\max_A(\mu(A)-\nu(A))$ used below.
+
+\begin{proof}[Proof of \Cref{lem:objecthood_dobrushin}]
+Fix an event $A\subseteq S$ and choose $s_0\in S$ that minimizes $P(s,A)$ over $s\in S$; this is possible because $S$ is finite and nonempty.
+Set $c_s=P(s,A)-P(s_0,A)$.
+By the choice of $s_0$ and the event form of total variation,
 \[
-d_{\mathrm{TV}}(\mu P^t,\pi)=d_{\mathrm{TV}}(\mu P^t,\pi P^t)
-\le \lambda(P)^t d_{\mathrm{TV}}(\mu,\pi).
+  0\le c_s\le\dTV\bigl(P(s,\cdot),P(s_0,\cdot)\bigr)\le\lambda(P)\qquad\text{for every }s.
 \]
+Since $\sum_s\eta(s)=0$, the constant $P(s_0,A)$ may be subtracted inside the sum:
+\[
+  (\mu P)(A)-(\nu P)(A)=\sum_s\eta(s)P(s,A)=\sum_s\eta(s)\,c_s.
+\]
+Each term satisfies $\eta(s)c_s\le\lambda(P)\,\eta^+(s)$: if $\eta(s)\ge 0$ this follows from $c_s\le\lambda(P)$, and if $\eta(s)<0$ the term is at most $0$ because $c_s\ge 0$.
+Hence $(\mu P)(A)-(\nu P)(A)\le\lambda(P)\sum_s\eta^+(s)=\lambda(P)\,\dTV(\mu,\nu)$.
+Taking the maximum over $A$ gives the claim.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:objecthood_approximate_separation}]
-By the triangle inequality,
+The choice of $s_0$ matters.
+For an arbitrary reference row the coefficients $c_s$ can be negative, and then a term with $\eta(s)<0$ can be positive, so the terms with $\eta(s)<0$ cannot simply be dropped.
+
+\subsection{Existence and convergence under strict contraction}
+
+\begin{proof}[Proof of \Cref{lem:objecthood_unique_fixed}]
+Fix $\mu$ and put $\mu_t=\mu P^t$.
+By \Cref{lem:objecthood_dobrushin} and induction, $\dTV(\mu_{t+1},\mu_t)\le\lambda^t\dTV(\mu_1,\mu_0)$ for all $t\ge 0$.
+For $m>n$ the triangle inequality gives
 \[
-d_{\mathrm{TV}}(\mu,\nu)
-\le d_{\mathrm{TV}}(\mu,\mu P)+d_{\mathrm{TV}}(\mu P,\nu P)+d_{\mathrm{TV}}(\nu P,\nu).
+  \dTV(\mu_m,\mu_n)\le\sum_{k=n}^{m-1}\lambda^k\dTV(\mu_1,\mu_0)\le\frac{\lambda^n}{1-\lambda}\,\dTV(\mu_1,\mu_0),
 \]
-Using the hypotheses and Lemma~\ref{lem:objecthood_dobrushin},
-\[
-d_{\mathrm{TV}}(\mu,\nu)
-\le \varepsilon + \lambda(P) d_{\mathrm{TV}}(\mu,\nu) + \varepsilon
-\le 2\varepsilon + \lambda d_{\mathrm{TV}}(\mu,\nu).
-\]
-Rearranging gives
-\[
-(1-\lambda)d_{\mathrm{TV}}(\mu,\nu)\le 2\varepsilon,
-\]
-and division by $1-\lambda>0$ proves the claim.
+so $(\mu_t)$ is a Cauchy sequence.
+The simplex $\Delta(S)$ is a closed subset of $\mathbb{R}^S$ and total variation is half the $\ell^1$ norm, so the sequence has a limit $\pi\in\Delta(S)$.
+The map $\nu\mapsto\nu P$ is linear, hence continuous, so $\pi P=\lim_t\mu_{t+1}=\pi$.
+Uniqueness is the case $\varepsilon=0$ of \thmNGObjectContractive.
+Finally, applying \Cref{lem:objecthood_dobrushin} $t$ times with $\nu=\pi=\pi P^t$ gives $\dTV(\mu P^t,\pi)\le\lambda^t\dTV(\mu,\pi)$.
 \end{proof}

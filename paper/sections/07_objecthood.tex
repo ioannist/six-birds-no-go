@@ -1,88 +1,107 @@
-\section{Objecthood under strict contraction}\label{sec:objecthood}
+\section{Objects under contraction}\label{sec:objecthood}
 
-This section proves Theorem~\ref{thm:NG_OBJECT_CONTRACTIVE}.
-The theorem is formulated on a finite simplex equipped with total variation distance and a strict Dobrushin contraction bound.
-Within this admissible regime, the induced Markov operator has a unique fixed distribution, its iterates converge geometrically, and any two $\varepsilon$-approximate fixed points must lie within an explicit separation bound.
+This section proves \thmNGObjectContractive.
+Throughout, $S$ is a nonempty finite set, $P$ a Markov kernel on $S$, and $\lambda=\lambda(P)$ its Dobrushin coefficient.
+Dobrushin's coefficient and its use for the ergodicity of finite chains are classical \citep{Dobrushin1956,Seneta2006}.
 
-Let $Y$ be a finite set.
-For $\mu,\nu\in\Delta(Y)$, define the total variation distance by
-\[
-d_{\mathrm{TV}}(\mu,\nu) := \frac12\sum_{y\in Y}|\mu(y)-\nu(y)|.
-\]
-We also use the equivalent variational form
-\[
-d_{\mathrm{TV}}(\mu,\nu)=\sup_{A\subseteq Y}(\mu(A)-\nu(A)).
-\]
-Let $P:Y\to\Delta(Y)$ be a Markov kernel and let $T:\Delta(Y)\to\Delta(Y)$ be the induced affine map
-\[
-T(\mu):=\mu P.
-\]
-The Dobrushin coefficient of $P$ is
-\[
-\lambda(P) := \max_{y,y'\in Y} d_{\mathrm{TV}}\bigl(P(y,\cdot),P(y',\cdot)\bigr).
-\]
-This contraction coefficient and its standard consequences for finite chains are discussed in \citep{Dobrushin1956,Seneta2006}.
+\subsection{Contraction and the separation bound}
 
-\begin{lemma}[Dobrushin contraction in total variation]\label{lem:objecthood_dobrushin}
-For all $\mu,\nu\in\Delta(Y)$,
-\[
-d_{\mathrm{TV}}(\mu P,\nu P)\le \lambda(P)\,d_{\mathrm{TV}}(\mu,\nu).
-\]
+\begin{lemma}[Dobrushin contraction]\label{lem:objecthood_dobrushin}
+For all $\mu,\nu\in\Delta(S)$, $\dTV(\mu P,\nu P)\le\lambda(P)\,\dTV(\mu,\nu)$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+See \Cref{app:probkl}.
+For an event $A$, the proof compares each row's probability of $A$ with the smallest such probability among all rows; this makes every coefficient in the resulting sum lie between $0$ and $\lambda(P)$.
 \end{proof}
 
-\begin{lemma}[Strict contraction gives a unique fixed distribution]\label{lem:objecthood_unique_fixed}
-Assume $\lambda(P)<1$.
-Then there exists a unique distribution $\pi\in\Delta(Y)$ with $\pi P=\pi$.
-Moreover, for every $\mu\in\Delta(Y)$ and every integer $t\ge 0$,
+\begin{proof}[Proof of \Cref{thm:NG_OBJECT_CONTRACTIVE}]
+By the triangle inequality and \Cref{lem:objecthood_dobrushin},
 \[
-d_{\mathrm{TV}}(\mu P^t,\pi)\le \lambda(P)^t\,d_{\mathrm{TV}}(\mu,\pi).
+  \dTV(\nu,\nu')\le\dTV(\nu,\nu P)+\dTV(\nu P,\nu'P)+\dTV(\nu'P,\nu')\le 2\varepsilon+\lambda\,\dTV(\nu,\nu').
 \]
-\end{lemma}
+All quantities are finite, so $(1-\lambda)\,\dTV(\nu,\nu')\le 2\varepsilon$, and dividing by $1-\lambda>0$ gives the bound.
+If $\nu$ and $\nu'$ are both stationary, take $\varepsilon=0$: then $\dTV(\nu,\nu')=0$, so $\nu=\nu'$.
+\end{proof}
+
+The theorem bounds the distance between candidate objects but does not assert that any exists.
+Existence, together with convergence to the stationary law, follows from the contraction principle.
+
+\begin{proposition}[Existence and geometric convergence]\label{lem:objecthood_unique_fixed}
+If $\lambda<1$, then $P$ has a unique stationary law $\pi$, and for every $\mu\in\Delta(S)$ and $t\ge 0$,
+\[
+  \dTV(\mu P^t,\pi)\le\lambda^t\,\dTV(\mu,\pi).
+\]
+\end{proposition}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+See \Cref{app:probkl}. Existence of a stationary law holds for every kernel on a nonempty finite set; the proof in the appendix obtains it from the contraction instead, as the limit of the iterates $\mu P^t$.
 \end{proof}
 
-\begin{lemma}[Approximate fixed-point separation bound]\label{lem:objecthood_approximate_separation}
-Assume $\lambda(P)\le \lambda<1$.
-If $\mu,\nu\in\Delta(Y)$ satisfy
-\[
-d_{\mathrm{TV}}(\mu P,\mu)\le \varepsilon,
-\qquad
-d_{\mathrm{TV}}(\nu P,\nu)\le \varepsilon,
-\]
-then
-\[
-d_{\mathrm{TV}}(\mu,\nu)\le \frac{2\varepsilon}{1-\lambda}.
-\]
-\end{lemma}
+\begin{corollary}[All candidate objects lie near the stationary law]\label{cor:eps_ball}
+If $\lambda<1$ and $\nu$ is $\varepsilon$-stable, then $\dTV(\nu,\pi)\le\varepsilon/(1-\lambda)$.
+\end{corollary}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+$\dTV(\nu,\pi)\le\dTV(\nu,\nu P)+\dTV(\nu P,\pi P)\le\varepsilon+\lambda\,\dTV(\nu,\pi)$; rearrange.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_OBJECT_CONTRACTIVE}]
-The uniqueness and convergence claims follow from Lemma~\ref{lem:objecthood_unique_fixed} once $\lambda(P)<1$.
-For the approximate objecthood statement, suppose $\mu$ and $\nu$ are $\varepsilon$-stable packaged states in the admissible TV/Dobrushin regime.
-Lemma~\ref{lem:objecthood_approximate_separation} then gives the bound
-\[
-d_{\mathrm{TV}}(\mu,\nu)\le \frac{2\varepsilon}{1-\lambda(P)}.
-\]
-In particular, when $\varepsilon=0$ every fixed distribution coincides with the unique stationary distribution from Lemma~\ref{lem:objecthood_unique_fixed}.
-Thus the theorem rules out multiplicity of well-separated robust objects inside the stated contraction regime.
-\end{proof}
+\Cref{fig:simplex} shows these bounds for a kernel on three states.
 
-\begin{remark}[Regime and metric scope]
-This front is formulated in total variation distance with the Dobrushin coefficient as the contraction parameter.
-The theorem asserts an obstruction only in that regime.
-Other metrics, other contraction notions, or noncontractive operators lie outside the scope of this statement.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[lbl/.style={font=\footnotesize}]
+\begin{scope}
+\draw[thick] (0,0) -- (5,0) -- (2.5,4.330) -- cycle;
+\node[lbl,below left] at (0,0) {$\delta_1$};
+\node[lbl,below right] at (5,0) {$\delta_2$};
+\node[lbl,above] at (2.5,4.330) {$\delta_3$};
+\draw[blue!60!black,fill=blue!6] (2.350,0.646) -- (2.766,0.646) -- (2.975,1.007) -- (2.766,1.368) -- (2.350,1.368) -- (2.141,1.007) -- cycle;
+\fill[orange!55] (2.934,1.055) -- (2.925,1.072) -- (2.725,1.332) -- (2.703,1.359) -- (2.697,1.359) -- (2.331,1.310) -- (2.312,1.277) -- (2.188,0.974) -- (2.184,0.958) -- (2.200,0.931) -- (2.400,0.671) -- (2.416,0.655) -- (2.781,0.704) -- (2.791,0.709) -- (2.797,0.720) -- (2.922,1.023) -- cycle;
+\draw[gray!70!black,densely dotted,thick] (2.500,4.330) -- (2.250,2.165) -- (2.350,1.386);
+\foreach \p in {(2.500,4.330),(2.250,2.165)} \fill[gray!70!black] \p circle (1pt);
+\draw[gray,thin] (1.983,0.432) rectangle (3.133,1.582);
+\end{scope}
+\begin{scope}[xshift=9.0cm,yshift=2.2cm]
+\begin{scope}
+\clip (-2.530,-2.530) rectangle (2.530,2.530);
+\draw[blue!60!black,thick,fill=blue!6] (-0.917,-1.588) -- (0.917,-1.588) -- (1.833,0.000) -- (0.917,1.588) -- (-0.917,1.588) -- (-1.833,0.000) -- cycle;
+\fill[orange!55] (1.655,0.213) -- (1.614,0.285) -- (0.734,1.428) -- (0.638,1.547) -- (0.610,1.547) -- (-0.998,1.333) -- (-1.081,1.190) -- (-1.631,-0.144) -- (-1.645,-0.215) -- (-1.576,-0.335) -- (-0.696,-1.478) -- (-0.627,-1.549) -- (0.982,-1.335) -- (1.023,-1.311) -- (1.050,-1.263) -- (1.600,0.070) -- cycle;
+\draw[gray!70!black,densely dotted,thick,-{Stealth[length=1.8mm]}] (-1.356,5.095) -- (-0.916,1.666) -- (-0.465,0.504) -- (-0.206,0.136) -- (-0.084,0.030) -- (-0.032,0.003);
+\foreach \p/\t in {(-0.916,1.666)/2,(-0.465,0.504)/3,(-0.206,0.136)/4} {\fill[gray!70!black] \p circle (1.2pt); \node[lbl,gray!50!black,left] at \p {$t{=}\t$};}
+\fill (0,0) circle (1.8pt) node[lbl,below right] {$\pi$};
+\end{scope}
+\draw[gray,thin] (-2.530,-2.530) rectangle (2.530,2.530);
+\end{scope}
+\draw[gray,thin,densely dashed] (3.133,1.582) -- (6.470,4.730);
+\draw[gray,thin,densely dashed] (3.133,0.432) -- (6.470,-0.330);
+\node[lbl,align=left,anchor=north west] at (11.8,4.6) {%
+$P=\begin{pmatrix}0.6&0.3&0.1\\0.2&0.6&0.2\\0.3&0.2&0.5\end{pmatrix}$\\[3pt]
+$\lambda(P)=0.4$, \ $\varepsilon=0.05$\\[3pt]
+\tikz\fill[orange!55] (0,0) rectangle (0.3,0.2); \ $\varepsilon$-stable laws\\[2pt]
+\tikz\draw[blue!60!black,thick,fill=blue!6] (0,0) rectangle (0.3,0.2); \ TV ball,\\ \phantom{\tikz\draw (0,0) rectangle (0.3,0.2);} \ radius $\tfrac{\varepsilon}{1-\lambda}\approx 0.083$\\[2pt]
+\tikz\draw[gray!70!black,densely dotted,thick] (0,0.1) -- (0.3,0.1); \ iterates $\delta_3P^t$};
+\end{tikzpicture}
+\caption{Contractive objecthood on three states. Left: the simplex $\Delta(\{1,2,3\})$; the boxed region is enlarged on the right. The set of $\varepsilon$-stable laws (orange, computed on a fine grid) lies inside the total variation ball of radius $\varepsilon/(1-\lambda)$ around the stationary law $\pi$ guaranteed by \Cref{cor:eps_ball}; in the plane of the simplex this ball is a hexagon. Any two orange laws are therefore within $2\varepsilon/(1-\lambda)\approx 0.17$ of each other, as \thmNGObjectContractive{} asserts. The dotted path shows the iterates $\delta_3P^t$ converging geometrically to $\pi$ (\Cref{lem:objecthood_unique_fixed}).}\label{fig:simplex}
+\end{figure}
+
+\subsection{Scope}
+
+\begin{remark}[Contraction is sufficient, not necessary]
+A unique stationary law does not require $\lambda<1$.
+The kernel that swaps two states has $\lambda=1$ and the unique stationary law $(\tfrac12,\tfrac12)$, although its iterates do not converge.
+\thmNGObjectContractive{} gives a quantitative bound only in the strictly contractive regime.
 \end{remark}
 
-\begin{remark}[Formalization status]
-For this front, the formalized component is the uniqueness consequence of strict contraction for fixed distributions.
-The total-variation/Dobrushin framework and the $\varepsilon$-stability separation bound are used here at the level of the paper proof and are not part of the formalized core.
+\begin{remark}[Stationary laws are not fixed states]
+For a deterministic map, the number of fixed states and the number of stationary laws are different counts.
+The map on $\{1,2,3\}$ with $1\mapsto 1$, $2\mapsto 3$, $3\mapsto 2$ has one fixed state but two extreme stationary laws, $\delta_1$ and $(0,\tfrac12,\tfrac12)$, and hence infinitely many stationary laws, their mixtures.
+Its Dobrushin coefficient is $1$, consistent with the theorem.
+An audit of objecthood must count stationary laws, not fixed states.
+\end{remark}
+
+\begin{remark}[Metric]
+The theorem uses total variation together with Dobrushin's coefficient.
+Contraction in another metric, or approximate stability measured differently, needs its own argument.
+Clustering heuristics that group laws by a threshold on some other distance are not covered.
 \end{remark}

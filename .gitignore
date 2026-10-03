@@ -25,3 +25,11 @@ paper/supplement/*.fls
 paper/supplement/*.log
 paper/supplement/*.out
 paper/supplement/*.pdf
+
+# Credentials and local agent state (never commit).
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.codex_thread_id

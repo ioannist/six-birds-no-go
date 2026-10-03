@@ -1,102 +1,75 @@
-\section{Main Results}\label{sec:main-results}
-We state the eight no-go theorems. Each theorem is followed by a brief remark clarifying scope.
+\section{The eight theorems}\label{sec:main-results}
 
-\begin{theorem}[NG\_ARROW\_DPI]\label{thm:NG_ARROW_DPI}
+This section states all eight theorems in one place, with a short reading of each.
+Proofs, examples, and further discussion follow in \Cref{sec:arrow-protocol,sec:graph-affinity,sec:closure,sec:objecthood,sec:bounded-interface}.
+
+\subsection*{Arrow of time}
+
+\begin{theorem}[Arrow monotonicity]\label{thm:NG_ARROW_DPI}
 \ThmStmtNGARROWDPI
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out any increase of forward--reverse path-space KL under an honest deterministic observation. In the finite audited setting, coarse observation cannot manufacture a larger arrow than the micro path law already carries.
+The arrow seen through a lens never exceeds the arrow of the microscopic chain.
+No choice of lens, initial law, or horizon can make a coarse description look more irreversible than the system it describes.
+The inequality also holds when the microscopic arrow is infinite, in which case it says nothing; when the microscopic arrow is finite, so is every observed arrow.
 
-\textbf{Scope / escape routes.} The obstruction is evaded only by leaving the theorem object: stochastic observation, fitted macro chains, or other proxy reconstructions are outside this claim. Real microscopic nonreversibility can still produce positive arrow; the theorem states that deterministic coarse-graining does not amplify it.
-
-\end{remark}
-
-
-\begin{theorem}[NG\_PROTOCOL\_TRAP]\label{thm:NG_PROTOCOL_TRAP}
+\begin{theorem}[Protocol trap]\label{thm:NG_PROTOCOL_TRAP}
 \ThmStmtNGPROTOCOLTRAP
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out honest observed arrow for a stationary reversible lift, even when hidden protocol coordinates are present. Hidden protocol structure by itself does not create entropy production in the audited stationary regime.
+The observed process of a chain started in a detailed-balance law can be highly structured.
+It need not be Markov, it can have long memory, and hidden coordinates such as a protocol phase can impose a recognizable order on what is observed.
+It cannot be directional: every observed trajectory is exactly as likely as its reversal.
+Hidden protocol structure alone therefore does not produce an arrow; a positive observed arrow requires either a kernel without a detailed-balance law, which is a drive, or a start away from a detailed-balance law.
 
-\textbf{Scope / escape routes.} The scope changes once stationarity or reversibility is dropped. Nonstationary initialization, external scheduling, or genuinely driven lifted dynamics fall outside the theorem hypotheses and can reopen positive observed arrow.
+\subsection*{Forces and cycles}
 
-\end{remark}
-
-
-\begin{theorem}[NG\_FORCE\_FOREST]\label{thm:NG_FORCE_FOREST}
+\begin{theorem}[Forest exactness]\label{thm:NG_FORCE_FOREST}
 \ThmStmtNGFORCEFOREST
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out force-like cycle obstruction on forest support. On a finite forest, every antisymmetric edge field is potential-generated, so there is no cycle-supported drive to sustain a nontrivial affinity class.
-
-\textbf{Scope / escape routes.} The obstruction is evaded by allowing non-forest support or by changing the exact support notion. Positive cycle rank reopens the possibility of nontrivial circulation, while thresholded proxy graphs are outside the theorem object.
-
-\end{remark}
-
-
-\begin{theorem}[NG\_FORCE\_NULL]\label{thm:NG_FORCE_NULL}
+\begin{theorem}[Gradient fields have no cycle affinity]\label{thm:NG_FORCE_NULL}
 \ThmStmtNGFORCENULL
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out cycle affinity when the log-ratio 1-form is exact. Exact ratio-form structure collapses every closed-walk sum, so the force-like class is null in the precise bidirected-support sense of the theorem.
+Together these two theorems locate force-like structure.
+A field that is a gradient has zero sum around every loop, and on a graph without loops every antisymmetric field is a gradient.
+For the log-ratio field $a_P$ of a Markov kernel, a nonzero cycle affinity therefore needs two things: a cycle in the bidirected support graph, and transition rates whose log-ratios do not come from a potential.
+Neither thresholding a graph nor regularizing its rates is covered: both change the graph or the field, and so change the object the theorems are about.
 
-\textbf{Scope / escape routes.} The obstruction is evaded by breaking exactness or by replacing the exact support with a thresholded or regularized proxy graph. The theorem is about exact bidirected support and exact ratio-form data, not about diagnostic pictures.
+\subsection*{Closure of macroscopic laws}
 
-\end{remark}
-
-
-\begin{theorem}[NG\_MACRO\_CLOSURE\_DEFICIT]\label{thm:NG_MACRO_CLOSURE_DEFICIT}
+\begin{theorem}[Closure deficit]\label{thm:NG_MACRO_CLOSURE_DEFICIT}
 \ThmStmtNGMACROCLOSUREDEFICIT
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem identifies closure deficit as the exact obstruction to a closed macro law at the chosen lag. Positive conditional-information gap means that no single macro kernel captures the packaged future laws without loss.
+The theorem has three parts.
+The best macro kernel is the obvious one: from each macrostate, predict the average future of the microstates it contains, weighted by their current mass.
+The loss that even the best kernel incurs is a conditional mutual information, so it has an information-theoretic meaning independent of any fitting procedure.
+This loss vanishes exactly when the macrostate already carries all the information about the future macrostate that the microstate does, which can be certified or refuted by comparing future laws within fibers.
+The current law matters: the same kernel, lens, and lag can have positive deficit for one law and zero deficit for another (\Cref{ex:closure_current_law}).
 
-\textbf{Scope / escape routes.} The obstruction is evaded only by changing the package, lag, or underlying dynamics, or by accepting proxy fitted kernels as diagnostics rather than theorem objects. A fitted macro chain may still be useful operationally, but it is not theorem evidence for closure.
+\subsection*{Objects under contraction}
 
-\end{remark}
-
-
-\begin{theorem}[NG\_OBJECT\_CONTRACTIVE]\label{thm:NG_OBJECT_CONTRACTIVE}
+\begin{theorem}[Contractive objecthood]\label{thm:NG_OBJECT_CONTRACTIVE}
 \ThmStmtNGOBJECTCONTRACTIVE
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem bounds epsilon-stable packaged states in a strict-contraction regime and yields uniqueness in the exact fixed-point case. Within the admissible TV/Dobrushin hypotheses, multiple well-separated robust objects cannot coexist at that scale.
+Read an $\varepsilon$-stable law as a candidate object: a distribution that the dynamics changes by at most $\varepsilon$ in one step.
+Under strict contraction all candidate objects lie within a common distance $2\varepsilon/(1-\lambda(P))$ of each other, so the dynamics cannot carry two robust objects that are farther apart; for $\varepsilon>0$ and at least two states there are infinitely many candidate objects, since every law within $\varepsilon/(1+\lambda(P))$ of the stationary law is $\varepsilon$-stable, but they all crowd together.
+Equivalently, two $\varepsilon$-stable laws at distance $d>0$ force $\lambda(P)\ge 1-2\varepsilon/d$, and two distinct stationary laws force $\lambda(P)=1$.
 
-\textbf{Scope / escape routes.} The obstruction is evaded by moving to noncontractive regimes or by using clustering heuristics that are outside theorem evidence. The claim is deliberately bounded to the contraction setup and does not attempt a general objecthood theory.
+\subsection*{Ladders of levels}
 
-\end{remark}
-
-
-\begin{theorem}[NG\_LADDER\_IDEM]\label{thm:NG_LADDER_IDEM}
+\begin{theorem}[Idempotent saturation]\label{thm:NG_LADDER_IDEM}
 \ThmStmtNGLADDERIDEM
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out any iterate ladder from an idempotent packaging map. Once the operator is applied once, later iterates add no new structure because the map has already stabilized.
-
-\textbf{Scope / escape routes.} The obstruction is evaded only by changing the operator class or by changing the package itself. Non-idempotent updates, interface growth, or theory changes lie outside the theorem hypotheses.
-
-\end{remark}
-
-
-\begin{theorem}[NG\_LADDER\_BOUNDED\_INTERFACE]\label{thm:NG_LADDER_BOUNDED_INTERFACE}
+\begin{theorem}[Bounded interface]\label{thm:NG_LADDER_BOUNDED_INTERFACE}
 \ThmStmtNGLADDERBOUNDEDINTERFACE
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out an infinite strictly increasing ladder of predicates once the interface is fixed and finite. The finite image of the lens gives a finite algebra of definable predicates, so internal ladder growth must stabilize.
-
-\textbf{Scope / escape routes.} The obstruction is evaded only by changing the theory: lens growth, domain growth, or package change can restart definable expansion. With a fixed finite interface, no unbounded internal ladder remains.
-
-\end{remark}
-
-
-\begin{remark}[Supplementary apparatus]
-Supplementary material collects the reproducibility map, including computational audit artifacts and a formalization-status table. The statements and proofs in the main text do not depend on those materials.
-\end{remark}
+A ladder is a sequence of levels in which each level adds something the previous ones did not have.
+Packaging the output of an idempotent packaging map again adds nothing.
+Observation through a fixed interface with finite image can tell apart only finitely many properties, so any sequence of genuinely new distinctions drawn from it must stop.
+An unbounded ladder requires changing the rules: a packaging map that is not idempotent, or a sequence of interfaces in place of a single fixed one (\Cref{rem:ladders_continue}).

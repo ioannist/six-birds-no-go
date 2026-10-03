@@ -1,0 +1,163 @@
+{
+  "title": "Six Birds: No-Go Theorems for Audited Emergence",
+  "description": "<p>When a system is viewed at a coarser scale, it is tempting to say that something new has emerged: a direction of time, a driving force, an autonomous macroscopic law, a stable object, or an open-ended hierarchy of levels. Such claims are easy to make and hard to check. We study them in the simplest setting in which they can be checked exactly: finite Markov chains observed through deterministic maps, or <em>lenses</em>. In this setting we prove eight no-go theorems.</p>\n<p>Coarse observation can never increase the arrow of time, measured as the relative entropy between the path law and its time reversal. A chain started in a law that satisfies detailed balance shows zero arrow under every lens, however rich the hidden protocol structure it carries. On a graph without cycles every antisymmetric edge field is the gradient of a potential, and gradient fields sum to zero around every closed walk, so a force-like cycle affinity needs both a cycle and a non-gradient field.</p>\n<p>For a lumped chain, the best macroscopic transition kernel at a given lag is the conditional law of the future macrostate, and its unavoidable loss is a conditional mutual information, the <em>closure deficit</em>; it is strictly positive as soon as two microstates of positive mass in the same macrostate have different macroscopic futures. Under strict Dobrushin contraction with coefficient &lambda; &lt; 1, any two &epsilon;-approximately stationary laws lie within 2&epsilon;/(1&minus;&lambda;) of each other in total variation, so such dynamics has at most one stationary law and cannot carry two approximately stationary laws farther apart than this bound. Finally, idempotent packaging stabilizes after a single step, and a fixed interface with finite image defines exactly 2<sup>|im(f)|</sup> predicates, so no unbounded ladder of new distinctions can be built inside it.</p>\n<p>All eight theorems are formalized and machine-checked in Lean&nbsp;4 with Mathlib.</p>",
+  "publication_date": "2026-10-03",
+  "version": "v2.0",
+  "keywords": [
+    "coarse-graining",
+    "finite Markov chains",
+    "entropy production",
+    "path-reversal asymmetry",
+    "data-processing inequality",
+    "cycle affinity",
+    "lumpability",
+    "closure deficit",
+    "Dobrushin contraction",
+    "no-go theorems",
+    "formal verification",
+    "Lean 4",
+    "emergence calculus",
+    "Six Birds Theory"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.48550/arXiv.2602.00134",
+      "relation": "cites",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.18906902",
+      "relation": "cites",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.18926433",
+      "relation": "cites",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.18439737",
+      "relation": "cites",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.19047665",
+      "relation": "cites",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1214/aoms/1177729694",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "978-0-471-24195-9",
+      "relation": "cites",
+      "resource_type": "publication-book",
+      "scheme": "isbn"
+    },
+    {
+      "identifier": "978-0-521-63396-3",
+      "relation": "cites",
+      "resource_type": "publication-book",
+      "scheme": "isbn"
+    },
+    {
+      "identifier": "978-1-4704-2962-1",
+      "relation": "cites",
+      "resource_type": "publication-book",
+      "scheme": "isbn"
+    },
+    {
+      "identifier": "10.1007/978-3-662-53622-3",
+      "relation": "cites",
+      "resource_type": "publication-book",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "978-0-521-45897-9",
+      "relation": "cites",
+      "resource_type": "publication-book",
+      "scheme": "isbn"
+    },
+    {
+      "identifier": "10.1023/A:1021726930037",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1088/0034-4885/75/12/126001",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1103/PhysRevE.85.041125",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1103/RevModPhys.48.571",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1137/18M1223101",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "978-0-387-90192-3",
+      "relation": "cites",
+      "resource_type": "publication-book",
+      "scheme": "isbn"
+    },
+    {
+      "identifier": "10.2307/3215175",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1214/aop/1176996454",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1137/1101006",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "978-0-387-29765-1",
+      "relation": "cites",
+      "resource_type": "publication-book",
+      "scheme": "isbn"
+    },
+    {
+      "identifier": "978-0-471-27601-2",
+      "relation": "cites",
+      "resource_type": "publication-book",
+      "scheme": "isbn"
+    },
+    {
+      "identifier": "10.1145/1232420.1232424",
+      "relation": "cites",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    }
+  ],
+  "notes": "Version 2 (October 3, 2026). The closure-deficit theorem is stated for the current law at time zero and no longer assumes stationarity; the protocol trap needs only detailed balance, with a division-free proof that covers zero-mass states; the Dobrushin contraction proof is repaired; the graph and bounded-interface theorems are stated in greater generality; the relation between the path-reversal arrow and total entropy production is made explicit. All eight theorems are now formalized directly in Lean 4 on real-valued probability laws with extended-real divergences. The text is rewritten with a new abstract, a summary table, five figures, and a version history appendix. The supplement is not part of this version's files; it remains available in version 1 and in the source repository."
+}

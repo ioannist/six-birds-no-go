@@ -1,12 +1,12 @@
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{convention}[theorem]{Convention}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{convention}{Convention}[section]
 
 \newcommand{\X}{\mathsf{X}}
 \newcommand{\Y}{\mathsf{Y}}
@@ -31,3 +31,12 @@
 \newcommand{\thmNGObjectContractive}{\Cref{thm:NG_OBJECT_CONTRACTIVE}}
 \newcommand{\thmNGLadderIdem}{\Cref{thm:NG_LADDER_IDEM}}
 \newcommand{\thmNGLadderBoundedInterface}{\Cref{thm:NG_LADDER_BOUNDED_INTERFACE}}
+
+\newcommand{\DKL}[2]{D_{\mathrm{KL}}\!\left(#1\,\middle\|\,#2\right)}
+\newcommand{\dTV}{d_{\mathrm{TV}}}
+\newcommand{\Arr}{\mathcal{A}}
+\newcommand{\Law}{\mathrm{Law}}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{appendix}{Appendix}{Appendices}
+\newcommand{\leanname}[1]{{\urlstyle{tt}\nolinkurl{#1}}}

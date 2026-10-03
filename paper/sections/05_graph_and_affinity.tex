@@ -1,109 +1,115 @@
-\section{Graph structure and affinity}\label{sec:graph-affinity}
+\section{Forces need cycles}\label{sec:graph-affinity}
 
-This section isolates the graph-theoretic content behind the affinity and force audits.
-We work with finite graphs and antisymmetric edge labellings (discrete $1$-forms).
-The two main results proved here are Theorem~\ref{thm:NG_FORCE_FOREST} and
-Theorem~\ref{thm:NG_FORCE_NULL} from Section~\ref{sec:main-results}.
+This section proves \thmNGForceForest{} and \thmNGForceNull{} and connects them to Markov kernels.
+The graph-theoretic content is classical \citep{Diestel2017,Biggs1993}: it is the statement that a $1$-form on a graph is exact precisely when it integrates to zero around every cycle, specialized to the two directions we need \citep{Lim2020Hodge}.
+In Markov network theory the cycle sums of the log-ratio field are the affinities that drive steady-state currents \citep{Schnakenberg1976}.
+\Cref{fig:forest_cycle} illustrates both theorems.
 
-\subsection{Graphs, antisymmetric $1$-forms, and cycle sums}
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  st/.style={circle,draw,thick,minimum size=7.5mm,inner sep=0pt,font=\small},
+  ed/.style={-{Stealth[length=2mm]},thick},
+  lbl/.style={font=\footnotesize},
+  pot/.style={font=\footnotesize,blue!60!black}
+]
+\begin{scope}
+\node[st,fill=gray!10] (r) at (0,0) {$r$};
+\node[st] (u) at (2.3,1.15) {$u$};
+\node[st] (v) at (2.3,-1.15) {$v$};
+\node[st] (w) at (4.6,2.0) {$w$};
+\node[st] (z) at (4.6,0.3) {$z$};
+\draw[ed] (r) -- node[lbl,above,sloped] {$1.2$} (u);
+\draw[ed] (r) -- node[lbl,below,sloped] {$-0.5$} (v);
+\draw[ed] (u) -- node[lbl,above,sloped] {$0.3$} (w);
+\draw[ed] (u) -- node[lbl,below,sloped] {$-2.0$} (z);
+\node[pot,left=2pt of r] {$\phi=0$};
+\node[pot,above=2pt of u] {$\phi=1.2$};
+\node[pot,right=2pt of v] {$\phi=-0.5$};
+\node[pot,right=2pt of w] {$\phi=1.5$};
+\node[pot,right=2pt of z] {$\phi=-0.8$};
+\node[font=\small\bfseries] at (-1.1,2.2) {(a)};
+\end{scope}
+\begin{scope}[xshift=9.6cm,yshift=0.3cm]
+\node[st] (a) at (90:1.95) {$1$};
+\node[st] (b) at (210:1.95) {$2$};
+\node[st] (c) at (330:1.95) {$3$};
+\draw[ed] (a) to[bend right=28] node[lbl,above left] {$0.6$} (b);
+\draw[ed] (b) to[bend right=28] node[lbl,below] {$0.6$} (c);
+\draw[ed] (c) to[bend right=28] node[lbl,above right] {$0.6$} (a);
+\draw[ed,gray] (b) to[bend right=12] node[lbl,below right,pos=0.5,inner sep=1pt] {$0.2$} (a);
+\draw[ed,gray] (c) to[bend right=12] node[lbl,above,pos=0.5,inner sep=1pt] {$0.2$} (b);
+\draw[ed,gray] (a) to[bend right=12] node[lbl,below left,pos=0.5,inner sep=1pt] {$0.2$} (c);
+\node[lbl,align=center] at (0,-2.45) {$a_P(1,2)+a_P(2,3)+a_P(3,1)=3\log 3\neq 0$};
+\node[font=\small\bfseries] at (-2.9,2.2) {(b)};
+\end{scope}
+\end{tikzpicture}
+\caption{(a) On a tree every antisymmetric edge field is a gradient. Edge labels give $a(\text{parent},\text{child})$; summing them along the unique path from the root $r$ gives the potential $\phi$ (blue), and $a(u,v)=\phi(v)-\phi(u)$ on every edge. (b) A driven three-state ring, with holding probability $0.2$ at each state. Each log-ratio equals $\log 3$, so the cycle affinity is $3\log 3$ and the field is not a gradient. Deleting any one edge of the ring leaves a tree, on which the restricted field is a gradient again.}\label{fig:forest_cycle}
+\end{figure}
 
-Let $G=(V,E)$ be a finite undirected graph.  Write
+\subsection{Proofs}
+
+\begin{proof}[Proof of \Cref{thm:NG_FORCE_FOREST}]
+In each connected component of $G$ choose a root.
+For a vertex $v$, let $r=v_0,v_1,\dots,v_m=v$ be the path in $G$ from the root of its component to $v$; it exists because the component is connected and is unique because $G$ has no cycles.
+Define
 \[
-\vec E \;=\; \{(u,v)\in V\times V : \{u,v\}\in E\}
+  \phi(v)=\sum_{i=0}^{m-1}a(v_i,v_{i+1}),
 \]
-for the set of oriented edges.
+so the root has $\phi(r)=0$.
+\Cref{app:graphexact} checks that $a(u,v)=\phi(v)-\phi(u)$ on every edge.
+Paths are finite even if $G$ is infinite, so finiteness of $G$ is never used.
+\end{proof}
 
-\begin{definition}[Antisymmetric edge labelling / $1$-form]
-An \emph{antisymmetric edge labelling} on $G$ is a function
-$a:\vec E\to \mathbb{R}$ such that $a(v,u)=-a(u,v)$ for all $(u,v)\in \vec E$.
-\end{definition}
-
-\begin{definition}[Exactness and potentials]
-An antisymmetric labelling $a$ is \emph{exact} if there exists a function
-$\phi:V\to \mathbb{R}$ such that for every $(u,v)\in \vec E$,
+\begin{proof}[Proof of \Cref{thm:NG_FORCE_NULL}]
+Along a closed walk $v_0,\dots,v_k=v_0$ the sum telescopes:
 \[
-a(u,v)=\phi(v)-\phi(u).
+  \sum_{i=0}^{k-1}a(v_i,v_{i+1})=\sum_{i=0}^{k-1}\bigl(\phi(v_{i+1})-\phi(v_i)\bigr)=\phi(v_k)-\phi(v_0)=0.
 \]
-Any such $\phi$ is called a \emph{potential} for $a$.
-\end{definition}
+Only the values of $a$ on edges enter, and every step of a walk is an edge.
+\end{proof}
 
-\begin{definition}[Closed-walk sum / cycle affinity]
-Let $w=(v_0,v_1,\dots,v_k)$ be a finite walk with $v_k=v_0$ and
-$\{v_i,v_{i+1}\}\in E$ for all $i$.
-The \emph{closed-walk sum} of $a$ along $w$ is
-\[
-S_a(w)\;=\;\sum_{i=0}^{k-1} a(v_i,v_{i+1}).
-\]
-When $a$ is a log-ratio $1$-form, $S_a(w)$ is the (log) cycle affinity.
-This is the standard cycle-affinity language for finite Markov networks \citep{Schnakenberg1976}.
-\end{definition}
+The converse of \thmNGForceNull{} also holds: on a connected graph, an antisymmetric field whose sums vanish around every closed walk is a gradient, with potential obtained by summing $a$ along any path from a fixed root.
+\thmNGForceForest{} is the special case in which there are no cycles to check.
 
-\begin{definition}[Cycle rank]
-Let $c(G)$ be the number of connected components of $G$.
-The \emph{cycle rank} (first Betti number) of $G$ is
-\[
-\beta_1(G)\;=\;|E|-|V|+c(G).
-\]
-In particular, $\beta_1(G)=0$ if and only if every component of $G$ is a tree.
-These cycle-space facts are standard in graph theory; see \citep{Diestel2017,Biggs1993}.
-\end{definition}
+\subsection{Consequences for Markov kernels}
 
-\subsection{Forest exactness}
+Apply the two theorems to the log-ratio field $a_P$ on the bidirected support graph $G_P$.
+If $G_P$ is a forest, then $a_P$ is a gradient; if $a_P$ is a gradient, then every cycle affinity vanishes.
+A nonzero cycle affinity therefore requires both a cycle in $G_P$ and a log-ratio field that is not a gradient.
+For chains whose transitions all have reverses, forest support has a stronger consequence, which connects this section to the protocol trap.
 
-We now prove that on a tree (hence on each component of a forest) every antisymmetric
-edge labelling is potential-generated.
-The potential interpretation of exact antisymmetric edge labellings is also standard in this finite graph setting; see \citep{Diestel2017,Lim2020Hodge}.
-
-\begin{lemma}[Rooted parent map on a tree]\label{lem:tree-parent}
-Let $G=(V,E)$ be a finite tree and fix a root $r\in V$.
-For each vertex $v\neq r$ there exists a unique neighbor $\mathrm{par}(v)$ of $v$
-lying on the unique simple path from $r$ to $v$.
-\end{lemma}
+\begin{corollary}[Forest-supported chains are reversible]\label{cor:forest_reversible}
+Let $P$ be a Markov kernel on a nonempty finite set $X$ without one-way transitions, that is, $P(x,x')>0$ if and only if $P(x',x)>0$ for all $x\ne x'$.
+If $G_P$ is a forest, then $P$ has a detailed-balance law $\pi$ with $\pi(x)>0$ for all $x$.
+Consequently $\Arr_T(\pi,P;f)=0$ for every lens $f$ and every horizon $T$.
+\end{corollary}
 
 \begin{proof}
-See Appendix~\ref{app:graphexact}.
+By \thmNGForceForest, $a_P(x,x')=\phi(x')-\phi(x)$ on every edge of $G_P$ for some $\phi$.
+Put $\pi(x)=e^{\phi(x)}/Z$ with $Z=\sum_{x}e^{\phi(x)}$.
+On an edge, $P(x,x')/P(x',x)=e^{\phi(x')-\phi(x)}$, which rearranges to $\pi(x)P(x,x')=\pi(x')P(x',x)$.
+For distinct non-adjacent $x,x'$ both sides vanish because there are no one-way transitions, and for $x=x'$ the identity is trivial.
+So $\pi$ satisfies detailed balance, and \thmNGProtocolTrap{} gives the last claim.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_FORCE_FOREST}]
-Let $G=(V,E)$ be a finite tree with root $r$, and let $a:\vec E\to\mathbb{R}$ be antisymmetric.
-Define $\phi:V\to\mathbb{R}$ by $\phi(r)=0$ and, for $v\neq r$,
-\[
-\phi(v)\;=\;\phi(\mathrm{par}(v)) + a(\mathrm{par}(v),v),
-\]
-where $\mathrm{par}(v)$ is given by Lemma~\ref{lem:tree-parent}.
-The verification that $a(u,v)=\phi(v)-\phi(u)$ on every oriented edge is recorded in Appendix~\ref{app:graphexact}.
-For a forest, apply the same construction componentwise by choosing a root in each component.
-\end{proof}
+This is the finite form of the classical fact that a Markov chain whose transition graph is a tree is reversible \citep{Kelly1979}.
 
-\subsection{Exactness forces vanishing closed-walk sums}
-
-\begin{proof}[Proof of Theorem~\ref{thm:NG_FORCE_NULL}]
-Assume $a$ is exact: $a(u,v)=\phi(v)-\phi(u)$ for some $\phi:V\to\mathbb{R}$.
-Let $w=(v_0,v_1,\dots,v_k)$ be any closed walk with $v_k=v_0$.
-Then
-\[
-S_a(w)=\sum_{i=0}^{k-1}\bigl(\phi(v_{i+1})-\phi(v_i)\bigr)
-=\phi(v_k)-\phi(v_0)=0.
-\]
-The telescoping calculation is written out in Appendix~\ref{app:graphexact}.
-\end{proof}
-
-\begin{remark}[Connection to log-ratio affinity]
-If $K$ is a Markov kernel on a finite state space with bidirected support graph $G$,
-a common affinity $1$-form is the log-ratio
-\[
-a_K(u,v)=\log\frac{K(u,v)}{K(v,u)}
-\qquad\text{on each bidirected edge.}
-\]
-This is antisymmetric on $\vec E$. Theorems~\ref{thm:NG_FORCE_FOREST} and
-\ref{thm:NG_FORCE_NULL} show that (i) on forest support every such antisymmetric form
-is potential-generated, and (ii) any potential-generated form has zero closed-walk sums,
-so every cycle affinity vanishes.
+\begin{remark}[Gradient log-ratios do not imply detailed balance]\label{rem:one_way}
+The hypothesis on one-way transitions in \Cref{cor:forest_reversible} cannot be dropped.
+One-way transitions are not edges of $G_P$, so $a_P$ does not see them, yet a transition with $P(x,x')>0=P(x',x)$ forces every detailed-balance law to vanish at $x$.
+For instance, the kernel on $\{1,2\}$ with $P(1,2)=1$ and $P(2,2)=1$ has an empty bidirected support graph, so $a_P$ is trivially a gradient, but the only detailed-balance law is $\delta_2$; started from $\delta_1$, the chain has infinite arrow.
+An audit for the protocol trap must therefore check detailed balance on all pairs of states, not only exactness of the log-ratio field.
 \end{remark}
 
-\begin{remark}[Thresholding and regularization]
-The theorems above are statements about the \emph{exact} graph object $(V,E)$ and the
-\emph{exact} antisymmetric data $a$ supported on $\vec E$.
-Graph thresholding or regularization changes $E$ and can change $\beta_1(G)$; such
-modifications lie outside the theorem hypotheses and define different graph objects.
+\begin{remark}[Additive affinities and multiplicative surrogates]
+The cycle affinity is additive: it is the logarithm of the product $r$ of rate ratios around the cycle.
+Numerical audits sometimes report a multiplicative surrogate such as $\max(r,1/r)-1=e^{|\log r|}-1$.
+It vanishes exactly when the affinity does and orders cycles by $|\log r|$, but it is a different number from the affinity.
+\end{remark}
+
+\begin{remark}[Thresholded and regularized graphs]
+Both theorems are statements about the exact graph and the exact field.
+Discarding small transition probabilities removes edges, can turn a cycle into a forest, and can create one-way transitions; adding a small floor to all probabilities adds edges, can create cycles, and replaces one-way transitions by edges with large but finite log-ratios.
+Either operation produces a different graph and a different field, about which the theorems say nothing.
 \end{remark}

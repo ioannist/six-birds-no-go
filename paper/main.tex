@@ -22,13 +22,16 @@
 \usepackage{orcidlink}
 \usepackage{titling}
 \usepackage{xurl}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric}
 
 \input{macros}
 \input{generated/theorem_statements}
 
 \title{Six Birds: No-Go Theorems for Audited Emergence}
 \author{Ioannis Tsiokos\,\orcidlink{0009-0009-7659-5964}}
-\date{March 23, 2026}
+\date{Version 1: March 23, 2026 \quad$\cdot$\quad Version 2: October 3, 2026}
 \hypersetup{
   pdftitle={Six Birds: No-Go Theorems for Audited Emergence},
   pdfauthor={Ioannis Tsiokos},
@@ -78,10 +81,13 @@
 \input{sections/09_discussion}
 
 \appendix
+\crefalias{section}{appendix}
 \input{appendices/appendix_a_probability_kl}
 \input{appendices/appendix_b_graph_exactness}
 \input{appendices/appendix_c_variational_closure}
 \input{appendices/appendix_d_packaging_definability}
+\input{appendices/appendix_e_formalization}
+\input{appendices/appendix_f_version_history}
 
 \bibliographystyle{plainnat}
 \bibliography{refs}

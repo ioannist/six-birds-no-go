@@ -1,89 +1,58 @@
-\section{Variational closure identities}\label{app:varclosure}
+\section{Proofs for the closure theorem}\label{app:varclosure}
 
-This appendix records the finite variational calculations used by the closure front.
+Throughout, $I^+=\{i:w_i>0\}$, sums written $\sum_i$ run over $I^+$, and divergences take values in $[0,\infty]$ as in \Cref{sec:setup}.
 
-\begin{proof}[Proof of Lemma~\ref{lem:closure_kl_mixture}]
-Expand both Kullback--Leibler sums on the finite support:
-\begin{align*}
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,Q\right)
-&=
-\sum_{i\in I}\sum_{\omega\in\Omega}
-w_i P_i(\omega)\log\frac{P_i(\omega)}{Q(\omega)},\\
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right)
-&=
-\sum_{i\in I}\sum_{\omega\in\Omega}
-w_i P_i(\omega)\log\frac{P_i(\omega)}{R(\omega)}.
-\end{align*}
-Subtracting the second identity from the first gives
+\begin{proof}[Proof of \Cref{lem:closure_kl_mixture}]
+Every $p_i$ with $i\in I^+$ satisfies $w_ip_i\le W\bar p$, so $\bar p(\omega)>0$ whenever $p_i(\omega)>0$; hence each $\DKL{p_i}{\bar p}$ is finite, and so is the first sum on the right.
+Let $\Omega^+=\{\omega:\bar p(\omega)>0\}$.
+Note that $\bar p(\omega)>0$ exactly when $p_i(\omega)>0$ for some $i\in I^+$.
+
+\emph{Case 1: $q(\omega)=0$ for some $\omega\in\Omega^+$.}
+Then $\DKL{\bar p}{q}=\infty$, so the right-hand side is infinite.
+Choose $i\in I^+$ with $p_i(\omega)>0$; then $\DKL{p_i}{q}=\infty$ and the left-hand side is infinite as well.
+
+\emph{Case 2: $q>0$ on $\Omega^+$.}
+All divergences in the identity are then finite sums over $\Omega^+$, and since every term is finite, sums may be rearranged and subtracted freely.
+For $i\in I^+$ and $\omega$ with $p_i(\omega)>0$,
 \[
-\sum_{i\in I}\sum_{\omega\in\Omega}
-w_i P_i(\omega)\log\frac{R(\omega)}{Q(\omega)}
-=
-\sum_{\omega\in\Omega}
-\left(\sum_{i\in I} w_i P_i(\omega)\right)\log\frac{R(\omega)}{Q(\omega)}.
+  \log\frac{p_i(\omega)}{q(\omega)}=\log\frac{p_i(\omega)}{\bar p(\omega)}+\log\frac{\bar p(\omega)}{q(\omega)}.
 \]
-Since $\sum_i w_i P_i(\omega)=W R(\omega)$ by definition of $R$, this becomes
+Multiplying by $w_ip_i(\omega)$, summing over $i\in I^+$ and over $\omega$ with $p_i(\omega)>0$, and using $\sum_iw_ip_i(\omega)=W\bar p(\omega)$ in the last term gives
 \[
-W\sum_{\omega\in\Omega} R(\omega)\log\frac{R(\omega)}{Q(\omega)}
-=
-W\,D_{\mathrm{KL}}\!\left(R\,\middle\|\,Q\right).
+  \sum_i w_i\,\DKL{p_i}{q}=\sum_i w_i\,\DKL{p_i}{\bar p}+W\sum_{\omega\in\Omega^+}\bar p(\omega)\log\frac{\bar p(\omega)}{q(\omega)},
 \]
-Rearranging yields the displayed identity.
-Because Kullback--Leibler divergence is nonnegative, the final term is minimized at $Q=R$, and then the minimum value is exactly $\sum_i w_i D_{\mathrm{KL}}(P_i\,\|\,R)$.
+and the last sum is $\DKL{\bar p}{q}$.
+
+In both cases the identity holds.
+Since $W>0$ and $\DKL{\bar p}{q}\ge 0$ with equality only for $q=\bar p$, the left-hand side is minimized exactly at $q=\bar p$.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:closure_best_macro_kernel}]
-Decompose the objective by macro fibers:
+\begin{proof}[Proof of \Cref{lem:closure_best_macro_kernel}]
+Group the microstates of positive mass by fiber:
 \[
-\mathcal L_\tau(K)
-=
-\sum_{y\in Y}\sum_{x:\Pi(x)=y}
-\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,K(y,\cdot)\right).
+  \mathcal{L}_\tau(K)=\sum_{y:\,W_y>0}\;\sum_{x\in f^{-1}(y),\,\mu(x)>0}\mu(x)\,\DKL{p_x}{K(y,\cdot)}.
 \]
-Fix a macrostate $y$ with $\mu(\Pi^{-1}(y))>0$.
-Apply Lemma~\ref{lem:closure_kl_mixture} on the fiber $\Pi^{-1}(y)$ with indices $i=x$, weights $w_x=\mu(x)$, laws $P_x=p_x^{(\tau)}$, and comparison law $Q=K(y,\cdot)$.
-The corresponding mixture law is
-\[
-R_y
-=
-\frac{1}{\sum_{x:\Pi(x)=y}\mu(x)}
-\sum_{x:\Pi(x)=y}\mu(x)\,p_x^{(\tau)}.
-\]
-By the finite law of total probability and the identity $Y_t=\Pi(X_t)$, this mixture is exactly $\mathrm{Law}(Y_{t+\tau}\mid Y_t=y)=\bar p_y^{(\tau)}$.
-Hence the minimizing row is $K(y,\cdot)=\bar p_y^{(\tau)}$, and the minimum contribution of the fiber is
-\[
-\sum_{x:\Pi(x)=y}
-\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_y^{(\tau)}\right).
-\]
-Summing over all $y$ gives the formula for $\min_K \mathcal L_\tau(K)$.
-If $\mu(\Pi^{-1}(y))=0$, the row $K(y,\cdot)$ contributes zero and may be chosen arbitrarily; setting it to $\bar p_y^{(\tau)}$ still gives a minimizer.
+A fiber with $W_y=0$ contains no microstate of positive mass and does not appear, so its row $K(y,\cdot)$ is irrelevant.
+For a fiber with $W_y>0$, apply \Cref{lem:closure_kl_mixture} with weights $\mu(x)$ and laws $p_x$ for $x\in f^{-1}(y)$, whose mixture is $\bar p=K^\star(y,\cdot)$.
+It shows that the inner sum is minimized exactly by the row $K(y,\cdot)=K^\star(y,\cdot)$, with finite minimum $\sum_x\mu(x)\DKL{p_x}{K^\star(y,\cdot)}$.
+Each fiber's row can be chosen independently, so $K^\star$ minimizes $\mathcal{L}_\tau$ and $\mathcal{L}_\tau(K^\star)$ is finite.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:closure_cmi_identity}]
-Expand conditional mutual information into a finite sum:
+\begin{proof}[Proof of \Cref{lem:closure_cmi_identity}]
+The joint law of $(X_0,Y_0,Y_\tau)$ gives the triple $(x,y,y')$ mass $\mu(x)p_x(y')$ if $y=f(x)$ and mass $0$ otherwise.
+The marginals that enter the conditional mutual information are therefore
 \[
-I(X_t;Y_{t+\tau}\mid Y_t)
-=
-\sum_{x\in X}\sum_{y\in Y}\sum_{y'\in Y}
-\Pr[X_t=x,Y_t=y,Y_{t+\tau}=y']
-\log\frac{\Pr[Y_{t+\tau}=y'\mid X_t=x,Y_t=y]}{\Pr[Y_{t+\tau}=y'\mid Y_t=y]}.
+  \Pr(X_0=x,Y_0=f(x))=\mu(x),\qquad \Pr(Y_0=y)=W_y,\qquad \Pr(Y_0=y,Y_\tau=y')=W_y\,K^\star(y,y')
 \]
-Because $Y_t=\Pi(X_t)$ is a deterministic function of $X_t$, the joint probability vanishes unless $y=\Pi(x)$, and conditioning on $(X_t=x,Y_t=\Pi(x))$ is the same as conditioning on $X_t=x$ alone.
-Therefore the sum reduces to
+for $W_y>0$.
+By definition, with terms of zero joint mass omitted,
 \[
-\sum_{x\in X}\sum_{y'\in Y}
-\Pr[X_t=x,Y_{t+\tau}=y']
-\log\frac{\Pr[Y_{t+\tau}=y'\mid X_t=x]}{\Pr[Y_{t+\tau}=y'\mid Y_t=\Pi(x)]}.
+  I(X_0;Y_\tau\mid Y_0)=\sum_{x,y'}\mu(x)p_x(y')\,\log\frac{\Pr(X_0=x,Y_0=f(x),Y_\tau=y')\,\Pr(Y_0=f(x))}{\Pr(X_0=x,Y_0=f(x))\,\Pr(Y_0=f(x),Y_\tau=y')},
 \]
-Using stationarity, $\Pr[X_t=x]=\mu(x)$.
-Using the definitions of $p_x^{(\tau)}$ and $\bar p_{\Pi(x)}^{(\tau)}$, this becomes
+the sum running over pairs with $\mu(x)p_x(y')>0$.
+For such a pair, $W_{f(x)}\ge\mu(x)>0$ and $W_{f(x)}K^\star(f(x),y')\ge\mu(x)p_x(y')>0$, so all four probabilities are positive and the ratio equals
 \[
-\sum_{x\in X}\mu(x)\sum_{y'\in Y}
-p_x^{(\tau)}(y')
-\log\frac{p_x^{(\tau)}(y')}{\bar p_{\Pi(x)}^{(\tau)}(y')}.
+  \frac{\mu(x)p_x(y')\,W_{f(x)}}{\mu(x)\,W_{f(x)}K^\star(f(x),y')}=\frac{p_x(y')}{K^\star(f(x),y')}.
 \]
-This is exactly
-\[
-\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
-\]
+Summing first over $y'$ for each $x$ with $\mu(x)>0$ gives $\sum_{x:\,\mu(x)>0}\mu(x)\DKL{p_x}{K^\star(f(x),\cdot)}$, which is $\mathcal{L}_\tau(K^\star)$ by definition.
 \end{proof}

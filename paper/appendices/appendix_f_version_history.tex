@@ -1,0 +1,14 @@
+\section{Version history}\label{app:versions}
+
+\paragraph{Version 2 (October 3, 2026).}
+\begin{itemize}[leftmargin=*]
+  \item \emph{Closure theorem.} In version~1 the setup and the proof section assumed a stationary chain, under which the result is correct, but the theorem statement omitted that assumption: it weighted the closure loss by an arbitrary initial law while conditioning at a later time $t$, which fails in general (\Cref{ex:closure_current_law}). Version~2 states \thmNGMacroClosureDeficit{} for the current law at time $0$, which reconciles statement and proof and removes the need for stationarity. Zero-mass microstates and fibers of zero mass are now treated explicitly, the zero criterion is stated for microstates of positive mass, and the proof of the mixture decomposition separates the case of infinite divergence.
+  \item \emph{Protocol trap.} Detailed balance of the initial law is the only hypothesis; stationarity follows from it. The proof that detailed balance makes path laws reversal invariant is now an induction that never divides, so it covers laws with zeros; the version~1 argument cancelled factors of $\pi$ that can vanish.
+  \item \emph{Dobrushin contraction.} The proof of \Cref{lem:objecthood_dobrushin} now uses the row that minimizes the probability of the event, which makes every coefficient nonnegative; the version~1 argument used an arbitrary reference row and dropped terms whose sign it did not control. Dobrushin's coefficient is defined as the largest total variation distance between rows throughout, and the state space is assumed nonempty.
+  \item \emph{Scope of the other theorems.} The graph theorems are stated for edge fields defined on edges only and for graphs that need not be finite; the bounded-interface theorem is stated for arbitrary sets with finite image and excludes every infinite sequence of distinct definable predicates. The arrow theorem allows infinite divergences and $T\ge 0$, and \Cref{rem:arrow_scope} records that memoryless noisy observation obeys the same bound.
+  \item \emph{Formalization.} All eight theorems are now formalized directly in Lean, on real-valued probability laws with extended-real divergences (\Cref{app:formalization}). In version~1 the formal support for the objecthood theorem covered only an auxiliary uniqueness statement, and the formal support for several other theorems rested on simplified representations or took key analytic steps as hypotheses.
+  \item \emph{Exposition.} The text has been rewritten throughout, with a new abstract, a summary table, five figures, \Cref{cor:forest_reversible,cor:eps_ball}, and further examples. The title is unchanged, and each of the eight theorems keeps its conclusion.
+\end{itemize}
+
+\paragraph{Version 1 (March 23, 2026).}
+First public version.

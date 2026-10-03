@@ -1,68 +1,104 @@
-\section{Bounded interfaces and no-ladder obstructions}\label{sec:bounded-interface}
+\section{Ladders of levels}\label{sec:bounded-interface}
 
-This section isolates two finite obstructions to indefinite refinement under audited closure.
-The first is a simple idempotence observation. The second is a counting argument: under a fixed
-deterministic interface, there are only finitely many definable predicates, hence no infinite strictly
-increasing ladder of distinct definable distinctions.
+A ladder is a sequence of levels, each adding a distinction that the previous ones lacked.
+This section proves the two theorems that bound ladders built from a fixed packaging map or a fixed interface.
+Both are elementary; their content lies in what they force an unbounded ladder to change.
 
-\subsection{Idempotent saturation}
-
-Let $\X$ be a finite set and let $e:\X\to\X$ be a deterministic packaging operator.
-For an integer $n\ge 1$, write $e^{\circ n}$ for the $n$-fold iterate
-$e^{\circ n} = \underbrace{e\circ\cdots\circ e}_{n\ \text{times}}$.
+\subsection{Idempotent packaging saturates}
 
 \begin{lemma}\label{lem:idempotent-iterates}
-If $e\circ e = e$, then $e^{\circ n}=e$ for all integers $n\ge 1$.
+If $e\circ e=e$, then $e^{\circ n}=e$ for all $n\ge 1$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:packdef}.
+By induction on $n$; see \Cref{app:packdef}.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_LADDER_IDEM}]
-Fix $n\ge 1$. By Lemma~\ref{lem:idempotent-iterates} we have $e^{\circ n}=e$, hence for every $x\in\X$,
-\[
-e^{\circ n}(x)=e(x).
-\]
-In particular, the packaged state stabilizes after one step, and any packaged signature depending only
-on $e^{\circ n}(x)$ stabilizes after one step as well.
+\begin{proof}[Proof of \Cref{thm:NG_LADDER_IDEM}]
+This is \Cref{lem:idempotent-iterates}.
+In particular, any quantity that depends on a state only through its packaged value $e^{\circ n}(s)$ takes the same value for all $n\ge 1$.
 \end{proof}
 
-\subsection{Definability count for a fixed interface}
-
-Let $f:\X\to\Y$ be a deterministic interface observation into a finite set $\Y$.
-Define the family of predicates definable from $f$ by
-\[
-\Def(f)\coloneqq \{g\circ f : \X\to\{0,1\} \mid g:\Y\to\{0,1\}\}.
-\]
-Only the restriction of $g$ to the image $\im(f)\subseteq \Y$ matters.
+\subsection{A fixed interface has finitely many definable predicates}
 
 \begin{lemma}\label{lem:definability-bijection}
-The map
-\[
-A\subseteq \im(f)\quad\longmapsto\quad \1_A\circ f
-\]
-is a bijection between $\mathcal P(\im(f))$ and $\Def(f)$. Consequently,
-\[
-|\Def(f)| = 2^{|\im(f)|}.
-\]
+Let $f:X\to Y$ be any map. The assignment $A\mapsto\1_A\circ f$ is a bijection from the subsets of $\im(f)$ onto $\Def(f)$. It is an order isomorphism: $\1_A\circ f\le\1_B\circ f$ pointwise if and only if $A\subseteq B$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:packdef}.
+See \Cref{app:packdef}. Only the values of $g$ on the image of $f$ affect $g\circ f$, and every point of the image is hit by some $x$.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_LADDER_BOUNDED_INTERFACE}]
-Assume for contradiction that there exists an infinite strictly increasing sequence
-$(h_n)_{n\ge 1}\subseteq \Def(f)$, meaning $h_n(x)\le h_{n+1}(x)$ for all $x\in\X$ and $h_n\neq h_{n+1}$
-for each $n$. By Lemma~\ref{lem:definability-bijection}, the set $\Def(f)$ has finite cardinality
-$2^{|\im(f)|}$, so it cannot contain infinitely many distinct elements. This contradiction shows that
-no such infinite strictly increasing sequence exists.
+\begin{proof}[Proof of \Cref{thm:NG_LADDER_BOUNDED_INTERFACE}]
+By \Cref{lem:definability-bijection}, $|\Def(f)|$ is the number of subsets of $\im(f)$, which is $2^{|\im(f)|}$.
+An infinite sequence of pairwise distinct elements would make the finite set $\Def(f)$ infinite, which is impossible.
+A strictly increasing chain consists of pairwise distinct elements, so none is infinite either.
 \end{proof}
 
-\begin{remark}[Extension escape]
-Theorem~\ref{thm:NG_LADDER_BOUNDED_INTERFACE} assumes a fixed interface map $f$.
-If one allows the interface to vary with the step index (for example by adding coordinates or refining
-the lens family so that $|\im(f_n)|$ grows), then the bound $|\Def(f_n)|=2^{|\im(f_n)|}$ can increase and longer
-refinement chains become possible. Such interface expansion is outside the scope of the bounded-interface front.
+\Cref{fig:definability} illustrates the bijection.
+The order isomorphism gives a sharper bound on chains.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  pt/.style={circle,fill=black,inner sep=1.3pt},
+  fib/.style={rounded corners=5pt,draw,thick},
+  ys/.style={circle,draw,thick,minimum size=7mm,inner sep=0pt,font=\small},
+  lens/.style={-{Stealth[length=2mm]},densely dashed,gray!70!black},
+  lbl/.style={font=\footnotesize}
+]
+\begin{scope}
+\node[fib,fill=green!12,minimum width=2.2cm,minimum height=1.25cm] (F1) at (0,0) {};
+\node[fib,fill=green!12,minimum width=1.4cm,minimum height=1.25cm] (F2) at (2.5,0) {};
+\node[fib,fill=white,minimum width=1.9cm,minimum height=1.25cm] (F3) at (4.75,0) {};
+\foreach \x/\y in {-0.7/0.2,-0.2/-0.25,0.35/0.25,0.75/-0.2} \node[pt] at (\x,\y) {};
+\foreach \x/\y in {2.25/0.2,2.75/-0.2} \node[pt] at (\x,\y) {};
+\foreach \x/\y in {4.2/-0.15,4.7/0.25,5.25/-0.2} \node[pt] at (\x,\y) {};
+\node[lbl,anchor=east] at (-1.3,0) {$X$};
+\node[ys,fill=green!12] (y1) at (0,-2.0) {$y_1$};
+\node[ys,fill=green!12] (y2) at (2.5,-2.0) {$y_2$};
+\node[ys] (y3) at (4.75,-2.0) {$y_3$};
+\node[ys] (y4) at (6.6,-2.0) {$y_4$};
+\node[lbl,anchor=east] at (-1.3,-2.0) {$Y$};
+\draw[lens] (F1) -- (y1);
+\draw[lens] (F2) -- (y2);
+\draw[lens] (F3) -- (y3);
+\node[lbl,align=center] at (6.6,-1.05) {not in $\im(f)$};
+\node[lbl] at (2.4,-2.85) {$A=\{y_1,y_2\}$ \ gives the predicate $\1_A\circ f$ (shaded fibers)};
+\end{scope}
+\begin{scope}[xshift=10.6cm,yshift=-1.0cm,lbl/.style={font=\scriptsize,fill=white,inner sep=1.5pt}]
+\node[lbl] (e) at (0,-1.7) {$\emptyset$};
+\node[lbl] (a1) at (-1.45,-0.55) {$\{y_1\}$};
+\node[lbl] (a2) at (0,-0.55) {$\{y_2\}$};
+\node[lbl] (a3) at (1.45,-0.55) {$\{y_3\}$};
+\node[lbl] (b12) at (-1.45,0.6) {$\{y_1,y_2\}$};
+\node[lbl] (b13) at (0,0.6) {$\{y_1,y_3\}$};
+\node[lbl] (b23) at (1.45,0.6) {$\{y_2,y_3\}$};
+\node[lbl] (t) at (0,1.75) {$\im(f)$};
+\begin{scope}[on background layer]
+\foreach \u/\v in {e/a1,e/a2,e/a3,a1/b12,a1/b13,a2/b12,a2/b23,a3/b13,a3/b23,b12/t,b13/t,b23/t} \draw[gray!60] (\u) -- (\v);
+\draw[very thick,green!50!black] (e) -- (a1) -- (b12) -- (t);
+\end{scope}
+\node[font=\footnotesize,align=center] at (0,-2.35) {$2^3=8$ definable predicates};
+\end{scope}
+\end{tikzpicture}
+\caption{Definable predicates of a lens with $|\im(f)|=3$. Left: a predicate definable through $f$ is constant on fibers, so it is determined by the set $A\subseteq\im(f)$ of images on which it equals one; values of $g$ off the image, such as at $y_4$, are irrelevant. Right: the $8$ definable predicates ordered pointwise form the lattice of subsets of $\im(f)$. A strictly increasing chain, such as the highlighted one, has at most $|\im(f)|+1=4$ elements.}\label{fig:definability}
+\end{figure}
+
+\begin{remark}[Length of chains]\label{rem:chain_length}
+If $|\im(f)|=m$, every strictly increasing chain of $f$-definable predicates has at most $m+1$ elements, and chains of exactly $m+1$ elements exist.
+By the order isomorphism, such a chain is a strictly increasing chain of subsets of an $m$-element set, and each step adds at least one element.
+Adding one element at a time from $\emptyset$ to $\im(f)$ gives a chain of length $m+1$.
+\end{remark}
+
+\begin{remark}[How ladders can continue]\label{rem:ladders_continue}
+Both theorems fix the rules of the game.
+An unbounded ladder requires changing them: a packaging map that is not idempotent, or a sequence of interfaces $f_1,f_2,\dots$ in place of a single fixed one.
+A changing interface need not have a growing image.
+On $X=\mathbb{N}$ the interfaces $f_n=\1_{\{0,\dots,n\}}$ all have a two-point image, yet the predicates $f_1<f_2<\cdots$, each definable through its own interface, form an infinite strictly increasing chain.
+Growth becomes necessary when the interfaces are successive refinements, $f_n=g_n\circ f_{n+1}$ for maps $g_n$, as when coordinates are added or the lens is refined.
+Then $\Def(f_n)\subseteq\Def(f_{n+1})$, and $g_n$ maps $\im(f_{n+1})$ onto $\im(f_n)$, so $|\im(f_n)|$ is nondecreasing.
+If these sizes stay bounded, they are eventually constant; from then on each $g_n$ restricts to a bijection $\im(f_{n+1})\to\im(f_n)$, every predicate definable through $f_{n+1}$ is already definable through $f_n$, and the union of all $\Def(f_n)$ is a finite set.
+Along a chain of refinements, an infinite sequence of new distinctions therefore requires $|\im(f_n)|\to\infty$.
+In the vocabulary of the introduction, such growth is a form of staging or refinement.
 \end{remark}

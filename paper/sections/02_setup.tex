@@ -1,171 +1,179 @@
-\section{Formal setup and audit definitions}\label{sec:setup}
+\section{Setting and audits}\label{sec:setup}
 
-\subsection{Finite probability notation}
-Let $X$ be a finite set.
-Write $\Delta(X)$ for the simplex of probability distributions on $X$.
-For $\mu\in\Delta(X)$ and $A\subseteq X$, write $\mu(A)=\sum_{x\in A}\mu(x)$.
-All random variables in the paper are finite-valued unless stated otherwise.
+All sets in this section are finite unless stated otherwise.
+\Cref{fig:setting} gives a picture of the setting.
 
-\subsection{Markov kernels and stationarity}
-A \emph{Markov kernel} on $X$ is a function $K:X\times X\to[0,1]$ such that for each $x\in X$,
+\subsection{Laws, kernels, and path laws}
+For a finite set $X$, write $\Delta(X)$ for the set of probability laws on $X$, and $\mu(A)=\sum_{x\in A}\mu(x)$ for $A\subseteq X$.
+A \emph{Markov kernel} on $X$ is a matrix $P:X\times X\to[0,1]$ whose rows sum to one.
+A law $\mu$ is moved one step forward by $(\mu P)(x')=\sum_{x}\mu(x)P(x,x')$.
+A law $\pi$ is \emph{stationary} if $\pi P=\pi$; every kernel on a nonempty finite set has at least one stationary law.
+A law $\pi$ satisfies \emph{detailed balance} with $P$ if
 \[
-  \sum_{x'\in X} K(x,x')=1.
+  \pi(x)P(x,x')=\pi(x')P(x',x)\qquad\text{for all }x,x'\in X.
 \]
-Given $\mu\in\Delta(X)$ we write $(\mu K)(x')=\sum_{x\in X}\mu(x)K(x,x')$.
-A distribution $\pi\in\Delta(X)$ is \emph{stationary} if $\pi K=\pi$.
-(For finite $X$ such a $\pi$ always exists.)
-These are standard finite Markov-chain notions; see \citep{Norris1997,LevinPeresWilmer2017}.
+Summing over $x$ shows that such a $\pi$ is stationary.
+These are the standard notions of finite Markov chain theory \citep{Norris1997,LevinPeresWilmer2017}.
 
-\subsection{Finite-horizon path laws}
-Fix an initial law $\mu\in\Delta(X)$ and a kernel $K$ on $X$.
-For an integer horizon $T\ge 0$, the \emph{path space} is $X^{T+1}$.
-The forward path law $P^{\mu,K}_T\in\Delta(X^{T+1})$ is
+Fix an initial law $\mu$, a kernel $P$, and a horizon $T\ge 0$.
+The \emph{path law} on $X^{T+1}$ is
 \[
-  P^{\mu,K}_T(x_0,\dots,x_T)
-  \;=\;
-  \mu(x_0)\prod_{t=0}^{T-1}K(x_t,x_{t+1}).
+  \mathbf{P}^{\mu,P}_T(x_0,\dots,x_T)=\mu(x_0)\prod_{t=0}^{T-1}P(x_t,x_{t+1}),
 \]
-Write $\mathrm{rev}(x_0,\dots,x_T)=(x_T,\dots,x_0)$ for path reversal, and define the reversed law
-$P^{\mu,K,\mathrm{rev}}_T$ on $X^{T+1}$ by
+the law of the trajectory $(X_0,\dots,X_T)$ of the chain started from $X_0\sim\mu$.
+Path reversal $\rev(x_0,\dots,x_T)=(x_T,\dots,x_0)$ is an involution of $X^{T+1}$, and the \emph{reversed path law} is its pushforward,
 \[
-  P^{\mu,K,\mathrm{rev}}_T(\gamma)\;=\;P^{\mu,K}_T(\mathrm{rev}(\gamma)).
+  \rev_{\#}\mathbf{P}^{\mu,P}_T(\gamma)=\mathbf{P}^{\mu,P}_T(\rev\gamma).
 \]
-This definition treats reversal as an involution on the same finite space.
-In stationary reversible settings, this is the standard time-reversal construction for finite chains; see \citep{Kelly1979}.
-When $P$ denotes the micro kernel, we also write the finite-horizon law as $\mathbf{P}^{(T)}_{\mu,P}$.
+It gives each path the probability that the forward process assigns to the same path traversed backwards.
+For a stationary reversible chain this is the classical time-reversal construction \citep{Kelly1979}; we use it for every initial law.
 
-\subsection{Deterministic lenses and pushforward}
-A \emph{deterministic lens} (coarse map) is a function $f:X\to Y$ between finite sets.\footnote{The term ``lens'' originates in the view-update and bidirectional transformation literature; here we use only the forward deterministic observation map \citep{FosterEtAl2007}.}
-We also write $\ell:\X\to\Y$ when denoting such a deterministic lens in theorem statements.
-The pushforward of $\mu\in\Delta(X)$ is the distribution $f_{\#}\mu\in\Delta(Y)$ defined by
+\subsection{Lenses and observed processes}
+A \emph{lens} is a function $f:X\to Y$; other papers in the series write a lens as $\ell$, or as $\Pi$ when it packages microstates into macrostates.\footnote{The term comes from the literature on bidirectional transformations and the view-update problem \citep{FosterEtAl2007}. Only the forward map is used here.}
+The \emph{pushforward} of $\mu\in\Delta(X)$ is $(f_{\#}\mu)(y)=\mu(f^{-1}(y))$, and the sets $f^{-1}(y)$ are the \emph{fibers} of $f$.
+Applying $f$ at every time gives a map on paths,
+$f^{(T)}(x_0,\dots,x_T)=(f(x_0),\dots,f(x_T))$, and the \emph{observed path law} is
 \[
-  (f_{\#}\mu)(y)\;=\;\sum_{x:\,f(x)=y}\mu(x).
+  \mathbf{P}^{\mu,P,f}_T=f^{(T)}_{\#}\,\mathbf{P}^{\mu,P}_T\in\Delta(Y^{T+1}),
 \]
-For path space, define $f^{(T)}:X^{T+1}\to Y^{T+1}$ by
-$f^{(T)}(x_0,\dots,x_T)=(f(x_0),\dots,f(x_T))$.
-The \emph{honest observed path law} is
-\[
-  P^{\mu,K,f}_T \;=\; (f^{(T)})_{\#}P^{\mu,K}_T\;\in\;\Delta(Y^{T+1}).
-\]
-We similarly define the reversed observed law
-$P^{\mu,K,f,\mathrm{rev}}_T(\eta)=P^{\mu,K,f}_T(\mathrm{rev}(\eta))$.
-Coarse observation can differ from the corresponding micro path-space asymmetry under aggregation \citep{Esposito2012}.
+the law of the observed trajectory $(f(X_0),\dots,f(X_T))$.
+This is the only notion of observed process used in the paper.
+In general the observed process is not a Markov chain, and how dissipation appears under such aggregation is itself a subject of study \citep{Esposito2012}.
 
-\subsection{Finite KL divergence and arrow audits}
-For distributions $P,Q\in\Delta(\Omega)$ on a finite set $\Omega$, define the Kullback--Leibler divergence
-\[
-  D_{\mathrm{KL}}(P\|Q)\;=\;\sum_{\omega\in\Omega} P(\omega)\log\frac{P(\omega)}{Q(\omega)},
-\]
-with the conventions $0\log(0/q)=0$ and $p\log(p/0)=+\infty$ for $p>0$.
-In the theorem statements we either assume mutual absolute continuity on the relevant supports or allow the value $+\infty$.
-For finite relative entropy and its standard identities, see \citep{KullbackLeibler1951,CoverThomas2006}.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  st/.style={circle,draw,thick,minimum size=6.5mm,inner sep=0pt,font=\small},
+  mac/.style={rounded corners=3pt,draw,thick,minimum width=11mm,minimum height=6.5mm,font=\small},
+  tr/.style={-{Stealth[length=2mm]},thick},
+  lens/.style={-{Stealth[length=2mm]},densely dashed,gray!70!black},
+  lbl/.style={font=\footnotesize}
+]
+% panel (a)
+\begin{scope}
+\node[st,fill=blue!12] (x1) at (0,1.6) {$1$};
+\node[st,fill=blue!12] (x2) at (1.3,2.3) {$2$};
+\node[st,fill=blue!12] (x3) at (1.3,0.9) {$3$};
+\node[st,fill=orange!20] (x4) at (2.8,1.6) {$4$};
+\node[st,fill=orange!20] (x5) at (4.0,1.6) {$5$};
+\draw[tr] (x1) to[bend left=15] (x2);
+\draw[tr] (x2) to[bend left=15] (x3);
+\draw[tr] (x3) to[bend left=15] (x1);
+\draw[tr] (x2) to[bend left=12] (x4);
+\draw[tr] (x4) to[bend left=12] (x3);
+\draw[tr] (x4) to[bend left=20] (x5);
+\draw[tr] (x5) to[bend left=20] (x4);
+\node[lbl] at (2.0,3.05) {microstates $X$, kernel $P$};
+\node[mac,fill=blue!12] (ya) at (0.9,-0.6) {$a$};
+\node[mac,fill=orange!20] (yb) at (3.4,-0.6) {$b$};
+\draw[lens] (x3) -- (ya);
+\draw[lens] (x1) -- (ya);
+\draw[lens] (x4) -- (yb);
+\draw[lens] (x5) -- (yb);
+\draw[lens] (x2.north west) .. controls (-0.9,2.9) and (-1.0,0.0) .. (ya.west);
+\node[lbl] at (2.15,-1.35) {macrostates $Y$, lens $f$};
+\node[font=\small\bfseries] at (-0.6,3.05) {(a)};
+\end{scope}
+% panel (b)
+\begin{scope}[xshift=7.2cm,yshift=0.2cm]
+\node (P) at (0,2.2) {$\mathbf{P}^{\mu,P}_T$};
+\node (R) at (4.2,2.2) {$\rev_{\#}\mathbf{P}^{\mu,P}_T$};
+\node (Pf) at (0,0) {$\mathbf{P}^{\mu,P,f}_T$};
+\node (Rf) at (4.2,0) {$\rev_{\#}\mathbf{P}^{\mu,P,f}_T$};
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (P) -- node[above,lbl] {reverse} (R);
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (Pf) -- node[below,lbl] {reverse} (Rf);
+\draw[tr] (P) -- node[left,lbl] {$f^{(T)}_{\#}$} (Pf);
+\draw[tr] (R) -- node[right,lbl] {$f^{(T)}_{\#}$} (Rf);
+\node[lbl,align=center] at (2.1,1.1) {$\Arr_T(\mu,P;f)\le\Arr_T(\mu,P)$};
+\node[font=\small\bfseries] at (-1.1,3.05) {(b)};
+\end{scope}
+\end{tikzpicture}
+\caption{The setting. (a) A finite Markov chain on microstates is observed through a lens $f$ that merges microstates into macrostates; the observed process is $f(X_t)$. (b) Reversing paths and applying the lens commute (\Cref{lem:rev_pushforward_commute}). The arrow is the divergence between the top row of laws, and the observed arrow the divergence between the bottom row, so the data-processing inequality yields \thmNGArrowDPI.}\label{fig:setting}
+\end{figure}
 
-\begin{definition}[Micro and observed arrow at horizon $T$]
-The \emph{micro arrow} at horizon $T$ is
+\subsection{Relative entropy and the arrow audit}
+For $p,q\in\Delta(\Omega)$ on a finite set $\Omega$, the Kullback--Leibler divergence is
 \[
-  \mathcal{A}_T(\mu,K)\;=\;D_{\mathrm{KL}}(P^{\mu,K}_T\|P^{\mu,K,\mathrm{rev}}_T).
+  \DKL{p}{q}=\sum_{\omega:\,p(\omega)>0}p(\omega)\log\frac{p(\omega)}{q(\omega)}\in[0,\infty],
 \]
-For a lens $f:X\to Y$, the \emph{observed arrow} is
+with the value $+\infty$ whenever some $\omega$ has $p(\omega)>0=q(\omega)$.
+Terms with $p(\omega)=0$ are omitted, so no product $0\cdot\infty$ ever arises.
+The divergence is nonnegative and vanishes exactly when $p=q$ (Gibbs' inequality).
+For these standard facts see \citep{KullbackLeibler1951,CoverThomas2006}.
+
+\begin{definition}[Arrow audits]\label{def:arrow}
+The \emph{microscopic arrow} and the \emph{observed arrow} at horizon $T$ are
 \[
-  \mathcal{A}_T(\mu,K;f)\;=\;D_{\mathrm{KL}}(P^{\mu,K,f}_T\|P^{\mu,K,f,\mathrm{rev}}_T).
+  \Arr_T(\mu,P)=\DKL{\mathbf{P}^{\mu,P}_T}{\rev_{\#}\mathbf{P}^{\mu,P}_T},
+  \qquad
+  \Arr_T(\mu,P;f)=\DKL{\mathbf{P}^{\mu,P,f}_T}{\rev_{\#}\mathbf{P}^{\mu,P,f}_T}.
 \]
 \end{definition}
-These forward-versus-reversed path-space KL quantities are the finite relative-entropy objects underlying standard entropy-production and irreversibility diagnostics \citep{Seifert2012,MaesNetocny2003}.
 
-\paragraph{Deterministic DPI (informal statement).}
-Because $f^{(T)}$ is deterministic, data processing implies
+Both values lie in $[0,\infty]$.
+An arrow is infinite when some path has positive probability but its reversal is impossible, as happens for a transition $x\to x'$ with $P(x,x')>0=P(x',x)$ that is used with positive probability.
+Forward-versus-reverse path divergences are the basic quantities of stochastic thermodynamics \citep{Seifert2012,MaesNetocny2003}.
+The standard total entropy production starts the reversed paths from the terminal law $\mu P^T$, whereas the arrow reverses the path law itself; the two coincide for stationary chains, and in general they differ by a boundary term (\Cref{rem:entropy_production}).
+
+\subsection{Graphs, gradient fields, and cycle affinity}
+Graphs are simple and undirected.
+For a graph $G=(V,E)$, an \emph{edge field} is a function $a$ that assigns a real number $a(u,v)$ to each ordered pair of adjacent vertices; it is \emph{antisymmetric} if $a(v,u)=-a(u,v)$ for every edge $\{u,v\}$.
+An edge field is \emph{exact}, or a \emph{gradient}, if there is a potential $\phi:V\to\mathbb{R}$ with $a(u,v)=\phi(v)-\phi(u)$ for every edge $\{u,v\}$; only edges are constrained.
+The \emph{sum} of $a$ along a closed walk $v_0,v_1,\dots,v_k=v_0$ (consecutive vertices adjacent) is $\sum_{i=0}^{k-1}a(v_i,v_{i+1})$.
+A \emph{forest} is a graph without cycles, and a \emph{tree} is a connected forest.
+For a finite graph with $c(G)$ connected components, the \emph{cycle rank} $\beta_1(G)=|E|-|V|+c(G)$ is the dimension of its cycle space, and $\beta_1(G)=0$ exactly for forests \citep{Diestel2017,Biggs1993}.
+Exactness and closed-walk sums are the degree-one part of discrete Hodge theory on graphs \citep{Lim2020Hodge}.
+
+A Markov kernel $P$ on $X$ defines its \emph{bidirected support graph} $G_P$ on $X$: distinct $x,x'$ are adjacent when $P(x,x')>0$ and $P(x',x)>0$.
+On $G_P$ the \emph{log-ratio field}
 \[
-  \mathcal{A}_T(\mu,K;f)\;\le\;\mathcal{A}_T(\mu,K),
+  a_P(x,x')=\log\frac{P(x,x')}{P(x',x)}
 \]
-with equality for the identity lens.
-This is the deterministic specialization of the standard data-processing inequality for relative entropy; see \citep{CoverThomas2006}.
+is antisymmetric, and its sum around a cycle is the \emph{cycle affinity} of Schnakenberg's network theory \citep{Schnakenberg1976}.
+The sum of an antisymmetric field along a closed walk depends only on the walk's net flow through each edge, which is a real circulation; since the circulations of a finite graph are spanned by the circulations of any fundamental cycle basis, all closed-walk sums vanish if and only if they vanish on such a basis.
+Transitions with $P(x,x')>0=P(x',x)$ are \emph{one-way}: they are not edges of $G_P$ and have no finite log-ratio.
 
-\subsection{Support graph, cycle rank, and affinity}
-The \emph{directed support graph} of $K$ has vertex set $X$ and an edge $x\to x'$ whenever $K(x,x')>0$.
-Let $G$ denote the underlying undirected support graph on $X$ obtained by forgetting orientation and retaining an undirected edge $\{x,x'\}$ when either direction has positive probability.
-For graph-theoretic statements we also write a generic finite graph as $G=(V,E)$, and a \emph{forest} means that every connected component is a tree.
-
-The \emph{cycle rank} (first Betti number) of $G$ is
+\subsection{Closure deficit}
+Fix a kernel $P$ on $X$, a lens $f:X\to Y$, a lag $\tau\ge 0$, and a law $\mu\in\Delta(X)$, which we call the \emph{current law}.
+Let $(X_t)_{t\ge 0}$ be the chain started from $X_0\sim\mu$, and write $Y_t=f(X_t)$.
+No stationarity is assumed.
+For each microstate $x$, its \emph{packaged future law} is
 \[
-  \beta_1(G)\;=\;|E(G)|-|V(G)|+c(G),
+  p_x(y')=\sum_{z:\,f(z)=y'}P^{\tau}(x,z),\qquad y'\in Y.
 \]
-where $c(G)$ is the number of connected components.
-Forests satisfy $\beta_1(G)=0$.
-
-On a bidirected support edge (both $K(x,x')>0$ and $K(x',x)>0$), define the log-ratio 1-form
+It is defined for every $x$, and for $\mu(x)>0$ it equals $\Law(Y_\tau\mid X_0=x)$.
+A \emph{macro kernel} is any Markov kernel $K$ on $Y$; it predicts the macrostate at lag $\tau$ from the current macrostate alone.
+Its \emph{closure loss} is
 \[
-  a(x,x')\;=\;\log\frac{K(x,x')}{K(x',x)}.
+  \mathcal{L}_\tau(K)=\sum_{x:\,\mu(x)>0}\mu(x)\,\DKL{p_x}{K(f(x),\cdot)}\in[0,\infty],
 \]
-In graph notation we may equivalently write the same antisymmetric edge label as $a(u,v)$ on oriented edges $(u,v)$.
-For a closed walk $\gamma=(x_0\to x_1\to\cdots\to x_m=x_0)$ on bidirected support, its \emph{cycle sum} is $\sum_{i=0}^{m-1} a(x_i,x_{i+1})$.
-In graph notation we may also write a closed walk as $v_0,\dots,v_k=v_0$ and the corresponding cycle sum as $\sum_{i=0}^{k-1} a(v_i,v_{i+1})$.
-We say $a$ is \emph{exact} if there exists a potential $\phi:X\to\mathbb{R}$ such that
-$a(x,x')=\phi(x')-\phi(x)$ on every bidirected support edge.
-Exactness forces every closed-walk sum to vanish.
-The cycle-rank identity is standard graph theory \citep{Diestel2017,Biggs1993}, while the exactness and closed-walk viewpoint is the discrete $1$-form perspective used in Hodge-theoretic treatments \citep{Lim2020Hodge}.
-
-The \emph{max cycle affinity} is the maximum absolute value of the cycle sum over a fixed cycle basis (equivalently, it vanishes iff all cycle sums vanish).
-In Markov-network thermodynamics, such cycle sums are the basic affinity objects \citep{Schnakenberg1976}.
-The graph/affinity fronts use only these finite notions.
-
-\subsection{Closure deficit and best macro kernel}
-Fix a deterministic packaging map $\Pi:X\to Y$ and consider the stationary initialization $X_0\sim\pi$ where $\pi$ is stationary for $K$.
-Let $Y_t=\Pi(X_t)$.
-For an integer lag $\tau\ge 0$, define the \emph{closure deficit}
+the average information lost by predicting each microstate's macroscopic future from its macrostate alone.
+The \emph{closure deficit} is the conditional mutual information
 \[
-  \mathrm{CD}_{\tau}(K;\Pi)\;=\;I(X_0;Y_{\tau}\mid Y_0),
+  \mathrm{CD}_\tau(\mu;P,f)=I\bigl(X_0;Y_\tau\bigm| Y_0\bigr),
 \]
-the conditional mutual information under the stationary law.
-Equivalently,
-\[
-  \mathrm{CD}_{\tau}(K;\Pi)
-  \;=\;
-  \E\!\left[
-    \log\frac{\mathbb{P}(Y_{\tau}\mid X_0,Y_0)}{\mathbb{P}(Y_{\tau}\mid Y_0)}
-  \right].
-\]
+computed from the joint law of $(X_0,Y_0,Y_\tau)$ \citep{CoverThomas2006}; it is always finite.
+It measures how much the present microstate tells about the future macrostate beyond what the present macrostate already tells.
+Exact preservation of the Markov property under aggregation is the classical lumpability problem \citep{KemenySnell1960,Buchholz1994}; the closure deficit quantifies the failure of a weaker, one-lag property.
 
-A \emph{macro kernel} on $Y$ is any Markov kernel $L:Y\times Y\to[0,1]$.
-The \emph{best macro kernel at lag $\tau$} is the rowwise conditional law
+\subsection{Total variation and Dobrushin's coefficient}
+For laws $\mu,\nu$ on a finite set $S$, the total variation distance is
 \[
-  K^{\star}_{\tau}(y,y') \;=\; \mathbb{P}(Y_{\tau}=y'\mid Y_0=y),
+  \dTV(\mu,\nu)=\tfrac12\sum_{s\in S}|\mu(s)-\nu(s)|=\max_{A\subseteq S}\bigl(\mu(A)-\nu(A)\bigr).
 \]
-well-defined under stationarity.
-Exact preservation of a Markov macro-process under aggregation is the classical lumpability question \citep{KemenySnell1960,Buchholz1994}, and the variational minimizer below is a finite KL-projection viewpoint \citep{Csiszar1975}.
-The closure front packages $\mathrm{CD}_{\tau}(K;\Pi)$ as the variational gap between the true packaged future laws and the best macro kernel; the exact finite identity used in the theorem statement is recorded in Section~\ref{sec:closure}.
+For a Markov kernel $P$ on a nonempty finite set $S$, \emph{Dobrushin's coefficient} is the largest total variation distance between two rows,
+\[
+  \lambda(P)=\max_{s,s'\in S}\dTV\bigl(P(s,\cdot),P(s',\cdot)\bigr)\in[0,1].
+\]
+It is also the smallest constant $c$ such that the Markov operator $T_P(\nu)=\nu P$ satisfies $\dTV(T_P\mu,T_P\nu)\le c\,\dTV(\mu,\nu)$ for all laws $\mu,\nu$ \citep{Dobrushin1956,Seneta2006}; we prove the inequality with $c=\lambda(P)$ in \Cref{lem:objecthood_dobrushin}.
+A law $\nu$ is \emph{$\varepsilon$-stable} if $\dTV(\nu,\nu P)\le\varepsilon$; the $0$-stable laws are the stationary laws.
 
-\subsection{Packaging operators, idempotence, and bounded interfaces}
-A \emph{deterministic packaging map} is an endomap $e:X\to X$.
-It is \emph{idempotent} if $e\circ e=e$.
-Idempotence implies one-step stabilization of iterates and is used by the idempotence no-ladder front.
-
-More generally, a \emph{stochastic packaging operator} can be taken as a kernel $P$ on $X$ acting on $\Delta(X)$ by $\mu\mapsto \mu P$.
-For objecthood statements on $\Delta(\Y)$ we write the induced affine operator as $T_P(\nu):=\nu P$.
-When contraction is discussed, we use total variation distance
+\subsection{Packaging and definable predicates}
+A \emph{packaging map} is an endomap $e:S\to S$ of a set; it is \emph{idempotent} if $e\circ e=e$.
+A \emph{predicate} on a set $X$ is a function $X\to\{0,1\}$.
+Given a lens $f:X\to Y$ between arbitrary sets, a predicate is \emph{$f$-definable} if it factors through $f$:
 \[
-  \TV(\mu,\nu)=\frac12\sum_{x\in X}|\mu(x)-\nu(x)|.
+  \Def(f)=\bigl\{\,g\circ f\;:\;g:Y\to\{0,1\}\,\bigr\}.
 \]
-The Dobrushin contraction coefficient of a kernel $P$ is
-\[
-  \lambda(P)=\sup_{\mu\neq \nu}\frac{\TV(\mu P,\nu P)}{\TV(\mu,\nu)}.
-\]
-This coefficient is standard in finite-state contraction theory; see \citep{Dobrushin1956,Seneta2006}.
-Strict contraction ($\lambda(P)<1$) implies uniqueness of a fixed distribution for $P$.
-
-\subsection{Definable predicates and the $2^{|\mathrm{im}(g)|}$ bound}
-A \emph{predicate} on $X$ is a function $p:X\to\{0,1\}$.
-Given a lens $f:X\to Y$ (an ``interface''), a predicate $p$ is \emph{$f$-definable} if there exists $g:Y\to\{0,1\}$ with $p=g\circ f$.
-Equivalently, $p$ is the indicator of a union of fibers of $f$, and we write
-\[
-  \mathrm{Def}(f):=\{g\circ f:X\to\{0,1\}\mid g:Y\to\{0,1\}\}.
-\]
-Hence the number of $f$-definable predicates is exactly
-\[
-  |\mathrm{Def}(f)| = 2^{|\mathrm{im}(f)|}.
-\]
-This finite counting fact is the combinatorial backbone of the bounded-interface no-ladder front.
-
-\subsection{Convention: what counts as evidence}
-Throughout, theorems are stated for finite objects and refer to the audits defined above.
-Fitted macro Markov models on $Y$ and thresholded graph variants are auxiliary constructions rather than theorem objects.
-The objecthood front is formulated entirely within the stated contraction setup.
+An $f$-definable predicate cannot distinguish two microstates with the same image, so it is the indicator of a union of fibers of $f$.
+Predicates are ordered pointwise.

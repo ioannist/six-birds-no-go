@@ -1,8 +1,31 @@
 \section{Discussion}\label{sec:discussion}
 
-The eight theorem fronts delimit a finite obstruction layer for audited emergence claims.
-In the finite deterministic setting treated here, directed arrow, force-like affinity, exact closure, objecthood under contraction, and bounded-interface laddering are all constrained by explicit theorem hypotheses and explicit escape routes.
-The results therefore organize the finite obstruction structure of the theory: each front identifies a precise hypothesis set and the corresponding obstruction it entails.
+\paragraph{What the theorems say together.}
+Each theorem fixes an exact audit and names a hypothesis under which the audit cannot show the emergent feature.
+Read the other way, each one names something that an emergence claim must supply.
+An arrow of time seen through a lens must already be present in the microscopic path law, either through a drive or through an initial law out of detailed balance; hidden protocol coordinates do not supply it.
+A force-like cycle affinity needs a cycle in the bidirected support and a log-ratio field that is not a gradient.
+A closed macroscopic law at a given lag exists, at zero loss, exactly when the positive-mass microstates of each macrostate agree about the macroscopic future, and the loss of the best macroscopic law otherwise has an exact information-theoretic value.
+Two distinct stationary laws require a dynamics that is not strictly contractive, and two $\varepsilon$-stable laws farther apart than $2\varepsilon/(1-\lambda(P))$ are impossible when $\lambda(P)<1$.
+An unbounded ladder of levels requires a packaging map that is not idempotent or a changing interface, and along a chain of successive refinements the interface must grow without bound.
+None of these requirements is surprising on its own.
+What the theorems add is precision about the object being audited, so that a claim of emergence can be checked against an exact quantity rather than an approximation of it.
 
-Supplementary material records provenance, computational audit artifacts, fragility diagnostics, and formalization status.
-The main paper reserves its appendices for finite probability calculations, graph exactness derivations, variational closure identities, and packaging/definability details.
+\paragraph{Honest observation.}
+The theorems apply to the observed process itself, with its full path law, and not to models fitted to it.
+This distinction does real work.
+A first-order Markov chain fitted to an observed process, a thresholded transition graph, or a clustering of approximately stationary laws can each differ from the audited object in the very feature being claimed: the fitted chain is Markov by construction, thresholding can create or destroy cycles, and clustering under another metric can split one object into several. The theorems are silent about all three.
+The protocol trap shows the typical pattern: observed data can pass through recognizable stages, while the observed path law is exactly symmetric under reversal.
+More generally, the program of the Six Birds series \citep{SB_FOUNDATIONS,SB_PROTOCOL_TRAP,SB_CAST} is to state which primitive, added to which finite model, produces which audited feature; results of the kind proved here mark the cases in which the answer is ``none''.
+
+\paragraph{Scope and limitations.}
+The setting is deliberately narrow.
+State spaces are finite (the graph and ladder theorems do not need this), time is discrete, and lenses are deterministic, although \Cref{rem:arrow_scope} extends the arrow bound to memoryless noisy observation.
+All quantities are exact functions of a known model; estimating them from finite samples raises statistical questions that are not addressed here.
+The results are qualitative or give simple explicit bounds.
+Natural next steps include quantitative versions, such as bounds on how much arrow a given lens must lose or on how the closure deficit changes under refinement of the lens, together with continuous-time and countable-state analogues.
+
+\paragraph{Formal verification.}
+Because the theorems are meant to serve as reference points for audits, their exact hypotheses matter as much as their conclusions.
+For this reason all eight are formalized in Lean~4.
+The formal statements are in places stronger than the versions given here (\Cref{app:formalization}); the supporting results listed there as outside the formal development are either proved in this paper or are standard facts with references.

@@ -1,11 +1,12 @@
 \section{Provenance narrative}
 The theorem line is assembled from a fixed project spine.
 The theorem order and section homes come from \texttt{docs/project/theorem\_atlas.yaml}.
-The formal statements used in the LaTeX theorem blocks come from \texttt{docs/project/theorem\_statement\_sheet.yaml}, and notation is stabilized in \texttt{docs/project/notation\_registry.yaml}.
+The theorem statements correspond to \texttt{docs/project/theorem\_statement\_sheet.yaml}, whose Lean scopes are recorded in \texttt{review/current-theorem-coverage.json}.
+The notation registry \texttt{docs/project/notation\_registry.yaml} records the version~1 conventions; where it differs from the main paper (for example in allowing only positive lags or in its handling of support conditions for KL divergence), the main paper is authoritative.
 
 Claim-level bindings are frozen in \texttt{docs/project/claim\_audit\_freeze.yaml} and \texttt{docs/project/theorem\_evidence\_map.yaml}.
 Asset choices are frozen in \texttt{docs/project/paper\_asset\_freeze.yaml} and \texttt{docs/project/caption\_registry.yaml}.
-Readiness and formal-support status are tracked in \texttt{docs/project/readiness\_checklist.yaml} together with the per-front Lean bridge files under \texttt{docs/project/lean\_*.yaml}.
+Readiness and formal-support status were tracked in \texttt{docs/project/readiness\_checklist.yaml} together with the per-front Lean bridge files under \texttt{docs/project/lean\_*.yaml}; these are historical records, and the current formal-support status is the coverage receipt described in the formalization support map below.
 
-The supplement tables below therefore do not introduce new mathematical claims.
-They record how the frozen theorem fronts, claim rows, assets, and executable audit artifacts are aligned in the packaged repo state.
+The supplement tables do not introduce new mathematical claims.
+The claim, asset, and callout tables in the theorem--evidence map are version~1 records: they document the frozen claim bindings and planned assets of that version, and their figure and table identifiers and status descriptions do not refer to the figures or formal-support status of the version~2 main paper.

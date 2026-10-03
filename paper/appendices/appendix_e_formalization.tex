@@ -1,0 +1,47 @@
+\section{Formal verification}\label{app:formalization}
+
+All eight theorems are formalized in Lean~4 (toolchain \texttt{v4.28.0}) on top of Mathlib (pinned to the matching release), in the Lean library of the accompanying repository.
+\Cref{tab:lean} lists, for each theorem, the declarations that prove it.
+Declaration names are relative to the library's top-level namespace, and \texttt{RP} abbreviates \texttt{RealProbability}.
+The library builds from a clean checkout; the listed declarations are checked against explicit target statements in a separate file; and Lean's axiom report shows that they depend only on the standard axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+The library contains no unproved goals, no added axioms, and no calls to native code evaluation in proofs.
+
+\paragraph{Modelling choices.}
+A finite state space is represented as \texttt{Fin n}; since every finite set is in bijection with some \texttt{Fin n}, this loses no generality.
+A probability law is a real-valued function that is nonnegative and sums to one.
+Kullback--Leibler divergence takes values in the extended reals: it is $+\infty$ exactly when the support condition fails, and otherwise the finite sum with terms of zero mass omitted.
+Path laws are built from the transition product, so reversal symmetry under detailed balance is proved rather than assumed.
+In the closure theorem the conditional mutual information is defined directly from the joint masses $\mu(x)p_x(y')$, $\mu(x)$, $W_y$, and $\Pr(Y_0=y,Y_\tau=y')$, independently of the variational objective, and the candidate macro kernels range over all Markov kernels.
+Graphs are Mathlib's simple graphs, edge fields are real-valued, and closed-walk sums are computed along Mathlib walks.
+
+\begin{table}[ht]
+\centering
+\footnotesize
+\caption{Formal counterparts of the eight theorems.}\label{tab:lean}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Theorem & Declarations & Scope of the formal statement \\
+\midrule
+\ref{thm:NG_ARROW_DPI} Arrow monotonicity & \leanname{RP.markovArrowDPI}, \leanname{RP.KL_pushforward_le} & Any initial law, kernel, lens and horizon; inequality in the extended reals. \\
+\ref{thm:NG_PROTOCOL_TRAP} Protocol trap & \leanname{RP.protocolTrap}, \leanname{RP.detailedBalance_pathLaw_reversible} & Detailed balance on all pairs is the only hypothesis; states of zero mass allowed. \\
+\ref{thm:NG_FORCE_FOREST} Forest exactness & \leanname{RealGraph.forest_exact} & Any acyclic simple graph, finite or not; antisymmetry and the conclusion only on edges. \\
+\ref{thm:NG_FORCE_NULL} Null cycle affinity & \leanname{RealGraph.exact_closedWalk_zero} & Any simple graph; gradient condition only on edges; every closed walk. \\
+\ref{thm:NG_MACRO_CLOSURE_DEFICIT} Closure deficit & \leanname{RP.closureTheorem}, \leanname{RP.closure_variational_minimum}, \leanname{RP.conditionalInfo_positive_of_distinct_fiber_rows}; zero criterion via \leanname{RP.conditionalInfo_eq_bestObjective} and \leanname{RP.finiteObjective_eq_zero_iff} & Any current law and any lag $\tau\ge 0$. Parts (i) and (ii), with all Markov kernels as candidates, including those of infinite loss, and the positivity statement of (iii). The two declarations for the zero criterion combine to give $\mathrm{CD}_\tau=0$ if and only if $p_x=K^\star(f(x),\cdot)$ for every $x$ of positive mass; the step to the pairwise form stated in (iii) is not mechanized. \\
+\ref{thm:NG_OBJECT_CONTRACTIVE} Contractive objecthood & \leanname{RP.dobrushin_contraction}, \leanname{RP.contractive_separation}, \leanname{RP.contractive_stationary_unique} & Nonempty finite state space; $\lambda(P)$ is the largest total variation distance between rows. \\
+\ref{thm:NG_LADDER_IDEM} Idempotent saturation & \leanname{iterate_stabilizes_ext} & Any type. \\
+\ref{thm:NG_LADDER_BOUNDED_INTERFACE} Bounded interface & \leanname{FiniteImage.definable_cardinality}, \leanname{FiniteImage.no_infinite_distinct_sequence} & Arbitrary domain and codomain with finite image; no injective sequence $\mathbb{N}\to\Def(f)$. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Results outside the formal development.}
+The following supporting results are proved, or cited as standard, in the text but are not part of the Lean library:
+the existence of a stationary law and the geometric convergence in \Cref{lem:objecthood_unique_fixed}, and \Cref{cor:eps_ball}, which uses that existence (uniqueness is formalized);
+\Cref{cor:forest_reversible};
+the converse of \thmNGForceNull{} (\Cref{app:graphexact});
+in \thmNGMacroClosureDeficit(iii), the averaging step showing that positive-mass rows which agree pairwise within each fiber equal their fiber average, which yields $\mathrm{CD}_\tau=0$ (the direction from pairwise disagreement to a positive deficit is formalized);
+the order-isomorphism part of \Cref{lem:definability-bijection} and the chain-length bound of \Cref{rem:chain_length};
+the extension of the arrow bound to memoryless noisy observation in \Cref{rem:arrow_scope};
+and the relation between the arrow and entropy production in \Cref{rem:entropy_production}.
+Of the examples, the positive closure deficit at time $0$ in \Cref{ex:closure_current_law} is checked formally.

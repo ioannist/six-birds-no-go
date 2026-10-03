@@ -1,139 +1,127 @@
-\section{Closure deficit and a variational obstruction}\label{sec:closure}
+\section{Closure of macroscopic laws}\label{sec:closure}
 
-This section proves Theorem~\ref{thm:NG_MACRO_CLOSURE_DEFICIT}.
-The setting is finite throughout.
-Let $X$ be a finite state space, let $Y$ be a finite macro space, and let $(X_t)_{t\in\mathbb{Z}}$
-be a stationary Markov chain on $X$ with stationary law $\mu$.
-Fix a deterministic packaging map $\Pi:X\to Y$ and define the macro process by
-$Y_t := \Pi(X_t)$.
-For an integer lag $\tau\ge 1$ and a microstate $x\in X$, write
-\[
-p_x^{(\tau)}(\cdot) := \mathrm{Law}(Y_{t+\tau}\mid X_t=x)\in \Delta(Y).
-\]
-For a macrostate $y\in Y$, write
-\[
-\bar p_y^{(\tau)}(\cdot) := \mathrm{Law}(Y_{t+\tau}\mid Y_t=y)\in \Delta(Y).
-\]
-A macro kernel is a function $K:Y\to \Delta(Y)$, equivalently a row-stochastic array
-$K(y,y')$ on $Y\times Y$.
-The variational objective at lag $\tau$ is
-\[
-\mathcal L_\tau(K) := \sum_{x\in X} \mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,K(\Pi(x),\cdot)\right).
-\]
-The KL decompositions and conditional-mutual-information identities used below are standard finite information-theoretic calculations, and the variational minimizer is a finite KL-projection instance \citep{CoverThomas2006,Csiszar1975}.
+A lens $f$ turns a Markov chain into an observed process $Y_t=f(X_t)$ that is usually not Markov.
+One may still ask for the best Markov description at a fixed lag: a kernel $K$ on macrostates that predicts $Y_\tau$ from $Y_0$.
+\thmNGMacroClosureDeficit{} identifies the best such kernel and the loss it cannot avoid.
+Throughout this section $P$, $f$, $\tau$, and the current law $\mu$ are fixed, and $p_x$, $\mathcal{L}_\tau$, and $\mathrm{CD}_\tau=\mathrm{CD}_\tau(\mu;P,f)$ are as in \Cref{sec:setup}.
+For a macrostate $y$ write $W_y=\mu(f^{-1}(y))$ for the current mass of its fiber.
+The minimization below is a finite instance of information projection \citep{Csiszar1975}, and the identities are standard finite calculations with conditional mutual information \citep{CoverThomas2006}.
 
-\begin{lemma}[KL mixture decomposition]\label{lem:closure_kl_mixture}
-Let $(w_i)_{i\in I}$ be nonnegative weights on a finite index set $I$, not all zero,
-and let $(P_i)_{i\in I}$ be probability laws on a finite set $\Omega$.
-Define
+\subsection{Three lemmas and the proof}
+
+\begin{lemma}[Mixture decomposition]\label{lem:closure_kl_mixture}
+Let $w_1,\dots,w_n\ge 0$ have positive sum $W$, let $p_1,\dots,p_n\in\Delta(\Omega)$, and let $\bar p=W^{-1}\sum_i w_ip_i$. Then for every $q\in\Delta(\Omega)$,
 \[
-W := \sum_{i\in I} w_i,
-\qquad
-R := \frac{1}{W}\sum_{i\in I} w_i P_i.
+  \sum_{i:\,w_i>0}w_i\,\DKL{p_i}{q}=\sum_{i:\,w_i>0}w_i\,\DKL{p_i}{\bar p}+W\,\DKL{\bar p}{q}\qquad\text{in }[0,\infty],
 \]
-Then for every probability law $Q$ on $\Omega$,
-\[
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,Q\right)
-=
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right)
-+
-W\,D_{\mathrm{KL}}\!\left(R\,\middle\|\,Q\right).
-\]
-In particular, $Q=R$ is a minimizer, and the minimum value is
-\[
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right).
-\]
+and the first sum on the right is finite.
+In particular $q=\bar p$ minimizes the left-hand side, and it is the unique minimizer.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:varclosure}.
+See \Cref{app:varclosure}.
+The proof treats the case where $q$ misses part of the support of $\bar p$, in which both sides are infinite, separately from the finite case, so that no difference of infinite quantities is ever formed.
 \end{proof}
 
 \begin{lemma}[Best macro kernel]\label{lem:closure_best_macro_kernel}
-For each $y\in Y$, define
-\[
-K^\star_\tau(y,\cdot) := \bar p_y^{(\tau)}(\cdot)=\mathrm{Law}(Y_{t+\tau}\mid Y_t=y).
-\]
-Then
-\[
-\min_K \mathcal L_\tau(K)
-=
-\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right),
-\]
-and the minimum is attained by $K^\star_\tau$.
+For every macro kernel $K$, $\mathcal{L}_\tau(K^\star)\le\mathcal{L}_\tau(K)$, and $\mathcal{L}_\tau(K^\star)$ is finite.
+If $W_y>0$, then $K^\star(y,\cdot)$ is the only row that attains the minimum of the fiber's contribution; rows of fibers with $W_y=0$ do not affect $\mathcal{L}_\tau$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:varclosure}.
+See \Cref{app:varclosure}. The objective splits into one term per fiber, and \Cref{lem:closure_kl_mixture} minimizes each term with positive mass separately.
 \end{proof}
 
-\begin{lemma}[Conditional mutual information identity]\label{lem:closure_cmi_identity}
-In this finite deterministic setting,
-\[
-I(X_t;Y_{t+\tau}\mid Y_t)
-=
-\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
-\]
+\begin{lemma}[Information identity]\label{lem:closure_cmi_identity}
+$\displaystyle \mathrm{CD}_\tau=I(X_0;Y_\tau\mid Y_0)=\sum_{x:\,\mu(x)>0}\mu(x)\,\DKL{p_x}{K^\star(f(x),\cdot)}=\mathcal{L}_\tau(K^\star).$
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:varclosure}.
+See \Cref{app:varclosure}. Because $Y_0=f(X_0)$ is a function of $X_0$, the conditional mutual information collapses to an average over microstates of positive mass.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_MACRO_CLOSURE_DEFICIT}]
-By definition, the closure deficit in the theorem is
-\[
-\mathrm{CD}_\tau(\Pi)
-=
-I(X_t;\Pi(X_{t+\tau})\mid \Pi(X_t))
-=
-I(X_t;Y_{t+\tau}\mid Y_t).
-\]
-Lemma~\ref{lem:closure_cmi_identity} expresses this quantity as
-\[
-\mathrm{CD}_\tau(\Pi)
-=
-\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
-\]
-Lemma~\ref{lem:closure_best_macro_kernel} identifies the same expression as the minimum
-of the variational objective:
-\[
-\mathrm{CD}_\tau(\Pi)
-=
-\min_K \mathcal L_\tau(K),
-\qquad
-K^\star_\tau(y,\cdot)=\bar p_y^{(\tau)}(\cdot).
-\]
-This proves the finite variational identity and the formula for the minimizing macro kernel.
-
-For the positivity claim, suppose there exist $x,x'\in X$ with $\Pi(x)=\Pi(x')=:y$,
-$\mu(x)>0$, $\mu(x')>0$, and $p_x^{(\tau)}\neq p_{x'}^{(\tau)}$.
-Then not all positive-mass fiber laws in $\Pi^{-1}(y)$ coincide with their weighted average
-$\bar p_y^{(\tau)}$.
-Hence at least one state $z\in\Pi^{-1}(y)$ with $\mu(z)>0$ satisfies
-\[
-D_{\mathrm{KL}}\!\left(p_z^{(\tau)}\,\middle\|\,\bar p_y^{(\tau)}\right)>0.
-\]
-The sum formula for $\mathrm{CD}_\tau(\Pi)$ therefore contains at least one strictly
-positive term and all remaining terms are nonnegative, so
-\[
-\mathrm{CD}_\tau(\Pi)>0.
-\]
+\begin{proof}[Proof of \Cref{thm:NG_MACRO_CLOSURE_DEFICIT}]
+The first displayed formula for $K^\star$ is the definition of a conditional law: for $W_y>0$,
+$\Pr(Y_0=y,Y_\tau=y')=\sum_{x\in f^{-1}(y)}\mu(x)\,p_x(y')$.
+Part (i) is \Cref{lem:closure_cmi_identity}, and part (ii) follows from (i) and \Cref{lem:closure_best_macro_kernel}.
+For part (iii), every term of the sum in \Cref{lem:closure_cmi_identity} is finite and nonnegative, so $\mathrm{CD}_\tau=0$ if and only if $p_x=K^\star(f(x),\cdot)$ for every $x$ with $\mu(x)>0$, by Gibbs' inequality.
+If this holds, then all positive-mass microstates in one fiber share the law $K^\star(y,\cdot)$.
+Conversely, if all positive-mass microstates in the fiber of $y$ share one law, that law equals their weighted average $K^\star(y,\cdot)$.
 \end{proof}
 
-\begin{remark}[Scope of exact closure]
-If every macro fiber is a singleton, then $\Pi$ loses no information and the closure
-deficit vanishes trivially.
-More generally, if all packaged future laws $p_x^{(\tau)}$ agree inside each fiber
-$\Pi^{-1}(y)$, then the minimizing macro kernel reproduces those common laws and
-$\mathrm{CD}_\tau(\Pi)=0$.
-The theorem becomes informative exactly when a macro fiber contains distinct packaged
-future laws.
+\subsection{The current law matters}
+
+The deficit depends on the law of the present microstate, and the following example shows that the dependence is real.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  st/.style={circle,draw,thick,minimum size=7.5mm,inner sep=0pt,font=\small},
+  nul/.style={circle,draw,densely dashed,gray,text=gray,minimum size=7.5mm,inner sep=0pt,font=\small},
+  ed/.style={-{Stealth[length=2mm]},thick},
+  fib/.style={rounded corners=6pt,draw,dashed,gray!70!black},
+  lbl/.style={font=\footnotesize},
+  mass/.style={font=\footnotesize,blue!60!black}
+]
+\begin{scope}[xshift=0cm]
+\node[st] (s1) at (0,1.5) {$1$};
+\node[st] (s2) at (0,0) {$2$};
+\node[nul] (s3) at (3.0,0) {$3$};
+\draw[ed] (s1) to[loop above,looseness=6] (s1);
+\draw[ed] (s2) -- (s3);
+\draw[ed] (s3) to[loop above,looseness=6] (s3);
+\node[fib,fit=(s1)(s2),inner sep=7pt,label={[lbl]below:fiber $a$}] {};
+\node[fib,fit=(s3),inner sep=7pt,label={[lbl]below:fiber $b$}] {};
+\node[mass,left=13pt of s1] {$\tfrac12$};
+\node[mass,left=13pt of s2] {$\tfrac12$};
+\node[mass,right=13pt of s3] {$0$};
+\node[lbl] at (1.5,-1.45) {time $0$: \ $\mathrm{CD}_1(\mu_0;P,f)=\log 2$};
+\node[font=\small\bfseries] at (-1.6,2.3) {(a)};
+\end{scope}
+\begin{scope}[xshift=7.5cm]
+\node[st] (s1) at (0,1.5) {$1$};
+\node[nul] (s2) at (0,0) {$2$};
+\node[st] (s3) at (3.0,0) {$3$};
+\draw[ed] (s1) to[loop above,looseness=6] (s1);
+\draw[ed] (s2) -- (s3);
+\draw[ed] (s3) to[loop above,looseness=6] (s3);
+\node[fib,fit=(s1)(s2),inner sep=7pt,label={[lbl]below:fiber $a$}] {};
+\node[fib,fit=(s3),inner sep=7pt,label={[lbl]below:fiber $b$}] {};
+\node[mass,left=13pt of s1] {$\tfrac12$};
+\node[mass,left=13pt of s2] {$0$};
+\node[mass,right=13pt of s3] {$\tfrac12$};
+\node[lbl] at (1.5,-1.45) {time $1$: \ $\mathrm{CD}_1(\mu_1;P,f)=0$};
+\node[font=\small\bfseries] at (-1.6,2.3) {(b)};
+\end{scope}
+\end{tikzpicture}
+\caption{The closure deficit depends on the current law (\Cref{ex:closure_current_law}). Microstates $1$ and $2$ form macrostate $a$, and state $3$ forms macrostate $b$; current masses are shown in blue, and states of zero mass are dashed. (a) At time $0$ both microstates in fiber $a$ have mass $1/2$, but $1$ stays in $a$ while $2$ moves to $b$, so the macrostate does not determine the macroscopic future and $\mathrm{CD}_1=\log 2$. (b) One step later state $2$ has mass zero, every positive-mass fiber has a single macroscopic future, and $\mathrm{CD}_1=0$.}\label{fig:closure_current_law}
+\end{figure}
+
+\begin{example}[Positive deficit now, zero deficit one step later]\label{ex:closure_current_law}
+Let $X=\{1,2,3\}$ and $Y=\{a,b\}$, with $f(1)=f(2)=a$ and $f(3)=b$, and let $P$ be deterministic with $1\mapsto 1$, $2\mapsto 3$, $3\mapsto 3$.
+Take $\tau=1$, so $p_1=\delta_a$ and $p_2=p_3=\delta_b$ (\Cref{fig:closure_current_law}).
+\begin{itemize}
+  \item For $\mu_0=(\tfrac12,\tfrac12,0)$, the two states of fiber $a$ have positive mass and different futures, so $\mathrm{CD}_1(\mu_0)>0$. Indeed $K^\star(a,\cdot)=(\tfrac12,\tfrac12)$, $Y_0=a$ almost surely, and $Y_1$ is a fair coin determined by $X_0$, so $\mathrm{CD}_1(\mu_0)=\log 2$.
+  \item For $\mu_1=\mu_0P=(\tfrac12,0,\tfrac12)$, each fiber contains one state of positive mass, so $\mathrm{CD}_1(\mu_1)=0$.
+\end{itemize}
+The kernel, lens, and lag are the same in both cases; only the current law differs.
+\end{example}
+
+For a chain started from $\mu$, the deficit between times $t$ and $t+\tau$ is therefore $\mathrm{CD}_\tau(\mu P^t;P,f)$, and the theorem applies at time $t$ with the law $\mu P^t$.
+The objective must always be weighted by the law at the time from which the prediction is made: weighting the losses at time $t$ by the initial law $\mu$ instead of $\mu P^t$ gives a quantity that is not the conditional mutual information at time $t$.
+In the example, the packaged future laws do not depend on time, so the $\mu_0$-weighted loss has minimum $\log 2$ at every time, while the deficit at time $1$ is zero.
+If $\mu=\pi$ is stationary, then $\mu P^t=\pi$ for all $t$ and the deficit is the same at every time.
+
+\subsection{Scope}
+
+\begin{remark}[Relation to lumpability]
+The kernel $P$ is \emph{strongly lumpable} for $f$ if $P(x,f^{-1}(y'))=P(x',f^{-1}(y'))$ whenever $f(x)=f(x')$, for all states and not only those of positive mass \citep{KemenySnell1960,Buchholz1994}.
+Strong lumpability then also holds for $P^\tau$, so all packaged future laws agree within fibers and $\mathrm{CD}_\tau(\mu;P,f)=0$ for every $\mu$ and $\tau$.
+The converse fails: a zero deficit concerns one current law and one lag, and it constrains only the microstates of positive mass under that law.
 \end{remark}
 
-\begin{remark}[Attribution is separate]
-The theorem isolates a finite obstruction: distinct packaged future laws inside a single
-macro fiber force a positive closure deficit.
-Which primitive or modeling decision produces such a pair is a separate question and is
-independent of the variational identity proved here.
+\begin{remark}[What the theorem does not decide]
+The theorem certifies a positive deficit from a single pair of microstates of positive mass in one fiber whose macroscopic futures differ.
+It does not say which feature of the model produced that pair, nor whether a different lens, lag, or current law would remove it.
+A first-order Markov chain fitted to the observed process can be a useful summary, but its fitting error is not the closure deficit unless it is computed as above, with the current law as weights.
 \end{remark}

@@ -22,16 +22,19 @@
 \usepackage{orcidlink}
 \usepackage{titling}
 \usepackage{xurl}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric}
 
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{convention}[theorem]{Convention}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{convention}{Convention}[section]
 
 \newcommand{\X}{\mathsf{X}}
 \newcommand{\Y}{\mathsf{Y}}
@@ -56,33 +59,78 @@
 \newcommand{\thmNGObjectContractive}{\Cref{thm:NG_OBJECT_CONTRACTIVE}}
 \newcommand{\thmNGLadderIdem}{\Cref{thm:NG_LADDER_IDEM}}
 \newcommand{\thmNGLadderBoundedInterface}{\Cref{thm:NG_LADDER_BOUNDED_INTERFACE}}
- \newcommand{\ThmStmtNGARROWDPI}{Let $\mu\in\D(\X)$, let $P:\X\times\X\to[0,1]$ be row-stochastic, and let $T\ge 1$. Define the micro path law on $\X^{T+1}$ by \[\mathbf{P}^{(T)}_{\mu,P}(x_{0:T})=\mu(x_0)\prod_{t=0}^{T-1}P(x_t,x_{t+1}).\] Let $\mathrm{rev}_T(x_{0:T})=(x_T,\dots,x_0)$ and let $\ell:\X\to\Y$ be deterministic with pointwise extension $\ell^{(T)}(x_{0:T})=(\ell(x_0),\dots,\ell(x_T))$. Then \[\KL\!\Big((\ell^{(T)})_{\#}\mathbf{P}^{(T)}_{\mu,P}\ \Big\|\ (\mathrm{rev}_T)_{\#}(\ell^{(T)})_{\#}\mathbf{P}^{(T)}_{\mu,P}\Big)\ \le\ \KL\!\Big(\mathbf{P}^{(T)}_{\mu,P}\ \Big\|\ (\mathrm{rev}_T)_{\#}\mathbf{P}^{(T)}_{\mu,P}\Big).\]
+
+\newcommand{\DKL}[2]{D_{\mathrm{KL}}\!\left(#1\,\middle\|\,#2\right)}
+\newcommand{\dTV}{d_{\mathrm{TV}}}
+\newcommand{\Arr}{\mathcal{A}}
+\newcommand{\Law}{\mathrm{Law}}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{appendix}{Appendix}{Appendices}
+\newcommand{\leanname}[1]{{\urlstyle{tt}\nolinkurl{#1}}}
+ \newcommand{\ThmStmtNGARROWDPI}{Let $X$ and $Y$ be finite sets, let $\mu\in\Delta(X)$, let $P$ be a Markov kernel on $X$, let $f:X\to Y$ be a lens, and let $T\ge 0$. Then
+\[
+  \Arr_T(\mu,P;f)\;\le\;\Arr_T(\mu,P),
+\]
+that is,
+\[
+  \DKL{f^{(T)}_{\#}\mathbf{P}^{\mu,P}_T}{\rev_{\#}f^{(T)}_{\#}\mathbf{P}^{\mu,P}_T}\;\le\;\DKL{\mathbf{P}^{\mu,P}_T}{\rev_{\#}\mathbf{P}^{\mu,P}_T},
+\]
+as an inequality in $[0,\infty]$.
 }
 
-\newcommand{\ThmStmtNGPROTOCOLTRAP}{Let $\tilde\X$ be finite, let $\tilde P: \tilde\X\times\tilde\X\to[0,1]$ be row-stochastic, and let $\tilde\pi$ be a stationary distribution satisfying detailed balance $\tilde\pi(x)\tilde P(x,x')=\tilde\pi(x')\tilde P(x',x)$ for all $x,x'\in\tilde\X$. Then for every horizon $T\ge 1$, \[ (\mathrm{rev}_T)_{\#}\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}=\mathbf{P}^{(T)}_{\tilde\pi,\tilde P} \qquad\Rightarrow\qquad \KL\!\Big(\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}\ \Big\|\ (\mathrm{rev}_T)_{\#}\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}\Big)=0.\] Moreover, for every deterministic observation $\ell:\tilde\X\to\Y$, \[ \KL\!\Big((\ell^{(T)})_{\#}\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}\ \Big\|\ (\mathrm{rev}_T)_{\#}(\ell^{(T)})_{\#}\mathbf{P}^{(T)}_{\tilde\pi,\tilde P}\Big)=0.\]
+\newcommand{\ThmStmtNGPROTOCOLTRAP}{Let $P$ be a Markov kernel on a finite set $X$, and let $\pi\in\Delta(X)$ satisfy detailed balance, $\pi(x)P(x,x')=\pi(x')P(x',x)$ for all $x,x'\in X$. Then for every horizon $T\ge 0$ the path law is reversal invariant,
+\[
+  \rev_{\#}\mathbf{P}^{\pi,P}_T=\mathbf{P}^{\pi,P}_T,
+\]
+so $\Arr_T(\pi,P)=0$. Consequently $\Arr_T(\pi,P;f)=0$ for every lens $f:X\to Y$ into a finite set $Y$.
 }
 
-\newcommand{\ThmStmtNGFORCEFOREST}{Let $G=(V,E)$ be a finite undirected forest. Let $a$ be an antisymmetric function on oriented edges, so that $a(u,v)=-a(v,u)$ and $a(u,v)=0$ whenever $\{u,v\}\notin E$. Then there exists a potential $\phi:V\to\mathbb{R}$ such that for every oriented edge $(u,v)$, \[ a(u,v)=\phi(v)-\phi(u).\]
+\newcommand{\ThmStmtNGFORCEFOREST}{Let $G=(V,E)$ be a forest, not necessarily finite, and let $a$ be an antisymmetric edge field on $G$. Then $a$ is exact: there is $\phi:V\to\mathbb{R}$ with
+\[
+  a(u,v)=\phi(v)-\phi(u)\qquad\text{for every edge }\{u,v\}\in E.
+\]
 }
 
-\newcommand{\ThmStmtNGFORCENULL}{Assume $a(u,v)=\phi(v)-\phi(u)$ on oriented edges of a finite graph. Then for every closed walk $v_0,\dots,v_k=v_0$, \[ \sum_{i=0}^{k-1} a(v_i,v_{i+1}) = 0.\]
+\newcommand{\ThmStmtNGFORCENULL}{Let $G=(V,E)$ be a graph, let $\phi:V\to\mathbb{R}$, and let $a$ be an edge field with $a(u,v)=\phi(v)-\phi(u)$ for every edge $\{u,v\}\in E$. Then for every closed walk $v_0,v_1,\dots,v_k=v_0$ in $G$,
+\[
+  \sum_{i=0}^{k-1}a(v_i,v_{i+1})=0.
+\]
 }
 
-\newcommand{\ThmStmtNGMACROCLOSUREDEFICIT}{Let $(\X,P)$ be a finite Markov chain, let $\mu\in\D(\X)$, let $\Pi:\X\to\Y$ be deterministic, and fix $\tau\ge 1$. For each $x\in\X$, define the packaged future law \[ p_x^{(\tau)}(y') := \Pr_{\mu,P}[\Pi(X_{t+\tau})=y' \mid X_t=x].\] For a candidate macro kernel $K:\Y\times\Y\to[0,1]$, define \[ \mathcal{L}_\tau(K) := \sum_{x\in \X} \mu(x)\,\KL\!\big(p_x^{(\tau)} \mid K_{\Pi(x)}\big).\] Define the closure deficit by \[ \mathrm{CD}_\tau(\Pi) := I\!\big(X_t;\Pi(X_{t+\tau})\,\big|\,\Pi(X_t)\big).\] Then the kernel \[ K^\star_y(y') := \Pr_{\mu,P}[\Pi(X_{t+\tau})=y' \mid \Pi(X_t)=y] \] satisfies \[ \mathrm{CD}_\tau(\Pi)=\min_K \mathcal{L}_\tau(K)=\mathcal{L}_\tau(K^\star).\] Moreover, if there exist $x,x'\in\X$ with $\Pi(x)=\Pi(x')$, $\mu(x)>0$, $\mu(x')>0$, and $p_x^{(\tau)}\neq p_{x'}^{(\tau)}$, then $\mathrm{CD}_\tau(\Pi)>0$.
+\newcommand{\ThmStmtNGMACROCLOSUREDEFICIT}{Let $P$ be a Markov kernel on a finite set $X$, let $f:X\to Y$ be a lens into a finite set, let $\tau\ge 0$, and let $\mu\in\Delta(X)$ be the current law. Define $K^\star$ by
+\[
+  K^\star(y,\cdot)=\Law\bigl(Y_\tau\bigm| Y_0=y\bigr)=\frac{1}{\mu(f^{-1}(y))}\sum_{x\in f^{-1}(y)}\mu(x)\,p_x
+  \qquad\text{if }\mu(f^{-1}(y))>0,
+\]
+and let $K^\star(y,\cdot)$ be an arbitrary law if $\mu(f^{-1}(y))=0$. Then:
+\begin{enumerate}[label=(\roman*)]
+  \item $\mathcal{L}_\tau(K^\star)=\mathrm{CD}_\tau(\mu;P,f)$;
+  \item $\mathrm{CD}_\tau(\mu;P,f)\le\mathcal{L}_\tau(K)$ for every macro kernel $K$, including kernels with $\mathcal{L}_\tau(K)=\infty$; hence $\mathrm{CD}_\tau(\mu;P,f)=\min_K\mathcal{L}_\tau(K)$;
+  \item $\mathrm{CD}_\tau(\mu;P,f)=0$ if and only if $p_x=p_{x'}$ whenever $f(x)=f(x')$, $\mu(x)>0$ and $\mu(x')>0$. In particular, if two microstates of positive mass in the same fiber have different packaged future laws, then $\mathrm{CD}_\tau(\mu;P,f)>0$.
+\end{enumerate}
 }
 
-\newcommand{\ThmStmtNGOBJECTCONTRACTIVE}{Let $P$ be a stochastic matrix on finite $\Y$. Let $T_P:\D(\Y)\to\D(\Y)$ be the operator $\nu\mapsto \nu P$, and let $\lambda(P)$ be the Dobrushin contraction coefficient in total variation. Assume $\lambda(P)<1$. If $\nu,\nu'\in\D(\Y)$ satisfy the $\varepsilon$-stability bounds \[ \TV(\nu,\nu P)\le \varepsilon, \qquad \TV(\nu',\nu'P)\le \varepsilon,\] then \[ \TV(\nu,\nu') \le \frac{2\varepsilon}{1-\lambda(P)}.\] In particular, if $\varepsilon=0$, the stationary distribution is unique.
+\newcommand{\ThmStmtNGOBJECTCONTRACTIVE}{Let $P$ be a Markov kernel on a nonempty finite set $S$ with Dobrushin coefficient $\lambda(P)<1$, and let $\varepsilon\ge 0$. If $\nu,\nu'\in\Delta(S)$ are $\varepsilon$-stable, that is, $\dTV(\nu,\nu P)\le\varepsilon$ and $\dTV(\nu',\nu'P)\le\varepsilon$, then
+\[
+  \dTV(\nu,\nu')\;\le\;\frac{2\varepsilon}{1-\lambda(P)}.
+\]
+In particular, $P$ has at most one stationary law.
 }
 
-\newcommand{\ThmStmtNGLADDERIDEM}{Let $e:S\to S$ satisfy $e\circ e=e$. Then for all integers $n\ge 1$, \[ e^{\circ n}=e.\]
+\newcommand{\ThmStmtNGLADDERIDEM}{Let $S$ be any set and let $e:S\to S$ satisfy $e\circ e=e$. Then $e^{\circ n}=e$ for every integer $n\ge 1$.
 }
 
-\newcommand{\ThmStmtNGLADDERBOUNDEDINTERFACE}{Let $f:\X\to\Y$ be deterministic with finite image $\mathrm{im}(f)$. Define \[ \mathrm{Def}(f):=\{g\circ f : g:\Y\to\{0,1\}\}.\] Then \[ |\mathrm{Def}(f)| = 2^{|\mathrm{im}(f)|}.\] Consequently, if $|\mathrm{im}(f)|<\infty$, there is no infinite strictly increasing sequence of pairwise distinct $f$-definable predicates.
+\newcommand{\ThmStmtNGLADDERBOUNDEDINTERFACE}{Let $f:X\to Y$ be a map between arbitrary sets whose image $\im(f)$ is finite. Then
+\[
+  |\Def(f)|=2^{|\im(f)|}.
+\]
+Consequently there is no infinite sequence $h_1,h_2,\dots$ of pairwise distinct $f$-definable predicates; in particular there is no infinite strictly increasing chain of them.
 }
  
 \title{Six Birds: No-Go Theorems for Audited Emergence}
 \author{Ioannis Tsiokos\,\orcidlink{0009-0009-7659-5964}}
-\date{March 23, 2026}
+\date{Version 1: March 23, 2026 \quad$\cdot$\quad Version 2: October 3, 2026}
 \hypersetup{
   pdftitle={Six Birds: No-Go Theorems for Audited Emergence},
   pdfauthor={Ioannis Tsiokos},
@@ -123,1189 +171,1230 @@
 \vspace{0.35em}
 
 \begin{abstract}
-Six Birds theory studies finite systems observed through deterministic coarse-grainings (``lenses'') using a small audited vocabulary of primitives.
-This paper proves eight no-go theorems that constrain when common emergence narratives can be made honest in a finite, checkable setting.
-For a finite Markov system and horizon $T$, define an \emph{arrow audit} as the Kullback--Leibler divergence between the observed path law and its time reversal.
-We prove a deterministic data-processing inequality: observation cannot increase arrow.
-As a consequence, any reversible system started in stationarity has zero observed arrow, even when the observation supports nontrivial protocol structure.
-Further results give graph-theoretic obstructions for force-like antisymmetric drives (exactness on forests and zero cycle sums), a finite variational identity for best macro-kernels and closure deficit, and a bounded-interface saturation theorem that prevents unbounded laddering.
-Together these theorems delimit what can and cannot be certified as emergent from audited primitives in finite models.
+When a system is viewed at a coarser scale, it is tempting to say that something new has emerged: a direction of time, a driving force, an autonomous macroscopic law, a stable object, or an open-ended hierarchy of levels.
+Such claims are easy to make and hard to check.
+We study them in the simplest setting in which they can be checked exactly: finite Markov chains observed through deterministic maps, or \emph{lenses}.
+In this setting we prove eight no-go theorems.
+Coarse observation can never increase the arrow of time, measured as the relative entropy between the path law and its time reversal.
+A chain started in a law that satisfies detailed balance shows zero arrow under every lens, however rich the hidden protocol structure it carries.
+On a graph without cycles every antisymmetric edge field is the gradient of a potential, and gradient fields sum to zero around every closed walk, so a force-like cycle affinity needs both a cycle and a non-gradient field.
+For a lumped chain, the best macroscopic transition kernel at a given lag is the conditional law of the future macrostate, and its unavoidable loss is a conditional mutual information, the \emph{closure deficit}; it is strictly positive as soon as two microstates of positive mass in the same macrostate have different macroscopic futures.
+Under strict Dobrushin contraction with coefficient $\lambda<1$, any two $\varepsilon$-approximately stationary laws lie within $2\varepsilon/(1-\lambda)$ of each other in total variation, so such dynamics has at most one stationary law and cannot carry two approximately stationary laws farther apart than this bound.
+Finally, idempotent packaging stabilizes after a single step, and a fixed interface with finite image defines exactly $2^{|\mathrm{im}(f)|}$ predicates, so no unbounded ladder of new distinctions can be built inside it.
+All eight theorems are formalized and machine-checked in Lean~4 with Mathlib.
 \end{abstract}
 
 \vspace{0.2em}
-\noindent\textbf{Keywords:} coarse-graining; finite Markov chains; data processing; exact graph forms; closure deficit; bounded interfaces.
-
-\medskip
-
-\noindent\textbf{Contribution summary.} This paper contributes an audited finite semantics for eight no-go fronts, a unified theorem framework linking arrow, graph exactness, closure, objecthood, and ladder obstructions, and a technical appendix structure that isolates routine derivations from the main proof flow.
+\noindent\textbf{Keywords:} coarse-graining; finite Markov chains; entropy production; data-processing inequality; cycle affinity; lumpability; closure deficit; Dobrushin contraction; formal verification.
  
 \section{Introduction}\label{sec:introduction}
 
-Many ``emergent'' claims in finite-state modeling take the form:
-after coarse observation, one can attribute a directed arrow of time, a force-like drive, a stable macro-law, or an agent-like persistence to a system that was specified only microscopically.
-This paper isolates a family of finite \emph{no-go} statements showing that several such attributions are impossible unless specific structural primitives are present.
-The point is not metaphysical; it is bookkeeping.
-We work entirely with finite objects (finite sets, kernels, deterministic maps) and with audits that can be evaluated exactly.
+Many claims about emergence share one pattern.
+A system is specified at a fine, microscopic level.
+It is then viewed through a coarse description, and the coarse description seems to show something the microscopic specification never mentioned: a direction of time, a force that drives currents around loops, a macroscopic law that runs on its own, a persistent object, or a hierarchy of levels that keeps producing new distinctions.
+Whether such a claim is true depends on details that informal arguments tend to blur.
+Which coarse description is meant?
+Which quantity is computed from it?
+Is that quantity computed from the model itself, or from a convenient approximation fitted to it?
 
-\paragraph{Six primitives (grammar, not section structure).}
-We use the following six primitives as a vocabulary for what may be added to a finite audited package.
-They are recorded per witness and used only to state contrasts; they are not treated as mutually exclusive or exhaustive.
+This paper answers these questions in the simplest setting where every answer can be checked exactly.
+The microscopic system is a finite Markov chain, the coarse description is a deterministic map from microstates to macrostates (a \emph{lens}), and every quantity is an exact finite expression in the transition probabilities, the initial law, and the lens.
+We call such quantities \emph{audits}.
+Within this setting we prove eight theorems, each of which rules out one way of making something appear that is not already present.
+The theorems are elementary, but the hypotheses are exact, and the hypotheses are what matter: each theorem says what an emergence claim must add before it can succeed.
+
+\paragraph{Exact observation, not fitted proxies.}
+Throughout, a coarse quantity is computed from the \emph{honest} observed process $Y_t=f(X_t)$, whose path law is the pushforward of the microscopic path law along the lens.
+A common shortcut replaces the observed process by a first-order Markov chain fitted to it on the macrostates.
+The fitted chain is a different object.
+It can be a useful diagnostic, but none of the theorems below is about it, and conclusions drawn from it are not covered by them.
+
+\paragraph{The eight results.}
+\Cref{tab:overview} summarizes the theorems; precise statements are collected in \Cref{sec:main-results}.
+They fall into five groups.
 \begin{enumerate}
-  \item \emph{Rewrite:} state updates that change which microstate is represented (e.g.\ deterministic rewrites or state relabelings that alter future conditionals).
-  \item \emph{Gating:} deletion or suppression of transitions (support-level constraints).
-  \item \emph{Holonomy / protocol structure:} hidden cyclic or protocol coordinates whose evolution can be invisible to the observation.
-  \item \emph{Staging / refinement:} state-splitting or refinement that introduces additional internal degrees of freedom.
-  \item \emph{Packaging:} deterministic endomaps or simplex operators that ``compress'' state or distributions, typically studied via idempotence and contraction.
-  \item \emph{Drive:} explicit breaking of detailed balance / nonreversibility, producing nonzero affinities.
+  \item \emph{Arrow of time} (\Cref{sec:arrow-protocol}).
+  The arrow of a process is the Kullback--Leibler divergence between its path law and the law of the time-reversed paths, a path-space measure of irreversibility; for a stationary chain it is the entropy production over the observation window \citep{MaesNetocny2003,Seifert2012}.
+  Observation through a lens can only decrease it (\thmNGArrowDPI).
+  If the chain starts in a law satisfying detailed balance, the microscopic arrow is zero, so every observed arrow is zero as well, however much protocol-like structure hidden coordinates impose on the observed process (\thmNGProtocolTrap).
+  \item \emph{Forces and cycles} (\Cref{sec:graph-affinity}).
+  On a graph without cycles, every antisymmetric edge field is the gradient of a potential (\thmNGForceForest), and gradient fields sum to zero around every closed walk (\thmNGForceNull).
+  Applied to the log-ratios $\log\bigl(P(x,x')/P(x',x)\bigr)$ of a Markov kernel, this says that a nonzero cycle affinity \citep{Schnakenberg1976} requires a cycle in the support and a log-ratio field that is not a gradient.
+  \item \emph{Closure of macroscopic laws} (\Cref{sec:closure}).
+  For a given current law, lens, and lag, the best macroscopic kernel is the conditional law of the future macrostate given the present macrostate, and the loss it cannot avoid is a conditional mutual information, the closure deficit (\thmNGMacroClosureDeficit).
+  The deficit is strictly positive as soon as two microstates of positive mass in the same macrostate have different macroscopic futures.
+  \item \emph{Objects under contraction} (\Cref{sec:objecthood}).
+  If the dynamics is a strict contraction in total variation, any two approximately stationary laws are close, with an explicit bound, and there is at most one stationary law (\thmNGObjectContractive).
+  A contractive dynamics therefore cannot carry two robust objects separated by more than that bound.
+  \item \emph{Ladders of levels} (\Cref{sec:bounded-interface}).
+  Applying an idempotent packaging map more than once gains nothing (\thmNGLadderIdem), and a fixed interface with finite image supports exactly $2^{|\im(f)|}$ definable predicates, so it cannot support an unending sequence of new distinctions (\thmNGLadderBoundedInterface).
 \end{enumerate}
 
-\paragraph{Honest vs.\ proxy macro-quantities.}
-Coarse quantities are defined by deterministic pushforward of the micro path law along an observation map.
-In particular, for a lens $f:X\to Y$ we define the observed process $Y_t=f(X_t)$ and the observed path law as the pushforward of the micro path law.
-When a first-order macro Markov chain on $Y$ is introduced, it is used as an auxiliary approximation rather than as the theorem object.
+\begin{table}[t]
+\centering
+\small
+\caption{The eight theorems at a glance. The last column names an emergent feature that the theorem constrains and a condition the feature requires. In the null-affinity and closure rows the condition is also sufficient; in the other rows it is necessary but not sufficient.}\label{tab:overview}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.27\textwidth}@{}}
+\toprule
+Theorem & Conclusion & Feature and what it requires \\
+\midrule
+\ref{thm:NG_ARROW_DPI} Arrow monotonicity & Observed arrow $\le$ microscopic arrow, for every lens, initial law and horizon. & A positive observed arrow requires a positive microscopic arrow. \\
+\ref{thm:NG_PROTOCOL_TRAP} Protocol trap & A chain started in a detailed-balance law has zero observed arrow under every lens. & A positive observed arrow requires an initial law not in detailed balance with the kernel. \\
+\ref{thm:NG_FORCE_FOREST} Forest exactness & On a forest, every antisymmetric edge field is a potential gradient. & A nonzero cycle affinity requires a cycle in the support graph. \\
+\ref{thm:NG_FORCE_NULL} Null cycle affinity & A gradient field sums to zero around every closed walk. & A nonzero cycle affinity occurs exactly when the log-ratio field is not a gradient. \\
+\ref{thm:NG_MACRO_CLOSURE_DEFICIT} Closure deficit & Best macro kernel is the conditional macro law; minimal loss equals $I(X_0;Y_\tau\mid Y_0)$. & A positive deficit occurs exactly when positive-mass microstates in one macrostate have different macro futures. \\
+\ref{thm:NG_OBJECT_CONTRACTIVE} Contractive objecthood & Two $\varepsilon$-stable laws are within $2\varepsilon/(1-\lambda)$; at most one stationary law. & Two distinct stationary laws require $\lambda(P)=1$. \\
+\ref{thm:NG_LADDER_IDEM} Idempotent saturation & $e\circ e=e$ implies $e^{\circ n}=e$ for all $n\ge 1$. & An unending ladder of iterates requires a packaging map that is not idempotent. \\
+\ref{thm:NG_LADDER_BOUNDED_INTERFACE} Bounded interface & Exactly $2^{|\im(f)|}$ definable predicates; no infinite sequence of distinct ones. & An unending sequence of new distinctions requires leaving a single fixed interface of finite image. \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\paragraph{Main results (eight fronts).}
-All results are stated for finite systems and deterministic lenses.
-The theorem statements are collected in Section~\ref{sec:main-results}, and the later theorem-front sections refer back to those labels.
-In one line each, the fronts are:
-\begin{itemize}
-  \item \emph{Arrow/DPI:} deterministic observation cannot increase forward--reverse path-space KL; equality holds for identity observation. (\thmNGArrowDPI)
-  \item \emph{Protocol trap:} holonomy can produce apparent protocol structure without honest entropy production, under a stationary initialization scope. (\thmNGProtocolTrap)
-  \item \emph{Force implies cycles:} nontrivial force-like structure requires non-forest support (positive cycle rank). (\thmNGForceForest)
-  \item \emph{Null force under exactness:} if the log-ratio 1-form is exact (potential), cycle affinities vanish. (\thmNGForceNull)
-  \item \emph{Closure deficit:} coarse closure deficit is a conditional-information obstruction characterized by a finite variational best macro kernel. (\thmNGMacroClosureDeficit)
-  \item \emph{Objecthood (bounded):} strict contraction implies at most one fixed distribution; the theorem front addresses uniqueness and separation in the contractive total-variation regime. (\thmNGObjectContractive)
-  \item \emph{Idempotence no-ladder:} idempotent packaging stabilizes after one step (no iterate ladder). (\thmNGLadderIdem)
-  \item \emph{Bounded-interface no-ladder:} with a fixed finite interface, definability is bounded by $2^{|\mathrm{im}(f)|}$ and no unbounded predicate ladder can arise without leaving the interface scope. (\thmNGLadderBoundedInterface)
-\end{itemize}
+\paragraph{A vocabulary of primitives.}
+The theorems belong to the Six Birds program \citep{SB_FOUNDATIONS}, which describes how new levels of description arise in terms of six primitive operations that can be added to a finite model:
+\emph{rewrite} (updates that change which microstate is represented),
+\emph{gating} (deleting or suppressing transitions),
+\emph{holonomy or protocol} (hidden cyclic or scheduling coordinates that the observation may not see),
+\emph{staging or refinement} (splitting states to add internal degrees of freedom),
+\emph{packaging} (maps that compress states or distributions, such as idempotent endomaps and contractive kernels),
+and \emph{drive} (explicit breaking of detailed balance).
+The primitives are used here only as a vocabulary for contrasts; they are neither mutually exclusive nor exhaustive.
+In this vocabulary, several theorems say that one primitive cannot stand in for another.
+Hidden protocol coordinates do not produce an arrow of time without a drive or a nonequilibrium start (\thmNGProtocolTrap).
+A cycle affinity needs both cycles in the support and a drive that makes the log-ratio field non-exact (\thmNGForceForest, \thmNGForceNull).
+Packaging alone does not generate an unbounded hierarchy: idempotent packaging saturates at once, and a fixed interface saturates after finitely many distinctions (\thmNGLadderIdem, \thmNGLadderBoundedInterface).
 
-\paragraph{Relation to prior Six Birds papers.}
-The present paper is a consolidation into a single no-go package with a uniform finite semantics and an auditable witness suite.
-The historical Six Birds line developed semantics for packaging, coarse-graining, directionality, protocol, closure, objecthood, and observable taxonomy; here we restrict to the finite setting and package the obstruction layer.
-The cited papers are used only as background and historical context; see \citep{SB_FOUNDATIONS,SB_LAY,SB_PROTOCOL_TRAP,SB_CAST,SB_THROW,SB_CLASSIFY}.
+\paragraph{Formal verification.}
+All eight theorems are formalized in Lean~4 with Mathlib.
+The formal statements use real-valued probability laws, extended-real Kullback--Leibler divergence (so infinite divergences are covered rather than excluded), genuine Markov path laws, and Mathlib's simple graphs.
+The proofs are kernel-checked and depend only on Lean's standard axioms.
+\Cref{app:formalization} matches each theorem with its formal counterpart and records where a formal statement is more general than the version in the text, or where a supporting argument in the text is not part of the formal development.
 
-\paragraph{Paper organization.}
-Section~\ref{sec:setup} fixes notation and defines the audits.
-Section~\ref{sec:main-results} collects the formal theorem statements in one place.
-Sections~\ref{sec:arrow-protocol}--\ref{sec:bounded-interface} develop the eight fronts in order: arrow/protocol, graph/affinity, closure, objecthood, and bounded-interface laddering.
-The appendices record routine finite calculations and derivations that support the main proofs.
-Supplementary material records provenance, computational audit artifacts, and formalization status; it is not required for the statements and proofs in the main text.
- \section{Formal setup and audit definitions}\label{sec:setup}
+\paragraph{Relation to earlier work.}
+The individual facts behind several theorems are classical: the data-processing inequality for relative entropy \citep{CoverThomas2006}, the time-reversal symmetry of reversible chains \citep{Kelly1979}, the cycle-affinity picture of Markov networks \citep{Schnakenberg1976}, lumpability of Markov chains \citep{KemenySnell1960,Buchholz1994}, and Dobrushin's contraction coefficient \citep{Dobrushin1956,Seneta2006}.
+The contribution here is to state them for one fixed set of exact audits, with hypotheses sharp enough to separate the theorem object from its common proxies, and to verify them formally.
+Earlier papers in the Six Birds series developed the semantics of packaging and coarse-graining \citep{SB_LAY}, protocol traps \citep{SB_PROTOCOL_TRAP}, closure deficits \citep{SB_CAST}, agenthood \citep{SB_THROW}, and the classification of layer births \citep{SB_CLASSIFY}; they serve as background, and the present paper does not depend on them.
 
-\subsection{Finite probability notation}
-Let $X$ be a finite set.
-Write $\Delta(X)$ for the simplex of probability distributions on $X$.
-For $\mu\in\Delta(X)$ and $A\subseteq X$, write $\mu(A)=\sum_{x\in A}\mu(x)$.
-All random variables in the paper are finite-valued unless stated otherwise.
+\paragraph{Organization.}
+\Cref{sec:setup} fixes notation and defines the audits.
+\Cref{sec:main-results} states the eight theorems.
+\Cref{sec:arrow-protocol,sec:graph-affinity,sec:closure,sec:objecthood,sec:bounded-interface} prove them, give examples, and discuss their scope.
+\Cref{sec:discussion} draws the threads together.
+Routine calculations are in \Cref{app:probkl,app:graphexact,app:varclosure,app:packdef}, the formalization map is in \Cref{app:formalization}, and \Cref{app:versions} records the version history.
+A separate supplement documents provenance and the computational audit artifacts; the statements and proofs in this paper do not depend on it.
+ \section{Setting and audits}\label{sec:setup}
 
-\subsection{Markov kernels and stationarity}
-A \emph{Markov kernel} on $X$ is a function $K:X\times X\to[0,1]$ such that for each $x\in X$,
+All sets in this section are finite unless stated otherwise.
+\Cref{fig:setting} gives a picture of the setting.
+
+\subsection{Laws, kernels, and path laws}
+For a finite set $X$, write $\Delta(X)$ for the set of probability laws on $X$, and $\mu(A)=\sum_{x\in A}\mu(x)$ for $A\subseteq X$.
+A \emph{Markov kernel} on $X$ is a matrix $P:X\times X\to[0,1]$ whose rows sum to one.
+A law $\mu$ is moved one step forward by $(\mu P)(x')=\sum_{x}\mu(x)P(x,x')$.
+A law $\pi$ is \emph{stationary} if $\pi P=\pi$; every kernel on a nonempty finite set has at least one stationary law.
+A law $\pi$ satisfies \emph{detailed balance} with $P$ if
 \[
-  \sum_{x'\in X} K(x,x')=1.
+  \pi(x)P(x,x')=\pi(x')P(x',x)\qquad\text{for all }x,x'\in X.
 \]
-Given $\mu\in\Delta(X)$ we write $(\mu K)(x')=\sum_{x\in X}\mu(x)K(x,x')$.
-A distribution $\pi\in\Delta(X)$ is \emph{stationary} if $\pi K=\pi$.
-(For finite $X$ such a $\pi$ always exists.)
-These are standard finite Markov-chain notions; see \citep{Norris1997,LevinPeresWilmer2017}.
+Summing over $x$ shows that such a $\pi$ is stationary.
+These are the standard notions of finite Markov chain theory \citep{Norris1997,LevinPeresWilmer2017}.
 
-\subsection{Finite-horizon path laws}
-Fix an initial law $\mu\in\Delta(X)$ and a kernel $K$ on $X$.
-For an integer horizon $T\ge 0$, the \emph{path space} is $X^{T+1}$.
-The forward path law $P^{\mu,K}_T\in\Delta(X^{T+1})$ is
+Fix an initial law $\mu$, a kernel $P$, and a horizon $T\ge 0$.
+The \emph{path law} on $X^{T+1}$ is
 \[
-  P^{\mu,K}_T(x_0,\dots,x_T)
-  \;=\;
-  \mu(x_0)\prod_{t=0}^{T-1}K(x_t,x_{t+1}).
+  \mathbf{P}^{\mu,P}_T(x_0,\dots,x_T)=\mu(x_0)\prod_{t=0}^{T-1}P(x_t,x_{t+1}),
 \]
-Write $\mathrm{rev}(x_0,\dots,x_T)=(x_T,\dots,x_0)$ for path reversal, and define the reversed law
-$P^{\mu,K,\mathrm{rev}}_T$ on $X^{T+1}$ by
+the law of the trajectory $(X_0,\dots,X_T)$ of the chain started from $X_0\sim\mu$.
+Path reversal $\rev(x_0,\dots,x_T)=(x_T,\dots,x_0)$ is an involution of $X^{T+1}$, and the \emph{reversed path law} is its pushforward,
 \[
-  P^{\mu,K,\mathrm{rev}}_T(\gamma)\;=\;P^{\mu,K}_T(\mathrm{rev}(\gamma)).
+  \rev_{\#}\mathbf{P}^{\mu,P}_T(\gamma)=\mathbf{P}^{\mu,P}_T(\rev\gamma).
 \]
-This definition treats reversal as an involution on the same finite space.
-In stationary reversible settings, this is the standard time-reversal construction for finite chains; see \citep{Kelly1979}.
-When $P$ denotes the micro kernel, we also write the finite-horizon law as $\mathbf{P}^{(T)}_{\mu,P}$.
+It gives each path the probability that the forward process assigns to the same path traversed backwards.
+For a stationary reversible chain this is the classical time-reversal construction \citep{Kelly1979}; we use it for every initial law.
 
-\subsection{Deterministic lenses and pushforward}
-A \emph{deterministic lens} (coarse map) is a function $f:X\to Y$ between finite sets.\footnote{The term ``lens'' originates in the view-update and bidirectional transformation literature; here we use only the forward deterministic observation map \citep{FosterEtAl2007}.}
-We also write $\ell:\X\to\Y$ when denoting such a deterministic lens in theorem statements.
-The pushforward of $\mu\in\Delta(X)$ is the distribution $f_{\#}\mu\in\Delta(Y)$ defined by
+\subsection{Lenses and observed processes}
+A \emph{lens} is a function $f:X\to Y$; other papers in the series write a lens as $\ell$, or as $\Pi$ when it packages microstates into macrostates.\footnote{The term comes from the literature on bidirectional transformations and the view-update problem \citep{FosterEtAl2007}. Only the forward map is used here.}
+The \emph{pushforward} of $\mu\in\Delta(X)$ is $(f_{\#}\mu)(y)=\mu(f^{-1}(y))$, and the sets $f^{-1}(y)$ are the \emph{fibers} of $f$.
+Applying $f$ at every time gives a map on paths,
+$f^{(T)}(x_0,\dots,x_T)=(f(x_0),\dots,f(x_T))$, and the \emph{observed path law} is
 \[
-  (f_{\#}\mu)(y)\;=\;\sum_{x:\,f(x)=y}\mu(x).
+  \mathbf{P}^{\mu,P,f}_T=f^{(T)}_{\#}\,\mathbf{P}^{\mu,P}_T\in\Delta(Y^{T+1}),
 \]
-For path space, define $f^{(T)}:X^{T+1}\to Y^{T+1}$ by
-$f^{(T)}(x_0,\dots,x_T)=(f(x_0),\dots,f(x_T))$.
-The \emph{honest observed path law} is
-\[
-  P^{\mu,K,f}_T \;=\; (f^{(T)})_{\#}P^{\mu,K}_T\;\in\;\Delta(Y^{T+1}).
-\]
-We similarly define the reversed observed law
-$P^{\mu,K,f,\mathrm{rev}}_T(\eta)=P^{\mu,K,f}_T(\mathrm{rev}(\eta))$.
-Coarse observation can differ from the corresponding micro path-space asymmetry under aggregation \citep{Esposito2012}.
+the law of the observed trajectory $(f(X_0),\dots,f(X_T))$.
+This is the only notion of observed process used in the paper.
+In general the observed process is not a Markov chain, and how dissipation appears under such aggregation is itself a subject of study \citep{Esposito2012}.
 
-\subsection{Finite KL divergence and arrow audits}
-For distributions $P,Q\in\Delta(\Omega)$ on a finite set $\Omega$, define the Kullback--Leibler divergence
-\[
-  D_{\mathrm{KL}}(P\|Q)\;=\;\sum_{\omega\in\Omega} P(\omega)\log\frac{P(\omega)}{Q(\omega)},
-\]
-with the conventions $0\log(0/q)=0$ and $p\log(p/0)=+\infty$ for $p>0$.
-In the theorem statements we either assume mutual absolute continuity on the relevant supports or allow the value $+\infty$.
-For finite relative entropy and its standard identities, see \citep{KullbackLeibler1951,CoverThomas2006}.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  st/.style={circle,draw,thick,minimum size=6.5mm,inner sep=0pt,font=\small},
+  mac/.style={rounded corners=3pt,draw,thick,minimum width=11mm,minimum height=6.5mm,font=\small},
+  tr/.style={-{Stealth[length=2mm]},thick},
+  lens/.style={-{Stealth[length=2mm]},densely dashed,gray!70!black},
+  lbl/.style={font=\footnotesize}
+]
+\begin{scope}
+\node[st,fill=blue!12] (x1) at (0,1.6) {$1$};
+\node[st,fill=blue!12] (x2) at (1.3,2.3) {$2$};
+\node[st,fill=blue!12] (x3) at (1.3,0.9) {$3$};
+\node[st,fill=orange!20] (x4) at (2.8,1.6) {$4$};
+\node[st,fill=orange!20] (x5) at (4.0,1.6) {$5$};
+\draw[tr] (x1) to[bend left=15] (x2);
+\draw[tr] (x2) to[bend left=15] (x3);
+\draw[tr] (x3) to[bend left=15] (x1);
+\draw[tr] (x2) to[bend left=12] (x4);
+\draw[tr] (x4) to[bend left=12] (x3);
+\draw[tr] (x4) to[bend left=20] (x5);
+\draw[tr] (x5) to[bend left=20] (x4);
+\node[lbl] at (2.0,3.05) {microstates $X$, kernel $P$};
+\node[mac,fill=blue!12] (ya) at (0.9,-0.6) {$a$};
+\node[mac,fill=orange!20] (yb) at (3.4,-0.6) {$b$};
+\draw[lens] (x3) -- (ya);
+\draw[lens] (x1) -- (ya);
+\draw[lens] (x4) -- (yb);
+\draw[lens] (x5) -- (yb);
+\draw[lens] (x2.north west) .. controls (-0.9,2.9) and (-1.0,0.0) .. (ya.west);
+\node[lbl] at (2.15,-1.35) {macrostates $Y$, lens $f$};
+\node[font=\small\bfseries] at (-0.6,3.05) {(a)};
+\end{scope}
+\begin{scope}[xshift=7.2cm,yshift=0.2cm]
+\node (P) at (0,2.2) {$\mathbf{P}^{\mu,P}_T$};
+\node (R) at (4.2,2.2) {$\rev_{\#}\mathbf{P}^{\mu,P}_T$};
+\node (Pf) at (0,0) {$\mathbf{P}^{\mu,P,f}_T$};
+\node (Rf) at (4.2,0) {$\rev_{\#}\mathbf{P}^{\mu,P,f}_T$};
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (P) -- node[above,lbl] {reverse} (R);
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (Pf) -- node[below,lbl] {reverse} (Rf);
+\draw[tr] (P) -- node[left,lbl] {$f^{(T)}_{\#}$} (Pf);
+\draw[tr] (R) -- node[right,lbl] {$f^{(T)}_{\#}$} (Rf);
+\node[lbl,align=center] at (2.1,1.1) {$\Arr_T(\mu,P;f)\le\Arr_T(\mu,P)$};
+\node[font=\small\bfseries] at (-1.1,3.05) {(b)};
+\end{scope}
+\end{tikzpicture}
+\caption{The setting. (a) A finite Markov chain on microstates is observed through a lens $f$ that merges microstates into macrostates; the observed process is $f(X_t)$. (b) Reversing paths and applying the lens commute (\Cref{lem:rev_pushforward_commute}). The arrow is the divergence between the top row of laws, and the observed arrow the divergence between the bottom row, so the data-processing inequality yields \thmNGArrowDPI.}\label{fig:setting}
+\end{figure}
 
-\begin{definition}[Micro and observed arrow at horizon $T$]
-The \emph{micro arrow} at horizon $T$ is
+\subsection{Relative entropy and the arrow audit}
+For $p,q\in\Delta(\Omega)$ on a finite set $\Omega$, the Kullback--Leibler divergence is
 \[
-  \mathcal{A}_T(\mu,K)\;=\;D_{\mathrm{KL}}(P^{\mu,K}_T\|P^{\mu,K,\mathrm{rev}}_T).
+  \DKL{p}{q}=\sum_{\omega:\,p(\omega)>0}p(\omega)\log\frac{p(\omega)}{q(\omega)}\in[0,\infty],
 \]
-For a lens $f:X\to Y$, the \emph{observed arrow} is
+with the value $+\infty$ whenever some $\omega$ has $p(\omega)>0=q(\omega)$.
+Terms with $p(\omega)=0$ are omitted, so no product $0\cdot\infty$ ever arises.
+The divergence is nonnegative and vanishes exactly when $p=q$ (Gibbs' inequality).
+For these standard facts see \citep{KullbackLeibler1951,CoverThomas2006}.
+
+\begin{definition}[Arrow audits]\label{def:arrow}
+The \emph{microscopic arrow} and the \emph{observed arrow} at horizon $T$ are
 \[
-  \mathcal{A}_T(\mu,K;f)\;=\;D_{\mathrm{KL}}(P^{\mu,K,f}_T\|P^{\mu,K,f,\mathrm{rev}}_T).
+  \Arr_T(\mu,P)=\DKL{\mathbf{P}^{\mu,P}_T}{\rev_{\#}\mathbf{P}^{\mu,P}_T},
+  \qquad
+  \Arr_T(\mu,P;f)=\DKL{\mathbf{P}^{\mu,P,f}_T}{\rev_{\#}\mathbf{P}^{\mu,P,f}_T}.
 \]
 \end{definition}
-These forward-versus-reversed path-space KL quantities are the finite relative-entropy objects underlying standard entropy-production and irreversibility diagnostics \citep{Seifert2012,MaesNetocny2003}.
 
-\paragraph{Deterministic DPI (informal statement).}
-Because $f^{(T)}$ is deterministic, data processing implies
+Both values lie in $[0,\infty]$.
+An arrow is infinite when some path has positive probability but its reversal is impossible, as happens for a transition $x\to x'$ with $P(x,x')>0=P(x',x)$ that is used with positive probability.
+Forward-versus-reverse path divergences are the basic quantities of stochastic thermodynamics \citep{Seifert2012,MaesNetocny2003}.
+The standard total entropy production starts the reversed paths from the terminal law $\mu P^T$, whereas the arrow reverses the path law itself; the two coincide for stationary chains, and in general they differ by a boundary term (\Cref{rem:entropy_production}).
+
+\subsection{Graphs, gradient fields, and cycle affinity}
+Graphs are simple and undirected.
+For a graph $G=(V,E)$, an \emph{edge field} is a function $a$ that assigns a real number $a(u,v)$ to each ordered pair of adjacent vertices; it is \emph{antisymmetric} if $a(v,u)=-a(u,v)$ for every edge $\{u,v\}$.
+An edge field is \emph{exact}, or a \emph{gradient}, if there is a potential $\phi:V\to\mathbb{R}$ with $a(u,v)=\phi(v)-\phi(u)$ for every edge $\{u,v\}$; only edges are constrained.
+The \emph{sum} of $a$ along a closed walk $v_0,v_1,\dots,v_k=v_0$ (consecutive vertices adjacent) is $\sum_{i=0}^{k-1}a(v_i,v_{i+1})$.
+A \emph{forest} is a graph without cycles, and a \emph{tree} is a connected forest.
+For a finite graph with $c(G)$ connected components, the \emph{cycle rank} $\beta_1(G)=|E|-|V|+c(G)$ is the dimension of its cycle space, and $\beta_1(G)=0$ exactly for forests \citep{Diestel2017,Biggs1993}.
+Exactness and closed-walk sums are the degree-one part of discrete Hodge theory on graphs \citep{Lim2020Hodge}.
+
+A Markov kernel $P$ on $X$ defines its \emph{bidirected support graph} $G_P$ on $X$: distinct $x,x'$ are adjacent when $P(x,x')>0$ and $P(x',x)>0$.
+On $G_P$ the \emph{log-ratio field}
 \[
-  \mathcal{A}_T(\mu,K;f)\;\le\;\mathcal{A}_T(\mu,K),
+  a_P(x,x')=\log\frac{P(x,x')}{P(x',x)}
 \]
-with equality for the identity lens.
-This is the deterministic specialization of the standard data-processing inequality for relative entropy; see \citep{CoverThomas2006}.
+is antisymmetric, and its sum around a cycle is the \emph{cycle affinity} of Schnakenberg's network theory \citep{Schnakenberg1976}.
+The sum of an antisymmetric field along a closed walk depends only on the walk's net flow through each edge, which is a real circulation; since the circulations of a finite graph are spanned by the circulations of any fundamental cycle basis, all closed-walk sums vanish if and only if they vanish on such a basis.
+Transitions with $P(x,x')>0=P(x',x)$ are \emph{one-way}: they are not edges of $G_P$ and have no finite log-ratio.
 
-\subsection{Support graph, cycle rank, and affinity}
-The \emph{directed support graph} of $K$ has vertex set $X$ and an edge $x\to x'$ whenever $K(x,x')>0$.
-Let $G$ denote the underlying undirected support graph on $X$ obtained by forgetting orientation and retaining an undirected edge $\{x,x'\}$ when either direction has positive probability.
-For graph-theoretic statements we also write a generic finite graph as $G=(V,E)$, and a \emph{forest} means that every connected component is a tree.
-
-The \emph{cycle rank} (first Betti number) of $G$ is
+\subsection{Closure deficit}
+Fix a kernel $P$ on $X$, a lens $f:X\to Y$, a lag $\tau\ge 0$, and a law $\mu\in\Delta(X)$, which we call the \emph{current law}.
+Let $(X_t)_{t\ge 0}$ be the chain started from $X_0\sim\mu$, and write $Y_t=f(X_t)$.
+No stationarity is assumed.
+For each microstate $x$, its \emph{packaged future law} is
 \[
-  \beta_1(G)\;=\;|E(G)|-|V(G)|+c(G),
+  p_x(y')=\sum_{z:\,f(z)=y'}P^{\tau}(x,z),\qquad y'\in Y.
 \]
-where $c(G)$ is the number of connected components.
-Forests satisfy $\beta_1(G)=0$.
-
-On a bidirected support edge (both $K(x,x')>0$ and $K(x',x)>0$), define the log-ratio 1-form
+It is defined for every $x$, and for $\mu(x)>0$ it equals $\Law(Y_\tau\mid X_0=x)$.
+A \emph{macro kernel} is any Markov kernel $K$ on $Y$; it predicts the macrostate at lag $\tau$ from the current macrostate alone.
+Its \emph{closure loss} is
 \[
-  a(x,x')\;=\;\log\frac{K(x,x')}{K(x',x)}.
+  \mathcal{L}_\tau(K)=\sum_{x:\,\mu(x)>0}\mu(x)\,\DKL{p_x}{K(f(x),\cdot)}\in[0,\infty],
 \]
-In graph notation we may equivalently write the same antisymmetric edge label as $a(u,v)$ on oriented edges $(u,v)$.
-For a closed walk $\gamma=(x_0\to x_1\to\cdots\to x_m=x_0)$ on bidirected support, its \emph{cycle sum} is $\sum_{i=0}^{m-1} a(x_i,x_{i+1})$.
-In graph notation we may also write a closed walk as $v_0,\dots,v_k=v_0$ and the corresponding cycle sum as $\sum_{i=0}^{k-1} a(v_i,v_{i+1})$.
-We say $a$ is \emph{exact} if there exists a potential $\phi:X\to\mathbb{R}$ such that
-$a(x,x')=\phi(x')-\phi(x)$ on every bidirected support edge.
-Exactness forces every closed-walk sum to vanish.
-The cycle-rank identity is standard graph theory \citep{Diestel2017,Biggs1993}, while the exactness and closed-walk viewpoint is the discrete $1$-form perspective used in Hodge-theoretic treatments \citep{Lim2020Hodge}.
-
-The \emph{max cycle affinity} is the maximum absolute value of the cycle sum over a fixed cycle basis (equivalently, it vanishes iff all cycle sums vanish).
-In Markov-network thermodynamics, such cycle sums are the basic affinity objects \citep{Schnakenberg1976}.
-The graph/affinity fronts use only these finite notions.
-
-\subsection{Closure deficit and best macro kernel}
-Fix a deterministic packaging map $\Pi:X\to Y$ and consider the stationary initialization $X_0\sim\pi$ where $\pi$ is stationary for $K$.
-Let $Y_t=\Pi(X_t)$.
-For an integer lag $\tau\ge 0$, define the \emph{closure deficit}
+the average information lost by predicting each microstate's macroscopic future from its macrostate alone.
+The \emph{closure deficit} is the conditional mutual information
 \[
-  \mathrm{CD}_{\tau}(K;\Pi)\;=\;I(X_0;Y_{\tau}\mid Y_0),
+  \mathrm{CD}_\tau(\mu;P,f)=I\bigl(X_0;Y_\tau\bigm| Y_0\bigr),
 \]
-the conditional mutual information under the stationary law.
-Equivalently,
-\[
-  \mathrm{CD}_{\tau}(K;\Pi)
-  \;=\;
-  \E\!\left[
-    \log\frac{\mathbb{P}(Y_{\tau}\mid X_0,Y_0)}{\mathbb{P}(Y_{\tau}\mid Y_0)}
-  \right].
-\]
+computed from the joint law of $(X_0,Y_0,Y_\tau)$ \citep{CoverThomas2006}; it is always finite.
+It measures how much the present microstate tells about the future macrostate beyond what the present macrostate already tells.
+Exact preservation of the Markov property under aggregation is the classical lumpability problem \citep{KemenySnell1960,Buchholz1994}; the closure deficit quantifies the failure of a weaker, one-lag property.
 
-A \emph{macro kernel} on $Y$ is any Markov kernel $L:Y\times Y\to[0,1]$.
-The \emph{best macro kernel at lag $\tau$} is the rowwise conditional law
+\subsection{Total variation and Dobrushin's coefficient}
+For laws $\mu,\nu$ on a finite set $S$, the total variation distance is
 \[
-  K^{\star}_{\tau}(y,y') \;=\; \mathbb{P}(Y_{\tau}=y'\mid Y_0=y),
+  \dTV(\mu,\nu)=\tfrac12\sum_{s\in S}|\mu(s)-\nu(s)|=\max_{A\subseteq S}\bigl(\mu(A)-\nu(A)\bigr).
 \]
-well-defined under stationarity.
-Exact preservation of a Markov macro-process under aggregation is the classical lumpability question \citep{KemenySnell1960,Buchholz1994}, and the variational minimizer below is a finite KL-projection viewpoint \citep{Csiszar1975}.
-The closure front packages $\mathrm{CD}_{\tau}(K;\Pi)$ as the variational gap between the true packaged future laws and the best macro kernel; the exact finite identity used in the theorem statement is recorded in Section~\ref{sec:closure}.
-
-\subsection{Packaging operators, idempotence, and bounded interfaces}
-A \emph{deterministic packaging map} is an endomap $e:X\to X$.
-It is \emph{idempotent} if $e\circ e=e$.
-Idempotence implies one-step stabilization of iterates and is used by the idempotence no-ladder front.
-
-More generally, a \emph{stochastic packaging operator} can be taken as a kernel $P$ on $X$ acting on $\Delta(X)$ by $\mu\mapsto \mu P$.
-For objecthood statements on $\Delta(\Y)$ we write the induced affine operator as $T_P(\nu):=\nu P$.
-When contraction is discussed, we use total variation distance
+For a Markov kernel $P$ on a nonempty finite set $S$, \emph{Dobrushin's coefficient} is the largest total variation distance between two rows,
 \[
-  \TV(\mu,\nu)=\frac12\sum_{x\in X}|\mu(x)-\nu(x)|.
+  \lambda(P)=\max_{s,s'\in S}\dTV\bigl(P(s,\cdot),P(s',\cdot)\bigr)\in[0,1].
 \]
-The Dobrushin contraction coefficient of a kernel $P$ is
-\[
-  \lambda(P)=\sup_{\mu\neq \nu}\frac{\TV(\mu P,\nu P)}{\TV(\mu,\nu)}.
-\]
-This coefficient is standard in finite-state contraction theory; see \citep{Dobrushin1956,Seneta2006}.
-Strict contraction ($\lambda(P)<1$) implies uniqueness of a fixed distribution for $P$.
+It is also the smallest constant $c$ such that the Markov operator $T_P(\nu)=\nu P$ satisfies $\dTV(T_P\mu,T_P\nu)\le c\,\dTV(\mu,\nu)$ for all laws $\mu,\nu$ \citep{Dobrushin1956,Seneta2006}; we prove the inequality with $c=\lambda(P)$ in \Cref{lem:objecthood_dobrushin}.
+A law $\nu$ is \emph{$\varepsilon$-stable} if $\dTV(\nu,\nu P)\le\varepsilon$; the $0$-stable laws are the stationary laws.
 
-\subsection{Definable predicates and the $2^{|\mathrm{im}(g)|}$ bound}
-A \emph{predicate} on $X$ is a function $p:X\to\{0,1\}$.
-Given a lens $f:X\to Y$ (an ``interface''), a predicate $p$ is \emph{$f$-definable} if there exists $g:Y\to\{0,1\}$ with $p=g\circ f$.
-Equivalently, $p$ is the indicator of a union of fibers of $f$, and we write
+\subsection{Packaging and definable predicates}
+A \emph{packaging map} is an endomap $e:S\to S$ of a set; it is \emph{idempotent} if $e\circ e=e$.
+A \emph{predicate} on a set $X$ is a function $X\to\{0,1\}$.
+Given a lens $f:X\to Y$ between arbitrary sets, a predicate is \emph{$f$-definable} if it factors through $f$:
 \[
-  \mathrm{Def}(f):=\{g\circ f:X\to\{0,1\}\mid g:Y\to\{0,1\}\}.
+  \Def(f)=\bigl\{\,g\circ f\;:\;g:Y\to\{0,1\}\,\bigr\}.
 \]
-Hence the number of $f$-definable predicates is exactly
-\[
-  |\mathrm{Def}(f)| = 2^{|\mathrm{im}(f)|}.
-\]
-This finite counting fact is the combinatorial backbone of the bounded-interface no-ladder front.
+An $f$-definable predicate cannot distinguish two microstates with the same image, so it is the indicator of a union of fibers of $f$.
+Predicates are ordered pointwise.
+ \section{The eight theorems}\label{sec:main-results}
 
-\subsection{Convention: what counts as evidence}
-Throughout, theorems are stated for finite objects and refer to the audits defined above.
-Fitted macro Markov models on $Y$ and thresholded graph variants are auxiliary constructions rather than theorem objects.
-The objecthood front is formulated entirely within the stated contraction setup.
- \section{Main Results}\label{sec:main-results}
-We state the eight no-go theorems. Each theorem is followed by a brief remark clarifying scope.
+This section states all eight theorems in one place, with a short reading of each.
+Proofs, examples, and further discussion follow in \Cref{sec:arrow-protocol,sec:graph-affinity,sec:closure,sec:objecthood,sec:bounded-interface}.
 
-\begin{theorem}[NG\_ARROW\_DPI]\label{thm:NG_ARROW_DPI}
+\subsection*{Arrow of time}
+
+\begin{theorem}[Arrow monotonicity]\label{thm:NG_ARROW_DPI}
 \ThmStmtNGARROWDPI
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out any increase of forward--reverse path-space KL under an honest deterministic observation. In the finite audited setting, coarse observation cannot manufacture a larger arrow than the micro path law already carries.
+The arrow seen through a lens never exceeds the arrow of the microscopic chain.
+No choice of lens, initial law, or horizon can make a coarse description look more irreversible than the system it describes.
+The inequality also holds when the microscopic arrow is infinite, in which case it says nothing; when the microscopic arrow is finite, so is every observed arrow.
 
-\textbf{Scope / escape routes.} The obstruction is evaded only by leaving the theorem object: stochastic observation, fitted macro chains, or other proxy reconstructions are outside this claim. Real microscopic nonreversibility can still produce positive arrow; the theorem states that deterministic coarse-graining does not amplify it.
-
-\end{remark}
-
-
-\begin{theorem}[NG\_PROTOCOL\_TRAP]\label{thm:NG_PROTOCOL_TRAP}
+\begin{theorem}[Protocol trap]\label{thm:NG_PROTOCOL_TRAP}
 \ThmStmtNGPROTOCOLTRAP
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out honest observed arrow for a stationary reversible lift, even when hidden protocol coordinates are present. Hidden protocol structure by itself does not create entropy production in the audited stationary regime.
+The observed process of a chain started in a detailed-balance law can be highly structured.
+It need not be Markov, it can have long memory, and hidden coordinates such as a protocol phase can impose a recognizable order on what is observed.
+It cannot be directional: every observed trajectory is exactly as likely as its reversal.
+Hidden protocol structure alone therefore does not produce an arrow; a positive observed arrow requires either a kernel without a detailed-balance law, which is a drive, or a start away from a detailed-balance law.
 
-\textbf{Scope / escape routes.} The scope changes once stationarity or reversibility is dropped. Nonstationary initialization, external scheduling, or genuinely driven lifted dynamics fall outside the theorem hypotheses and can reopen positive observed arrow.
+\subsection*{Forces and cycles}
 
-\end{remark}
-
-
-\begin{theorem}[NG\_FORCE\_FOREST]\label{thm:NG_FORCE_FOREST}
+\begin{theorem}[Forest exactness]\label{thm:NG_FORCE_FOREST}
 \ThmStmtNGFORCEFOREST
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out force-like cycle obstruction on forest support. On a finite forest, every antisymmetric edge field is potential-generated, so there is no cycle-supported drive to sustain a nontrivial affinity class.
-
-\textbf{Scope / escape routes.} The obstruction is evaded by allowing non-forest support or by changing the exact support notion. Positive cycle rank reopens the possibility of nontrivial circulation, while thresholded proxy graphs are outside the theorem object.
-
-\end{remark}
-
-
-\begin{theorem}[NG\_FORCE\_NULL]\label{thm:NG_FORCE_NULL}
+\begin{theorem}[Gradient fields have no cycle affinity]\label{thm:NG_FORCE_NULL}
 \ThmStmtNGFORCENULL
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out cycle affinity when the log-ratio 1-form is exact. Exact ratio-form structure collapses every closed-walk sum, so the force-like class is null in the precise bidirected-support sense of the theorem.
+Together these two theorems locate force-like structure.
+A field that is a gradient has zero sum around every loop, and on a graph without loops every antisymmetric field is a gradient.
+For the log-ratio field $a_P$ of a Markov kernel, a nonzero cycle affinity therefore needs two things: a cycle in the bidirected support graph, and transition rates whose log-ratios do not come from a potential.
+Neither thresholding a graph nor regularizing its rates is covered: both change the graph or the field, and so change the object the theorems are about.
 
-\textbf{Scope / escape routes.} The obstruction is evaded by breaking exactness or by replacing the exact support with a thresholded or regularized proxy graph. The theorem is about exact bidirected support and exact ratio-form data, not about diagnostic pictures.
+\subsection*{Closure of macroscopic laws}
 
-\end{remark}
-
-
-\begin{theorem}[NG\_MACRO\_CLOSURE\_DEFICIT]\label{thm:NG_MACRO_CLOSURE_DEFICIT}
+\begin{theorem}[Closure deficit]\label{thm:NG_MACRO_CLOSURE_DEFICIT}
 \ThmStmtNGMACROCLOSUREDEFICIT
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem identifies closure deficit as the exact obstruction to a closed macro law at the chosen lag. Positive conditional-information gap means that no single macro kernel captures the packaged future laws without loss.
+The theorem has three parts.
+The best macro kernel is the obvious one: from each macrostate, predict the average future of the microstates it contains, weighted by their current mass.
+The loss that even the best kernel incurs is a conditional mutual information, so it has an information-theoretic meaning independent of any fitting procedure.
+This loss vanishes exactly when the macrostate already carries all the information about the future macrostate that the microstate does, which can be certified or refuted by comparing future laws within fibers.
+The current law matters: the same kernel, lens, and lag can have positive deficit for one law and zero deficit for another (\Cref{ex:closure_current_law}).
 
-\textbf{Scope / escape routes.} The obstruction is evaded only by changing the package, lag, or underlying dynamics, or by accepting proxy fitted kernels as diagnostics rather than theorem objects. A fitted macro chain may still be useful operationally, but it is not theorem evidence for closure.
+\subsection*{Objects under contraction}
 
-\end{remark}
-
-
-\begin{theorem}[NG\_OBJECT\_CONTRACTIVE]\label{thm:NG_OBJECT_CONTRACTIVE}
+\begin{theorem}[Contractive objecthood]\label{thm:NG_OBJECT_CONTRACTIVE}
 \ThmStmtNGOBJECTCONTRACTIVE
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem bounds epsilon-stable packaged states in a strict-contraction regime and yields uniqueness in the exact fixed-point case. Within the admissible TV/Dobrushin hypotheses, multiple well-separated robust objects cannot coexist at that scale.
+Read an $\varepsilon$-stable law as a candidate object: a distribution that the dynamics changes by at most $\varepsilon$ in one step.
+Under strict contraction all candidate objects lie within a common distance $2\varepsilon/(1-\lambda(P))$ of each other, so the dynamics cannot carry two robust objects that are farther apart; for $\varepsilon>0$ and at least two states there are infinitely many candidate objects, since every law within $\varepsilon/(1+\lambda(P))$ of the stationary law is $\varepsilon$-stable, but they all crowd together.
+Equivalently, two $\varepsilon$-stable laws at distance $d>0$ force $\lambda(P)\ge 1-2\varepsilon/d$, and two distinct stationary laws force $\lambda(P)=1$.
 
-\textbf{Scope / escape routes.} The obstruction is evaded by moving to noncontractive regimes or by using clustering heuristics that are outside theorem evidence. The claim is deliberately bounded to the contraction setup and does not attempt a general objecthood theory.
+\subsection*{Ladders of levels}
 
-\end{remark}
-
-
-\begin{theorem}[NG\_LADDER\_IDEM]\label{thm:NG_LADDER_IDEM}
+\begin{theorem}[Idempotent saturation]\label{thm:NG_LADDER_IDEM}
 \ThmStmtNGLADDERIDEM
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out any iterate ladder from an idempotent packaging map. Once the operator is applied once, later iterates add no new structure because the map has already stabilized.
-
-\textbf{Scope / escape routes.} The obstruction is evaded only by changing the operator class or by changing the package itself. Non-idempotent updates, interface growth, or theory changes lie outside the theorem hypotheses.
-
-\end{remark}
-
-
-\begin{theorem}[NG\_LADDER\_BOUNDED\_INTERFACE]\label{thm:NG_LADDER_BOUNDED_INTERFACE}
+\begin{theorem}[Bounded interface]\label{thm:NG_LADDER_BOUNDED_INTERFACE}
 \ThmStmtNGLADDERBOUNDEDINTERFACE
 \end{theorem}
 
-\begin{remark}
-\textbf{Interpretation.} This theorem rules out an infinite strictly increasing ladder of predicates once the interface is fixed and finite. The finite image of the lens gives a finite algebra of definable predicates, so internal ladder growth must stabilize.
+A ladder is a sequence of levels in which each level adds something the previous ones did not have.
+Packaging the output of an idempotent packaging map again adds nothing.
+Observation through a fixed interface with finite image can tell apart only finitely many properties, so any sequence of genuinely new distinctions drawn from it must stop.
+An unbounded ladder requires changing the rules: a packaging map that is not idempotent, or a sequence of interfaces in place of a single fixed one (\Cref{rem:ladders_continue}).
+ \section{Arrow of time under observation}\label{sec:arrow-protocol}
 
-\textbf{Scope / escape routes.} The obstruction is evaded only by changing the theory: lens growth, domain growth, or package change can restart definable expansion. With a fixed finite interface, no unbounded internal ladder remains.
+This section proves \thmNGArrowDPI{} and \thmNGProtocolTrap.
+Both rest on two standard facts: relative entropy cannot increase under data processing \citep{CoverThomas2006}, and a chain in detailed balance looks the same forwards and backwards \citep{Kelly1979}.
+For a stationary chain the arrow is the entropy production over the observation window \citep{Seifert2012,MaesNetocny2003}, and the results then say that coarse observation can hide dissipation but never create it \citep{Esposito2012}.
 
-\end{remark}
+\subsection{Observation cannot create an arrow}
 
-
-\begin{remark}[Supplementary apparatus]
-Supplementary material collects the reproducibility map, including computational audit artifacts and a formalization-status table. The statements and proofs in the main text do not depend on those materials.
-\end{remark}
- \section{Arrow audits and protocol traps}\label{sec:arrow-protocol}
-
-This section proves Theorem~\ref{thm:NG_ARROW_DPI} (deterministic arrow cannot increase under observation) and Theorem~\ref{thm:NG_PROTOCOL_TRAP} (reversible dynamics at stationarity has zero observed arrow).
-All objects and notation are as in Section~\ref{sec:setup}.
-The forward-versus-reversed path-space KL used here is the standard relative-entropy object behind entropy-production and irreversibility diagnostics \citep{Seifert2012,MaesNetocny2003}.
-Under coarse observation such dissipation can be hidden, which is why the honest pushforward convention matters \citep{Esposito2012}.
-The underlying relative-entropy monotonicity is the standard data-processing inequality, and the stationary reversal calculation is standard for reversible chains \citep{CoverThomas2006,Kelly1979}.
-
-\subsection{Deterministic data processing for finite KL}
-
-\begin{lemma}[Deterministic DPI for KL]\label{lem:deterministic_dpi_kl}
-Let $\Omega$ be a finite set and let $g:\Omega\to\Omega'$ be deterministic.
-For any probability laws $P,Q\in\Delta(\Omega)$,
+\begin{lemma}[Deterministic data processing]\label{lem:deterministic_dpi_kl}
+Let $g:\Omega\to\Omega'$ be a map between finite sets. For all $p,q\in\Delta(\Omega)$,
 \[
-D_{\mathrm{KL}}(g_{\#}P \,\|\, g_{\#}Q)\;\le\; D_{\mathrm{KL}}(P\,\|\,Q).
+  \DKL{g_{\#}p}{g_{\#}q}\le\DKL{p}{q}\qquad\text{in }[0,\infty].
 \]
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+See \Cref{app:probkl}; the proof applies the log-sum inequality fiber by fiber.
 \end{proof}
 
-\subsection{Reversal commutes with pointwise observation}
-
-Fix a horizon $T\ge 0$.
-Let $\mathrm{rev}:X^{T+1}\to X^{T+1}$ denote the coordinate reversal map
-$\mathrm{rev}(x_0,\dots,x_T) := (x_T,\dots,x_0)$.
-Let $f^{(T)}:X^{T+1}\to Y^{T+1}$ denote the pointwise application
-$f^{(T)}(x_0,\dots,x_T):=(f(x_0),\dots,f(x_T))$.
-
-\begin{lemma}[Commutation of reversal and observation]\label{lem:rev_pushforward_commute}
-For any law $P\in\Delta(X^{T+1})$,
+\begin{lemma}[Reversal commutes with observation]\label{lem:rev_pushforward_commute}
+For every $T\ge 0$, $f^{(T)}\circ\rev=\rev\circ f^{(T)}$ as maps $X^{T+1}\to Y^{T+1}$. Consequently, for every $Q\in\Delta(X^{T+1})$,
 \[
-f^{(T)}_{\#}\big(\mathrm{rev}_{\#}P\big)
-\;=\;
-\mathrm{rev}_{\#}\big(f^{(T)}_{\#}P\big).
-\]
-In particular, for the path law $P_T^{\mu,K}$ from Section~\ref{sec:setup},
-\[
-P_T^{\mu,K,f,\mathrm{rev}} \;=\; \mathrm{rev}_{\#} P_T^{\mu,K,f}
-\;=\; f^{(T)}_{\#}\big(P_T^{\mu,K,\mathrm{rev}}\big).
+  f^{(T)}_{\#}\bigl(\rev_{\#}Q\bigr)=\rev_{\#}\bigl(f^{(T)}_{\#}Q\bigr).
 \]
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+Both composites send $(x_0,\dots,x_T)$ to $(f(x_T),\dots,f(x_0))$.
+Pushforward respects composition, so $f^{(T)}_{\#}\rev_{\#}Q=(f^{(T)}\circ\rev)_{\#}Q=(\rev\circ f^{(T)})_{\#}Q=\rev_{\#}f^{(T)}_{\#}Q$.
 \end{proof}
 
-\subsection{Proof of the arrow DPI theorem}
-
-\begin{proof}[Proof of Theorem~\ref{thm:NG_ARROW_DPI}]
-Fix $T\ge 0$ and abbreviate $P := P_T^{\mu,K}\in\Delta(X^{T+1})$ and $Q := P_T^{\mu,K,\mathrm{rev}} = \mathrm{rev}_{\#}P$.
-Apply Lemma~\ref{lem:deterministic_dpi_kl} to $\Omega=X^{T+1}$, $\Omega'=Y^{T+1}$ and $g=f^{(T)}$:
+\begin{proof}[Proof of \Cref{thm:NG_ARROW_DPI}]
+Write $Q=\mathbf{P}^{\mu,P}_T$.
+By \Cref{lem:rev_pushforward_commute}, the observed path law and its reversal are the images of $Q$ and $\rev_{\#}Q$ under the single map $g=f^{(T)}$:
 \[
-D_{\mathrm{KL}}\!\big(f^{(T)}_{\#}P \,\|\, f^{(T)}_{\#}Q\big)
-\le
-D_{\mathrm{KL}}(P\,\|\,Q).
+  \mathbf{P}^{\mu,P,f}_T=g_{\#}Q,\qquad \rev_{\#}\mathbf{P}^{\mu,P,f}_T=g_{\#}\bigl(\rev_{\#}Q\bigr).
 \]
-By Lemma~\ref{lem:rev_pushforward_commute}, $f^{(T)}_{\#}P = P_T^{\mu,K,f}$ and $f^{(T)}_{\#}Q = P_T^{\mu,K,f,\mathrm{rev}}$.
-Therefore the left-hand side equals $\mathcal{A}_T(\mu,K;f)$ and the right-hand side equals $\mathcal{A}_T(\mu,K)$, proving
-$\mathcal{A}_T(\mu,K;f)\le \mathcal{A}_T(\mu,K)$ as claimed.
+\Cref{lem:deterministic_dpi_kl} with $p=Q$ and $q=\rev_{\#}Q$ gives $\Arr_T(\mu,P;f)\le\Arr_T(\mu,P)$.
 \end{proof}
 
-\subsection{Reversibility at stationarity and the protocol trap}
+The only property of the observation used in the proof is that it commutes with reversal.
+This identifies which observations are covered and which are not.
 
-\begin{lemma}[Detailed balance implies path-law reversal invariance]\label{lem:detailed_balance_path}
-Assume $\pi\in\Delta(X)$ is stationary for $K$ and satisfies detailed balance:
+\begin{remark}[Noisy observation is covered; time-dependent observation is not]\label{rem:arrow_scope}
+Suppose each $X_t$ is observed through the same noisy channel $C$, a Markov kernel from $X$ to $Y$, independently at each time.
+The observed path law is then the image of $\mathbf{P}^{\mu,P}_T$ under the product channel $C^{\otimes(T+1)}$.
+That channel commutes with reversal, and the data-processing inequality holds for arbitrary channels \citep{CoverThomas2006}, so the conclusion of \thmNGArrowDPI{} still holds.
+Leaving the deterministic setting is therefore not by itself a way to create an arrow.
+
+An observation that depends on time is different.
+Let $X$ have a single state, so that every arrow of the chain is zero, and record $0$ at time $0$ and $1$ at time $1$.
+The observed path is $(0,1)$ with probability one and its reversal $(1,0)$ has probability zero, so the observed arrow is infinite.
+Here the arrow comes from a clock in the observer, not from the system.
+A Markov chain fitted to the observed process is a third kind of object; the theorem makes no claim about it.
+\end{remark}
+
+\subsection{The protocol trap}
+
+\begin{lemma}[Detailed balance gives reversible paths]\label{lem:detailed_balance_path}
+If $\pi$ satisfies detailed balance with $P$, then for every $T\ge 0$ and every path $(x_0,\dots,x_T)$,
 \[
-\pi(x)\,K(x,x') \;=\; \pi(x')\,K(x',x)
-\qquad\text{for all }x,x'\in X.
+  \pi(x_0)\prod_{t=0}^{T-1}P(x_t,x_{t+1})=\pi(x_T)\prod_{t=0}^{T-1}P(x_{t+1},x_t).
 \]
-Then for every $T\ge 0$,
-\[
-P_T^{\pi,K} \;=\; P_T^{\pi,K,\mathrm{rev}}.
-\]
+Equivalently, $\mathbf{P}^{\pi,P}_T=\rev_{\#}\mathbf{P}^{\pi,P}_T$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+See \Cref{app:probkl}.
+The proof is an induction on $T$ that uses detailed balance once per step and never divides, so it covers states with $\pi(x)=0$.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_PROTOCOL_TRAP}]
-Lemma~\ref{lem:detailed_balance_path} implies $P_T^{\pi,K}=P_T^{\pi,K,\mathrm{rev}}$ for every $T\ge 0$, hence
-$\mathcal{A}_T(\pi,K)=D_{\mathrm{KL}}(P_T^{\pi,K}\,\|\,P_T^{\pi,K,\mathrm{rev}})=0$.
-Applying Theorem~\ref{thm:NG_ARROW_DPI} with initial law $\pi$ gives
-$\mathcal{A}_T(\pi,K;f)\le \mathcal{A}_T(\pi,K)=0$, hence $\mathcal{A}_T(\pi,K;f)=0$.
+\begin{proof}[Proof of \Cref{thm:NG_PROTOCOL_TRAP}]
+By \Cref{lem:detailed_balance_path} the path law equals its reversal, so
+\[
+  \Arr_T(\pi,P)=\DKL{\mathbf{P}^{\pi,P}_T}{\mathbf{P}^{\pi,P}_T}=0.
+\]
+By \thmNGArrowDPI, $0\le\Arr_T(\pi,P;f)\le\Arr_T(\pi,P)=0$ for every lens $f$.
 \end{proof}
 
-\begin{remark}[What is ruled out, and what is not]\label{rem:protocol_trap_reading}
-Theorem~\ref{thm:NG_PROTOCOL_TRAP} is a statement about an \emph{arrow audit}:
-it rules out certifying irreversibility of the observed process via
-$D_{\mathrm{KL}}(P_T^{\pi,K,f}\,\|\,P_T^{\pi,K,f,\mathrm{rev}})$
-when the underlying system is reversible and started in the stationary law.
-The observed variable $f(x_t)$ may still carry a nontrivial ordering or protocol structure while having zero arrow under stationary reversible dynamics.
-To obtain a nonzero arrow audit one must leave this scope, for example by nonstationary initialization, explicit nonequilibrium forcing, or by switching to a different witness.
-\end{remark}
- \section{Graph structure and affinity}\label{sec:graph-affinity}
-
-This section isolates the graph-theoretic content behind the affinity and force audits.
-We work with finite graphs and antisymmetric edge labellings (discrete $1$-forms).
-The two main results proved here are Theorem~\ref{thm:NG_FORCE_FOREST} and
-Theorem~\ref{thm:NG_FORCE_NULL} from Section~\ref{sec:main-results}.
-
-\subsection{Graphs, antisymmetric $1$-forms, and cycle sums}
-
-Let $G=(V,E)$ be a finite undirected graph.  Write
-\[
-\vec E \;=\; \{(u,v)\in V\times V : \{u,v\}\in E\}
-\]
-for the set of oriented edges.
-
-\begin{definition}[Antisymmetric edge labelling / $1$-form]
-An \emph{antisymmetric edge labelling} on $G$ is a function
-$a:\vec E\to \mathbb{R}$ such that $a(v,u)=-a(u,v)$ for all $(u,v)\in \vec E$.
-\end{definition}
-
-\begin{definition}[Exactness and potentials]
-An antisymmetric labelling $a$ is \emph{exact} if there exists a function
-$\phi:V\to \mathbb{R}$ such that for every $(u,v)\in \vec E$,
-\[
-a(u,v)=\phi(v)-\phi(u).
-\]
-Any such $\phi$ is called a \emph{potential} for $a$.
-\end{definition}
-
-\begin{definition}[Closed-walk sum / cycle affinity]
-Let $w=(v_0,v_1,\dots,v_k)$ be a finite walk with $v_k=v_0$ and
-$\{v_i,v_{i+1}\}\in E$ for all $i$.
-The \emph{closed-walk sum} of $a$ along $w$ is
-\[
-S_a(w)\;=\;\sum_{i=0}^{k-1} a(v_i,v_{i+1}).
-\]
-When $a$ is a log-ratio $1$-form, $S_a(w)$ is the (log) cycle affinity.
-This is the standard cycle-affinity language for finite Markov networks \citep{Schnakenberg1976}.
-\end{definition}
-
-\begin{definition}[Cycle rank]
-Let $c(G)$ be the number of connected components of $G$.
-The \emph{cycle rank} (first Betti number) of $G$ is
-\[
-\beta_1(G)\;=\;|E|-|V|+c(G).
-\]
-In particular, $\beta_1(G)=0$ if and only if every component of $G$ is a tree.
-These cycle-space facts are standard in graph theory; see \citep{Diestel2017,Biggs1993}.
-\end{definition}
-
-\subsection{Forest exactness}
-
-We now prove that on a tree (hence on each component of a forest) every antisymmetric
-edge labelling is potential-generated.
-The potential interpretation of exact antisymmetric edge labellings is also standard in this finite graph setting; see \citep{Diestel2017,Lim2020Hodge}.
-
-\begin{lemma}[Rooted parent map on a tree]\label{lem:tree-parent}
-Let $G=(V,E)$ be a finite tree and fix a root $r\in V$.
-For each vertex $v\neq r$ there exists a unique neighbor $\mathrm{par}(v)$ of $v$
-lying on the unique simple path from $r$ to $v$.
-\end{lemma}
-
-\begin{proof}
-See Appendix~\ref{app:graphexact}.
-\end{proof}
-
-\begin{proof}[Proof of Theorem~\ref{thm:NG_FORCE_FOREST}]
-Let $G=(V,E)$ be a finite tree with root $r$, and let $a:\vec E\to\mathbb{R}$ be antisymmetric.
-Define $\phi:V\to\mathbb{R}$ by $\phi(r)=0$ and, for $v\neq r$,
-\[
-\phi(v)\;=\;\phi(\mathrm{par}(v)) + a(\mathrm{par}(v),v),
-\]
-where $\mathrm{par}(v)$ is given by Lemma~\ref{lem:tree-parent}.
-The verification that $a(u,v)=\phi(v)-\phi(u)$ on every oriented edge is recorded in Appendix~\ref{app:graphexact}.
-For a forest, apply the same construction componentwise by choosing a root in each component.
-\end{proof}
-
-\subsection{Exactness forces vanishing closed-walk sums}
-
-\begin{proof}[Proof of Theorem~\ref{thm:NG_FORCE_NULL}]
-Assume $a$ is exact: $a(u,v)=\phi(v)-\phi(u)$ for some $\phi:V\to\mathbb{R}$.
-Let $w=(v_0,v_1,\dots,v_k)$ be any closed walk with $v_k=v_0$.
-Then
-\[
-S_a(w)=\sum_{i=0}^{k-1}\bigl(\phi(v_{i+1})-\phi(v_i)\bigr)
-=\phi(v_k)-\phi(v_0)=0.
-\]
-The telescoping calculation is written out in Appendix~\ref{app:graphexact}.
-\end{proof}
-
-\begin{remark}[Connection to log-ratio affinity]
-If $K$ is a Markov kernel on a finite state space with bidirected support graph $G$,
-a common affinity $1$-form is the log-ratio
-\[
-a_K(u,v)=\log\frac{K(u,v)}{K(v,u)}
-\qquad\text{on each bidirected edge.}
-\]
-This is antisymmetric on $\vec E$. Theorems~\ref{thm:NG_FORCE_FOREST} and
-\ref{thm:NG_FORCE_NULL} show that (i) on forest support every such antisymmetric form
-is potential-generated, and (ii) any potential-generated form has zero closed-walk sums,
-so every cycle affinity vanishes.
+\begin{remark}[What the protocol trap does and does not rule out]\label{rem:protocol_trap_reading}
+The theorem is about the arrow audit and nothing else.
+It allows the observed process $f(X_t)$ to have any amount of temporal structure, and in particular it allows a hidden protocol coordinate to make the observed process pass through recognizable stages.
+What it rules out is a preferred direction: under a detailed-balance start, every observed sequence of stages is exactly as likely as the reverse sequence.
+The hypothesis concerns the pair $(\pi,P)$ and not $P$ alone, as the next example shows.
 \end{remark}
 
-\begin{remark}[Thresholding and regularization]
-The theorems above are statements about the \emph{exact} graph object $(V,E)$ and the
-\emph{exact} antisymmetric data $a$ supported on $\vec E$.
-Graph thresholding or regularization changes $E$ and can change $\beta_1(G)$; such
-modifications lie outside the theorem hypotheses and define different graph objects.
+\begin{example}[A reversible kernel with a nonequilibrium start]\label{ex:transient_arrow}
+Let $X=\{1,2\}$ and let $P$ have all entries equal to $1/2$.
+The uniform law satisfies detailed balance, and started from it the chain has zero arrow.
+Started instead from $\mu=\delta_1$, the path $(1,2)$ has probability $1/2$ while its reversal $(2,1)$ has probability $0$, so $\Arr_1(\delta_1,P)=\infty$.
+The arrow here records the asymmetry of the initial condition, not a drive: in the decomposition of \Cref{rem:entropy_production}, the total entropy production is $\log 2$ and the boundary term $\DKL{\mu P}{\mu}$ is infinite.
+A constant lens hides the arrow completely, while the identity lens shows all of it.
+\end{example}
+
+\begin{remark}[Relation to entropy production]\label{rem:entropy_production}
+Write $\mu_T=\mu P^T$ for the law at time $T$.
+The standard total entropy production over the window compares the forward path law with the reversal of the path law started from $\mu_T$ \citep{Seifert2012,MaesNetocny2003}:
+\[
+  \Sigma_T(\mu,P)=\DKL{\mathbf{P}^{\mu,P}_T}{\rev_{\#}\mathbf{P}^{\mu_T,P}_T}.
+\]
+The two quantities are related by
+\[
+  \Arr_T(\mu,P)=\Sigma_T(\mu,P)+\DKL{\mu_T}{\mu}\qquad\text{in }[0,\infty].
+\]
+Indeed, the two reversed laws give a path $(x_0,\dots,x_T)$ the masses $\mu(x_T)B$ and $\mu_T(x_T)B$ with the same backward product $B=\prod_tP(x_{t+1},x_t)$.
+If all three terms are finite, splitting the logarithm of the likelihood ratio and using that $x_T$ has law $\mu_T$ under the forward path law gives the identity.
+Otherwise both sides are infinite: the left side is infinite exactly when some path of positive probability has $\mu(x_T)=0$ or $B=0$; since its endpoint has $\mu_T(x_T)>0$, the first case is exactly the case $\DKL{\mu_T}{\mu}=\infty$ and the second the case $\Sigma_T=\infty$.
+Both reversed laws commute with the lens in the same way, so the proof of \thmNGArrowDPI{} also gives
+$\DKL{f^{(T)}_{\#}\mathbf{P}^{\mu,P}_T}{\rev_{\#}f^{(T)}_{\#}\mathbf{P}^{\mu_T,P}_T}\le\Sigma_T(\mu,P)$: observation cannot increase the total entropy production either.
+
+If $\pi$ is stationary, the boundary term vanishes, and for $T\ge 1$
+\[
+  \Arr_T(\pi,P)=\Sigma_T(\pi,P)=T\,\sigma(\pi,P),\qquad
+  \sigma(\pi,P)=\sum_{x,x'}\pi(x)P(x,x')\log\frac{\pi(x)P(x,x')}{\pi(x')P(x',x)},
+\]
+where $\sigma$ is the stationary entropy production rate \citep{Schnakenberg1976,Seifert2012}, the sum runs over pairs with $\pi(x)P(x,x')>0$, and $\sigma=+\infty$ if some such pair has $P(x',x)=0$.
+For a stationary chain, \thmNGArrowDPI{} thus bounds the observed arrow by $T\sigma(\pi,P)$.
 \end{remark}
- \section{Closure deficit and a variational obstruction}\label{sec:closure}
+ \section{Forces need cycles}\label{sec:graph-affinity}
 
-This section proves Theorem~\ref{thm:NG_MACRO_CLOSURE_DEFICIT}.
-The setting is finite throughout.
-Let $X$ be a finite state space, let $Y$ be a finite macro space, and let $(X_t)_{t\in\mathbb{Z}}$
-be a stationary Markov chain on $X$ with stationary law $\mu$.
-Fix a deterministic packaging map $\Pi:X\to Y$ and define the macro process by
-$Y_t := \Pi(X_t)$.
-For an integer lag $\tau\ge 1$ and a microstate $x\in X$, write
-\[
-p_x^{(\tau)}(\cdot) := \mathrm{Law}(Y_{t+\tau}\mid X_t=x)\in \Delta(Y).
-\]
-For a macrostate $y\in Y$, write
-\[
-\bar p_y^{(\tau)}(\cdot) := \mathrm{Law}(Y_{t+\tau}\mid Y_t=y)\in \Delta(Y).
-\]
-A macro kernel is a function $K:Y\to \Delta(Y)$, equivalently a row-stochastic array
-$K(y,y')$ on $Y\times Y$.
-The variational objective at lag $\tau$ is
-\[
-\mathcal L_\tau(K) := \sum_{x\in X} \mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,K(\Pi(x),\cdot)\right).
-\]
-The KL decompositions and conditional-mutual-information identities used below are standard finite information-theoretic calculations, and the variational minimizer is a finite KL-projection instance \citep{CoverThomas2006,Csiszar1975}.
+This section proves \thmNGForceForest{} and \thmNGForceNull{} and connects them to Markov kernels.
+The graph-theoretic content is classical \citep{Diestel2017,Biggs1993}: it is the statement that a $1$-form on a graph is exact precisely when it integrates to zero around every cycle, specialized to the two directions we need \citep{Lim2020Hodge}.
+In Markov network theory the cycle sums of the log-ratio field are the affinities that drive steady-state currents \citep{Schnakenberg1976}.
+\Cref{fig:forest_cycle} illustrates both theorems.
 
-\begin{lemma}[KL mixture decomposition]\label{lem:closure_kl_mixture}
-Let $(w_i)_{i\in I}$ be nonnegative weights on a finite index set $I$, not all zero,
-and let $(P_i)_{i\in I}$ be probability laws on a finite set $\Omega$.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  st/.style={circle,draw,thick,minimum size=7.5mm,inner sep=0pt,font=\small},
+  ed/.style={-{Stealth[length=2mm]},thick},
+  lbl/.style={font=\footnotesize},
+  pot/.style={font=\footnotesize,blue!60!black}
+]
+\begin{scope}
+\node[st,fill=gray!10] (r) at (0,0) {$r$};
+\node[st] (u) at (2.3,1.15) {$u$};
+\node[st] (v) at (2.3,-1.15) {$v$};
+\node[st] (w) at (4.6,2.0) {$w$};
+\node[st] (z) at (4.6,0.3) {$z$};
+\draw[ed] (r) -- node[lbl,above,sloped] {$1.2$} (u);
+\draw[ed] (r) -- node[lbl,below,sloped] {$-0.5$} (v);
+\draw[ed] (u) -- node[lbl,above,sloped] {$0.3$} (w);
+\draw[ed] (u) -- node[lbl,below,sloped] {$-2.0$} (z);
+\node[pot,left=2pt of r] {$\phi=0$};
+\node[pot,above=2pt of u] {$\phi=1.2$};
+\node[pot,right=2pt of v] {$\phi=-0.5$};
+\node[pot,right=2pt of w] {$\phi=1.5$};
+\node[pot,right=2pt of z] {$\phi=-0.8$};
+\node[font=\small\bfseries] at (-1.1,2.2) {(a)};
+\end{scope}
+\begin{scope}[xshift=9.6cm,yshift=0.3cm]
+\node[st] (a) at (90:1.95) {$1$};
+\node[st] (b) at (210:1.95) {$2$};
+\node[st] (c) at (330:1.95) {$3$};
+\draw[ed] (a) to[bend right=28] node[lbl,above left] {$0.6$} (b);
+\draw[ed] (b) to[bend right=28] node[lbl,below] {$0.6$} (c);
+\draw[ed] (c) to[bend right=28] node[lbl,above right] {$0.6$} (a);
+\draw[ed,gray] (b) to[bend right=12] node[lbl,below right,pos=0.5,inner sep=1pt] {$0.2$} (a);
+\draw[ed,gray] (c) to[bend right=12] node[lbl,above,pos=0.5,inner sep=1pt] {$0.2$} (b);
+\draw[ed,gray] (a) to[bend right=12] node[lbl,below left,pos=0.5,inner sep=1pt] {$0.2$} (c);
+\node[lbl,align=center] at (0,-2.45) {$a_P(1,2)+a_P(2,3)+a_P(3,1)=3\log 3\neq 0$};
+\node[font=\small\bfseries] at (-2.9,2.2) {(b)};
+\end{scope}
+\end{tikzpicture}
+\caption{(a) On a tree every antisymmetric edge field is a gradient. Edge labels give $a(\text{parent},\text{child})$; summing them along the unique path from the root $r$ gives the potential $\phi$ (blue), and $a(u,v)=\phi(v)-\phi(u)$ on every edge. (b) A driven three-state ring, with holding probability $0.2$ at each state. Each log-ratio equals $\log 3$, so the cycle affinity is $3\log 3$ and the field is not a gradient. Deleting any one edge of the ring leaves a tree, on which the restricted field is a gradient again.}\label{fig:forest_cycle}
+\end{figure}
+
+\subsection{Proofs}
+
+\begin{proof}[Proof of \Cref{thm:NG_FORCE_FOREST}]
+In each connected component of $G$ choose a root.
+For a vertex $v$, let $r=v_0,v_1,\dots,v_m=v$ be the path in $G$ from the root of its component to $v$; it exists because the component is connected and is unique because $G$ has no cycles.
 Define
 \[
-W := \sum_{i\in I} w_i,
-\qquad
-R := \frac{1}{W}\sum_{i\in I} w_i P_i.
+  \phi(v)=\sum_{i=0}^{m-1}a(v_i,v_{i+1}),
 \]
-Then for every probability law $Q$ on $\Omega$,
+so the root has $\phi(r)=0$.
+\Cref{app:graphexact} checks that $a(u,v)=\phi(v)-\phi(u)$ on every edge.
+Paths are finite even if $G$ is infinite, so finiteness of $G$ is never used.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:NG_FORCE_NULL}]
+Along a closed walk $v_0,\dots,v_k=v_0$ the sum telescopes:
 \[
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,Q\right)
-=
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right)
-+
-W\,D_{\mathrm{KL}}\!\left(R\,\middle\|\,Q\right).
+  \sum_{i=0}^{k-1}a(v_i,v_{i+1})=\sum_{i=0}^{k-1}\bigl(\phi(v_{i+1})-\phi(v_i)\bigr)=\phi(v_k)-\phi(v_0)=0.
 \]
-In particular, $Q=R$ is a minimizer, and the minimum value is
+Only the values of $a$ on edges enter, and every step of a walk is an edge.
+\end{proof}
+
+The converse of \thmNGForceNull{} also holds: on a connected graph, an antisymmetric field whose sums vanish around every closed walk is a gradient, with potential obtained by summing $a$ along any path from a fixed root.
+\thmNGForceForest{} is the special case in which there are no cycles to check.
+
+\subsection{Consequences for Markov kernels}
+
+Apply the two theorems to the log-ratio field $a_P$ on the bidirected support graph $G_P$.
+If $G_P$ is a forest, then $a_P$ is a gradient; if $a_P$ is a gradient, then every cycle affinity vanishes.
+A nonzero cycle affinity therefore requires both a cycle in $G_P$ and a log-ratio field that is not a gradient.
+For chains whose transitions all have reverses, forest support has a stronger consequence, which connects this section to the protocol trap.
+
+\begin{corollary}[Forest-supported chains are reversible]\label{cor:forest_reversible}
+Let $P$ be a Markov kernel on a nonempty finite set $X$ without one-way transitions, that is, $P(x,x')>0$ if and only if $P(x',x)>0$ for all $x\ne x'$.
+If $G_P$ is a forest, then $P$ has a detailed-balance law $\pi$ with $\pi(x)>0$ for all $x$.
+Consequently $\Arr_T(\pi,P;f)=0$ for every lens $f$ and every horizon $T$.
+\end{corollary}
+
+\begin{proof}
+By \thmNGForceForest, $a_P(x,x')=\phi(x')-\phi(x)$ on every edge of $G_P$ for some $\phi$.
+Put $\pi(x)=e^{\phi(x)}/Z$ with $Z=\sum_{x}e^{\phi(x)}$.
+On an edge, $P(x,x')/P(x',x)=e^{\phi(x')-\phi(x)}$, which rearranges to $\pi(x)P(x,x')=\pi(x')P(x',x)$.
+For distinct non-adjacent $x,x'$ both sides vanish because there are no one-way transitions, and for $x=x'$ the identity is trivial.
+So $\pi$ satisfies detailed balance, and \thmNGProtocolTrap{} gives the last claim.
+\end{proof}
+
+This is the finite form of the classical fact that a Markov chain whose transition graph is a tree is reversible \citep{Kelly1979}.
+
+\begin{remark}[Gradient log-ratios do not imply detailed balance]\label{rem:one_way}
+The hypothesis on one-way transitions in \Cref{cor:forest_reversible} cannot be dropped.
+One-way transitions are not edges of $G_P$, so $a_P$ does not see them, yet a transition with $P(x,x')>0=P(x',x)$ forces every detailed-balance law to vanish at $x$.
+For instance, the kernel on $\{1,2\}$ with $P(1,2)=1$ and $P(2,2)=1$ has an empty bidirected support graph, so $a_P$ is trivially a gradient, but the only detailed-balance law is $\delta_2$; started from $\delta_1$, the chain has infinite arrow.
+An audit for the protocol trap must therefore check detailed balance on all pairs of states, not only exactness of the log-ratio field.
+\end{remark}
+
+\begin{remark}[Additive affinities and multiplicative surrogates]
+The cycle affinity is additive: it is the logarithm of the product $r$ of rate ratios around the cycle.
+Numerical audits sometimes report a multiplicative surrogate such as $\max(r,1/r)-1=e^{|\log r|}-1$.
+It vanishes exactly when the affinity does and orders cycles by $|\log r|$, but it is a different number from the affinity.
+\end{remark}
+
+\begin{remark}[Thresholded and regularized graphs]
+Both theorems are statements about the exact graph and the exact field.
+Discarding small transition probabilities removes edges, can turn a cycle into a forest, and can create one-way transitions; adding a small floor to all probabilities adds edges, can create cycles, and replaces one-way transitions by edges with large but finite log-ratios.
+Either operation produces a different graph and a different field, about which the theorems say nothing.
+\end{remark}
+ \section{Closure of macroscopic laws}\label{sec:closure}
+
+A lens $f$ turns a Markov chain into an observed process $Y_t=f(X_t)$ that is usually not Markov.
+One may still ask for the best Markov description at a fixed lag: a kernel $K$ on macrostates that predicts $Y_\tau$ from $Y_0$.
+\thmNGMacroClosureDeficit{} identifies the best such kernel and the loss it cannot avoid.
+Throughout this section $P$, $f$, $\tau$, and the current law $\mu$ are fixed, and $p_x$, $\mathcal{L}_\tau$, and $\mathrm{CD}_\tau=\mathrm{CD}_\tau(\mu;P,f)$ are as in \Cref{sec:setup}.
+For a macrostate $y$ write $W_y=\mu(f^{-1}(y))$ for the current mass of its fiber.
+The minimization below is a finite instance of information projection \citep{Csiszar1975}, and the identities are standard finite calculations with conditional mutual information \citep{CoverThomas2006}.
+
+\subsection{Three lemmas and the proof}
+
+\begin{lemma}[Mixture decomposition]\label{lem:closure_kl_mixture}
+Let $w_1,\dots,w_n\ge 0$ have positive sum $W$, let $p_1,\dots,p_n\in\Delta(\Omega)$, and let $\bar p=W^{-1}\sum_i w_ip_i$. Then for every $q\in\Delta(\Omega)$,
 \[
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right).
+  \sum_{i:\,w_i>0}w_i\,\DKL{p_i}{q}=\sum_{i:\,w_i>0}w_i\,\DKL{p_i}{\bar p}+W\,\DKL{\bar p}{q}\qquad\text{in }[0,\infty],
 \]
+and the first sum on the right is finite.
+In particular $q=\bar p$ minimizes the left-hand side, and it is the unique minimizer.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:varclosure}.
+See \Cref{app:varclosure}.
+The proof treats the case where $q$ misses part of the support of $\bar p$, in which both sides are infinite, separately from the finite case, so that no difference of infinite quantities is ever formed.
 \end{proof}
 
 \begin{lemma}[Best macro kernel]\label{lem:closure_best_macro_kernel}
-For each $y\in Y$, define
-\[
-K^\star_\tau(y,\cdot) := \bar p_y^{(\tau)}(\cdot)=\mathrm{Law}(Y_{t+\tau}\mid Y_t=y).
-\]
-Then
-\[
-\min_K \mathcal L_\tau(K)
-=
-\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right),
-\]
-and the minimum is attained by $K^\star_\tau$.
+For every macro kernel $K$, $\mathcal{L}_\tau(K^\star)\le\mathcal{L}_\tau(K)$, and $\mathcal{L}_\tau(K^\star)$ is finite.
+If $W_y>0$, then $K^\star(y,\cdot)$ is the only row that attains the minimum of the fiber's contribution; rows of fibers with $W_y=0$ do not affect $\mathcal{L}_\tau$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:varclosure}.
+See \Cref{app:varclosure}. The objective splits into one term per fiber, and \Cref{lem:closure_kl_mixture} minimizes each term with positive mass separately.
 \end{proof}
 
-\begin{lemma}[Conditional mutual information identity]\label{lem:closure_cmi_identity}
-In this finite deterministic setting,
-\[
-I(X_t;Y_{t+\tau}\mid Y_t)
-=
-\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
-\]
+\begin{lemma}[Information identity]\label{lem:closure_cmi_identity}
+$\displaystyle \mathrm{CD}_\tau=I(X_0;Y_\tau\mid Y_0)=\sum_{x:\,\mu(x)>0}\mu(x)\,\DKL{p_x}{K^\star(f(x),\cdot)}=\mathcal{L}_\tau(K^\star).$
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:varclosure}.
+See \Cref{app:varclosure}. Because $Y_0=f(X_0)$ is a function of $X_0$, the conditional mutual information collapses to an average over microstates of positive mass.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_MACRO_CLOSURE_DEFICIT}]
-By definition, the closure deficit in the theorem is
-\[
-\mathrm{CD}_\tau(\Pi)
-=
-I(X_t;\Pi(X_{t+\tau})\mid \Pi(X_t))
-=
-I(X_t;Y_{t+\tau}\mid Y_t).
-\]
-Lemma~\ref{lem:closure_cmi_identity} expresses this quantity as
-\[
-\mathrm{CD}_\tau(\Pi)
-=
-\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
-\]
-Lemma~\ref{lem:closure_best_macro_kernel} identifies the same expression as the minimum
-of the variational objective:
-\[
-\mathrm{CD}_\tau(\Pi)
-=
-\min_K \mathcal L_\tau(K),
-\qquad
-K^\star_\tau(y,\cdot)=\bar p_y^{(\tau)}(\cdot).
-\]
-This proves the finite variational identity and the formula for the minimizing macro kernel.
-
-For the positivity claim, suppose there exist $x,x'\in X$ with $\Pi(x)=\Pi(x')=:y$,
-$\mu(x)>0$, $\mu(x')>0$, and $p_x^{(\tau)}\neq p_{x'}^{(\tau)}$.
-Then not all positive-mass fiber laws in $\Pi^{-1}(y)$ coincide with their weighted average
-$\bar p_y^{(\tau)}$.
-Hence at least one state $z\in\Pi^{-1}(y)$ with $\mu(z)>0$ satisfies
-\[
-D_{\mathrm{KL}}\!\left(p_z^{(\tau)}\,\middle\|\,\bar p_y^{(\tau)}\right)>0.
-\]
-The sum formula for $\mathrm{CD}_\tau(\Pi)$ therefore contains at least one strictly
-positive term and all remaining terms are nonnegative, so
-\[
-\mathrm{CD}_\tau(\Pi)>0.
-\]
+\begin{proof}[Proof of \Cref{thm:NG_MACRO_CLOSURE_DEFICIT}]
+The first displayed formula for $K^\star$ is the definition of a conditional law: for $W_y>0$,
+$\Pr(Y_0=y,Y_\tau=y')=\sum_{x\in f^{-1}(y)}\mu(x)\,p_x(y')$.
+Part (i) is \Cref{lem:closure_cmi_identity}, and part (ii) follows from (i) and \Cref{lem:closure_best_macro_kernel}.
+For part (iii), every term of the sum in \Cref{lem:closure_cmi_identity} is finite and nonnegative, so $\mathrm{CD}_\tau=0$ if and only if $p_x=K^\star(f(x),\cdot)$ for every $x$ with $\mu(x)>0$, by Gibbs' inequality.
+If this holds, then all positive-mass microstates in one fiber share the law $K^\star(y,\cdot)$.
+Conversely, if all positive-mass microstates in the fiber of $y$ share one law, that law equals their weighted average $K^\star(y,\cdot)$.
 \end{proof}
 
-\begin{remark}[Scope of exact closure]
-If every macro fiber is a singleton, then $\Pi$ loses no information and the closure
-deficit vanishes trivially.
-More generally, if all packaged future laws $p_x^{(\tau)}$ agree inside each fiber
-$\Pi^{-1}(y)$, then the minimizing macro kernel reproduces those common laws and
-$\mathrm{CD}_\tau(\Pi)=0$.
-The theorem becomes informative exactly when a macro fiber contains distinct packaged
-future laws.
+\subsection{The current law matters}
+
+The deficit depends on the law of the present microstate, and the following example shows that the dependence is real.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  st/.style={circle,draw,thick,minimum size=7.5mm,inner sep=0pt,font=\small},
+  nul/.style={circle,draw,densely dashed,gray,text=gray,minimum size=7.5mm,inner sep=0pt,font=\small},
+  ed/.style={-{Stealth[length=2mm]},thick},
+  fib/.style={rounded corners=6pt,draw,dashed,gray!70!black},
+  lbl/.style={font=\footnotesize},
+  mass/.style={font=\footnotesize,blue!60!black}
+]
+\begin{scope}[xshift=0cm]
+\node[st] (s1) at (0,1.5) {$1$};
+\node[st] (s2) at (0,0) {$2$};
+\node[nul] (s3) at (3.0,0) {$3$};
+\draw[ed] (s1) to[loop above,looseness=6] (s1);
+\draw[ed] (s2) -- (s3);
+\draw[ed] (s3) to[loop above,looseness=6] (s3);
+\node[fib,fit=(s1)(s2),inner sep=7pt,label={[lbl]below:fiber $a$}] {};
+\node[fib,fit=(s3),inner sep=7pt,label={[lbl]below:fiber $b$}] {};
+\node[mass,left=13pt of s1] {$\tfrac12$};
+\node[mass,left=13pt of s2] {$\tfrac12$};
+\node[mass,right=13pt of s3] {$0$};
+\node[lbl] at (1.5,-1.45) {time $0$: \ $\mathrm{CD}_1(\mu_0;P,f)=\log 2$};
+\node[font=\small\bfseries] at (-1.6,2.3) {(a)};
+\end{scope}
+\begin{scope}[xshift=7.5cm]
+\node[st] (s1) at (0,1.5) {$1$};
+\node[nul] (s2) at (0,0) {$2$};
+\node[st] (s3) at (3.0,0) {$3$};
+\draw[ed] (s1) to[loop above,looseness=6] (s1);
+\draw[ed] (s2) -- (s3);
+\draw[ed] (s3) to[loop above,looseness=6] (s3);
+\node[fib,fit=(s1)(s2),inner sep=7pt,label={[lbl]below:fiber $a$}] {};
+\node[fib,fit=(s3),inner sep=7pt,label={[lbl]below:fiber $b$}] {};
+\node[mass,left=13pt of s1] {$\tfrac12$};
+\node[mass,left=13pt of s2] {$0$};
+\node[mass,right=13pt of s3] {$\tfrac12$};
+\node[lbl] at (1.5,-1.45) {time $1$: \ $\mathrm{CD}_1(\mu_1;P,f)=0$};
+\node[font=\small\bfseries] at (-1.6,2.3) {(b)};
+\end{scope}
+\end{tikzpicture}
+\caption{The closure deficit depends on the current law (\Cref{ex:closure_current_law}). Microstates $1$ and $2$ form macrostate $a$, and state $3$ forms macrostate $b$; current masses are shown in blue, and states of zero mass are dashed. (a) At time $0$ both microstates in fiber $a$ have mass $1/2$, but $1$ stays in $a$ while $2$ moves to $b$, so the macrostate does not determine the macroscopic future and $\mathrm{CD}_1=\log 2$. (b) One step later state $2$ has mass zero, every positive-mass fiber has a single macroscopic future, and $\mathrm{CD}_1=0$.}\label{fig:closure_current_law}
+\end{figure}
+
+\begin{example}[Positive deficit now, zero deficit one step later]\label{ex:closure_current_law}
+Let $X=\{1,2,3\}$ and $Y=\{a,b\}$, with $f(1)=f(2)=a$ and $f(3)=b$, and let $P$ be deterministic with $1\mapsto 1$, $2\mapsto 3$, $3\mapsto 3$.
+Take $\tau=1$, so $p_1=\delta_a$ and $p_2=p_3=\delta_b$ (\Cref{fig:closure_current_law}).
+\begin{itemize}
+  \item For $\mu_0=(\tfrac12,\tfrac12,0)$, the two states of fiber $a$ have positive mass and different futures, so $\mathrm{CD}_1(\mu_0)>0$. Indeed $K^\star(a,\cdot)=(\tfrac12,\tfrac12)$, $Y_0=a$ almost surely, and $Y_1$ is a fair coin determined by $X_0$, so $\mathrm{CD}_1(\mu_0)=\log 2$.
+  \item For $\mu_1=\mu_0P=(\tfrac12,0,\tfrac12)$, each fiber contains one state of positive mass, so $\mathrm{CD}_1(\mu_1)=0$.
+\end{itemize}
+The kernel, lens, and lag are the same in both cases; only the current law differs.
+\end{example}
+
+For a chain started from $\mu$, the deficit between times $t$ and $t+\tau$ is therefore $\mathrm{CD}_\tau(\mu P^t;P,f)$, and the theorem applies at time $t$ with the law $\mu P^t$.
+The objective must always be weighted by the law at the time from which the prediction is made: weighting the losses at time $t$ by the initial law $\mu$ instead of $\mu P^t$ gives a quantity that is not the conditional mutual information at time $t$.
+In the example, the packaged future laws do not depend on time, so the $\mu_0$-weighted loss has minimum $\log 2$ at every time, while the deficit at time $1$ is zero.
+If $\mu=\pi$ is stationary, then $\mu P^t=\pi$ for all $t$ and the deficit is the same at every time.
+
+\subsection{Scope}
+
+\begin{remark}[Relation to lumpability]
+The kernel $P$ is \emph{strongly lumpable} for $f$ if $P(x,f^{-1}(y'))=P(x',f^{-1}(y'))$ whenever $f(x)=f(x')$, for all states and not only those of positive mass \citep{KemenySnell1960,Buchholz1994}.
+Strong lumpability then also holds for $P^\tau$, so all packaged future laws agree within fibers and $\mathrm{CD}_\tau(\mu;P,f)=0$ for every $\mu$ and $\tau$.
+The converse fails: a zero deficit concerns one current law and one lag, and it constrains only the microstates of positive mass under that law.
 \end{remark}
 
-\begin{remark}[Attribution is separate]
-The theorem isolates a finite obstruction: distinct packaged future laws inside a single
-macro fiber force a positive closure deficit.
-Which primitive or modeling decision produces such a pair is a separate question and is
-independent of the variational identity proved here.
+\begin{remark}[What the theorem does not decide]
+The theorem certifies a positive deficit from a single pair of microstates of positive mass in one fiber whose macroscopic futures differ.
+It does not say which feature of the model produced that pair, nor whether a different lens, lag, or current law would remove it.
+A first-order Markov chain fitted to the observed process can be a useful summary, but its fitting error is not the closure deficit unless it is computed as above, with the current law as weights.
 \end{remark}
- \section{Objecthood under strict contraction}\label{sec:objecthood}
+ \section{Objects under contraction}\label{sec:objecthood}
 
-This section proves Theorem~\ref{thm:NG_OBJECT_CONTRACTIVE}.
-The theorem is formulated on a finite simplex equipped with total variation distance and a strict Dobrushin contraction bound.
-Within this admissible regime, the induced Markov operator has a unique fixed distribution, its iterates converge geometrically, and any two $\varepsilon$-approximate fixed points must lie within an explicit separation bound.
+This section proves \thmNGObjectContractive.
+Throughout, $S$ is a nonempty finite set, $P$ a Markov kernel on $S$, and $\lambda=\lambda(P)$ its Dobrushin coefficient.
+Dobrushin's coefficient and its use for the ergodicity of finite chains are classical \citep{Dobrushin1956,Seneta2006}.
 
-Let $Y$ be a finite set.
-For $\mu,\nu\in\Delta(Y)$, define the total variation distance by
-\[
-d_{\mathrm{TV}}(\mu,\nu) := \frac12\sum_{y\in Y}|\mu(y)-\nu(y)|.
-\]
-We also use the equivalent variational form
-\[
-d_{\mathrm{TV}}(\mu,\nu)=\sup_{A\subseteq Y}(\mu(A)-\nu(A)).
-\]
-Let $P:Y\to\Delta(Y)$ be a Markov kernel and let $T:\Delta(Y)\to\Delta(Y)$ be the induced affine map
-\[
-T(\mu):=\mu P.
-\]
-The Dobrushin coefficient of $P$ is
-\[
-\lambda(P) := \max_{y,y'\in Y} d_{\mathrm{TV}}\bigl(P(y,\cdot),P(y',\cdot)\bigr).
-\]
-This contraction coefficient and its standard consequences for finite chains are discussed in \citep{Dobrushin1956,Seneta2006}.
+\subsection{Contraction and the separation bound}
 
-\begin{lemma}[Dobrushin contraction in total variation]\label{lem:objecthood_dobrushin}
-For all $\mu,\nu\in\Delta(Y)$,
-\[
-d_{\mathrm{TV}}(\mu P,\nu P)\le \lambda(P)\,d_{\mathrm{TV}}(\mu,\nu).
-\]
+\begin{lemma}[Dobrushin contraction]\label{lem:objecthood_dobrushin}
+For all $\mu,\nu\in\Delta(S)$, $\dTV(\mu P,\nu P)\le\lambda(P)\,\dTV(\mu,\nu)$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+See \Cref{app:probkl}.
+For an event $A$, the proof compares each row's probability of $A$ with the smallest such probability among all rows; this makes every coefficient in the resulting sum lie between $0$ and $\lambda(P)$.
 \end{proof}
 
-\begin{lemma}[Strict contraction gives a unique fixed distribution]\label{lem:objecthood_unique_fixed}
-Assume $\lambda(P)<1$.
-Then there exists a unique distribution $\pi\in\Delta(Y)$ with $\pi P=\pi$.
-Moreover, for every $\mu\in\Delta(Y)$ and every integer $t\ge 0$,
+\begin{proof}[Proof of \Cref{thm:NG_OBJECT_CONTRACTIVE}]
+By the triangle inequality and \Cref{lem:objecthood_dobrushin},
 \[
-d_{\mathrm{TV}}(\mu P^t,\pi)\le \lambda(P)^t\,d_{\mathrm{TV}}(\mu,\pi).
+  \dTV(\nu,\nu')\le\dTV(\nu,\nu P)+\dTV(\nu P,\nu'P)+\dTV(\nu'P,\nu')\le 2\varepsilon+\lambda\,\dTV(\nu,\nu').
 \]
-\end{lemma}
+All quantities are finite, so $(1-\lambda)\,\dTV(\nu,\nu')\le 2\varepsilon$, and dividing by $1-\lambda>0$ gives the bound.
+If $\nu$ and $\nu'$ are both stationary, take $\varepsilon=0$: then $\dTV(\nu,\nu')=0$, so $\nu=\nu'$.
+\end{proof}
+
+The theorem bounds the distance between candidate objects but does not assert that any exists.
+Existence, together with convergence to the stationary law, follows from the contraction principle.
+
+\begin{proposition}[Existence and geometric convergence]\label{lem:objecthood_unique_fixed}
+If $\lambda<1$, then $P$ has a unique stationary law $\pi$, and for every $\mu\in\Delta(S)$ and $t\ge 0$,
+\[
+  \dTV(\mu P^t,\pi)\le\lambda^t\,\dTV(\mu,\pi).
+\]
+\end{proposition}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+See \Cref{app:probkl}. Existence of a stationary law holds for every kernel on a nonempty finite set; the proof in the appendix obtains it from the contraction instead, as the limit of the iterates $\mu P^t$.
 \end{proof}
 
-\begin{lemma}[Approximate fixed-point separation bound]\label{lem:objecthood_approximate_separation}
-Assume $\lambda(P)\le \lambda<1$.
-If $\mu,\nu\in\Delta(Y)$ satisfy
-\[
-d_{\mathrm{TV}}(\mu P,\mu)\le \varepsilon,
-\qquad
-d_{\mathrm{TV}}(\nu P,\nu)\le \varepsilon,
-\]
-then
-\[
-d_{\mathrm{TV}}(\mu,\nu)\le \frac{2\varepsilon}{1-\lambda}.
-\]
-\end{lemma}
+\begin{corollary}[All candidate objects lie near the stationary law]\label{cor:eps_ball}
+If $\lambda<1$ and $\nu$ is $\varepsilon$-stable, then $\dTV(\nu,\pi)\le\varepsilon/(1-\lambda)$.
+\end{corollary}
 
 \begin{proof}
-See Appendix~\ref{app:probkl}.
+$\dTV(\nu,\pi)\le\dTV(\nu,\nu P)+\dTV(\nu P,\pi P)\le\varepsilon+\lambda\,\dTV(\nu,\pi)$; rearrange.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_OBJECT_CONTRACTIVE}]
-The uniqueness and convergence claims follow from Lemma~\ref{lem:objecthood_unique_fixed} once $\lambda(P)<1$.
-For the approximate objecthood statement, suppose $\mu$ and $\nu$ are $\varepsilon$-stable packaged states in the admissible TV/Dobrushin regime.
-Lemma~\ref{lem:objecthood_approximate_separation} then gives the bound
-\[
-d_{\mathrm{TV}}(\mu,\nu)\le \frac{2\varepsilon}{1-\lambda(P)}.
-\]
-In particular, when $\varepsilon=0$ every fixed distribution coincides with the unique stationary distribution from Lemma~\ref{lem:objecthood_unique_fixed}.
-Thus the theorem rules out multiplicity of well-separated robust objects inside the stated contraction regime.
-\end{proof}
+\Cref{fig:simplex} shows these bounds for a kernel on three states.
 
-\begin{remark}[Regime and metric scope]
-This front is formulated in total variation distance with the Dobrushin coefficient as the contraction parameter.
-The theorem asserts an obstruction only in that regime.
-Other metrics, other contraction notions, or noncontractive operators lie outside the scope of this statement.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[lbl/.style={font=\footnotesize}]
+\begin{scope}
+\draw[thick] (0,0) -- (5,0) -- (2.5,4.330) -- cycle;
+\node[lbl,below left] at (0,0) {$\delta_1$};
+\node[lbl,below right] at (5,0) {$\delta_2$};
+\node[lbl,above] at (2.5,4.330) {$\delta_3$};
+\draw[blue!60!black,fill=blue!6] (2.350,0.646) -- (2.766,0.646) -- (2.975,1.007) -- (2.766,1.368) -- (2.350,1.368) -- (2.141,1.007) -- cycle;
+\fill[orange!55] (2.934,1.055) -- (2.925,1.072) -- (2.725,1.332) -- (2.703,1.359) -- (2.697,1.359) -- (2.331,1.310) -- (2.312,1.277) -- (2.188,0.974) -- (2.184,0.958) -- (2.200,0.931) -- (2.400,0.671) -- (2.416,0.655) -- (2.781,0.704) -- (2.791,0.709) -- (2.797,0.720) -- (2.922,1.023) -- cycle;
+\draw[gray!70!black,densely dotted,thick] (2.500,4.330) -- (2.250,2.165) -- (2.350,1.386);
+\foreach \p in {(2.500,4.330),(2.250,2.165)} \fill[gray!70!black] \p circle (1pt);
+\draw[gray,thin] (1.983,0.432) rectangle (3.133,1.582);
+\end{scope}
+\begin{scope}[xshift=9.0cm,yshift=2.2cm]
+\begin{scope}
+\clip (-2.530,-2.530) rectangle (2.530,2.530);
+\draw[blue!60!black,thick,fill=blue!6] (-0.917,-1.588) -- (0.917,-1.588) -- (1.833,0.000) -- (0.917,1.588) -- (-0.917,1.588) -- (-1.833,0.000) -- cycle;
+\fill[orange!55] (1.655,0.213) -- (1.614,0.285) -- (0.734,1.428) -- (0.638,1.547) -- (0.610,1.547) -- (-0.998,1.333) -- (-1.081,1.190) -- (-1.631,-0.144) -- (-1.645,-0.215) -- (-1.576,-0.335) -- (-0.696,-1.478) -- (-0.627,-1.549) -- (0.982,-1.335) -- (1.023,-1.311) -- (1.050,-1.263) -- (1.600,0.070) -- cycle;
+\draw[gray!70!black,densely dotted,thick,-{Stealth[length=1.8mm]}] (-1.356,5.095) -- (-0.916,1.666) -- (-0.465,0.504) -- (-0.206,0.136) -- (-0.084,0.030) -- (-0.032,0.003);
+\foreach \p/\t in {(-0.916,1.666)/2,(-0.465,0.504)/3,(-0.206,0.136)/4} {\fill[gray!70!black] \p circle (1.2pt); \node[lbl,gray!50!black,left] at \p {$t{=}\t$};}
+\fill (0,0) circle (1.8pt) node[lbl,below right] {$\pi$};
+\end{scope}
+\draw[gray,thin] (-2.530,-2.530) rectangle (2.530,2.530);
+\end{scope}
+\draw[gray,thin,densely dashed] (3.133,1.582) -- (6.470,4.730);
+\draw[gray,thin,densely dashed] (3.133,0.432) -- (6.470,-0.330);
+\node[lbl,align=left,anchor=north west] at (11.8,4.6) {$P=\begin{pmatrix}0.6&0.3&0.1\\0.2&0.6&0.2\\0.3&0.2&0.5\end{pmatrix}$\\[3pt]
+$\lambda(P)=0.4$, \ $\varepsilon=0.05$\\[3pt]
+\tikz\fill[orange!55] (0,0) rectangle (0.3,0.2); \ $\varepsilon$-stable laws\\[2pt]
+\tikz\draw[blue!60!black,thick,fill=blue!6] (0,0) rectangle (0.3,0.2); \ TV ball,\\ \phantom{\tikz\draw (0,0) rectangle (0.3,0.2);} \ radius $\tfrac{\varepsilon}{1-\lambda}\approx 0.083$\\[2pt]
+\tikz\draw[gray!70!black,densely dotted,thick] (0,0.1) -- (0.3,0.1); \ iterates $\delta_3P^t$};
+\end{tikzpicture}
+\caption{Contractive objecthood on three states. Left: the simplex $\Delta(\{1,2,3\})$; the boxed region is enlarged on the right. The set of $\varepsilon$-stable laws (orange, computed on a fine grid) lies inside the total variation ball of radius $\varepsilon/(1-\lambda)$ around the stationary law $\pi$ guaranteed by \Cref{cor:eps_ball}; in the plane of the simplex this ball is a hexagon. Any two orange laws are therefore within $2\varepsilon/(1-\lambda)\approx 0.17$ of each other, as \thmNGObjectContractive{} asserts. The dotted path shows the iterates $\delta_3P^t$ converging geometrically to $\pi$ (\Cref{lem:objecthood_unique_fixed}).}\label{fig:simplex}
+\end{figure}
+
+\subsection{Scope}
+
+\begin{remark}[Contraction is sufficient, not necessary]
+A unique stationary law does not require $\lambda<1$.
+The kernel that swaps two states has $\lambda=1$ and the unique stationary law $(\tfrac12,\tfrac12)$, although its iterates do not converge.
+\thmNGObjectContractive{} gives a quantitative bound only in the strictly contractive regime.
 \end{remark}
 
-\begin{remark}[Formalization status]
-For this front, the formalized component is the uniqueness consequence of strict contraction for fixed distributions.
-The total-variation/Dobrushin framework and the $\varepsilon$-stability separation bound are used here at the level of the paper proof and are not part of the formalized core.
+\begin{remark}[Stationary laws are not fixed states]
+For a deterministic map, the number of fixed states and the number of stationary laws are different counts.
+The map on $\{1,2,3\}$ with $1\mapsto 1$, $2\mapsto 3$, $3\mapsto 2$ has one fixed state but two extreme stationary laws, $\delta_1$ and $(0,\tfrac12,\tfrac12)$, and hence infinitely many stationary laws, their mixtures.
+Its Dobrushin coefficient is $1$, consistent with the theorem.
+An audit of objecthood must count stationary laws, not fixed states.
 \end{remark}
- \section{Bounded interfaces and no-ladder obstructions}\label{sec:bounded-interface}
 
-This section isolates two finite obstructions to indefinite refinement under audited closure.
-The first is a simple idempotence observation. The second is a counting argument: under a fixed
-deterministic interface, there are only finitely many definable predicates, hence no infinite strictly
-increasing ladder of distinct definable distinctions.
+\begin{remark}[Metric]
+The theorem uses total variation together with Dobrushin's coefficient.
+Contraction in another metric, or approximate stability measured differently, needs its own argument.
+Clustering heuristics that group laws by a threshold on some other distance are not covered.
+\end{remark}
+ \section{Ladders of levels}\label{sec:bounded-interface}
 
-\subsection{Idempotent saturation}
+A ladder is a sequence of levels, each adding a distinction that the previous ones lacked.
+This section proves the two theorems that bound ladders built from a fixed packaging map or a fixed interface.
+Both are elementary; their content lies in what they force an unbounded ladder to change.
 
-Let $\X$ be a finite set and let $e:\X\to\X$ be a deterministic packaging operator.
-For an integer $n\ge 1$, write $e^{\circ n}$ for the $n$-fold iterate
-$e^{\circ n} = \underbrace{e\circ\cdots\circ e}_{n\ \text{times}}$.
+\subsection{Idempotent packaging saturates}
 
 \begin{lemma}\label{lem:idempotent-iterates}
-If $e\circ e = e$, then $e^{\circ n}=e$ for all integers $n\ge 1$.
+If $e\circ e=e$, then $e^{\circ n}=e$ for all $n\ge 1$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:packdef}.
+By induction on $n$; see \Cref{app:packdef}.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_LADDER_IDEM}]
-Fix $n\ge 1$. By Lemma~\ref{lem:idempotent-iterates} we have $e^{\circ n}=e$, hence for every $x\in\X$,
-\[
-e^{\circ n}(x)=e(x).
-\]
-In particular, the packaged state stabilizes after one step, and any packaged signature depending only
-on $e^{\circ n}(x)$ stabilizes after one step as well.
+\begin{proof}[Proof of \Cref{thm:NG_LADDER_IDEM}]
+This is \Cref{lem:idempotent-iterates}.
+In particular, any quantity that depends on a state only through its packaged value $e^{\circ n}(s)$ takes the same value for all $n\ge 1$.
 \end{proof}
 
-\subsection{Definability count for a fixed interface}
-
-Let $f:\X\to\Y$ be a deterministic interface observation into a finite set $\Y$.
-Define the family of predicates definable from $f$ by
-\[
-\Def(f)\coloneqq \{g\circ f : \X\to\{0,1\} \mid g:\Y\to\{0,1\}\}.
-\]
-Only the restriction of $g$ to the image $\im(f)\subseteq \Y$ matters.
+\subsection{A fixed interface has finitely many definable predicates}
 
 \begin{lemma}\label{lem:definability-bijection}
-The map
-\[
-A\subseteq \im(f)\quad\longmapsto\quad \1_A\circ f
-\]
-is a bijection between $\mathcal P(\im(f))$ and $\Def(f)$. Consequently,
-\[
-|\Def(f)| = 2^{|\im(f)|}.
-\]
+Let $f:X\to Y$ be any map. The assignment $A\mapsto\1_A\circ f$ is a bijection from the subsets of $\im(f)$ onto $\Def(f)$. It is an order isomorphism: $\1_A\circ f\le\1_B\circ f$ pointwise if and only if $A\subseteq B$.
 \end{lemma}
 
 \begin{proof}
-See Appendix~\ref{app:packdef}.
+See \Cref{app:packdef}. Only the values of $g$ on the image of $f$ affect $g\circ f$, and every point of the image is hit by some $x$.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:NG_LADDER_BOUNDED_INTERFACE}]
-Assume for contradiction that there exists an infinite strictly increasing sequence
-$(h_n)_{n\ge 1}\subseteq \Def(f)$, meaning $h_n(x)\le h_{n+1}(x)$ for all $x\in\X$ and $h_n\neq h_{n+1}$
-for each $n$. By Lemma~\ref{lem:definability-bijection}, the set $\Def(f)$ has finite cardinality
-$2^{|\im(f)|}$, so it cannot contain infinitely many distinct elements. This contradiction shows that
-no such infinite strictly increasing sequence exists.
+\begin{proof}[Proof of \Cref{thm:NG_LADDER_BOUNDED_INTERFACE}]
+By \Cref{lem:definability-bijection}, $|\Def(f)|$ is the number of subsets of $\im(f)$, which is $2^{|\im(f)|}$.
+An infinite sequence of pairwise distinct elements would make the finite set $\Def(f)$ infinite, which is impossible.
+A strictly increasing chain consists of pairwise distinct elements, so none is infinite either.
 \end{proof}
 
-\begin{remark}[Extension escape]
-Theorem~\ref{thm:NG_LADDER_BOUNDED_INTERFACE} assumes a fixed interface map $f$.
-If one allows the interface to vary with the step index (for example by adding coordinates or refining
-the lens family so that $|\im(f_n)|$ grows), then the bound $|\Def(f_n)|=2^{|\im(f_n)|}$ can increase and longer
-refinement chains become possible. Such interface expansion is outside the scope of the bounded-interface front.
+\Cref{fig:definability} illustrates the bijection.
+The order isomorphism gives a sharper bound on chains.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  pt/.style={circle,fill=black,inner sep=1.3pt},
+  fib/.style={rounded corners=5pt,draw,thick},
+  ys/.style={circle,draw,thick,minimum size=7mm,inner sep=0pt,font=\small},
+  lens/.style={-{Stealth[length=2mm]},densely dashed,gray!70!black},
+  lbl/.style={font=\footnotesize}
+]
+\begin{scope}
+\node[fib,fill=green!12,minimum width=2.2cm,minimum height=1.25cm] (F1) at (0,0) {};
+\node[fib,fill=green!12,minimum width=1.4cm,minimum height=1.25cm] (F2) at (2.5,0) {};
+\node[fib,fill=white,minimum width=1.9cm,minimum height=1.25cm] (F3) at (4.75,0) {};
+\foreach \x/\y in {-0.7/0.2,-0.2/-0.25,0.35/0.25,0.75/-0.2} \node[pt] at (\x,\y) {};
+\foreach \x/\y in {2.25/0.2,2.75/-0.2} \node[pt] at (\x,\y) {};
+\foreach \x/\y in {4.2/-0.15,4.7/0.25,5.25/-0.2} \node[pt] at (\x,\y) {};
+\node[lbl,anchor=east] at (-1.3,0) {$X$};
+\node[ys,fill=green!12] (y1) at (0,-2.0) {$y_1$};
+\node[ys,fill=green!12] (y2) at (2.5,-2.0) {$y_2$};
+\node[ys] (y3) at (4.75,-2.0) {$y_3$};
+\node[ys] (y4) at (6.6,-2.0) {$y_4$};
+\node[lbl,anchor=east] at (-1.3,-2.0) {$Y$};
+\draw[lens] (F1) -- (y1);
+\draw[lens] (F2) -- (y2);
+\draw[lens] (F3) -- (y3);
+\node[lbl,align=center] at (6.6,-1.05) {not in $\im(f)$};
+\node[lbl] at (2.4,-2.85) {$A=\{y_1,y_2\}$ \ gives the predicate $\1_A\circ f$ (shaded fibers)};
+\end{scope}
+\begin{scope}[xshift=10.6cm,yshift=-1.0cm,lbl/.style={font=\scriptsize,fill=white,inner sep=1.5pt}]
+\node[lbl] (e) at (0,-1.7) {$\emptyset$};
+\node[lbl] (a1) at (-1.45,-0.55) {$\{y_1\}$};
+\node[lbl] (a2) at (0,-0.55) {$\{y_2\}$};
+\node[lbl] (a3) at (1.45,-0.55) {$\{y_3\}$};
+\node[lbl] (b12) at (-1.45,0.6) {$\{y_1,y_2\}$};
+\node[lbl] (b13) at (0,0.6) {$\{y_1,y_3\}$};
+\node[lbl] (b23) at (1.45,0.6) {$\{y_2,y_3\}$};
+\node[lbl] (t) at (0,1.75) {$\im(f)$};
+\begin{scope}[on background layer]
+\foreach \u/\v in {e/a1,e/a2,e/a3,a1/b12,a1/b13,a2/b12,a2/b23,a3/b13,a3/b23,b12/t,b13/t,b23/t} \draw[gray!60] (\u) -- (\v);
+\draw[very thick,green!50!black] (e) -- (a1) -- (b12) -- (t);
+\end{scope}
+\node[font=\footnotesize,align=center] at (0,-2.35) {$2^3=8$ definable predicates};
+\end{scope}
+\end{tikzpicture}
+\caption{Definable predicates of a lens with $|\im(f)|=3$. Left: a predicate definable through $f$ is constant on fibers, so it is determined by the set $A\subseteq\im(f)$ of images on which it equals one; values of $g$ off the image, such as at $y_4$, are irrelevant. Right: the $8$ definable predicates ordered pointwise form the lattice of subsets of $\im(f)$. A strictly increasing chain, such as the highlighted one, has at most $|\im(f)|+1=4$ elements.}\label{fig:definability}
+\end{figure}
+
+\begin{remark}[Length of chains]\label{rem:chain_length}
+If $|\im(f)|=m$, every strictly increasing chain of $f$-definable predicates has at most $m+1$ elements, and chains of exactly $m+1$ elements exist.
+By the order isomorphism, such a chain is a strictly increasing chain of subsets of an $m$-element set, and each step adds at least one element.
+Adding one element at a time from $\emptyset$ to $\im(f)$ gives a chain of length $m+1$.
+\end{remark}
+
+\begin{remark}[How ladders can continue]\label{rem:ladders_continue}
+Both theorems fix the rules of the game.
+An unbounded ladder requires changing them: a packaging map that is not idempotent, or a sequence of interfaces $f_1,f_2,\dots$ in place of a single fixed one.
+A changing interface need not have a growing image.
+On $X=\mathbb{N}$ the interfaces $f_n=\1_{\{0,\dots,n\}}$ all have a two-point image, yet the predicates $f_1<f_2<\cdots$, each definable through its own interface, form an infinite strictly increasing chain.
+Growth becomes necessary when the interfaces are successive refinements, $f_n=g_n\circ f_{n+1}$ for maps $g_n$, as when coordinates are added or the lens is refined.
+Then $\Def(f_n)\subseteq\Def(f_{n+1})$, and $g_n$ maps $\im(f_{n+1})$ onto $\im(f_n)$, so $|\im(f_n)|$ is nondecreasing.
+If these sizes stay bounded, they are eventually constant; from then on each $g_n$ restricts to a bijection $\im(f_{n+1})\to\im(f_n)$, every predicate definable through $f_{n+1}$ is already definable through $f_n$, and the union of all $\Def(f_n)$ is a finite set.
+Along a chain of refinements, an infinite sequence of new distinctions therefore requires $|\im(f_n)|\to\infty$.
+In the vocabulary of the introduction, such growth is a form of staging or refinement.
 \end{remark}
  \section{Discussion}\label{sec:discussion}
 
-The eight theorem fronts delimit a finite obstruction layer for audited emergence claims.
-In the finite deterministic setting treated here, directed arrow, force-like affinity, exact closure, objecthood under contraction, and bounded-interface laddering are all constrained by explicit theorem hypotheses and explicit escape routes.
-The results therefore organize the finite obstruction structure of the theory: each front identifies a precise hypothesis set and the corresponding obstruction it entails.
+\paragraph{What the theorems say together.}
+Each theorem fixes an exact audit and names a hypothesis under which the audit cannot show the emergent feature.
+Read the other way, each one names something that an emergence claim must supply.
+An arrow of time seen through a lens must already be present in the microscopic path law, either through a drive or through an initial law out of detailed balance; hidden protocol coordinates do not supply it.
+A force-like cycle affinity needs a cycle in the bidirected support and a log-ratio field that is not a gradient.
+A closed macroscopic law at a given lag exists, at zero loss, exactly when the positive-mass microstates of each macrostate agree about the macroscopic future, and the loss of the best macroscopic law otherwise has an exact information-theoretic value.
+Two distinct stationary laws require a dynamics that is not strictly contractive, and two $\varepsilon$-stable laws farther apart than $2\varepsilon/(1-\lambda(P))$ are impossible when $\lambda(P)<1$.
+An unbounded ladder of levels requires a packaging map that is not idempotent or a changing interface, and along a chain of successive refinements the interface must grow without bound.
+None of these requirements is surprising on its own.
+What the theorems add is precision about the object being audited, so that a claim of emergence can be checked against an exact quantity rather than an approximation of it.
 
-Supplementary material records provenance, computational audit artifacts, fragility diagnostics, and formalization status.
-The main paper reserves its appendices for finite probability calculations, graph exactness derivations, variational closure identities, and packaging/definability details.
+\paragraph{Honest observation.}
+The theorems apply to the observed process itself, with its full path law, and not to models fitted to it.
+This distinction does real work.
+A first-order Markov chain fitted to an observed process, a thresholded transition graph, or a clustering of approximately stationary laws can each differ from the audited object in the very feature being claimed: the fitted chain is Markov by construction, thresholding can create or destroy cycles, and clustering under another metric can split one object into several. The theorems are silent about all three.
+The protocol trap shows the typical pattern: observed data can pass through recognizable stages, while the observed path law is exactly symmetric under reversal.
+More generally, the program of the Six Birds series \citep{SB_FOUNDATIONS,SB_PROTOCOL_TRAP,SB_CAST} is to state which primitive, added to which finite model, produces which audited feature; results of the kind proved here mark the cases in which the answer is ``none''.
+
+\paragraph{Scope and limitations.}
+The setting is deliberately narrow.
+State spaces are finite (the graph and ladder theorems do not need this), time is discrete, and lenses are deterministic, although \Cref{rem:arrow_scope} extends the arrow bound to memoryless noisy observation.
+All quantities are exact functions of a known model; estimating them from finite samples raises statistical questions that are not addressed here.
+The results are qualitative or give simple explicit bounds.
+Natural next steps include quantitative versions, such as bounds on how much arrow a given lens must lose or on how the closure deficit changes under refinement of the lens, together with continuous-time and countable-state analogues.
+
+\paragraph{Formal verification.}
+Because the theorems are meant to serve as reference points for audits, their exact hypotheses matter as much as their conclusions.
+For this reason all eight are formalized in Lean~4.
+The formal statements are in places stronger than the versions given here (\Cref{app:formalization}); the supporting results listed there as outside the formal development are either proved in this paper or are standard facts with references.
  
 \appendix
-\section{Finite probability, KL, and contraction calculations}\label{app:probkl}
+\crefalias{section}{appendix}
+\section{Proofs for the arrow and contraction theorems}\label{app:probkl}
 
-This appendix records the finite calculations used by the arrow, protocol, and contraction fronts.
+\subsection{Deterministic data processing}
 
-\begin{proof}[Proof of Lemma~\ref{lem:deterministic_dpi_kl}]
-For $y\in\Omega'$, write $A_y := \{x\in\Omega : g(x)=y\}$ and abbreviate
-$p_x := P(x)$, $q_x := Q(x)$, $p_y := \sum_{x\in A_y} p_x$, $q_y := \sum_{x\in A_y} q_x$.
-By definition,
+\begin{proof}[Proof of \Cref{lem:deterministic_dpi_kl}]
+If $\DKL{p}{q}=\infty$ there is nothing to prove, so assume it is finite; then $q(x)>0$ whenever $p(x)>0$.
+For $y\in\Omega'$ let $A_y=g^{-1}(y)$, $A^+_y=\{x\in A_y:p(x)>0\}$, $p_y=p(A_y)=p(A_y^+)$ and $q_y=q(A_y)$.
+The log-sum inequality \citep{CoverThomas2006} states that for positive numbers $a_i$ and $b_i$,
 \[
-D_{\mathrm{KL}}(g_{\#}P \,\|\, g_{\#}Q)
-= \sum_{y\in\Omega' : p_y>0} p_y \log\!\Big(\frac{p_y}{q_y}\Big).
+  \Bigl(\sum_i a_i\Bigr)\log\frac{\sum_ia_i}{\sum_ib_i}\le\sum_i a_i\log\frac{a_i}{b_i}.
 \]
-For each $y$ with $p_y>0$, the log--sum inequality gives
+Fix $y$ with $p_y>0$.
+Applying the inequality to $a_x=p(x)$ and $b_x=q(x)$ for $x\in A^+_y$, and using $q_y\ge q(A^+_y)>0$ together with the fact that the logarithm is increasing,
 \[
-p_y \log\!\Big(\frac{p_y}{q_y}\Big)
-\le \sum_{x\in A_y : p_x>0} p_x \log\!\Big(\frac{p_x}{q_x}\Big),
+  p_y\log\frac{p_y}{q_y}\le p_y\log\frac{p_y}{q(A^+_y)}\le\sum_{x\in A^+_y}p(x)\log\frac{p(x)}{q(x)}.
 \]
-with the usual convention that the right-hand side is $+\infty$ if some $p_x>0$ but $q_x=0$.
-Summing over $y$ and using that the sets $A_y$ partition $\Omega$ yields
-\[
-D_{\mathrm{KL}}(g_{\#}P \,\|\, g_{\#}Q)
-\le \sum_{x\in\Omega : p_x>0} p_x \log\!\Big(\frac{p_x}{q_x}\Big)
-= D_{\mathrm{KL}}(P\,\|\,Q).
-\]
+In particular $q_y>0$ whenever $p_y>0$, so $\DKL{g_\#p}{g_\#q}$ is the finite sum of the left-hand sides over $y$ with $p_y>0$.
+The sets $A^+_y$ partition $\{x:p(x)>0\}$, so summing over $y$ gives $\DKL{g_{\#}p}{g_{\#}q}\le\DKL{p}{q}$.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:rev_pushforward_commute}]
-The maps $\mathrm{rev}$ and $f^{(T)}$ commute pointwise:
-$f^{(T)}\circ \mathrm{rev} = \mathrm{rev}\circ f^{(T)}$.
-Pushforward respects composition, hence
-\[
-f^{(T)}_{\#}(\mathrm{rev}_{\#}P) = (f^{(T)}\circ \mathrm{rev})_{\#}P
-= (\mathrm{rev}\circ f^{(T)})_{\#}P = \mathrm{rev}_{\#}(f^{(T)}_{\#}P).
-\]
-Substituting $P=P_T^{\mu,K}$ and using the definitions from Section~\ref{sec:setup} gives
-\[
-P_T^{\mu,K,f,\mathrm{rev}} = \mathrm{rev}_{\#} P_T^{\mu,K,f}
-= f^{(T)}_{\#}\big(P_T^{\mu,K,\mathrm{rev}}\big).
-\]
-\end{proof}
+\subsection{Detailed balance and reversed paths}
 
-\begin{proof}[Proof of Lemma~\ref{lem:detailed_balance_path}]
-Fix $T\ge 0$ and a path $\gamma=(x_0,\dots,x_T)\in X^{T+1}$.
-By definition,
-\[
-P_T^{\pi,K}(\gamma)=\pi(x_0)\prod_{t=0}^{T-1} K(x_t,x_{t+1}),
-\qquad
-P_T^{\pi,K,\mathrm{rev}}(\gamma)=P_T^{\pi,K}(x_T,\dots,x_0)
-=\pi(x_T)\prod_{t=0}^{T-1} K(x_{t+1},x_t).
-\]
-Using detailed balance repeatedly,
-\[
-\pi(x_0)K(x_0,x_1)=\pi(x_1)K(x_1,x_0),\;
-\pi(x_1)K(x_1,x_2)=\pi(x_2)K(x_2,x_1),\;\dots
-\]
-Multiplying these identities for $t=0,\dots,T-1$ yields
-\[
-\pi(x_0)\prod_{t=0}^{T-1}K(x_t,x_{t+1})
-=
-\pi(x_T)\prod_{t=0}^{T-1}K(x_{t+1},x_t),
-\]
-which is exactly $P_T^{\pi,K}(\gamma)=P_T^{\pi,K,\mathrm{rev}}(\gamma)$.
-Since this holds for every $\gamma$, the two path laws are equal.
-\end{proof}
-
-\begin{proof}[Proof of Lemma~\ref{lem:objecthood_dobrushin}]
-Fix $A\subseteq Y$ and write $\eta:=\mu-\nu$.
-Since $\eta(Y)=0$, if $y_0\in Y$ is arbitrary then
-\[
-(\mu P)(A)-(\nu P)(A)
-=\sum_{y\in Y}\eta(y)P(y,A)
-=\sum_{y\in Y}\eta(y)\bigl(P(y,A)-P(y_0,A)\bigr).
-\]
-Let $Y_+:=\{y\in Y:\eta(y)\ge 0\}$ and $Y_-:=Y\setminus Y_+$.
-Because $\sum_y \eta(y)=0$,
-\[
-\sum_{y\in Y_+}\eta(y)=\sum_{y\in Y_-}(-\eta(y))=d_{\mathrm{TV}}(\mu,\nu).
-\]
-Hence
-\begin{align*}
-(\mu P)(A)-(\nu P)(A)
-&\le \sum_{y\in Y_+}\eta(y)\sup_{u,v\in Y}\bigl(P(u,A)-P(v,A)\bigr)\\
-&\le d_{\mathrm{TV}}(\mu,\nu)\,\sup_{u,v\in Y}\bigl(P(u,A)-P(v,A)\bigr).
-\end{align*}
-For fixed $u,v$, the variational characterization of total variation gives
-\[
-P(u,A)-P(v,A)\le d_{\mathrm{TV}}\bigl(P(u,\cdot),P(v,\cdot)\bigr)\le \lambda(P).
-\]
-Therefore
-\[
-(\mu P)(A)-(\nu P)(A)\le \lambda(P)\,d_{\mathrm{TV}}(\mu,\nu)
-\qquad\text{for every }A\subseteq Y.
-\]
-Taking the supremum over $A$ yields the stated inequality.
-\end{proof}
-
-\begin{proof}[Proof of Lemma~\ref{lem:objecthood_unique_fixed}]
-Fix $\mu\in\Delta(Y)$ and set $\mu_t:=\mu P^t$.
-By Lemma~\ref{lem:objecthood_dobrushin},
-\[
-d_{\mathrm{TV}}(\mu_{t+1},\mu_t)
-=d_{\mathrm{TV}}(\mu_tP,\mu_{t-1}P)
-\le \lambda(P)\,d_{\mathrm{TV}}(\mu_t,\mu_{t-1})
-\]
-for every $t\ge 1$.
-Inducting on $t$ gives
-\[
-d_{\mathrm{TV}}(\mu_{t+1},\mu_t)\le \lambda(P)^t d_{\mathrm{TV}}(\mu P,\mu).
-\]
-Hence for integers $m>n$,
-\begin{align*}
-d_{\mathrm{TV}}(\mu_m,\mu_n)
-&\le \sum_{k=n}^{m-1} d_{\mathrm{TV}}(\mu_{k+1},\mu_k)\\
-&\le d_{\mathrm{TV}}(\mu P,\mu)\sum_{k=n}^{m-1}\lambda(P)^k.
-\end{align*}
-Since $0\le \lambda(P)<1$, the geometric tail tends to zero as $n\to\infty$.
-Thus $(\mu_t)_{t\ge 0}$ is Cauchy in total variation.
-Because $\Delta(Y)$ is a closed subset of the finite-dimensional space $\mathbb{R}^Y$, it is complete for this metric, so there exists $\pi\in\Delta(Y)$ with $\mu_t\to\pi$.
-The map $T(\rho)=\rho P$ is continuous, hence
-\[
-\pi P = \lim_{t\to\infty} \mu_{t+1} = \lim_{t\to\infty}\mu_t = \pi.
-\]
-So $\pi$ is a fixed distribution.
-
-If $\pi'$ is another fixed distribution, then Lemma~\ref{lem:objecthood_dobrushin} gives
-\[
-d_{\mathrm{TV}}(\pi,\pi') = d_{\mathrm{TV}}(\pi P,\pi'P)
-\le \lambda(P)\,d_{\mathrm{TV}}(\pi,\pi').
-\]
-Since $\lambda(P)<1$, this forces $d_{\mathrm{TV}}(\pi,\pi')=0$, hence $\pi=\pi'$.
-This proves uniqueness.
-
-Finally, applying Lemma~\ref{lem:objecthood_dobrushin} with $\nu=\pi$ and using $\pi P=\pi$ yields
-\[
-d_{\mathrm{TV}}(\mu P^t,\pi)=d_{\mathrm{TV}}(\mu P^t,\pi P^t)
-\le \lambda(P)^t d_{\mathrm{TV}}(\mu,\pi).
-\]
-\end{proof}
-
-\begin{proof}[Proof of Lemma~\ref{lem:objecthood_approximate_separation}]
-By the triangle inequality,
-\[
-d_{\mathrm{TV}}(\mu,\nu)
-\le d_{\mathrm{TV}}(\mu,\mu P)+d_{\mathrm{TV}}(\mu P,\nu P)+d_{\mathrm{TV}}(\nu P,\nu).
-\]
-Using the hypotheses and Lemma~\ref{lem:objecthood_dobrushin},
-\[
-d_{\mathrm{TV}}(\mu,\nu)
-\le \varepsilon + \lambda(P) d_{\mathrm{TV}}(\mu,\nu) + \varepsilon
-\le 2\varepsilon + \lambda d_{\mathrm{TV}}(\mu,\nu).
-\]
-Rearranging gives
-\[
-(1-\lambda)d_{\mathrm{TV}}(\mu,\nu)\le 2\varepsilon,
-\]
-and division by $1-\lambda>0$ proves the claim.
-\end{proof}
- \section{Graph exactness and closed-walk derivations}\label{app:graphexact}
-
-This appendix records the graph calculations used by the force and affinity fronts.
-
-\begin{proof}[Proof of Lemma~\ref{lem:tree-parent}]
-Because $G$ is a tree it is connected and acyclic, hence for any $v$ there is a unique
-simple path from $r$ to $v$. If $v\neq r$, the final edge of that path has the form
-$\{\mathrm{par}(v),v\}$ for a neighbor $\mathrm{par}(v)$ of $v$.
-Uniqueness of the path gives uniqueness of $\mathrm{par}(v)$.
-\end{proof}
-
-\begin{proposition}[Potential construction on a rooted tree]\label{prop:tree_potential_construction}
-Let $G=(V,E)$ be a finite tree with root $r$, and let $a:\vec E\to\mathbb{R}$ be antisymmetric.
-Define $\phi(r)=0$ and, for $v\neq r$,
-\[
-\phi(v)=\phi(\mathrm{par}(v))+a(\mathrm{par}(v),v).
-\]
-Then $a(u,v)=\phi(v)-\phi(u)$ for every oriented edge $(u,v)\in\vec E$.
-\end{proposition}
-
-\begin{proof}
-Fix an undirected edge $\{u,v\}\in E$. Since $G$ is a rooted tree, exactly one of $u,v$
-is the parent of the other. If $\mathrm{par}(v)=u$, then by definition,
-$\phi(v)-\phi(u)=a(u,v)$. If instead $\mathrm{par}(u)=v$, then
-$\phi(u)-\phi(v)=a(v,u)$, hence by antisymmetry
-$a(u,v)=-a(v,u)=\phi(v)-\phi(u)$.
-Thus the identity holds on every oriented edge.
-\end{proof}
-
-\begin{proof}[Expanded proof of Theorem~\ref{thm:NG_FORCE_FOREST}]
-For a tree, Proposition~\ref{prop:tree_potential_construction} gives the potential explicitly.
-For a forest, apply the same rooted construction on each connected component after choosing one root per component.
-The resulting componentwise potentials patch together to a global potential because no edge joins distinct components.
-\end{proof}
-
-\begin{proof}[Expanded proof of Theorem~\ref{thm:NG_FORCE_NULL}]
-Assume $a$ is exact: $a(u,v)=\phi(v)-\phi(u)$ for some $\phi:V\to\mathbb{R}$.
-Let $w=(v_0,v_1,\dots,v_k)$ be a closed walk with $v_k=v_0$.
+\begin{proof}[Proof of \Cref{lem:detailed_balance_path}]
+Write $w(x_0,\dots,x_T)=\pi(x_0)\prod_{t=0}^{T-1}P(x_t,x_{t+1})$ and $\bar w(x_0,\dots,x_T)=\pi(x_T)\prod_{t=0}^{T-1}P(x_{t+1},x_t)$.
+We show $w=\bar w$ on $X^{T+1}$ by induction on $T$.
+For $T=0$ both equal $\pi(x_0)$.
+Assume the identity for paths of length $T$, and let $(x_0,\dots,x_{T+1})$ be a path.
 Then
-\[
-S_a(w)=\sum_{i=0}^{k-1} a(v_i,v_{i+1})
-=\sum_{i=0}^{k-1}\bigl(\phi(v_{i+1})-\phi(v_i)\bigr)
-=\phi(v_k)-\phi(v_0)=0.
-\]
-The sum telescopes because each interior term appears once with positive sign and once with negative sign.
-\end{proof}
- \section{Variational closure identities}\label{app:varclosure}
-
-This appendix records the finite variational calculations used by the closure front.
-
-\begin{proof}[Proof of Lemma~\ref{lem:closure_kl_mixture}]
-Expand both Kullback--Leibler sums on the finite support:
 \begin{align*}
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,Q\right)
-&=
-\sum_{i\in I}\sum_{\omega\in\Omega}
-w_i P_i(\omega)\log\frac{P_i(\omega)}{Q(\omega)},\\
-\sum_{i\in I} w_i\,D_{\mathrm{KL}}\!\left(P_i\,\middle\|\,R\right)
-&=
-\sum_{i\in I}\sum_{\omega\in\Omega}
-w_i P_i(\omega)\log\frac{P_i(\omega)}{R(\omega)}.
+  w(x_0,\dots,x_{T+1})
+  &=w(x_0,\dots,x_T)\,P(x_T,x_{T+1})
+  =\bar w(x_0,\dots,x_T)\,P(x_T,x_{T+1})\\
+  &=\Bigl(\prod_{t=0}^{T-1}P(x_{t+1},x_t)\Bigr)\,\pi(x_T)P(x_T,x_{T+1})
+  =\Bigl(\prod_{t=0}^{T-1}P(x_{t+1},x_t)\Bigr)\,\pi(x_{T+1})P(x_{T+1},x_T)\\
+  &=\bar w(x_0,\dots,x_{T+1}),
 \end{align*}
-Subtracting the second identity from the first gives
-\[
-\sum_{i\in I}\sum_{\omega\in\Omega}
-w_i P_i(\omega)\log\frac{R(\omega)}{Q(\omega)}
-=
-\sum_{\omega\in\Omega}
-\left(\sum_{i\in I} w_i P_i(\omega)\right)\log\frac{R(\omega)}{Q(\omega)}.
-\]
-Since $\sum_i w_i P_i(\omega)=W R(\omega)$ by definition of $R$, this becomes
-\[
-W\sum_{\omega\in\Omega} R(\omega)\log\frac{R(\omega)}{Q(\omega)}
-=
-W\,D_{\mathrm{KL}}\!\left(R\,\middle\|\,Q\right).
-\]
-Rearranging yields the displayed identity.
-Because Kullback--Leibler divergence is nonnegative, the final term is minimized at $Q=R$, and then the minimum value is exactly $\sum_i w_i D_{\mathrm{KL}}(P_i\,\|\,R)$.
+where the second equality is the induction hypothesis and the fourth is detailed balance for the pair $(x_T,x_{T+1})$.
+Only multiplication is used, so states with $\pi(x)=0$ need no separate treatment.
+Finally, $\mathbf{P}^{\pi,P}_T(\gamma)=w(\gamma)$ and $(\rev_{\#}\mathbf{P}^{\pi,P}_T)(\gamma)=\mathbf{P}^{\pi,P}_T(\rev\gamma)=\bar w(\gamma)$, so the two path laws agree.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:closure_best_macro_kernel}]
-Decompose the objective by macro fibers:
+Multiplying the $T$ instances of detailed balance along a path instead gives
 \[
-\mathcal L_\tau(K)
-=
-\sum_{y\in Y}\sum_{x:\Pi(x)=y}
-\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,K(y,\cdot)\right).
+  \pi(x_0)\cdots\pi(x_{T-1})\prod_{t=0}^{T-1}P(x_t,x_{t+1})=\pi(x_1)\cdots\pi(x_T)\prod_{t=0}^{T-1}P(x_{t+1},x_t),
 \]
-Fix a macrostate $y$ with $\mu(\Pi^{-1}(y))>0$.
-Apply Lemma~\ref{lem:closure_kl_mixture} on the fiber $\Pi^{-1}(y)$ with indices $i=x$, weights $w_x=\mu(x)$, laws $P_x=p_x^{(\tau)}$, and comparison law $Q=K(y,\cdot)$.
-The corresponding mixture law is
+and cancelling the interior factors $\pi(x_1),\dots,\pi(x_{T-1})$ is valid only when they are nonzero.
+The induction avoids this restriction.
+
+\subsection{Total variation and Dobrushin contraction}
+
+For $\mu,\nu\in\Delta(S)$ write $\eta=\mu-\nu$ and $\eta^+=\max(\eta,0)$ pointwise.
+Since $\sum_s\eta(s)=0$, the positive and negative parts of $\eta$ have equal mass, so $\sum_s\eta^+(s)=\frac12\sum_s|\eta(s)|=\dTV(\mu,\nu)$.
+For every event $A$, $\mu(A)-\nu(A)=\sum_{s\in A}\eta(s)\le\sum_s\eta^+(s)$, with equality for $A=\{s:\eta(s)>0\}$.
+This proves the event form $\dTV(\mu,\nu)=\max_A(\mu(A)-\nu(A))$ used below.
+
+\begin{proof}[Proof of \Cref{lem:objecthood_dobrushin}]
+Fix an event $A\subseteq S$ and choose $s_0\in S$ that minimizes $P(s,A)$ over $s\in S$; this is possible because $S$ is finite and nonempty.
+Set $c_s=P(s,A)-P(s_0,A)$.
+By the choice of $s_0$ and the event form of total variation,
 \[
-R_y
-=
-\frac{1}{\sum_{x:\Pi(x)=y}\mu(x)}
-\sum_{x:\Pi(x)=y}\mu(x)\,p_x^{(\tau)}.
+  0\le c_s\le\dTV\bigl(P(s,\cdot),P(s_0,\cdot)\bigr)\le\lambda(P)\qquad\text{for every }s.
 \]
-By the finite law of total probability and the identity $Y_t=\Pi(X_t)$, this mixture is exactly $\mathrm{Law}(Y_{t+\tau}\mid Y_t=y)=\bar p_y^{(\tau)}$.
-Hence the minimizing row is $K(y,\cdot)=\bar p_y^{(\tau)}$, and the minimum contribution of the fiber is
+Since $\sum_s\eta(s)=0$, the constant $P(s_0,A)$ may be subtracted inside the sum:
 \[
-\sum_{x:\Pi(x)=y}
-\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_y^{(\tau)}\right).
+  (\mu P)(A)-(\nu P)(A)=\sum_s\eta(s)P(s,A)=\sum_s\eta(s)\,c_s.
 \]
-Summing over all $y$ gives the formula for $\min_K \mathcal L_\tau(K)$.
-If $\mu(\Pi^{-1}(y))=0$, the row $K(y,\cdot)$ contributes zero and may be chosen arbitrarily; setting it to $\bar p_y^{(\tau)}$ still gives a minimizer.
+Each term satisfies $\eta(s)c_s\le\lambda(P)\,\eta^+(s)$: if $\eta(s)\ge 0$ this follows from $c_s\le\lambda(P)$, and if $\eta(s)<0$ the term is at most $0$ because $c_s\ge 0$.
+Hence $(\mu P)(A)-(\nu P)(A)\le\lambda(P)\sum_s\eta^+(s)=\lambda(P)\,\dTV(\mu,\nu)$.
+Taking the maximum over $A$ gives the claim.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:closure_cmi_identity}]
-Expand conditional mutual information into a finite sum:
+The choice of $s_0$ matters.
+For an arbitrary reference row the coefficients $c_s$ can be negative, and then a term with $\eta(s)<0$ can be positive, so the terms with $\eta(s)<0$ cannot simply be dropped.
+
+\subsection{Existence and convergence under strict contraction}
+
+\begin{proof}[Proof of \Cref{lem:objecthood_unique_fixed}]
+Fix $\mu$ and put $\mu_t=\mu P^t$.
+By \Cref{lem:objecthood_dobrushin} and induction, $\dTV(\mu_{t+1},\mu_t)\le\lambda^t\dTV(\mu_1,\mu_0)$ for all $t\ge 0$.
+For $m>n$ the triangle inequality gives
 \[
-I(X_t;Y_{t+\tau}\mid Y_t)
-=
-\sum_{x\in X}\sum_{y\in Y}\sum_{y'\in Y}
-\Pr[X_t=x,Y_t=y,Y_{t+\tau}=y']
-\log\frac{\Pr[Y_{t+\tau}=y'\mid X_t=x,Y_t=y]}{\Pr[Y_{t+\tau}=y'\mid Y_t=y]}.
+  \dTV(\mu_m,\mu_n)\le\sum_{k=n}^{m-1}\lambda^k\dTV(\mu_1,\mu_0)\le\frac{\lambda^n}{1-\lambda}\,\dTV(\mu_1,\mu_0),
 \]
-Because $Y_t=\Pi(X_t)$ is a deterministic function of $X_t$, the joint probability vanishes unless $y=\Pi(x)$, and conditioning on $(X_t=x,Y_t=\Pi(x))$ is the same as conditioning on $X_t=x$ alone.
-Therefore the sum reduces to
-\[
-\sum_{x\in X}\sum_{y'\in Y}
-\Pr[X_t=x,Y_{t+\tau}=y']
-\log\frac{\Pr[Y_{t+\tau}=y'\mid X_t=x]}{\Pr[Y_{t+\tau}=y'\mid Y_t=\Pi(x)]}.
-\]
-Using stationarity, $\Pr[X_t=x]=\mu(x)$.
-Using the definitions of $p_x^{(\tau)}$ and $\bar p_{\Pi(x)}^{(\tau)}$, this becomes
-\[
-\sum_{x\in X}\mu(x)\sum_{y'\in Y}
-p_x^{(\tau)}(y')
-\log\frac{p_x^{(\tau)}(y')}{\bar p_{\Pi(x)}^{(\tau)}(y')}.
-\]
-This is exactly
-\[
-\sum_{x\in X}\mu(x)\,D_{\mathrm{KL}}\!\left(p_x^{(\tau)}\,\middle\|\,\bar p_{\Pi(x)}^{(\tau)}\right).
-\]
+so $(\mu_t)$ is a Cauchy sequence.
+The simplex $\Delta(S)$ is a closed subset of $\mathbb{R}^S$ and total variation is half the $\ell^1$ norm, so the sequence has a limit $\pi\in\Delta(S)$.
+The map $\nu\mapsto\nu P$ is linear, hence continuous, so $\pi P=\lim_t\mu_{t+1}=\pi$.
+Uniqueness is the case $\varepsilon=0$ of \thmNGObjectContractive.
+Finally, applying \Cref{lem:objecthood_dobrushin} $t$ times with $\nu=\pi=\pi P^t$ gives $\dTV(\mu P^t,\pi)\le\lambda^t\dTV(\mu,\pi)$.
 \end{proof}
- \section{Packaging iterations and definability counts}\label{app:packdef}
+ \section{Proofs for the graph theorems}\label{app:graphexact}
 
-This appendix records the finite calculations used by the ladder fronts.
+\begin{proof}[Completion of the proof of \Cref{thm:NG_FORCE_FOREST}]
+Let $\phi$ be defined as in \Cref{sec:graph-affinity}: for each vertex $v$, $\phi(v)$ is the sum of $a$ along the unique path $\gamma_v$ from the root of $v$'s component to $v$.
+Let $\{u,v\}$ be an edge; $u$ and $v$ lie in the same component, with root $r$.
+We show $a(u,v)=\phi(v)-\phi(u)$.
 
-\begin{proof}[Proof of Lemma~\ref{lem:idempotent-iterates}]
-Proceed by induction on $n$.
-For $n=1$ the claim is immediate.
-If $e^{\circ n}=e$, then
-\[
-e^{\circ(n+1)} = e^{\circ n}\circ e = e\circ e = e,
-\]
-using idempotence.
-This proves $e^{\circ n}=e$ for all integers $n\ge 1$.
+\emph{Case 1: $v$ does not lie on $\gamma_u$.}
+Then $\gamma_u$ followed by the step from $u$ to $v$ is a path from $r$ to $v$, so by uniqueness it is $\gamma_v$.
+Hence $\phi(v)=\phi(u)+a(u,v)$.
+
+\emph{Case 2: $v$ lies on $\gamma_u$.}
+The part of $\gamma_u$ from $r$ to $v$ is a path from $r$ to $v$, so it is $\gamma_v$.
+The remaining part of $\gamma_u$ is a path from $v$ to $u$.
+The single edge from $v$ to $u$ is also such a path, so by uniqueness of paths in a forest the remaining part is that edge, and $\gamma_u$ is $\gamma_v$ followed by the step from $v$ to $u$.
+Hence $\phi(u)=\phi(v)+a(v,u)=\phi(v)-a(u,v)$ by antisymmetry.
+
+In both cases $a(u,v)=\phi(v)-\phi(u)$.
+The argument uses only that each component has a root and that paths between two vertices of a forest are unique; it does not use finiteness of $V$.
+For an infinite forest, choosing one root in each component uses the axiom of choice.
 \end{proof}
 
-\begin{proof}[Proof of Lemma~\ref{lem:definability-bijection}]
-Surjectivity: Let $h\in\Def(f)$, so $h=g\circ f$ for some $g:\Y\to\{0,1\}$.
-Define
+\begin{proof}[Proof of the converse of \Cref{thm:NG_FORCE_NULL}]
+Let $G$ be connected, fix a root $r$, and suppose that the sum of the antisymmetric field $a$ vanishes around every closed walk.
+Define $\phi(v)$ as the sum of $a$ along any walk from $r$ to $v$.
+This does not depend on the walk: if $\gamma$ and $\gamma'$ are two such walks, then $\gamma$ followed by $\gamma'$ traversed backwards is a closed walk, whose sum is the sum along $\gamma$ minus the sum along $\gamma'$ by antisymmetry, and this vanishes by hypothesis.
+For an edge $\{u,v\}$, extending a walk from $r$ to $u$ by the step to $v$ gives $\phi(v)=\phi(u)+a(u,v)$.
+On a disconnected graph, apply the construction in each component.
+\end{proof}
+ \section{Proofs for the closure theorem}\label{app:varclosure}
+
+Throughout, $I^+=\{i:w_i>0\}$, sums written $\sum_i$ run over $I^+$, and divergences take values in $[0,\infty]$ as in \Cref{sec:setup}.
+
+\begin{proof}[Proof of \Cref{lem:closure_kl_mixture}]
+Every $p_i$ with $i\in I^+$ satisfies $w_ip_i\le W\bar p$, so $\bar p(\omega)>0$ whenever $p_i(\omega)>0$; hence each $\DKL{p_i}{\bar p}$ is finite, and so is the first sum on the right.
+Let $\Omega^+=\{\omega:\bar p(\omega)>0\}$.
+Note that $\bar p(\omega)>0$ exactly when $p_i(\omega)>0$ for some $i\in I^+$.
+
+\emph{Case 1: $q(\omega)=0$ for some $\omega\in\Omega^+$.}
+Then $\DKL{\bar p}{q}=\infty$, so the right-hand side is infinite.
+Choose $i\in I^+$ with $p_i(\omega)>0$; then $\DKL{p_i}{q}=\infty$ and the left-hand side is infinite as well.
+
+\emph{Case 2: $q>0$ on $\Omega^+$.}
+All divergences in the identity are then finite sums over $\Omega^+$, and since every term is finite, sums may be rearranged and subtracted freely.
+For $i\in I^+$ and $\omega$ with $p_i(\omega)>0$,
 \[
-A \coloneqq \{y\in \im(f): g(y)=1\}\subseteq \im(f).
+  \log\frac{p_i(\omega)}{q(\omega)}=\log\frac{p_i(\omega)}{\bar p(\omega)}+\log\frac{\bar p(\omega)}{q(\omega)}.
 \]
-For any $x\in\X$ we have $h(x)=g(f(x))=1$ iff $f(x)\in A$, hence $h=\1_A\circ f$.
+Multiplying by $w_ip_i(\omega)$, summing over $i\in I^+$ and over $\omega$ with $p_i(\omega)>0$, and using $\sum_iw_ip_i(\omega)=W\bar p(\omega)$ in the last term gives
+\[
+  \sum_i w_i\,\DKL{p_i}{q}=\sum_i w_i\,\DKL{p_i}{\bar p}+W\sum_{\omega\in\Omega^+}\bar p(\omega)\log\frac{\bar p(\omega)}{q(\omega)},
+\]
+and the last sum is $\DKL{\bar p}{q}$.
 
-Injectivity: If $A,B\subseteq \im(f)$ and $\1_A\circ f=\1_B\circ f$, then for any $y\in\im(f)$ pick $x\in\X$ with $f(x)=y$.
-Evaluating at $x$ gives $\1_A(y)=\1_B(y)$, so $A=B$.
-The cardinality statement follows because $|\mathcal P(\im(f))| = 2^{|\im(f)|}$.
+In both cases the identity holds.
+Since $W>0$ and $\DKL{\bar p}{q}\ge 0$ with equality only for $q=\bar p$, the left-hand side is minimized exactly at $q=\bar p$.
 \end{proof}
 
-\begin{proposition}[Finite strictly increasing chains are bounded]\label{prop:definable_chain_bound}
-If $S$ is a finite set, then every strictly increasing chain of distinct elements of $S$ has length at most $|S|$.
-\end{proposition}
-
-\begin{proof}
-A strictly increasing chain of distinct elements is in particular an injective sequence in $S$.
-A finite set of size $|S|$ admits no injective sequence longer than $|S|$.
+\begin{proof}[Proof of \Cref{lem:closure_best_macro_kernel}]
+Group the microstates of positive mass by fiber:
+\[
+  \mathcal{L}_\tau(K)=\sum_{y:\,W_y>0}\;\sum_{x\in f^{-1}(y),\,\mu(x)>0}\mu(x)\,\DKL{p_x}{K(y,\cdot)}.
+\]
+A fiber with $W_y=0$ contains no microstate of positive mass and does not appear, so its row $K(y,\cdot)$ is irrelevant.
+For a fiber with $W_y>0$, apply \Cref{lem:closure_kl_mixture} with weights $\mu(x)$ and laws $p_x$ for $x\in f^{-1}(y)$, whose mixture is $\bar p=K^\star(y,\cdot)$.
+It shows that the inner sum is minimized exactly by the row $K(y,\cdot)=K^\star(y,\cdot)$, with finite minimum $\sum_x\mu(x)\DKL{p_x}{K^\star(y,\cdot)}$.
+Each fiber's row can be chosen independently, so $K^\star$ minimizes $\mathcal{L}_\tau$ and $\mathcal{L}_\tau(K^\star)$ is finite.
 \end{proof}
 
-\begin{proof}[Expanded proof of Theorem~\ref{thm:NG_LADDER_BOUNDED_INTERFACE}]
-Lemma~\ref{lem:definability-bijection} identifies $\Def(f)$ with the finite power set $\mathcal P(\im(f))$.
-Therefore Proposition~\ref{prop:definable_chain_bound} applies with $S=\Def(f)$ and shows that no strictly increasing chain of distinct definable predicates can be infinite.
+\begin{proof}[Proof of \Cref{lem:closure_cmi_identity}]
+The joint law of $(X_0,Y_0,Y_\tau)$ gives the triple $(x,y,y')$ mass $\mu(x)p_x(y')$ if $y=f(x)$ and mass $0$ otherwise.
+The marginals that enter the conditional mutual information are therefore
+\[
+  \Pr(X_0=x,Y_0=f(x))=\mu(x),\qquad \Pr(Y_0=y)=W_y,\qquad \Pr(Y_0=y,Y_\tau=y')=W_y\,K^\star(y,y')
+\]
+for $W_y>0$.
+By definition, with terms of zero joint mass omitted,
+\[
+  I(X_0;Y_\tau\mid Y_0)=\sum_{x,y'}\mu(x)p_x(y')\,\log\frac{\Pr(X_0=x,Y_0=f(x),Y_\tau=y')\,\Pr(Y_0=f(x))}{\Pr(X_0=x,Y_0=f(x))\,\Pr(Y_0=f(x),Y_\tau=y')},
+\]
+the sum running over pairs with $\mu(x)p_x(y')>0$.
+For such a pair, $W_{f(x)}\ge\mu(x)>0$ and $W_{f(x)}K^\star(f(x),y')\ge\mu(x)p_x(y')>0$, so all four probabilities are positive and the ratio equals
+\[
+  \frac{\mu(x)p_x(y')\,W_{f(x)}}{\mu(x)\,W_{f(x)}K^\star(f(x),y')}=\frac{p_x(y')}{K^\star(f(x),y')}.
+\]
+Summing first over $y'$ for each $x$ with $\mu(x)>0$ gives $\sum_{x:\,\mu(x)>0}\mu(x)\DKL{p_x}{K^\star(f(x),\cdot)}$, which is $\mathcal{L}_\tau(K^\star)$ by definition.
 \end{proof}
+ \section{Proofs for the ladder theorems}\label{app:packdef}
+
+\begin{proof}[Proof of \Cref{lem:idempotent-iterates}]
+For $n=1$ there is nothing to prove.
+If $e^{\circ n}=e$, then $e^{\circ(n+1)}=e^{\circ n}\circ e=e\circ e=e$.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{lem:definability-bijection}]
+\emph{Well defined and onto.}
+For $A\subseteq\im(f)$, the predicate $\1_A\circ f$ is $f$-definable, with $g=\1_A$.
+Conversely, let $h=g\circ f$ be $f$-definable and put $A=\{y\in\im(f):g(y)=1\}$.
+For every $x$, $f(x)\in\im(f)$, so $h(x)=1$ if and only if $f(x)\in A$; thus $h=\1_A\circ f$.
+
+\emph{Order isomorphism.}
+If $A\subseteq B$ then $\1_A\le\1_B$, hence $\1_A\circ f\le\1_B\circ f$.
+Conversely, suppose $\1_A\circ f\le\1_B\circ f$ and let $y\in A$.
+Since $y\in\im(f)$ there is $x$ with $f(x)=y$, and $1=\1_A(f(x))\le\1_B(f(x))$, so $y\in B$.
+Thus the map reflects the order, and in particular it is injective: $\1_A\circ f=\1_B\circ f$ implies $A\subseteq B$ and $B\subseteq A$.
+\end{proof}
+ \section{Formal verification}\label{app:formalization}
+
+All eight theorems are formalized in Lean~4 (toolchain \texttt{v4.28.0}) on top of Mathlib (pinned to the matching release), in the Lean library of the accompanying repository.
+\Cref{tab:lean} lists, for each theorem, the declarations that prove it.
+Declaration names are relative to the library's top-level namespace, and \texttt{RP} abbreviates \texttt{RealProbability}.
+The library builds from a clean checkout; the listed declarations are checked against explicit target statements in a separate file; and Lean's axiom report shows that they depend only on the standard axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+The library contains no unproved goals, no added axioms, and no calls to native code evaluation in proofs.
+
+\paragraph{Modelling choices.}
+A finite state space is represented as \texttt{Fin n}; since every finite set is in bijection with some \texttt{Fin n}, this loses no generality.
+A probability law is a real-valued function that is nonnegative and sums to one.
+Kullback--Leibler divergence takes values in the extended reals: it is $+\infty$ exactly when the support condition fails, and otherwise the finite sum with terms of zero mass omitted.
+Path laws are built from the transition product, so reversal symmetry under detailed balance is proved rather than assumed.
+In the closure theorem the conditional mutual information is defined directly from the joint masses $\mu(x)p_x(y')$, $\mu(x)$, $W_y$, and $\Pr(Y_0=y,Y_\tau=y')$, independently of the variational objective, and the candidate macro kernels range over all Markov kernels.
+Graphs are Mathlib's simple graphs, edge fields are real-valued, and closed-walk sums are computed along Mathlib walks.
+
+\begin{table}[ht]
+\centering
+\footnotesize
+\caption{Formal counterparts of the eight theorems.}\label{tab:lean}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Theorem & Declarations & Scope of the formal statement \\
+\midrule
+\ref{thm:NG_ARROW_DPI} Arrow monotonicity & \leanname{RP.markovArrowDPI}, \leanname{RP.KL_pushforward_le} & Any initial law, kernel, lens and horizon; inequality in the extended reals. \\
+\ref{thm:NG_PROTOCOL_TRAP} Protocol trap & \leanname{RP.protocolTrap}, \leanname{RP.detailedBalance_pathLaw_reversible} & Detailed balance on all pairs is the only hypothesis; states of zero mass allowed. \\
+\ref{thm:NG_FORCE_FOREST} Forest exactness & \leanname{RealGraph.forest_exact} & Any acyclic simple graph, finite or not; antisymmetry and the conclusion only on edges. \\
+\ref{thm:NG_FORCE_NULL} Null cycle affinity & \leanname{RealGraph.exact_closedWalk_zero} & Any simple graph; gradient condition only on edges; every closed walk. \\
+\ref{thm:NG_MACRO_CLOSURE_DEFICIT} Closure deficit & \leanname{RP.closureTheorem}, \leanname{RP.closure_variational_minimum}, \leanname{RP.conditionalInfo_positive_of_distinct_fiber_rows}; zero criterion via \leanname{RP.conditionalInfo_eq_bestObjective} and \leanname{RP.finiteObjective_eq_zero_iff} & Any current law and any lag $\tau\ge 0$. Parts (i) and (ii), with all Markov kernels as candidates, including those of infinite loss, and the positivity statement of (iii). The two declarations for the zero criterion combine to give $\mathrm{CD}_\tau=0$ if and only if $p_x=K^\star(f(x),\cdot)$ for every $x$ of positive mass; the step to the pairwise form stated in (iii) is not mechanized. \\
+\ref{thm:NG_OBJECT_CONTRACTIVE} Contractive objecthood & \leanname{RP.dobrushin_contraction}, \leanname{RP.contractive_separation}, \leanname{RP.contractive_stationary_unique} & Nonempty finite state space; $\lambda(P)$ is the largest total variation distance between rows. \\
+\ref{thm:NG_LADDER_IDEM} Idempotent saturation & \leanname{iterate_stabilizes_ext} & Any type. \\
+\ref{thm:NG_LADDER_BOUNDED_INTERFACE} Bounded interface & \leanname{FiniteImage.definable_cardinality}, \leanname{FiniteImage.no_infinite_distinct_sequence} & Arbitrary domain and codomain with finite image; no injective sequence $\mathbb{N}\to\Def(f)$. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Results outside the formal development.}
+The following supporting results are proved, or cited as standard, in the text but are not part of the Lean library:
+the existence of a stationary law and the geometric convergence in \Cref{lem:objecthood_unique_fixed}, and \Cref{cor:eps_ball}, which uses that existence (uniqueness is formalized);
+\Cref{cor:forest_reversible};
+the converse of \thmNGForceNull{} (\Cref{app:graphexact});
+in \thmNGMacroClosureDeficit(iii), the averaging step showing that positive-mass rows which agree pairwise within each fiber equal their fiber average, which yields $\mathrm{CD}_\tau=0$ (the direction from pairwise disagreement to a positive deficit is formalized);
+the order-isomorphism part of \Cref{lem:definability-bijection} and the chain-length bound of \Cref{rem:chain_length};
+the extension of the arrow bound to memoryless noisy observation in \Cref{rem:arrow_scope};
+and the relation between the arrow and entropy production in \Cref{rem:entropy_production}.
+Of the examples, the positive closure deficit at time $0$ in \Cref{ex:closure_current_law} is checked formally.
+ \section{Version history}\label{app:versions}
+
+\paragraph{Version 2 (October 3, 2026).}
+\begin{itemize}[leftmargin=*]
+  \item \emph{Closure theorem.} In version~1 the setup and the proof section assumed a stationary chain, under which the result is correct, but the theorem statement omitted that assumption: it weighted the closure loss by an arbitrary initial law while conditioning at a later time $t$, which fails in general (\Cref{ex:closure_current_law}). Version~2 states \thmNGMacroClosureDeficit{} for the current law at time $0$, which reconciles statement and proof and removes the need for stationarity. Zero-mass microstates and fibers of zero mass are now treated explicitly, the zero criterion is stated for microstates of positive mass, and the proof of the mixture decomposition separates the case of infinite divergence.
+  \item \emph{Protocol trap.} Detailed balance of the initial law is the only hypothesis; stationarity follows from it. The proof that detailed balance makes path laws reversal invariant is now an induction that never divides, so it covers laws with zeros; the version~1 argument cancelled factors of $\pi$ that can vanish.
+  \item \emph{Dobrushin contraction.} The proof of \Cref{lem:objecthood_dobrushin} now uses the row that minimizes the probability of the event, which makes every coefficient nonnegative; the version~1 argument used an arbitrary reference row and dropped terms whose sign it did not control. Dobrushin's coefficient is defined as the largest total variation distance between rows throughout, and the state space is assumed nonempty.
+  \item \emph{Scope of the other theorems.} The graph theorems are stated for edge fields defined on edges only and for graphs that need not be finite; the bounded-interface theorem is stated for arbitrary sets with finite image and excludes every infinite sequence of distinct definable predicates. The arrow theorem allows infinite divergences and $T\ge 0$, and \Cref{rem:arrow_scope} records that memoryless noisy observation obeys the same bound.
+  \item \emph{Formalization.} All eight theorems are now formalized directly in Lean, on real-valued probability laws with extended-real divergences (\Cref{app:formalization}). In version~1 the formal support for the objecthood theorem covered only an auxiliary uniqueness statement, and the formal support for several other theorems rested on simplified representations or took key analytic steps as hypotheses.
+  \item \emph{Exposition.} The text has been rewritten throughout, with a new abstract, a summary table, five figures, \Cref{cor:forest_reversible,cor:eps_ball}, and further examples. The title is unchanged, and each of the eight theorems keeps its conclusion.
+\end{itemize}
+
+\paragraph{Version 1 (March 23, 2026).}
+First public version.
  
 \bibliographystyle{plainnat}
 \bibliography{refs}

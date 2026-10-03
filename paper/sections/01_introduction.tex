@@ -1,51 +1,96 @@
 \section{Introduction}\label{sec:introduction}
 
-Many ``emergent'' claims in finite-state modeling take the form:
-after coarse observation, one can attribute a directed arrow of time, a force-like drive, a stable macro-law, or an agent-like persistence to a system that was specified only microscopically.
-This paper isolates a family of finite \emph{no-go} statements showing that several such attributions are impossible unless specific structural primitives are present.
-The point is not metaphysical; it is bookkeeping.
-We work entirely with finite objects (finite sets, kernels, deterministic maps) and with audits that can be evaluated exactly.
+Many claims about emergence share one pattern.
+A system is specified at a fine, microscopic level.
+It is then viewed through a coarse description, and the coarse description seems to show something the microscopic specification never mentioned: a direction of time, a force that drives currents around loops, a macroscopic law that runs on its own, a persistent object, or a hierarchy of levels that keeps producing new distinctions.
+Whether such a claim is true depends on details that informal arguments tend to blur.
+Which coarse description is meant?
+Which quantity is computed from it?
+Is that quantity computed from the model itself, or from a convenient approximation fitted to it?
 
-\paragraph{Six primitives (grammar, not section structure).}
-We use the following six primitives as a vocabulary for what may be added to a finite audited package.
-They are recorded per witness and used only to state contrasts; they are not treated as mutually exclusive or exhaustive.
+This paper answers these questions in the simplest setting where every answer can be checked exactly.
+The microscopic system is a finite Markov chain, the coarse description is a deterministic map from microstates to macrostates (a \emph{lens}), and every quantity is an exact finite expression in the transition probabilities, the initial law, and the lens.
+We call such quantities \emph{audits}.
+Within this setting we prove eight theorems, each of which rules out one way of making something appear that is not already present.
+The theorems are elementary, but the hypotheses are exact, and the hypotheses are what matter: each theorem says what an emergence claim must add before it can succeed.
+
+\paragraph{Exact observation, not fitted proxies.}
+Throughout, a coarse quantity is computed from the \emph{honest} observed process $Y_t=f(X_t)$, whose path law is the pushforward of the microscopic path law along the lens.
+A common shortcut replaces the observed process by a first-order Markov chain fitted to it on the macrostates.
+The fitted chain is a different object.
+It can be a useful diagnostic, but none of the theorems below is about it, and conclusions drawn from it are not covered by them.
+
+\paragraph{The eight results.}
+\Cref{tab:overview} summarizes the theorems; precise statements are collected in \Cref{sec:main-results}.
+They fall into five groups.
 \begin{enumerate}
-  \item \emph{Rewrite:} state updates that change which microstate is represented (e.g.\ deterministic rewrites or state relabelings that alter future conditionals).
-  \item \emph{Gating:} deletion or suppression of transitions (support-level constraints).
-  \item \emph{Holonomy / protocol structure:} hidden cyclic or protocol coordinates whose evolution can be invisible to the observation.
-  \item \emph{Staging / refinement:} state-splitting or refinement that introduces additional internal degrees of freedom.
-  \item \emph{Packaging:} deterministic endomaps or simplex operators that ``compress'' state or distributions, typically studied via idempotence and contraction.
-  \item \emph{Drive:} explicit breaking of detailed balance / nonreversibility, producing nonzero affinities.
+  \item \emph{Arrow of time} (\Cref{sec:arrow-protocol}).
+  The arrow of a process is the Kullback--Leibler divergence between its path law and the law of the time-reversed paths, a path-space measure of irreversibility; for a stationary chain it is the entropy production over the observation window \citep{MaesNetocny2003,Seifert2012}.
+  Observation through a lens can only decrease it (\thmNGArrowDPI).
+  If the chain starts in a law satisfying detailed balance, the microscopic arrow is zero, so every observed arrow is zero as well, however much protocol-like structure hidden coordinates impose on the observed process (\thmNGProtocolTrap).
+  \item \emph{Forces and cycles} (\Cref{sec:graph-affinity}).
+  On a graph without cycles, every antisymmetric edge field is the gradient of a potential (\thmNGForceForest), and gradient fields sum to zero around every closed walk (\thmNGForceNull).
+  Applied to the log-ratios $\log\bigl(P(x,x')/P(x',x)\bigr)$ of a Markov kernel, this says that a nonzero cycle affinity \citep{Schnakenberg1976} requires a cycle in the support and a log-ratio field that is not a gradient.
+  \item \emph{Closure of macroscopic laws} (\Cref{sec:closure}).
+  For a given current law, lens, and lag, the best macroscopic kernel is the conditional law of the future macrostate given the present macrostate, and the loss it cannot avoid is a conditional mutual information, the closure deficit (\thmNGMacroClosureDeficit).
+  The deficit is strictly positive as soon as two microstates of positive mass in the same macrostate have different macroscopic futures.
+  \item \emph{Objects under contraction} (\Cref{sec:objecthood}).
+  If the dynamics is a strict contraction in total variation, any two approximately stationary laws are close, with an explicit bound, and there is at most one stationary law (\thmNGObjectContractive).
+  A contractive dynamics therefore cannot carry two robust objects separated by more than that bound.
+  \item \emph{Ladders of levels} (\Cref{sec:bounded-interface}).
+  Applying an idempotent packaging map more than once gains nothing (\thmNGLadderIdem), and a fixed interface with finite image supports exactly $2^{|\im(f)|}$ definable predicates, so it cannot support an unending sequence of new distinctions (\thmNGLadderBoundedInterface).
 \end{enumerate}
 
-\paragraph{Honest vs.\ proxy macro-quantities.}
-Coarse quantities are defined by deterministic pushforward of the micro path law along an observation map.
-In particular, for a lens $f:X\to Y$ we define the observed process $Y_t=f(X_t)$ and the observed path law as the pushforward of the micro path law.
-When a first-order macro Markov chain on $Y$ is introduced, it is used as an auxiliary approximation rather than as the theorem object.
+\begin{table}[t]
+\centering
+\small
+\caption{The eight theorems at a glance. The last column names an emergent feature that the theorem constrains and a condition the feature requires. In the null-affinity and closure rows the condition is also sufficient; in the other rows it is necessary but not sufficient.}\label{tab:overview}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.27\textwidth}@{}}
+\toprule
+Theorem & Conclusion & Feature and what it requires \\
+\midrule
+\ref{thm:NG_ARROW_DPI} Arrow monotonicity & Observed arrow $\le$ microscopic arrow, for every lens, initial law and horizon. & A positive observed arrow requires a positive microscopic arrow. \\
+\ref{thm:NG_PROTOCOL_TRAP} Protocol trap & A chain started in a detailed-balance law has zero observed arrow under every lens. & A positive observed arrow requires an initial law not in detailed balance with the kernel. \\
+\ref{thm:NG_FORCE_FOREST} Forest exactness & On a forest, every antisymmetric edge field is a potential gradient. & A nonzero cycle affinity requires a cycle in the support graph. \\
+\ref{thm:NG_FORCE_NULL} Null cycle affinity & A gradient field sums to zero around every closed walk. & A nonzero cycle affinity occurs exactly when the log-ratio field is not a gradient. \\
+\ref{thm:NG_MACRO_CLOSURE_DEFICIT} Closure deficit & Best macro kernel is the conditional macro law; minimal loss equals $I(X_0;Y_\tau\mid Y_0)$. & A positive deficit occurs exactly when positive-mass microstates in one macrostate have different macro futures. \\
+\ref{thm:NG_OBJECT_CONTRACTIVE} Contractive objecthood & Two $\varepsilon$-stable laws are within $2\varepsilon/(1-\lambda)$; at most one stationary law. & Two distinct stationary laws require $\lambda(P)=1$. \\
+\ref{thm:NG_LADDER_IDEM} Idempotent saturation & $e\circ e=e$ implies $e^{\circ n}=e$ for all $n\ge 1$. & An unending ladder of iterates requires a packaging map that is not idempotent. \\
+\ref{thm:NG_LADDER_BOUNDED_INTERFACE} Bounded interface & Exactly $2^{|\im(f)|}$ definable predicates; no infinite sequence of distinct ones. & An unending sequence of new distinctions requires leaving a single fixed interface of finite image. \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\paragraph{Main results (eight fronts).}
-All results are stated for finite systems and deterministic lenses.
-The theorem statements are collected in Section~\ref{sec:main-results}, and the later theorem-front sections refer back to those labels.
-In one line each, the fronts are:
-\begin{itemize}
-  \item \emph{Arrow/DPI:} deterministic observation cannot increase forward--reverse path-space KL; equality holds for identity observation. (\thmNGArrowDPI)
-  \item \emph{Protocol trap:} holonomy can produce apparent protocol structure without honest entropy production, under a stationary initialization scope. (\thmNGProtocolTrap)
-  \item \emph{Force implies cycles:} nontrivial force-like structure requires non-forest support (positive cycle rank). (\thmNGForceForest)
-  \item \emph{Null force under exactness:} if the log-ratio 1-form is exact (potential), cycle affinities vanish. (\thmNGForceNull)
-  \item \emph{Closure deficit:} coarse closure deficit is a conditional-information obstruction characterized by a finite variational best macro kernel. (\thmNGMacroClosureDeficit)
-  \item \emph{Objecthood (bounded):} strict contraction implies at most one fixed distribution; the theorem front addresses uniqueness and separation in the contractive total-variation regime. (\thmNGObjectContractive)
-  \item \emph{Idempotence no-ladder:} idempotent packaging stabilizes after one step (no iterate ladder). (\thmNGLadderIdem)
-  \item \emph{Bounded-interface no-ladder:} with a fixed finite interface, definability is bounded by $2^{|\mathrm{im}(f)|}$ and no unbounded predicate ladder can arise without leaving the interface scope. (\thmNGLadderBoundedInterface)
-\end{itemize}
+\paragraph{A vocabulary of primitives.}
+The theorems belong to the Six Birds program \citep{SB_FOUNDATIONS}, which describes how new levels of description arise in terms of six primitive operations that can be added to a finite model:
+\emph{rewrite} (updates that change which microstate is represented),
+\emph{gating} (deleting or suppressing transitions),
+\emph{holonomy or protocol} (hidden cyclic or scheduling coordinates that the observation may not see),
+\emph{staging or refinement} (splitting states to add internal degrees of freedom),
+\emph{packaging} (maps that compress states or distributions, such as idempotent endomaps and contractive kernels),
+and \emph{drive} (explicit breaking of detailed balance).
+The primitives are used here only as a vocabulary for contrasts; they are neither mutually exclusive nor exhaustive.
+In this vocabulary, several theorems say that one primitive cannot stand in for another.
+Hidden protocol coordinates do not produce an arrow of time without a drive or a nonequilibrium start (\thmNGProtocolTrap).
+A cycle affinity needs both cycles in the support and a drive that makes the log-ratio field non-exact (\thmNGForceForest, \thmNGForceNull).
+Packaging alone does not generate an unbounded hierarchy: idempotent packaging saturates at once, and a fixed interface saturates after finitely many distinctions (\thmNGLadderIdem, \thmNGLadderBoundedInterface).
 
-\paragraph{Relation to prior Six Birds papers.}
-The present paper is a consolidation into a single no-go package with a uniform finite semantics and an auditable witness suite.
-The historical Six Birds line developed semantics for packaging, coarse-graining, directionality, protocol, closure, objecthood, and observable taxonomy; here we restrict to the finite setting and package the obstruction layer.
-The cited papers are used only as background and historical context; see \citep{SB_FOUNDATIONS,SB_LAY,SB_PROTOCOL_TRAP,SB_CAST,SB_THROW,SB_CLASSIFY}.
+\paragraph{Formal verification.}
+All eight theorems are formalized in Lean~4 with Mathlib.
+The formal statements use real-valued probability laws, extended-real Kullback--Leibler divergence (so infinite divergences are covered rather than excluded), genuine Markov path laws, and Mathlib's simple graphs.
+The proofs are kernel-checked and depend only on Lean's standard axioms.
+\Cref{app:formalization} matches each theorem with its formal counterpart and records where a formal statement is more general than the version in the text, or where a supporting argument in the text is not part of the formal development.
 
-\paragraph{Paper organization.}
-Section~\ref{sec:setup} fixes notation and defines the audits.
-Section~\ref{sec:main-results} collects the formal theorem statements in one place.
-Sections~\ref{sec:arrow-protocol}--\ref{sec:bounded-interface} develop the eight fronts in order: arrow/protocol, graph/affinity, closure, objecthood, and bounded-interface laddering.
-The appendices record routine finite calculations and derivations that support the main proofs.
-Supplementary material records provenance, computational audit artifacts, and formalization status; it is not required for the statements and proofs in the main text.
+\paragraph{Relation to earlier work.}
+The individual facts behind several theorems are classical: the data-processing inequality for relative entropy \citep{CoverThomas2006}, the time-reversal symmetry of reversible chains \citep{Kelly1979}, the cycle-affinity picture of Markov networks \citep{Schnakenberg1976}, lumpability of Markov chains \citep{KemenySnell1960,Buchholz1994}, and Dobrushin's contraction coefficient \citep{Dobrushin1956,Seneta2006}.
+The contribution here is to state them for one fixed set of exact audits, with hypotheses sharp enough to separate the theorem object from its common proxies, and to verify them formally.
+Earlier papers in the Six Birds series developed the semantics of packaging and coarse-graining \citep{SB_LAY}, protocol traps \citep{SB_PROTOCOL_TRAP}, closure deficits \citep{SB_CAST}, agenthood \citep{SB_THROW}, and the classification of layer births \citep{SB_CLASSIFY}; they serve as background, and the present paper does not depend on them.
+
+\paragraph{Organization.}
+\Cref{sec:setup} fixes notation and defines the audits.
+\Cref{sec:main-results} states the eight theorems.
+\Cref{sec:arrow-protocol,sec:graph-affinity,sec:closure,sec:objecthood,sec:bounded-interface} prove them, give examples, and discuss their scope.
+\Cref{sec:discussion} draws the threads together.
+Routine calculations are in \Cref{app:probkl,app:graphexact,app:varclosure,app:packdef}, the formalization map is in \Cref{app:formalization}, and \Cref{app:versions} records the version history.
+A separate supplement documents provenance and the computational audit artifacts; the statements and proofs in this paper do not depend on it.
