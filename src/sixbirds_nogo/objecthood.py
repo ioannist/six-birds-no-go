@@ -50,24 +50,58 @@ def dobrushin_contraction_lambda(pkg: PackagingOperator) -> Fraction:
 
 
 def solve_unique_fixed_distribution(pkg: PackagingOperator) -> tuple[Fraction, ...]:
-    if pkg.family == "state_map":
-        fps = state_fixed_points(pkg)
-        if len(fps) != 1:
-            raise ValueError("unique fixed distribution is unsupported for non-unique state_map fixed points")
-        target = fps[0]
-        return tuple(Fraction(1, 1) if s == target else Fraction(0, 1) for s in pkg.states)
+    """Solve the invariant-law equations, including noncontractive unique laws.
 
-    lam = dobrushin_contraction_lambda(pkg)
-    if lam >= 1:
-        raise ValueError("unique fixed distribution not guaranteed when contraction lambda >= 1")
+    A single fixed state does not suffice: disjoint cycles also support invariant
+    laws. Strict contraction is sufficient for uniqueness, but not necessary.
+    """
     chain = FiniteMarkovChain(states=pkg.states, matrix=induced_operator_matrix(pkg), stationary_distribution=None)
     return solve_stationary_distribution(chain)
 
 
-def fixed_point_count(pkg: PackagingOperator) -> int:
+def ergodic_class_count(pkg: PackagingOperator) -> int:
+    """Count closed communicating classes, hence extreme invariant laws exactly."""
+    mat = induced_operator_matrix(pkg)
+    reachable: list[set[int]] = []
+    for i in range(len(mat)):
+        seen = {i}
+        todo = [i]
+        while todo:
+            u = todo.pop()
+            for v, mass in enumerate(mat[u]):
+                if mass > 0 and v not in seen:
+                    seen.add(v)
+                    todo.append(v)
+        reachable.append(seen)
+    remaining = set(range(len(mat)))
+    count = 0
+    while remaining:
+        i = min(remaining)
+        component = {j for j in remaining if j in reachable[i] and i in reachable[j]}
+        remaining -= component
+        if all(reachable[j] <= component for j in component):
+            count += 1
+    return count
+
+
+def fixed_distribution_count(pkg: PackagingOperator) -> int | str:
+    """Return 1 or 'infinite' for the full probability simplex.
+
+    With two or more extreme invariant laws their convex mixtures give infinitely
+    many fixed distributions. Every finite nonempty stochastic matrix has one.
+    """
+    return 1 if ergodic_class_count(pkg) == 1 else "infinite"
+
+
+def fixed_point_count(pkg: PackagingOperator) -> int | str:
+    """Count fixed states for an endomap, fixed laws for a stochastic operator.
+
+    The state-map audit's declared space is ``microstate_endomap``. Use
+    ``fixed_distribution_count`` for invariant laws of either operator family.
+    """
     if pkg.family == "state_map":
         return len(state_fixed_points(pkg))
-    return 1 if dobrushin_contraction_lambda(pkg) < 1 else 0
+    return fixed_distribution_count(pkg)
 
 
 def enumerate_simplex_grid(states: tuple[str, ...], denominator: int) -> tuple[tuple[Fraction, ...], ...]:
@@ -101,6 +135,8 @@ def epsilon_stable_distributions(
 
 
 def approximate_object_separation_bound(lambda_coeff: Fraction, epsilon: Fraction) -> Fraction | None:
+    if lambda_coeff < 0 or epsilon < 0:
+        raise ValueError("contraction coefficient and epsilon must be nonnegative")
     if lambda_coeff >= 1:
         return None
     return (2 * epsilon) / (Fraction(1, 1) - lambda_coeff)

@@ -1,0 +1,22 @@
+⚠ [4/498] Replayed SixBirdsNoGo.ClosedWalkExactness
+warning: SixBirdsNoGo/ClosedWalkExactness.lean:64:14: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [10/498] Replayed SixBirdsNoGo.FiniteLensDefinability
+warning: SixBirdsNoGo/FiniteLensDefinability.lean:64:14: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [11/498] Replayed SixBirdsNoGo.FiniteLensDefinabilityExample
+warning: SixBirdsNoGo/FiniteLensDefinabilityExample.lean:29:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [13/498] Replayed SixBirdsNoGo.BoundedInterfaceNoLadderExample
+warning: SixBirdsNoGo/BoundedInterfaceNoLadderExample.lean:53:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [20/498] Replayed SixBirdsNoGo.ArrowDPI
+warning: SixBirdsNoGo/ArrowDPI.lean:34:20: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [3166/3167] Built SixBirdsNoGo (2.6s)
+Build completed successfully (3167 jobs).

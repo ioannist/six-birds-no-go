@@ -25,3 +25,10 @@ import SixBirdsNoGo.ClosureVariationalCore
 import SixBirdsNoGo.ClosureVariationalCoreExample
 import SixBirdsNoGo.ClosureDirectPack
 import SixBirdsNoGo.ClosureDirectPackExample
+import SixBirdsNoGo.RealFiniteKL
+import SixBirdsNoGo.FiniteLensCardinality
+import SixBirdsNoGo.RealArrowDPI
+import SixBirdsNoGo.FiniteImageDefinability
+import SixBirdsNoGo.RealMarkovPaths
+import SixBirdsNoGo.RealProbabilityExamples
+import SixBirdsNoGo.RealGraphExactness

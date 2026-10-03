@@ -14,7 +14,7 @@ from sixbirds_nogo.closure_deficit import GroupedKLValue, best_macro_gap, closur
 from sixbirds_nogo.coarse import DeterministicLens, make_lens
 from sixbirds_nogo.definability import definable_predicate_count
 from sixbirds_nogo.graph_cycle import cycle_rank
-from sixbirds_nogo.markov import FiniteMarkovChain, load_chain_from_witness
+from sixbirds_nogo.markov import FiniteMarkovChain, is_stationary_reversible, load_chain_from_witness
 from sixbirds_nogo.objecthood import dobrushin_contraction_lambda, epsilon_stable_distributions, fixed_point_count
 from sixbirds_nogo.packaging import PackagingOperator, idempotence_defect, load_packaging_from_witness
 from sixbirds_nogo.witnesses import load_witness, load_witness_registry, list_witness_ids
@@ -294,7 +294,7 @@ def run_honest_audit(
             lens = _require_lens(w, audit_id, context)
             actual = honest_observed_path_reversal_kl(_require_chain(w, audit_id), lens, h, precision=precision)
         elif audit_id == "AUDIT_PHASE_LIFT_REVERSIBILITY":
-            actual = is_exact_oneform(_require_chain(w, audit_id))
+            actual = is_stationary_reversible(_require_chain(w, audit_id))
         elif audit_id == "AUDIT_CLOSURE_DEFICIT":
             tau = _ctx_int(context, "tau", audit_id)
             lens = _require_lens(w, audit_id, context)

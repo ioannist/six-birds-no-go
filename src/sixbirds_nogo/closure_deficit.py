@@ -15,6 +15,7 @@ from sixbirds_nogo.markov import (
     FiniteMarkovChain,
     parse_probability_vector,
     pushforward_distribution,
+    validate_distribution,
 )
 
 
@@ -83,6 +84,7 @@ def _resolve_initial(chain: FiniteMarkovChain, initial_dist: Any) -> tuple[Fract
             raise ValueError("initial_dist is required when chain has no stationary_distribution")
         return chain.stationary_distribution
     parsed = parse_probability_vector(initial_dist)
+    validate_distribution(parsed)
     if len(parsed) != chain.size:
         raise ValueError("initial_dist dimension mismatch")
     return parsed
@@ -191,6 +193,8 @@ def variational_objective(
 
     for i, x in enumerate(chain.states):
         row = candidate_macro_chain.matrix[row_idx[lens.mapping[x]]]
+        if mu[i] == 0:
+            continue
         p_x = p_laws[x]
         for j, p in enumerate(p_x):
             if p == 0:
@@ -236,6 +240,8 @@ def closure_deficit(
 
     for i, x in enumerate(chain.states):
         y = lens.mapping[x]
+        if mu[i] == 0:
+            continue
         p_x = p_laws[x]
         for j, yp in enumerate(lens.image_states):
             p = p_x[j]

@@ -1,0 +1,12 @@
+import SixBirdsNoGo
+#print axioms SixBirdsNoGo.RealProbability.KL_pushforward_le
+#print axioms SixBirdsNoGo.RealProbability.finiteKL_eq_zero_iff
+#print axioms SixBirdsNoGo.RealProbability.markovArrowDPI
+#print axioms SixBirdsNoGo.RealProbability.detailedBalance_pathLaw_reversible
+#print axioms SixBirdsNoGo.RealProbability.protocolTrap
+#print axioms SixBirdsNoGo.RealGraph.forest_exact
+#print axioms SixBirdsNoGo.RealGraph.exact_closedWalk_zero
+#print axioms SixBirdsNoGo.FiniteImage.definable_cardinality
+#print axioms SixBirdsNoGo.FiniteImage.no_infinite_distinct_sequence
+#print axioms SixBirdsNoGo.RealProbability.genuine_positive_KL
+#print axioms SixBirdsNoGo.RealProbability.genuine_infinite_KL

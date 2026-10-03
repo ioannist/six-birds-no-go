@@ -35,12 +35,16 @@ def reverse_path(path: tuple[Any, ...] | list[Any]) -> tuple[Any, ...]:
 def _normalize_path_law(path_law: dict[tuple[Any, ...], Fraction]) -> dict[tuple[Any, ...], Fraction]:
     out: dict[tuple[Any, ...], Fraction] = {}
     for path, mass in path_law.items():
-        if mass == 0:
-            continue
         if not isinstance(mass, Fraction):
             raise ValueError("path-law masses must be Fraction")
+        if mass < 0:
+            raise ValueError("path-law masses must be nonnegative")
+        if mass == 0:
+            continue
         out[path] = out.get(path, Fraction(0, 1)) + mass
-    return {k: v for k, v in out.items() if v != 0}
+    if sum(out.values(), Fraction(0, 1)) != 1:
+        raise ValueError("path-law masses must sum to exactly 1")
+    return out
 
 
 def reverse_path_law(path_law: dict[tuple[Any, ...], Fraction]) -> dict[tuple[Any, ...], Fraction]:

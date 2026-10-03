@@ -7,7 +7,7 @@ from fractions import Fraction
 from itertools import product
 from typing import Any
 
-from sixbirds_nogo.markov import FiniteMarkovChain, parse_probability_vector
+from sixbirds_nogo.markov import FiniteMarkovChain, parse_probability_vector, validate_distribution
 from sixbirds_nogo.pathspace import enumerate_path_law
 from sixbirds_nogo.witnesses import load_witness
 
@@ -85,6 +85,7 @@ def _ensure_compatible(chain: FiniteMarkovChain, lens: DeterministicLens) -> Non
 def pushforward_distribution_through_lens(dist: Any, lens: DeterministicLens) -> tuple[Fraction, ...]:
     """Push a micro distribution through a deterministic lens."""
     parsed = parse_probability_vector(dist)
+    validate_distribution(parsed)
     if len(parsed) != len(lens.domain_states):
         raise ValueError("distribution dimension does not match lens domain")
 

@@ -5,6 +5,9 @@ six-birds-no-go_snapshot_v*.zip
 __pycache__/
 *.pyc
 
+# Generated Lean dependencies and build outputs.
+lean/.lake/
+
 paper/*.aux
 paper/*.bbl
 paper/*.blg

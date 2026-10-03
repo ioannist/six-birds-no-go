@@ -213,6 +213,8 @@ class FiniteMarkovChain:
             validate_distribution(self.stationary_distribution)
             if len(self.stationary_distribution) != len(self.states):
                 raise ValueError("stationary distribution dimension mismatch")
+            if pushforward_distribution(self.stationary_distribution, self.matrix) != self.stationary_distribution:
+                raise ValueError("stationary_distribution must satisfy pi P = pi")
 
     @property
     def size(self) -> int:
@@ -255,6 +257,23 @@ def is_stationary_distribution(chain: FiniteMarkovChain, dist: Any) -> bool:
     if len(parsed) != chain.size:
         return False
     return pushforward_distribution(parsed, chain.matrix, steps=1) == parsed
+
+
+def is_stationary_reversible(chain: FiniteMarkovChain, dist: Any = None) -> bool:
+    """Check stationarity and detailed balance for the declared initial law.
+
+    Bidirected ratio-form exactness alone discards one-way edges and does not
+    certify reversibility of the full transition matrix.
+    """
+    if dist is None:
+        if chain.stationary_distribution is None:
+            raise ValueError("dist is required when no stationary_distribution is declared")
+        dist = chain.stationary_distribution
+    pi = parse_probability_vector(dist)
+    if not is_stationary_distribution(chain, pi):
+        return False
+    return all(pi[i] * chain.matrix[i][j] == pi[j] * chain.matrix[j][i]
+               for i in range(chain.size) for j in range(chain.size))
 
 
 def list_chain_witness_ids(config_path: str = "configs/witnesses.yaml") -> list[str]:

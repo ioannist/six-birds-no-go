@@ -1,0 +1,13 @@
+'SixBirdsNoGo.RealProbability.KL_pushforward_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.RealProbability.finiteKL_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.RealProbability.markovArrowDPI' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.RealProbability.detailedBalance_pathLaw_reversible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SixBirdsNoGo.RealProbability.protocolTrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.RealGraph.forest_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.RealGraph.exact_closedWalk_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.FiniteImage.definable_cardinality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.FiniteImage.no_infinite_distinct_sequence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.RealProbability.genuine_positive_KL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SixBirdsNoGo.RealProbability.genuine_infinite_KL' depends on axioms: [propext, Classical.choice, Quot.sound]
