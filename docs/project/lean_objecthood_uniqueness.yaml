@@ -10,8 +10,8 @@
     "t15_objecthood_metric_sweep": "results/T15/objecthood_metric_sweep.csv",
     "t15_adversarial_cases": "results/T15/adversarial_cases.json",
     "lean_root": "lean/SixBirdsNoGo.lean",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "outcome_mode": [
@@ -62,5 +62,8 @@
       "next_ticket": null,
       "note": "The uniqueness core is the terminal Lean result for objecthood."
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

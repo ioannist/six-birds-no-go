@@ -161,7 +161,11 @@ def honest_observed_path_reversal_kl(
 
 
 def dpi_status(micro_kl: PathKLDivergence, macro_kl: PathKLDivergence, precision: int = 80) -> dict[str, Any]:
-    """Determine DPI hold/equality/strict-loss status from KL summaries."""
+    """Diagnostic DPI comparison; finite Decimal comparisons are uncertified.
+
+    Exact equality/support regimes are established before numerical evaluation.
+    The real deterministic DPI theorem is verified separately in Lean.
+    """
     with localcontext() as ctx:
         ctx.prec = max(precision, 80) + 20
         tol = Decimal(1) / (Decimal(10) ** max(10, precision // 2))
@@ -187,6 +191,11 @@ def dpi_status(micro_kl: PathKLDivergence, macro_kl: PathKLDivergence, precision
         "strict_loss": strict_loss,
         "micro_kind": micro_kl.kind,
         "macro_kind": macro_kl.kind,
+        "comparison_mode": "exact_extended_regimes" if (
+            micro_kl.kind == "infinite" or macro_kl.kind == "infinite"
+            or (micro_kl.kind == "zero" and macro_kl.kind == "zero")
+        ) else "uncertified_decimal_comparison",
+        "decimal_tolerance": str(tol),
     }
 
 

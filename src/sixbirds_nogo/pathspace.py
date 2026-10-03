@@ -5,7 +5,10 @@ from __future__ import annotations
 from fractions import Fraction
 from typing import Any
 
-from sixbirds_nogo.markov import FiniteMarkovChain, parse_probability_vector, validate_distribution
+from sixbirds_nogo.markov import (
+    FiniteMarkovChain, parse_probability_vector, validate_distribution,
+    validate_nonnegative_integer,
+)
 
 
 def _resolve_initial_distribution(chain: FiniteMarkovChain, initial_dist: Any) -> tuple[Fraction, ...]:
@@ -52,8 +55,7 @@ def enumerate_path_law(
     initial_dist: Any = None,
 ) -> dict[tuple[str, ...], Fraction]:
     """Enumerate exact finite-horizon path law over state labels."""
-    if horizon < 0:
-        raise ValueError("horizon must be nonnegative")
+    validate_nonnegative_integer(horizon, "horizon")
 
     dist = _resolve_initial_distribution(chain, initial_dist)
     law: dict[tuple[str, ...], Fraction] = {}

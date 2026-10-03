@@ -1,6 +1,10 @@
 import SixBirdsNoGo.ArrowDPI
 import SixBirdsNoGo.FiniteProbabilityCore
 
+/-! Historical preservation of an explicitly supplied list-level path symmetry.
+It does not derive stationarity or detailed-balance path symmetry. The actual
+protocol theorem from detailed balance is in `RealMarkovPaths`. -/
+
 namespace SixBirdsNoGo
 
 structure AutonomousLiftedSystem (n : Nat) where

@@ -1,5 +1,9 @@
 import SixBirdsNoGo.ClosureVariationalCore
 
+/-! Conditional consequences of the historical supplied minimizer interface.
+The value below is defined from the optimum, not from conditional mutual
+information. Actual closure coverage is provided by `RealClosure`. -/
+
 namespace SixBirdsNoGo
 
 def closureDeficitValue {n m : Nat}

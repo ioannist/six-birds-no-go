@@ -98,6 +98,7 @@ def main() -> int:
         "frontier_status_snapshot",
         "milestone_handoff",
     }
+    required_top |= {"evidence_role", "mathematical_proof_certificate", "superseded_by"}
     if set(core) != required_top:
         fail("lean_probability_core top-level keys must match required set exactly")
 
@@ -192,6 +193,9 @@ def main() -> int:
         fail("repro.py must include run_t36_lean_probability_core.py")
 
     summary = {
+        "validation_kind": "historical_schema_consistency",
+        "mathematical_proof_certificate": False,
+        "current_proof_coverage": "review/current-theorem-coverage.json",
         "generated_at_utc": now_iso(),
         "direct_front_count": len(frontier["direct_ids"]),
         "auxiliary_front_count": len(frontier["auxiliary_ids"]),

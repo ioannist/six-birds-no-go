@@ -1,3 +1,5 @@
+> Historical formalization notes. The proof claims and planned boundaries below are superseded by `review/current-theorem-coverage.json`; they are not proof certificates.
+
 ## Lean Objecthood Boundary
 
 - generated_at_utc: 2026-03-19T15:10:00Z

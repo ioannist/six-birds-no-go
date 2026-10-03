@@ -1,141 +1,200 @@
-Mathematical review in progress — 2026-10-03
+Mathematical review — 2026-10-03
 
-Authorization and scope
-Read the attached task. Checkpoint commit 4cb53fa preserves the initial working
-state (tracked Lean build files had already been deleted). No paper source is to
-be edited. Maintain the eight theorem claims where possible; obtain a decision
-before any material downgrade. This is a solo review and self-review, not an
-independent review. Current status: NOT COMPLETE.
+Scope and provenance
+The attached task authorized a thorough mathematics/Lean/experiment audit,
+repairs preserving the main claims, and no paper editing. Commit 4cb53fa
+checkpointed the original working state before review; dade7ed records the first
+replacement milestone. This was a solo review with a separate adversarial
+self-review, not an independent review. No material downgrade is needed.
 
-Target inventory and first adversarial pass
-1. NG_ARROW_DPI: deterministic pointwise observation, arbitrary finite initial
-   law, finite horizon, extended KL including +infinity. The finite log-sum proof
-   is sound with support conventions. Stochastic memoryless channels commuting
-   with reversal also satisfy DPI; the paper's scope wording should not be read
-   as a mathematical counterexample for every stochastic observation.
-   Original Lean is conditional on ScalarLogLayer.deterministic_dpi; a zero-log
-   example is no actual logarithm. Rat-valued logs cannot represent general real
-   logs. supportList repeats labels from entries, so KL counts a state's total
-   mass once per list occurrence. Honest pushforward merges states semantically
-   but retains duplicate entries. Direct extended-real DPI is being constructed
-   in RealFiniteKL.lean, without either input theorem field.
-2. NG_PROTOCOL_TRAP: stationary detailed balance must imply symmetry of every
-   finite path law, including zero-mass states, then honest observed KL is zero.
-   The written 'multiply the detailed-balance identities' step would give extra
-   interior pi factors; cancellation at zero is invalid. Repair by induction:
-   move pi(x0) through the first edge using detailed balance, then apply the
-   inductive identity to the remaining path. No division is required.
-   Original Lean assumes path symmetry via stationaryInitializedMicroReversible
-   and proves only its preservation under observation. FinLaw equality compares
-   ordered lists, stronger than equality of the induced measure. A nonconstant
-   reversible path law need not have its entries in reversal-invariant order.
-   The executable phase-lift audit formerly checked only ratio-form exactness
-   on bidirected support, missing one-way edges. Now it checks full detailed
-   balance of the supplied stationary law.
-3. NG_FORCE_FOREST: every real antisymmetric edge label on a finite undirected
-   forest is a potential difference on EDGES. Off-edge zeros do not imply a
-   global identity for all vertex pairs. Root/path construction is sound.
-   Original Lean covers integer labels on inductive trees whose vertices carry
-   paths, not arbitrary finite graph vertices. Its induced label is defined as
-   a potential difference. No graph-to-rooted-representation bridge is present.
-   Repair should formalize real labels on an actual acyclic graph and prove
-   path independence before selecting a potential.
-4. NG_FORCE_NULL: real exact labels telescope along legal closed walks.
-   Original Lean correctly telescopes an Int-valued globally exact label on
-   arbitrary vertex sequences; needs the real-valued, edge-local graph version.
-   Computational positive ratio products faithfully certify zero/nonzero log
-   cycle sums, but affinity surrogate magnitude is not the additive affinity.
-5. NG_MACRO_CLOSURE_DEFICIT: arbitrary CURRENT micro law mu, deterministic
-   package, fixed lag; stochastic candidate rows, attained KL minimum equal to
-   independently defined conditional mutual information, positive on distinct
-   positive-weight future laws within a fiber. Null fibers allow arbitrary
-   stochastic rows and null microstates are omitted from the expectation.
-   The paper's section uses stationarity although the main statement doesn't.
-   Retain full strength by taking t=0, or mu = Law(X_t). If mu instead means
-   Law(X_0) at arbitrary later t, the displayed identity is generally false.
-   Mixture proof must handle support mismatch before subtracting divergences:
-   if Q vanishes where R is positive, both sides are +infinity, whereas KL(P_i||R)
-   is finite for positive weights. Otherwise expand only positive weighted
-   terms; zero-weight rows are omitted (0 times infinity convention).
-   Original Lean assumes bestKernel_minimizer, allows arbitrary signed raw
-   candidate rows, defines closure deficit as the best objective, and never
-   defines/proves the CMI bridge or mismatch positivity. Concrete real proof
-   with genuine stochastic rows is required. Python zero-weight infinity and
-   invalid probability entry points have been repaired.
-6. NG_OBJECT_CONTRACTIVE: finite nonempty simplex, TV/Dobrushin coefficient <1,
-   epsilon-stable laws separated by at most 2 epsilon/(1-lambda), including
-   uniqueness; supplementary proof asserts existence and geometric convergence.
-   Correct the Dobrushin proof by subtracting c=min_y P(y,A), not an arbitrary
-   row. Negative eta contributions are then nonpositive; positive eta sum is
-   TV and P(y,A)-c is bounded by the row oscillation <=lambda(P). Alternatively
-   use the normalized positive/negative parts of eta as mixtures of rows.
-   Banach/geometric-tail proof is valid in the nonempty finite simplex.
-   Original Lean uniqueness is for an arbitrary Nat-valued dissimilarity, not
-   the real TV distance. It is a correct auxiliary lemma, with no existence,
-   convergence, Dobrushin, or epsilon-separation formalization.
-   Executable unique invariant-law solver no longer infers uniqueness from
-   exactly one fixed state. Disjoint cycles support additional invariant laws.
-   State fixed-point count and distribution fixed-point count are now separate:
-   a state-map audit explicitly counts states; two distinct invariant laws give
-   infinitely many invariant distributions by convex mixture. Dobrushin=1 does
-   not imply no unique invariant law (a deterministic two-cycle is a witness).
-7. NG_LADDER_IDEM: any endomap on any fixed carrier, e^2=e implies e^n=e for
-   n>=1. Original Lean proves exactly this, without finiteness. Verified source.
-8. NG_LADDER_BOUNDED_INTERFACE: arbitrary domain, finite lens image, all Boolean
-   predicates factoring through the lens, exact count 2^|image|, no infinite
-   pairwise-distinct sequence (hence no strictly increasing such sequence).
-   Original Lean proves the assignment equivalence but its enumeration length
-   alone neither establishes exhaustive duplicate-free enumeration nor an actual
-   cardinality. The packaging-dependent wrapper does not formalize the stated
-   no-infinite-sequence result. New FiniteLensCardinality proves the actual card
-   and rules out any injective Nat sequence for the finite-domain lens. A bridge
-   for arbitrary domains with finite image remains to cover the full statement.
+Current authority
+review/current-theorem-coverage.json records the current exported declarations,
+precise scopes, source hashes, and verification results. CheckTargets.lean checks
+explicit target types independently of compiling their implementation modules.
+CheckAxioms.lean checks transitive proof dependencies. Run:
+  python3 scripts/run_mathematical_audit.py
+The older T20–T44 metadata and token/schema validators have been retained and
+explicitly marked as historical status claims/provenance, NOT proof certificates.
+Their old 'direct' classifications do not establish former or current coverage.
+The current theorem statement sheet points to the replacement proofs. Its closure
+statement now takes the arbitrary current law at time zero, removing the ambiguous
+reuse of an initial law at an arbitrary later time. Paper files are unchanged.
 
-Verification and safeguards
-Baseline: pytest -q yielded 236 passed, 14 failed. Several runners require the
-absent vision.md; several paper-related runners have baseline failures. Baseline
-bare lake build reported success with zero jobs: the library lacked a default
-target, so that report did not verify the source. This has been fixed. The baseline tests rewrote tracked results as a
-side effect; these changes were restored. Do not use the full paper/reproduce
-pipeline, since the user excluded paper editing. Focused regression/mathematical
-suite: 43 passed after initial Python fixes.
+Eight main targets: premises -> derived content -> conclusion
+1. NG_ARROW_DPI
+   Finite normalized nonnegative real laws, a stochastic kernel, arbitrary initial
+   law, deterministic pointwise observation, and any finite horizon. The KL
+   definition uses Real.log with support mismatch giving +infinity; states occur
+   once in Fintype sums. RealFiniteKL derives Gibbs nonnegativity and equality,
+   the log-sum inequality, and extended-real deterministic DPI. RealMarkovPaths
+   constructs normalized Markov path laws from the actual transition product;
+   RealArrowDPI proves the map/reversal commutation and observed-arrow bound.
+   No DPI field or path-reversal symmetry premise is supplied to this proof.
 
-The new concrete Lean foundation uses mathlib v4.28.0, pinned by lake-manifest
-at commit 8f9d9cff6bd728b17a24e163c9402775d9e6a365 and the matching Lean toolchain.
-No new local axioms, theorem-valued analytic input fields, or proof holes are
-permitted in the replacement. Kernel axiom receipts must be inspected for all
-new exported theorems, with no native_decide in the analytic replacements.
+2. NG_PROTOCOL_TRAP
+   Detailed balance pi(x) K(x,y)=pi(y) K(y,x), initialized at that pi, suffices.
+   RealMarkovPaths proves reversal symmetry by an induction on the transition
+   product, without division or cancellation of pi. It then proves zero honest
+   observed KL for every deterministic lens and every horizon. Null-mass states
+   are covered. Stationarity is implied by detailed balance and normalization.
+   Ordered list equality is not used as equality of probability measures.
 
-Remaining work (do not mark the task complete)
-Complete real KL/DPI and zero/equality properties; connect path observation and
-stationary detailed balance to semantic path laws. Construct the genuine
-closure mixture/minimum/CMI/positivity proofs. Repair real graph forest and null
-bridges; generalize finite-image predicate card/no-ladder. Check objecthood
-analytically, strengthen the metric bridge where feasible. Inspect remaining
-computational modules, proxy/evidence runners, configurations, and all support
-labels for semantic drift; replace falsely direct status claims with accurate
-current proofs. Record written-proof repairs here, leaving paper untouched.
-Re-run meaningful tests, the full Lean root build, axiom/placeholder audit, and
-self-review of exact claim coverage. Commit the final reviewed work.
+3. NG_FORCE_FOREST
+   RealGraphExactness works on an actual SimpleGraph with IsAcyclic and real
+   antisymmetric labels on edges. A root is selected in each connected component;
+   actual unique paths give an edge identity for the resulting potential. The
+   vertex type is not an encoded path and the label is not defined as a gradient.
+   Conclusion: a(u,v)=phi(v)-phi(u) on EDGES. No off-edge identity is claimed.
+   Finiteness can be dropped at no additional cost, strengthening the target.
 
-Verified replacement milestone
-RealFiniteKL: concrete Real.log, support mismatch infinity, Gibbs nonnegativity
-and zero iff laws coincide, log-sum inequality, deterministic extended-real DPI.
-RealMarkovPaths: normalized real Markov path laws; exact path weight formula;
-reversal involution; detailed balance implies semantic path-law symmetry; zero
-honest observed arrow. No reversal symmetry is smuggled in as a hypothesis.
-RealGraphExactness: true forest exactness for real antisymmetric labels and
-edge-local null-force closed walks. This works on arbitrary acyclic graphs,
-so finiteness can be dropped from these graph conclusions at no extra cost.
-FiniteImageDefinability: all factoring Boolean predicates on ARBITRARY domains
-with finite image; exact cardinality and no injective Nat sequence, without
-idempotence/packaging hypotheses. FiniteLensCardinality bridges the older API.
-RealProbabilityExamples exercises genuine positive and infinite divergences,
-collapse to zero, and the protocol conclusion for every horizon; no zero-log
-model and no native_decide are used. Focused mathematical Python suite now
-has 67 passing tests. Paper sources remain unchanged.
+4. NG_FORCE_NULL
+   A real edge-local gradient telescopes on every legal closed graph walk.
+   RealGraphExactness proves this without requiring exactness on nonedges and
+   without restricting real labels to integers. Again finiteness is unnecessary.
 
-The original conditional rational KL/closure scaffolds are still present, and
-historical theorem/evidence status snapshots have not yet been reconciled.
-Do not treat their direct-status labels as authority for closure. Replacement
-closure proofs and a final repository-wide semantic/evidence audit remain open.
+5. NG_MACRO_CLOSURE_DEFICIT
+   RealKLMixture derives the finite weighted mixture KL decomposition, minimizer,
+   zero criterion, and positive mismatch gap. RealClosure constructs normalized
+   conditional rows and defines CMI separately from the objective using the joint
+   masses w(x)p_x(z), w(x), fiber mass W(f(x)), and pair mass R(f(x),z).
+   It proves CMI equals the attained objective and is bounded by EVERY stochastic
+   candidate kernel, including candidates with infinite objective. Two distinct
+   positive-weight future rows in a common fiber imply strict positive CMI.
+   Future rows are actual finite Markov future laws from dirac initial states.
+   The current law is arbitrary; stationarity is not required. Zero-weight
+   microstates do not enter support tests, and null macro fibers receive arbitrary
+   normalized rows. RealClosureExamples realizes a genuinely positive instance.
+   The expectation convention omits zero weights; it does not form 0 times +inf.
+
+6. NG_OBJECT_CONTRACTIVE
+   RealTVContraction defines TV=(1/2) sum |p-q| and the actual maximum row-TV
+   Dobrushin coefficient of a real stochastic kernel on a nonempty finite space.
+   It proves positivity, symmetry, triangle, zero iff laws equal, the event
+   characterization, and contraction. The proof subtracts the MINIMUM event
+   row, making signed negative contributions nonpositive; no contraction field
+   is assumed. It derives TV(p,q)<=2 epsilon/(1-coefficient) from the two actual
+   stability defects and proves uniqueness of stationary laws. RealTVExamples
+   exercises genuine unequal laws and the theorem for all candidate laws.
+   The supplementary existence/geometric convergence argument is analytically
+   sound on the nonempty finite simplex: geometric increment tails are Cauchy,
+   completeness gives a probability-law limit, continuity gives invariance, and
+   contraction gives uniqueness and the stated geometric rate. Existence and
+   convergence are not claimed as exported Lean declarations in this receipt.
+
+7. NG_LADDER_IDEM
+   The original Idempotence module already proves exactly the target: every
+   positive iterate of any idempotent endomap on any carrier equals one step.
+   No finite-domain hypothesis or example-specific restriction is needed.
+
+8. NG_LADDER_BOUNDED_INTERFACE
+   FiniteImageDefinability covers arbitrary domain/codomain with finite image.
+   Its actual equivalence identifies ALL factoring Boolean predicates with
+   assignments on Set.range f. It proves the exact cardinality 2^|range f| and
+   rules out every injective Nat sequence, hence any strictly increasing chain
+   of distinct predicates. Packaging/idempotence is not an extra premise.
+   FiniteLensCardinality also bridges the older finite-lens API. Empty domains
+   pose no exception: the image is empty and the unique predicate count is one.
+
+Original proof/representation faults and repairs
+- FiniteKLDPI's Rat-valued arbitrary log layer assumed deterministic DPI; its
+  zero-log example did not instantiate real logarithms. Repeated supportList
+  atoms double-counted aggregate state weights. The retained conditional score
+  now weights list entries once and is explicitly labeled a legacy scaffold;
+  all actual theorem coverage uses the concrete real replacement.
+- ProtocolTrap previously assumed reversal symmetry instead of deriving it.
+  A list law compared ordered entries rather than induced measures. The current
+  proof derives semantic symmetry from pairwise detailed balance.
+- Tree/forest scaffolds covered integer labels and path-bearing vertices rather
+  than the stated graph. The replacements prove real, edge-local graph results.
+- ClosureVariationalCore supplied its minimizer as a field; candidates were raw
+  signed lists. ClosureDirectPack defined its 'deficit' as the best objective
+  instead of establishing an independent CMI bridge, and assumed positivity.
+  The replacement removes these assumptions and restricts rows to true laws.
+- ContractionUniqueness correctly proves an auxiliary fact for a Nat-valued
+  dissimilarity; it did not prove TV, Dobrushin, or the epsilon bound. The real
+  module now supplies the full main target.
+- Enumeration length alone did not prove cardinality/exhaustiveness, and a
+  packaging-stabilization wrapper did not prove the arbitrary finite-image
+  no-infinite-sequence statement. The new equivalence/cardinality proof does.
+- Bare lake build originally succeeded with ZERO JOBS. A default library target
+  now builds the whole root. mathlib/Lean v4.28.0 and dependencies are pinned.
+- All retained native_decide proof shortcuts have been replaced by kernel
+  reduction (decide +kernel). The current library has no holes, local axiom
+  declarations, or native proof shortcuts. Exported main proofs depend only
+  on propext, Classical.choice, and Quot.sound (or a subset).
+
+Experiment and audit repairs
+- Closure objective/CMI omit null microstates before checking support mismatch;
+  an unused row with infinite KL cannot create a false infinite expectation.
+- Probability entry points reject negative or unnormalized laws. A supplied
+  stationary law must satisfy pi P=pi; the phase-lift audit checks full detailed
+  balance instead of bidirected ratio exactness, which ignores one-way edges.
+- The unique invariant-law solver uses actual stationary equations, not a count
+  of fixed states. One fixed state plus a disjoint cycle has multiple extreme
+  invariant laws. A two-cycle can have a unique invariant law despite coefficient
+  one. Multiple extreme invariant laws give infinitely many mixture laws.
+  Fixed state counts and fixed probability-law counts are explicitly separated.
+- Matrix powers, paths, lags, and packaging iterations reject fractional counts
+  and booleans. A fractional horizon formerly could recurse without termination.
+- Graph cycle rank canonicalizes undirected edges before counting, so duplicate
+  orientations cannot turn a tree into a cyclic graph. Duplicate vertex/row
+  labels are rejected. Stochastic action conventions are validated explicitly.
+- Direct lens/package constructors enforce their mathematical domains as well
+  as the factories. Brute-force observation validates the initial law too.
+- Both-infinite arrow divergences have no subtractive DPI gap; the optional gap
+  audit rejects that case instead of using infinity minus infinity.
+- Finite Decimal KL comparisons are explicitly uncertified diagnostics. Exact
+  rational support/equality regimes remain exact. Ratio affinity magnitude is
+  max(r,1/r)-1, not |log r|; this preserves vanishing and magnitude order only.
+  Metric contexts distinguish bidirected affinity support from simple union
+  support and fixed states from fixed distributions.
+- Finite-grid stability counts, connected-cluster counts, sampled predicate
+  rates, thresholded graphs, and fitted macro chains remain diagnostic objects.
+  A constant suffix of a sampled signature sequence is not a future convergence
+  certificate. Empty evidence-check lists cannot count as satisfied witnesses.
+  The primitive coverage report explicitly states it is not a proof certificate.
+
+Adversarial self-review
+Rechecked the exported target types and helper definitions, rather than labels.
+Checked zero weights, support mismatch/infinite KL, null fibers, null stationary
+states, tau/horizon zero, one-way cycles, noncontractive unique invariant laws,
+fixed-state/distribution separation, repeated edge orientations, edge-local
+rather than global exactness, arbitrary domains with finite image, and an empty
+lens image. Concrete positive/infinite KL and positive closure witnesses prevent
+zero-score examples from standing in for the intended analytic objects.
+No unresolved obstruction to any of the eight main theorem claims was found.
+
+Paper corrections reserved for the later editing phase
+The paper has deliberately NOT been updated. Apply these recorded repairs later:
+1. appendix_a_probability_kl.tex, detailed-balance proof: replace the multiplication
+   shortcut (extra interior pi factors, invalid cancellation at zero) by the
+   division-free induction in RealMarkovPaths.
+2. Same appendix, Dobrushin proof: choose the reference row minimizing P(y,A),
+   or use normalized positive/negative signed parts; explicitly justify the
+   signed inequality. The final estimate is valid.
+3. appendix_c_variational_closure.tex: split off support-infinite cases before
+   subtracting KL sums; omit zero-weight rows and define null-fiber rows freely.
+4. Main closure statements: mu must be the CURRENT law at time t, or take t=0.
+   Keeping an arbitrary initial law in a later-time weighted objective is false;
+   the regression witness has positive deficit initially and zero after a step.
+   The main strength is retained by the current-law formulation. Zero deficit
+   concerns positive-mass rows, not all zero-mass states or uniform strong
+   lumpability. Fiber mismatch remarks must include positive masses.
+5. Finite stochastic memoryless observation channels commuting with reversal also
+   satisfy DPI; merely leaving deterministic scope does not imply amplification.
+6. Clarify nonempty state spaces for stationary-law existence, and distinguish
+   multiplicative affinity surrogates from additive log-affinity magnitudes.
+7. Formalization-status prose/tables must point to the concrete replacements;
+   the old seven-direct/one-auxiliary labels are obsolete and were not evidence
+   of the original analytic bridges. The current eight main targets are direct.
+
+Verification
+Baseline pytest: 236 passed, 14 failed, including absent-vision metadata and
+paper/reproduce runners. The vision flags now reflect the absent file; no vision
+file was fabricated. The paper/reproduce pipeline is excluded from this phase
+because it writes manuscript/bundle artifacts. Current math/code and historical
+schema tests are run separately; see review/python-tests.log. Fresh root build,
+explicit target-type checks, source hashes, and transitive axiom checks are in
+review/current-theorem-coverage.json, review/lean-build.log, review/target-check.log,
+and review/axioms.txt. Test-generated legacy outputs are restored to their
+historical contents with only explicit evidence-role annotations added.

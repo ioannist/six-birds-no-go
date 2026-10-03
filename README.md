@@ -39,6 +39,16 @@ Optional Lean-related steps depend on the local theorem-pack toolchain already p
 
 ## Test
 
+The current mathematical audit is in `review/mathematical-review.txt`. Run
+`python3 scripts/run_mathematical_audit.py` to build the complete Lean library,
+check explicit target types, inspect transitive axioms, and refresh the source
+hashes in `review/current-theorem-coverage.json`. The replacements use real KL,
+normalized stochastic kernels, actual graph walks, and real TV/Dobrushin bounds.
+
+The older T20–T44 status records and schema validators are retained as historical
+provenance. Their status labels and token checks do not certify mathematical
+coverage. Current coverage comes from the explicit targets and checked proofs.
+
 ```bash
 make test
 pytest -q

@@ -13,6 +13,8 @@ Cycle = tuple[str, ...]
 
 def _order_map(states: Iterable[str], state_order: Iterable[str] | None = None) -> tuple[tuple[str, ...], dict[str, int]]:
     states_tuple = tuple(states)
+    if len(set(states_tuple)) != len(states_tuple):
+        raise ValueError("states must be unique")
     if state_order is None:
         ordered = states_tuple
     else:
@@ -90,8 +92,13 @@ def connected_components(
 
 def cycle_rank_from_edges(states: Iterable[str], undirected_edges: Iterable[UndirectedEdge]) -> int:
     """Cycle-space rank m - n + c on simple undirected support graph."""
-    states_tuple = tuple(states)
-    edge_set = {(u, v) for (u, v) in undirected_edges if u != v}
+    states_tuple, idx = _order_map(states)
+    edge_set = set()
+    for u, v in undirected_edges:
+        if u not in idx or v not in idx:
+            raise ValueError("edge references unknown state")
+        if u != v:
+            edge_set.add((u, v) if idx[u] < idx[v] else (v, u))
     m = len(edge_set)
     n = len(states_tuple)
     c = len(connected_components(states_tuple, edge_set))

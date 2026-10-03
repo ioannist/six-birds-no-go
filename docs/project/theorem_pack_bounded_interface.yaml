@@ -11,8 +11,8 @@
     "t11_random_checks": "results/T11/random_checks.json",
     "t14_primitive_coverage": "results/T14/primitive_coverage.json",
     "t14_primitive_matrix": "results/T14/primitive_matrix.csv",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "pack_status": [
@@ -133,5 +133,8 @@
       "remaining_blockers": [],
       "next_ticket": null
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

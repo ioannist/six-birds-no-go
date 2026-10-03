@@ -40,5 +40,8 @@
   "reproduce_includes_t41": true,
   "reproduce_includes_t42": true,
   "vision_present": true,
-  "status": "success"
+  "status": "success",
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

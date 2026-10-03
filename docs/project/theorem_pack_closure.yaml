@@ -9,8 +9,8 @@
     "t09_closure_metrics": "results/T09/closure_metrics.json",
     "t09_grid_check": "results/T09/grid_check.json",
     "t14_primitive_coverage": "results/T14/primitive_coverage.json",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "pack_status": [
@@ -146,5 +146,8 @@
         "action": "Preserve fixed-lens/fixed-lag/current-law and anti-proxy guardrails explicitly in paper assembly for the closure front."
       }
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

@@ -1,4 +1,5 @@
 import SixBirdsNoGo
+#print axioms SixBirdsNoGo.iterate_stabilizes_ext
 #print axioms SixBirdsNoGo.RealProbability.KL_pushforward_le
 #print axioms SixBirdsNoGo.RealProbability.finiteKL_eq_zero_iff
 #print axioms SixBirdsNoGo.RealProbability.markovArrowDPI
@@ -10,3 +11,12 @@ import SixBirdsNoGo
 #print axioms SixBirdsNoGo.FiniteImage.no_infinite_distinct_sequence
 #print axioms SixBirdsNoGo.RealProbability.genuine_positive_KL
 #print axioms SixBirdsNoGo.RealProbability.genuine_infinite_KL
+#print axioms SixBirdsNoGo.RealProbability.weightedFiniteKL_decomposition
+#print axioms SixBirdsNoGo.RealProbability.closure_variational_minimum
+#print axioms SixBirdsNoGo.RealProbability.conditionalInfo_positive_of_distinct_fiber_rows
+#print axioms SixBirdsNoGo.RealProbability.closureTheorem
+#print axioms SixBirdsNoGo.RealProbability.closureWitness_positive
+#print axioms SixBirdsNoGo.RealProbability.dobrushin_contraction
+#print axioms SixBirdsNoGo.RealProbability.contractive_separation
+#print axioms SixBirdsNoGo.RealProbability.contractive_stationary_unique
+#print axioms SixBirdsNoGo.RealProbability.concrete_real_separation

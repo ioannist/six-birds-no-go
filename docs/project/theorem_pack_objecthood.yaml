@@ -11,8 +11,8 @@
     "t15_objecthood_metric_sweep": "results/T15/objecthood_metric_sweep.csv",
     "t15_adversarial_cases": "results/T15/adversarial_cases.json",
     "t15_fragility_summary": "results/T15/fragility_summary.json",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "pack_status": [
@@ -154,5 +154,8 @@
       "remaining_blockers": [],
       "next_ticket": null
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

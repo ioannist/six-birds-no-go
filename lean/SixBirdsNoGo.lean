@@ -32,3 +32,8 @@ import SixBirdsNoGo.FiniteImageDefinability
 import SixBirdsNoGo.RealMarkovPaths
 import SixBirdsNoGo.RealProbabilityExamples
 import SixBirdsNoGo.RealGraphExactness
+import SixBirdsNoGo.RealKLMixture
+import SixBirdsNoGo.RealClosure
+import SixBirdsNoGo.RealClosureExamples
+import SixBirdsNoGo.RealTVContraction
+import SixBirdsNoGo.RealTVExamples

@@ -5,7 +5,7 @@ namespace SixBirdsNoGo
 
 open SixBirdsNoGo
 
-theorem zeroMassOnEntries {α β : Type} : ∀ xs : List (α × β), massSum (xs.map ((fun a => (a, (0 : Rat))) ∘ Prod.fst)) = 0
+theorem zeroMassOnEntries {α β : Type} : ∀ xs : List (α × β), massSum (xs.map (fun e => (e.1, (0 : Rat)))) = 0
   | [] => by simp
   | _ :: xs => by
       simp [zeroMassOnEntries xs, Rat.zero_add]
@@ -14,13 +14,13 @@ def zeroLogLayer : ScalarLogLayer where
   logTerm _ _ := 0
   deterministic_dpi := by
     intro α β _ _ f μ ν hAC
-    simp [supportList, Rat.mul_zero]
+    simp only [Rat.mul_zero]
     rw [zeroMassOnEntries, zeroMassOnEntries]
-    native_decide
+    decide +kernel
 
 example : reversePathState (horizon := 2) ((((0 : Fin 2), (1 : Fin 2)), (0 : Fin 2)) : PathState 2 2) =
     ((((0 : Fin 2), (1 : Fin 2)), (0 : Fin 2)) : PathState 2 2) := by
-  native_decide
+  decide +kernel
 
 example : reversePathLaw twoStepPathLaw = pushforward reversePathState twoStepPathLaw := rfl
 

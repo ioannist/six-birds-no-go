@@ -16,6 +16,7 @@ from sixbirds_nogo.markov import (
     parse_probability_vector,
     pushforward_distribution,
     validate_distribution,
+    validate_nonnegative_integer,
 )
 
 
@@ -96,8 +97,7 @@ def _delta(n: int, i: int) -> tuple[Fraction, ...]:
 
 def packaged_future_distribution(chain: FiniteMarkovChain, lens: DeterministicLens, state: str, tau: int) -> tuple[Fraction, ...]:
     """Compute p_x^(tau) = Pr(Y_{t+tau} | X_t = x)."""
-    if tau < 0:
-        raise ValueError("tau must be nonnegative")
+    validate_nonnegative_integer(tau, "tau")
     if lens.domain_states != chain.states:
         raise ValueError("lens.domain_states must match chain.states exactly")
     i = chain.index_of(state)

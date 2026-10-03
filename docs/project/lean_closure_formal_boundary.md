@@ -1,3 +1,5 @@
+> Historical formalization notes. The proof claims and planned boundaries below are superseded by `review/current-theorem-coverage.json`; they are not proof certificates.
+
 # Closure Formal Boundary
 
 - UTC timestamp: 2026-03-19T12:00:09Z

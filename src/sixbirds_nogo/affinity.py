@@ -146,5 +146,5 @@ def reconstruct_exact_potential(chain: FiniteMarkovChain) -> dict[str, Fraction]
 
 
 def is_exact_oneform(chain: FiniteMarkovChain) -> bool:
-    """Exactness predicate based on potential reconstruction."""
+    """Exactness on bidirected support; does not test full-chain reversibility."""
     return reconstruct_exact_potential(chain) is not None

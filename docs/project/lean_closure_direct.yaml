@@ -10,8 +10,8 @@
     "lean_root": "lean/SixBirdsNoGo.lean",
     "t09_closure_metrics": "results/T09/closure_metrics.json",
     "t24_attribution_resolution": "results/T24/closure_attribution_resolution.json",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "outcome_mode": [
@@ -68,5 +68,8 @@
         "action": "Preserve fixed-lens/fixed-lag/current-law and anti-proxy guardrails explicitly in paper assembly for the closure front."
       }
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

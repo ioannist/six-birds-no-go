@@ -201,9 +201,12 @@ def summarize_witness(
         for key in ("cycle_rank", "max_cycle_affinity", "exactness_flag"):
             metrics[key] = _metric("not_applicable", None, explanation="not_applicable:no_chain")
     else:
-        metrics["cycle_rank"] = _metric("computed", cycle_rank(chain))
-        metrics["max_cycle_affinity"] = _metric("computed", max_cycle_affinity(chain))
-        metrics["exactness_flag"] = _metric("computed", is_exact_oneform(chain))
+        metrics["cycle_rank"] = _metric("computed", cycle_rank(chain),
+            context={"support": "simple_undirected_union_of_directed_support"})
+        metrics["max_cycle_affinity"] = _metric("computed", max_cycle_affinity(chain),
+            context={"support": "bidirected", "representation": "max(r,1/r)-1"})
+        metrics["exactness_flag"] = _metric("computed", is_exact_oneform(chain),
+            context={"support": "bidirected", "full_chain_reversibility_certificate": False})
 
     # arrow summaries from expected audits
     micro_recs = [a for a in audits if a["audit_id"] == "AUDIT_PATH_KL_MICRO" and a["status"] == "success"]
@@ -263,7 +266,8 @@ def summarize_witness(
             metrics[key] = _metric("not_applicable", None, explanation="not_applicable:no_packaging")
     else:
         metrics["contraction_lambda"] = _metric("computed", dobrushin_contraction_lambda(pkg))
-        metrics["fixed_point_count"] = _metric("computed", fixed_point_count(pkg))
+        metrics["fixed_point_count"] = _metric("computed", fixed_point_count(pkg),
+            context={"domain": "states" if pkg.family == "state_map" else "probability_laws"})
         metrics["eps_stable_count"] = _metric(
             "computed",
             len(epsilon_stable_distributions(pkg, denominator=eps_denominator, epsilon=eps_epsilon)),

@@ -156,6 +156,7 @@ def observed_signature_sequence(pkg: PackagingOperator, lens: DeterministicLens,
 
 
 def signature_stabilization_step(sequence: tuple[tuple[str, ...], ...] | list[tuple[str, ...]]) -> int | None:
+    """First constant suffix of this finite sample, not a future convergence test."""
     seq = tuple(sequence)
     for i in range(len(seq)):
         if all(seq[j] == seq[i] for j in range(i, len(seq))):

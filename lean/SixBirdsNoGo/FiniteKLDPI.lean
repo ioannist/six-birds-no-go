@@ -1,5 +1,10 @@
 import SixBirdsNoGo.FiniteProbabilityCore
 
+/-! Legacy conditional rational-score interface, retained for historical
+examples. `logTerm` is an arbitrary rational function and DPI is a supplied
+law, so this module does not prove logarithmic KL data processing. The actual
+real-log extended-KL theorem is in `RealFiniteKL`. -/
+
 namespace SixBirdsNoGo
 
 section Support
@@ -43,14 +48,14 @@ end PathReversal
 
 section KL
 
-/-- Minimal explicit scalar/log interface for finite KL and deterministic DPI only. -/
+/-- An abstract rational scoring operation with an explicitly assumed DPI law. -/
 structure ScalarLogLayer where
   logTerm : Rat → Rat → Rat
   deterministic_dpi :
     ∀ {α β : Type} [DecidableEq α] [DecidableEq β],
       (f : α → β) → (μ ν : FinLaw α) → AbsolutelyContinuous μ ν →
-        massSum ((supportList (pushforward f μ)).map (fun b => (b, pointWeight (pushforward f μ) b * logTerm (pointWeight (pushforward f μ) b) (pointWeight (pushforward f ν) b))))
-          ≤ massSum ((supportList μ).map (fun a => (a, pointWeight μ a * logTerm (pointWeight μ a) (pointWeight ν a))))
+        massSum ((pushforward f μ).entries.map (fun e => (e.1, e.2 * logTerm (pointWeight (pushforward f μ) e.1) (pointWeight (pushforward f ν) e.1))))
+          ≤ massSum (μ.entries.map (fun e => (e.1, e.2 * logTerm (pointWeight μ e.1) (pointWeight ν e.1))))
 
 variable {α β : Type} [DecidableEq α] [DecidableEq β]
 
@@ -63,9 +68,10 @@ theorem pushforwardPointWeight_eq_fiberMass (f : α → β) (μ : FinLaw α) (b 
     pointWeight (pushforward f μ) b = fiberMass f μ b := by
   rfl
 
-/-- Finite KL over the explicit scalar/log layer. -/
+/-- Historical abstract score. Entry weights, rather than aggregate weights
+repeated per entry, make this invariant under splitting an atom's mass. -/
 def KL (S : ScalarLogLayer) (μ ν : FinLaw α) : Rat :=
-  massSum ((supportList μ).map (fun a => (a, pointWeight μ a * S.logTerm (pointWeight μ a) (pointWeight ν a))))
+  massSum (μ.entries.map (fun e => (e.1, e.2 * S.logTerm (pointWeight μ e.1) (pointWeight ν e.1))))
 
 theorem KL_pushforward_dpi (S : ScalarLogLayer) (f : α → β) (μ ν : FinLaw α)
     (hAC : AbsolutelyContinuous μ ν) :

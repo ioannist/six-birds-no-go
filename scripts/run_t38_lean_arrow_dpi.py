@@ -160,6 +160,9 @@ def main() -> int:
         fail("repro.py must include run_t38_lean_arrow_dpi.py")
 
     summary = {
+        "validation_kind": "historical_schema_consistency",
+        "mathematical_proof_certificate": False,
+        "current_proof_coverage": "review/current-theorem-coverage.json",
         "generated_at_utc": now_iso(),
         "theorem_count": 1,
         "updated_theorem_ids": ["NG_ARROW_DPI"],

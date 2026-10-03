@@ -7,7 +7,10 @@ from fractions import Fraction
 from itertools import product
 from typing import Any
 
-from sixbirds_nogo.markov import FiniteMarkovChain, parse_probability_vector, validate_distribution
+from sixbirds_nogo.markov import (
+    FiniteMarkovChain, parse_probability_vector, validate_distribution,
+    validate_nonnegative_integer,
+)
 from sixbirds_nogo.pathspace import enumerate_path_law
 from sixbirds_nogo.witnesses import load_witness
 
@@ -19,6 +22,17 @@ class DeterministicLens:
     mapping: dict[str, str]
     image_states: tuple[str, ...]
     image_to_index: dict[str, int]
+
+    def __post_init__(self) -> None:
+        if not self.domain_states or len(set(self.domain_states)) != len(self.domain_states):
+            raise ValueError("domain_states must be non-empty and unique")
+        if set(self.mapping) != set(self.domain_states):
+            raise ValueError("mapping keys must match domain_states exactly")
+        if any(not isinstance(v, str) or not v for v in self.mapping.values()):
+            raise ValueError("lens images must be non-empty strings")
+        image = tuple(dict.fromkeys(self.mapping[s] for s in self.domain_states))
+        if self.image_states != image or self.image_to_index != {s: i for i, s in enumerate(image)}:
+            raise ValueError("lens image and index must match the canonical mapping image")
 
 
 def make_lens(domain_states: Any, mapping: Any, lens_id: str = "") -> DeterministicLens:
@@ -146,6 +160,7 @@ def observed_path_probability_bruteforce(
         init = chain.stationary_distribution
     else:
         init = parse_probability_vector(initial_dist)
+    validate_distribution(init)
     if len(init) != chain.size:
         raise ValueError("initial_dist dimension mismatch")
 
@@ -184,8 +199,7 @@ def enumerate_observed_path_law_bruteforce(
 ) -> dict[tuple[str, ...], Fraction]:
     """Exact brute-force observed path law over all coarse paths."""
     _ensure_compatible(chain, lens)
-    if horizon < 0:
-        raise ValueError("horizon must be nonnegative")
+    validate_nonnegative_integer(horizon, "horizon")
 
     out: dict[tuple[str, ...], Fraction] = {}
     for coarse_path in product(lens.image_states, repeat=horizon + 1):

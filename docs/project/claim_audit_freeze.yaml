@@ -6,8 +6,8 @@
     "readiness_checklist": "docs/project/readiness_checklist.yaml",
     "fragility_summary": "results/T15/fragility_summary.json",
     "primitive_coverage": "results/T14/primitive_coverage.json",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "claim_status_enums": {
     "claim_class": [
@@ -426,5 +426,8 @@
       "paper_use": "discussion",
       "note": "Historical gap-claim ID retained for provenance; now records resolution rather than an active blocker."
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

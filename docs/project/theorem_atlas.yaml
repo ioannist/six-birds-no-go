@@ -12,11 +12,11 @@
       "lean/SixBirdsNoGo/TreeExactness.lean",
       "lean/SixBirdsNoGo/ClosedWalkExactness.lean"
     ],
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "vision_alignment": {
-    "used": true,
+    "used": false,
     "note": "Order and phrasing aligned with current flagship direction when vision file is present."
   },
   "paper_order": [
@@ -941,5 +941,8 @@
       "blockers": [],
       "next_ticket": null
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

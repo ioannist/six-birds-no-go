@@ -52,9 +52,16 @@
       "lean_support": {
         "status": "direct",
         "modules": [
-          "SixBirdsNoGo.FiniteKLDPI",
-          "SixBirdsNoGo.ArrowDPI"
-        ]
+          "SixBirdsNoGo.RealFiniteKL",
+          "SixBirdsNoGo.RealArrowDPI",
+          "SixBirdsNoGo.RealMarkovPaths"
+        ],
+        "declarations": [
+          "SixBirdsNoGo.RealProbability.markovArrowDPI",
+          "SixBirdsNoGo.RealProbability.KL_pushforward_le"
+        ],
+        "coverage_receipt": "review/current-theorem-coverage.json",
+        "scope": "Any current finite real probability law, stochastic rows, deterministic lens, any finite horizon; extended KL includes infinity."
       },
       "paper_home": {
         "section_id": "S1",
@@ -116,9 +123,14 @@
       "lean_support": {
         "status": "direct",
         "modules": [
-          "SixBirdsNoGo.ArrowDPI",
-          "SixBirdsNoGo.ProtocolTrap"
-        ]
+          "SixBirdsNoGo.RealMarkovPaths"
+        ],
+        "declarations": [
+          "SixBirdsNoGo.RealProbability.protocolTrap",
+          "SixBirdsNoGo.RealProbability.detailedBalance_pathLaw_reversible"
+        ],
+        "coverage_receipt": "review/current-theorem-coverage.json",
+        "scope": "Detailed balance of the initial real law with the stochastic kernel. Null states allowed. Path reversal symmetry is derived."
       },
       "paper_home": {
         "section_id": "S1",
@@ -171,9 +183,13 @@
       "lean_support": {
         "status": "direct",
         "modules": [
-          "SixBirdsNoGo.TreeExactness",
-          "SixBirdsNoGo.ForestForceBridge"
-        ]
+          "SixBirdsNoGo.RealGraphExactness"
+        ],
+        "declarations": [
+          "SixBirdsNoGo.RealGraph.forest_exact"
+        ],
+        "coverage_receipt": "review/current-theorem-coverage.json",
+        "scope": "An actual acyclic simple graph and a real antisymmetric label on its edges. Potential identity only on edges. Finiteness is unnecessary."
       },
       "paper_home": {
         "section_id": "S2",
@@ -224,9 +240,13 @@
       "lean_support": {
         "status": "direct",
         "modules": [
-          "SixBirdsNoGo.ClosedWalkExactness",
-          "SixBirdsNoGo.NullForceBridge"
-        ]
+          "SixBirdsNoGo.RealGraphExactness"
+        ],
+        "declarations": [
+          "SixBirdsNoGo.RealGraph.exact_closedWalk_zero"
+        ],
+        "coverage_receipt": "review/current-theorem-coverage.json",
+        "scope": "A real edge-local potential difference and a legal closed graph walk. Finiteness is unnecessary."
       },
       "paper_home": {
         "section_id": "S2",
@@ -236,12 +256,12 @@
     {
       "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
       "title": "Variational identity for closure deficit",
-      "formal_statement_latex": "Let $(\\X,P)$ be a finite Markov chain, let $\\mu\\in\\D(\\X)$, let $\\Pi:\\X\\to\\Y$ be deterministic, and fix $\\tau\\ge 1$. For each $x\\in\\X$, define the packaged future law \\[ p_x^{(\\tau)}(y') := \\Pr_{\\mu,P}[\\Pi(X_{t+\\tau})=y' \\mid X_t=x].\\] For a candidate macro kernel $K:\\Y\\times\\Y\\to[0,1]$, define \\[ \\mathcal{L}_\\tau(K) := \\sum_{x\\in \\X} \\mu(x)\\,\\KL\\!\\big(p_x^{(\\tau)} \\mid K_{\\Pi(x)}\\big).\\] Define the closure deficit by \\[ \\mathrm{CD}_\\tau(\\Pi) := I\\!\\big(X_t;\\Pi(X_{t+\\tau})\\,\\big|\\,\\Pi(X_t)\\big).\\] Then the kernel \\[ K^\\star_y(y') := \\Pr_{\\mu,P}[\\Pi(X_{t+\\tau})=y' \\mid \\Pi(X_t)=y] \\] satisfies \\[ \\mathrm{CD}_\\tau(\\Pi)=\\min_K \\mathcal{L}_\\tau(K)=\\mathcal{L}_\\tau(K^\\star).\\] Moreover, if there exist $x,x'\\in\\X$ with $\\Pi(x)=\\Pi(x')$, $\\mu(x)>0$, $\\mu(x')>0$, and $p_x^{(\\tau)}\\neq p_{x'}^{(\\tau)}$, then $\\mathrm{CD}_\\tau(\\Pi)>0$.",
+      "formal_statement_latex": "Let $(\\X,P)$ be a finite Markov chain, let $\\mu\\in\\D(\\X)$, let $\\Pi:\\X\\to\\Y$ be deterministic, and fix $\\tau\\ge 1$. For each $x\\in\\X$, define the packaged future law \\[ p_x^{(\\tau)}(y') := \\sum_{z\\in\\X:\\Pi(z)=y'}P^{\\tau}(x,z).\\] For a candidate macro kernel $K:\\Y\\times\\Y\\to[0,1]$, define \\[ \\mathcal{L}_\\tau(K) := \\sum_{x\\in \\X} \\mu(x)\\,\\KL\\!\\big(p_x^{(\\tau)} \\mid K_{\\Pi(x)}\\big).\\] Define the closure deficit by \\[ \\mathrm{CD}_\\tau(\\Pi) := I\\!\\big(X_0;\\Pi(X_{\\tau})\\,\\big|\\,\\Pi(X_0)\\big).\\] Then the kernel \\[ K^\\star_y(y') := \\Pr_{\\mu,P}[\\Pi(X_{\\tau})=y' \\mid \\Pi(X_0)=y] \\] satisfies \\[ \\mathrm{CD}_\\tau(\\Pi)=\\min_K \\mathcal{L}_\\tau(K)=\\mathcal{L}_\\tau(K^\\star).\\] Moreover, if there exist $x,x'\\in\\X$ with $\\Pi(x)=\\Pi(x')$, $\\mu(x)>0$, $\\mu(x')>0$, and $p_x^{(\\tau)}\\neq p_{x'}^{(\\tau)}$, then $\\mathrm{CD}_\\tau(\\Pi)>0$.",
       "hypotheses": [
         {
           "hid": "H1",
           "latex": "\\mu\\in\\D(\\X),\\ P:\\X\\times\\X\\to[0,1],\\ \\Pi:\\X\\to\\Y,\\ \\tau\\ge 1",
-          "prose": "Finite initial law, finite Markov kernel, deterministic packaging map, and fixed lag."
+          "prose": "Arbitrary current micro law (taken at time zero), finite Markov kernel, deterministic packaging map, and fixed lag."
         },
         {
           "hid": "H2",
@@ -276,7 +296,7 @@
       "proof_ingredients": [
         "Write the weighted KL mismatch as a conditional expectation over package classes.",
         "Minimize rowwise using the conditional packaged future law.",
-        "Identify the minimum with conditional mutual information and derive the positive-deficit corollary from disagreement on positive stationary mass."
+        "Identify the minimum with conditional mutual information and derive the positive-deficit corollary from disagreement on positive current mass."
       ],
       "required_notation": [
         "N.state_space.X",
@@ -296,9 +316,17 @@
       "lean_support": {
         "status": "direct",
         "modules": [
-          "SixBirdsNoGo.ClosureVariationalCore",
-          "SixBirdsNoGo.ClosureDirectPack"
-        ]
+          "SixBirdsNoGo.RealKLMixture",
+          "SixBirdsNoGo.RealClosure"
+        ],
+        "declarations": [
+          "SixBirdsNoGo.RealProbability.closureTheorem",
+          "SixBirdsNoGo.RealProbability.closure_variational_minimum",
+          "SixBirdsNoGo.RealProbability.conditionalInfo_positive_of_distinct_fiber_rows"
+        ],
+        "coverage_receipt": "review/current-theorem-coverage.json",
+        "scope": "Arbitrary current law (time zero, or the law at time t), stochastic micro and candidate macro kernels, deterministic lens, any finite lag. CMI is independently defined. Only positive-weight rows enter support checks; null fibers permit arbitrary stochastic rows.",
+        "null_state_convention": "Future rows are defined by P^tau followed by the lens even at null microstates; on positive-mass states this equals the conditional law."
       },
       "paper_home": {
         "section_id": "S3",
@@ -359,10 +387,17 @@
         "N.operator.TP"
       ],
       "lean_support": {
-        "status": "auxiliary_boundary",
+        "status": "direct",
         "modules": [
-          "SixBirdsNoGo.ContractionUniqueness"
-        ]
+          "SixBirdsNoGo.RealTVContraction"
+        ],
+        "declarations": [
+          "SixBirdsNoGo.RealProbability.dobrushin_contraction",
+          "SixBirdsNoGo.RealProbability.contractive_separation",
+          "SixBirdsNoGo.RealProbability.contractive_stationary_unique"
+        ],
+        "coverage_receipt": "review/current-theorem-coverage.json",
+        "scope": "Nonempty finite state space, genuine real stochastic rows, actual maximum row TV coefficient below one, two epsilon-stable probability laws. Full 2 epsilon/(1-coefficient) bound and uniqueness. Supplementary Banach existence/convergence argument is reviewed analytically, not exported here."
       },
       "paper_home": {
         "section_id": "S4",
@@ -412,7 +447,12 @@
         "status": "direct",
         "modules": [
           "SixBirdsNoGo.Idempotence"
-        ]
+        ],
+        "declarations": [
+          "SixBirdsNoGo.iterate_stabilizes_ext"
+        ],
+        "coverage_receipt": "review/current-theorem-coverage.json",
+        "scope": "Any endomap on any carrier, with pointwise idempotence; all positive iterates equal one step."
       },
       "paper_home": {
         "section_id": "S5",
@@ -474,14 +514,20 @@
       "lean_support": {
         "status": "direct",
         "modules": [
-          "SixBirdsNoGo.FiniteLensDefinability",
-          "SixBirdsNoGo.BoundedInterfaceNoLadder"
-        ]
+          "SixBirdsNoGo.FiniteImageDefinability"
+        ],
+        "declarations": [
+          "SixBirdsNoGo.FiniteImage.definable_cardinality",
+          "SixBirdsNoGo.FiniteImage.no_infinite_distinct_sequence"
+        ],
+        "coverage_receipt": "review/current-theorem-coverage.json",
+        "scope": "Arbitrary domain and codomain with finite lens image. All Boolean predicates factoring through the lens; exact cardinality and no injective sequence from Nat."
       },
       "paper_home": {
         "section_id": "S5",
         "section_slug": "bounded-interface"
       }
     }
-  ]
+  ],
+  "formalization_evidence": "review/current-theorem-coverage.json"
 }

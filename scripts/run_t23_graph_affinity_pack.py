@@ -176,6 +176,9 @@ def main() -> int:
     guardrail_pack_count = sum(1 for c in claims['claims'] if c.get('claim_id') in ('NG_FORCE_FOREST.guardrail', 'NG_FORCE_NULL.guardrail'))
 
     summary = {
+        "validation_kind": "historical_schema_consistency",
+        "mathematical_proof_certificate": False,
+        "current_proof_coverage": "review/current-theorem-coverage.json",
         'generated_at_utc': now_iso(),
         'theorem_count': 2,
         'updated_theorem_ids': expected,

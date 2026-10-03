@@ -1,6 +1,9 @@
 import SixBirdsNoGo.TreeExactness
 import SixBirdsNoGo.ClosedWalkExactness
 
+/-! Historical integer path-occurrence construction. It is not the arbitrary
+real-labelled graph theorem; that theorem is proved in `RealGraphExactness`. -/
+
 namespace SixBirdsNoGo
 
 open RootedTree

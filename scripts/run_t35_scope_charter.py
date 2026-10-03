@@ -112,6 +112,7 @@ def main() -> int:
         "milestone_sequence",
         "charter_rules",
     }
+    required_keys |= {"evidence_role", "mathematical_proof_certificate", "superseded_by"}
     if set(charter) != required_keys:
         fail("charter top-level keys must match required set exactly")
 
@@ -268,6 +269,9 @@ def main() -> int:
         fail("repro pipeline missing run_t35_scope_charter.py step")
 
     summary = {
+        "validation_kind": "historical_schema_consistency",
+        "mathematical_proof_certificate": False,
+        "current_proof_coverage": "review/current-theorem-coverage.json",
         "generated_at_utc": now_iso(),
         "direct_front_count": len(current["lean_direct_ids"]),
         "auxiliary_front_count": len(current["lean_auxiliary_ids"]),

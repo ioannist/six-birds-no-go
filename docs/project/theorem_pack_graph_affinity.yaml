@@ -11,8 +11,8 @@
     "t15_fragility_summary": "results/T15/fragility_summary.json",
     "t15_threshold_sweep": "results/T15/threshold_sweep.csv",
     "t15_adversarial_cases": "results/T15/adversarial_cases.json",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "pack_status": [
@@ -232,5 +232,8 @@
         "action": "Preserve exact-support / exact-bidirected / no-threshold / no-regularization guardrails explicitly in paper assembly for the graph fronts."
       }
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

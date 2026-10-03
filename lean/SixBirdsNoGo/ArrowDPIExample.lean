@@ -10,11 +10,11 @@ def collapseObs : Fin 2 → Fin 1
 theorem twoStepPathLaw_reversible :
     twoStepPathLaw = reversePathLaw twoStepPathLaw := by
   apply FinLaw.ext_entries
-  native_decide
+  decide +kernel
 
 example : (honestObservedPathLaw collapseObs twoStepPathLaw).entries =
     [((((0 : Fin 1), (0 : Fin 1)), (0 : Fin 1)), half), ((((0 : Fin 1), (0 : Fin 1)), (0 : Fin 1)), half)] := by
-  native_decide
+  decide +kernel
 
 example : honestObservedPathLaw collapseObs twoStepPathLaw =
     reversePathLaw (honestObservedPathLaw collapseObs twoStepPathLaw) := by

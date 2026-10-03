@@ -1,6 +1,11 @@
 import SixBirdsNoGo.FiniteProbabilityCore
 import SixBirdsNoGo.FiniteKLDPI
 
+/-! Historical conditional score/minimizer scaffold. MacroKernel here is a
+raw list, not a stochastic kernel; minimization is an input theorem field.
+This is not the closure-deficit formalization. `RealClosure` proves the actual
+joint-information/minimum/positivity theorem on normalized real laws. -/
+
 namespace SixBirdsNoGo
 
 abbrev MacroKernel (m : Nat) := Fin m → List (Fin m × Rat)
@@ -11,7 +16,7 @@ def deltaLaw {n : Nat} (x : Fin n) : FinLaw (Fin n) where
     intro e h
     have hEq : e = (x, 1) := by simpa using h
     cases hEq
-    simpa using (show (0 : Rat) ≤ (1 : Rat) by native_decide)
+    simpa using (show (0 : Rat) ≤ (1 : Rat) by decide +kernel)
   sum_eq_one := by
     simpa [massSum] using (Rat.add_zero (1 : Rat))
 
@@ -62,8 +67,8 @@ private def conditionalRowDenom {n m : Nat}
 /-- Weighted objective for one packaged future law against one candidate macro row. -/
 def rowwiseObjective {m : Nat} (S : ScalarLogLayer) (w : Rat)
     (rowLaw : FinLaw (Fin m)) (candidateRow : List (Fin m × Rat)) : Rat :=
-  w * massSum ((supportList rowLaw).map (fun a =>
-    (a, pointWeight rowLaw a * S.logTerm (pointWeight rowLaw a) (rawPointWeight candidateRow a))))
+  w * massSum (rowLaw.entries.map (fun e =>
+    (e.1, e.2 * S.logTerm (pointWeight rowLaw e.1) (rawPointWeight candidateRow e.1))))
 
 /-- Exact finite objective over closure-local candidate macro kernels. -/
 def variationalObjective {n m : Nat}

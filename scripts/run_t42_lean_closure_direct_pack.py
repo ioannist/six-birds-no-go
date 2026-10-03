@@ -181,6 +181,9 @@ def main() -> int:
     missing_ids = [tid for tid, t in readiness.items() if t["lean_support"]["status"] == "missing"]
 
     summary = {
+        "validation_kind": "historical_schema_consistency",
+        "mathematical_proof_certificate": False,
+        "current_proof_coverage": "review/current-theorem-coverage.json",
         "generated_at_utc": now_iso(),
         "theorem_count": 1,
         "outcome_mode": "direct_theorem_pack",

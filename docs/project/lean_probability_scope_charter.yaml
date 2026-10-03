@@ -10,8 +10,8 @@
     "lean_corollary_bounded_interface": "docs/project/lean_corollary_bounded_interface.yaml",
     "lean_objecthood_uniqueness": "docs/project/lean_objecthood_uniqueness.yaml",
     "revision_queue": "docs/project/revision_queue.yaml",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "scope_status": [
@@ -361,5 +361,8 @@
     "The closure decision gates the fuller objecthood bridge.",
     "Theorem statuses must not change in T35.",
     "This charter is fixed unless later explicitly revised."
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

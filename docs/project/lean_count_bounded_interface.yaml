@@ -6,8 +6,8 @@
     "theorem_pack_bounded_interface": "docs/project/theorem_pack_bounded_interface.yaml",
     "readiness_checklist": "docs/project/readiness_checklist.yaml",
     "lean_root": "lean/SixBirdsNoGo.lean",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "bridge_status": [
@@ -53,5 +53,8 @@
       "remaining_blockers": [],
       "next_ticket": null
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

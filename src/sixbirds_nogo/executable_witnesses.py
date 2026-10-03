@@ -321,6 +321,8 @@ def run_honest_audit(
             g = honest_observed_path_reversal_kl(_require_chain(w, audit_id), lens, h, precision=precision)
             m_cmp = _comparable_from_actual(m)
             g_cmp = _comparable_from_actual(g)
+            if m.kind == "infinite" and g.kind == "infinite":
+                raise ValueError("DPI gap is undefined when both divergences are infinite")
             if isinstance(m_cmp, Decimal) and isinstance(g_cmp, Decimal):
                 actual = m_cmp - g_cmp
             elif isinstance(m_cmp, Fraction) and isinstance(g_cmp, Fraction):

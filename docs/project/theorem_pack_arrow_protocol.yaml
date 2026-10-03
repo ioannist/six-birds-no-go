@@ -9,8 +9,8 @@
     "t08_results": "results/T08/arrow_metrics.json",
     "t15_fragility_summary": "results/T15/fragility_summary.json",
     "t15_adversarial_cases": "results/T15/adversarial_cases.json",
-    "vision_present": true,
-    "vision_path": "vision.md"
+    "vision_present": false,
+    "vision_path": null
   },
   "status_enums": {
     "pack_status": [
@@ -230,5 +230,8 @@
         "action": "Preserve stationary-initial-law, honest-observation, and anti-proxy guardrails explicitly in paper assembly for the arrow/protocol fronts."
       }
     }
-  ]
+  ],
+  "evidence_role": "historical_status_claims_and_schema_provenance",
+  "mathematical_proof_certificate": false,
+  "superseded_by": "review/current-theorem-coverage.json"
 }

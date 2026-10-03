@@ -10,7 +10,7 @@ def dirac {α : Type} (a : α) : FinLaw α where
     intro e h
     have hEq : e = (a, 1) := by simpa using h
     cases hEq
-    simpa using (show (0 : Rat) ≤ (1 : Rat) by native_decide)
+    simpa using (show (0 : Rat) ≤ (1 : Rat) by decide +kernel)
   sum_eq_one := by
     exact Rat.add_zero 1
 
@@ -18,7 +18,7 @@ def uniformTwo : FinLaw (Fin 2) where
   entries := [((0 : Fin 2), half), ((1 : Fin 2), half)]
   nonneg := by
     have hhalf : (0 : Rat) ≤ half := by
-      native_decide
+      decide +kernel
     intro e h
     have hEq : e = ((0 : Fin 2), half) ∨ e = ((1 : Fin 2), half) := by
       simpa using h
@@ -28,7 +28,7 @@ def uniformTwo : FinLaw (Fin 2) where
     · cases hEq
       simpa [half] using hhalf
   sum_eq_one := by
-    native_decide
+    decide +kernel
 
 def flipState : Fin 2 → Fin 2
   | 0 => 1
@@ -44,19 +44,19 @@ def oneStepPathLaw : FinLaw (PathState 2 1) :=
   pathLaw uniformTwo flipKernel 1
 
 example : oneStepPathLaw.entries = [(((0 : Fin 2), (1 : Fin 2)), half), (((1 : Fin 2), (0 : Fin 2)), half)] := by
-  native_decide
+  decide +kernel
 
 example : (firstMarginal oneStepPathLaw).entries = uniformTwo.entries := by
-  native_decide
+  decide +kernel
 
-example : (twoTimeMarginal oneStepPathLaw ⟨0, by decide⟩ ⟨1, by decide⟩).entries =
+example : (twoTimeMarginal oneStepPathLaw ⟨0, by decide +kernel⟩ ⟨1, by decide +kernel⟩).entries =
     [(((0 : Fin 2), (1 : Fin 2)), half), (((1 : Fin 2), (0 : Fin 2)), half)] := by
-  native_decide
+  decide +kernel
 
 def twoStepPathLaw : FinLaw (PathState 2 2) :=
   pathLaw uniformTwo flipKernel 2
 
-example : (timeMarginal twoStepPathLaw ⟨2, by decide⟩).entries = uniformTwo.entries := by
-  native_decide
+example : (timeMarginal twoStepPathLaw ⟨2, by decide +kernel⟩).entries = uniformTwo.entries := by
+  decide +kernel
 
 end SixBirdsNoGo

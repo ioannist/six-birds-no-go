@@ -399,8 +399,8 @@ def evaluate_theorem_coverage(config_path: str = "configs/primitives.yaml", prec
             note = pair.get("note", "")
             if not isinstance(pair_id, str) or pair_type not in {"witness_pair", "audit_context_pair"}:
                 raise ValueError(f"invalid pair entry in {theorem_id}: {pair!r}")
-            if not isinstance(checks, list):
-                raise ValueError(f"checks must be list in {pair_id}")
+            if not isinstance(checks, list) or not checks:
+                raise ValueError(f"checks must be a nonempty list in {pair_id}")
 
             check_results: list[dict[str, Any]] = []
             lhs_serialized: Any
@@ -466,6 +466,8 @@ def evaluate_theorem_coverage(config_path: str = "configs/primitives.yaml", prec
     return {
         "generation_timestamp_utc": _now_utc(),
         "theorem_target_count": len(out_targets),
+        "evidence_role": "finite_witness_diagnostics_and_record_coverage",
+        "mathematical_proof_certificate": False,
         "supporting_pair_count": supporting_pair_count,
         "gap_note_count": gap_note_count,
         "coverage_satisfied_count": coverage_satisfied_count,

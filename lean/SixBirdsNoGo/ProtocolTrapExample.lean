@@ -21,11 +21,11 @@ theorem toyLiftedPathLaw_reversible :
     stationaryInitializedMicroReversible toyLiftedSystem 1 := by
   unfold stationaryInitializedMicroReversible liftedPathLaw toyLiftedSystem
   apply FinLaw.ext_entries
-  native_decide
+  decide +kernel
 
 example : (honestObservedLiftedPathLaw mergedObservation toyLiftedSystem 1).entries =
     [(((0 : Fin 1), (0 : Fin 1)), half), (((0 : Fin 1), (0 : Fin 1)), half)] := by
-  native_decide
+  decide +kernel
 
 example :
     honestObservedLiftedPathLaw mergedObservation toyLiftedSystem 1 =

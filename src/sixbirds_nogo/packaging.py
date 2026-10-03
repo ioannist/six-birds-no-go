@@ -12,6 +12,7 @@ from sixbirds_nogo.markov import (
     pushforward_distribution,
     validate_distribution,
     validate_row_stochastic,
+    validate_nonnegative_integer,
 )
 from sixbirds_nogo.witnesses import load_witness
 
@@ -24,6 +25,25 @@ class PackagingOperator:
     mapping: dict[str, str] | None
     matrix: tuple[tuple[Fraction, ...], ...] | None
     action: str | None
+
+    def __post_init__(self) -> None:
+        if not self.states or len(set(self.states)) != len(self.states):
+            raise ValueError("states must be non-empty and unique")
+        if self.family == "state_map":
+            if self.mapping is None or set(self.mapping) != set(self.states):
+                raise ValueError("state_map keys must match states exactly")
+            if any(v not in self.states for v in self.mapping.values()):
+                raise ValueError("state_map values must be valid states")
+            if self.matrix is not None:
+                raise ValueError("state_map cannot supply a stochastic matrix")
+        elif self.family == "stochastic_operator":
+            validate_row_stochastic(self.matrix)
+            if len(self.matrix) != len(self.states):
+                raise ValueError("stochastic_operator matrix dimension mismatch")
+            if self.mapping is not None or self.action != "row_distribution_left_multiply":
+                raise ValueError("stochastic_operator requires row_distribution_left_multiply and no state map")
+        else:
+            raise ValueError(f"unsupported packaging family: {self.family!r}")
 
 
 def make_state_map_package(states: Any, mapping: Any, package_id: str = "") -> PackagingOperator:
@@ -56,6 +76,8 @@ def make_stochastic_operator_package(
     package_id: str = "",
     action: str = "row_distribution_left_multiply",
 ) -> PackagingOperator:
+    if action != "row_distribution_left_multiply":
+        raise ValueError("only row_distribution_left_multiply is supported")
     if not isinstance(states, (tuple, list)) or not states:
         raise ValueError("states must be a non-empty sequence")
     st = tuple(states)
@@ -99,7 +121,7 @@ def load_packaging_from_witness(witness_id: str, config_path: str = "configs/wit
         return make_state_map_package(states, pkg.get("mapping"), package_id=pkg_id)
     if family == "stochastic_operator":
         row_states = pkg.get("row_states")
-        if not isinstance(row_states, list) or set(row_states) != set(states):
+        if not isinstance(row_states, list) or set(row_states) != set(states) or len(row_states) != len(states):
             raise ValueError("stochastic_operator row_states must match witness states")
         idx = {s: i for i, s in enumerate(row_states)}
         raw = parse_probability_matrix(pkg.get("matrix"))
@@ -141,8 +163,7 @@ def induced_operator_matrix(pkg: PackagingOperator) -> tuple[tuple[Fraction, ...
 def apply_packaging_to_state(pkg: PackagingOperator, state: str, steps: int = 1) -> str:
     if pkg.family != "state_map":
         raise ValueError("apply_packaging_to_state is only valid for state_map packaging")
-    if steps < 0:
-        raise ValueError("steps must be nonnegative")
+    validate_nonnegative_integer(steps, "steps")
     if state not in pkg.states:
         raise KeyError(f"unknown state: {state}")
     assert pkg.mapping is not None
@@ -153,8 +174,7 @@ def apply_packaging_to_state(pkg: PackagingOperator, state: str, steps: int = 1)
 
 
 def apply_packaging_to_distribution(pkg: PackagingOperator, dist: Any, steps: int = 1) -> tuple[Fraction, ...]:
-    if steps < 0:
-        raise ValueError("steps must be nonnegative")
+    validate_nonnegative_integer(steps, "steps")
     parsed = parse_probability_vector(dist)
     if len(parsed) != len(pkg.states):
         raise ValueError("distribution dimension mismatch")
@@ -164,8 +184,7 @@ def apply_packaging_to_distribution(pkg: PackagingOperator, dist: Any, steps: in
 
 
 def distribution_trajectory(pkg: PackagingOperator, initial_dist: Any, steps: int) -> tuple[tuple[Fraction, ...], ...]:
-    if steps < 0:
-        raise ValueError("steps must be nonnegative")
+    validate_nonnegative_integer(steps, "steps")
     cur = parse_probability_vector(initial_dist)
     if len(cur) != len(pkg.states):
         raise ValueError("distribution dimension mismatch")
@@ -180,8 +199,9 @@ def distribution_trajectory(pkg: PackagingOperator, initial_dist: Any, steps: in
 def state_trajectory(pkg: PackagingOperator, initial_state: str, steps: int) -> tuple[str, ...]:
     if pkg.family != "state_map":
         raise ValueError("state_trajectory is only valid for state_map packaging")
-    if steps < 0:
-        raise ValueError("steps must be nonnegative")
+    if initial_state not in pkg.states:
+        raise KeyError(f"unknown state: {initial_state}")
+    validate_nonnegative_integer(steps, "steps")
     out = [initial_state]
     cur = initial_state
     for _ in range(steps):

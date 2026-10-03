@@ -1,0 +1,298 @@
+{
+  "generated_at_utc": "2026-10-03T09:06:41.083670+00:00",
+  "status": "passed",
+  "evidence_role": "current_explicit_targets_and_kernel_checked_proofs",
+  "review_type": "solo_review_and_adversarial_self_review",
+  "semantic_review": "review/mathematical-review.txt",
+  "paper_edited": false,
+  "theorem_count": 8,
+  "direct_front_count": 8,
+  "auxiliary_front_count": 0,
+  "toolchain": "leanprover/lean4:v4.28.0",
+  "verification": {
+    "full_root_build": "passed",
+    "explicit_target_types": "passed",
+    "transitive_axiom_audit": "passed",
+    "source_hole_scan": "passed"
+  },
+  "axioms": {
+    "SixBirdsNoGo.iterate_stabilizes_ext": [
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.KL_pushforward_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.finiteKL_eq_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.markovArrowDPI": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.detailedBalance_pathLaw_reversible": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.protocolTrap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealGraph.forest_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealGraph.exact_closedWalk_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.FiniteImage.definable_cardinality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.FiniteImage.no_infinite_distinct_sequence": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.genuine_positive_KL": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.genuine_infinite_KL": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.weightedFiniteKL_decomposition": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.closure_variational_minimum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.conditionalInfo_positive_of_distinct_fiber_rows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.closureTheorem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.closureWitness_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.dobrushin_contraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.contractive_separation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.contractive_stationary_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SixBirdsNoGo.RealProbability.concrete_real_separation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "theorems": [
+    {
+      "theorem_id": "NG_ARROW_DPI",
+      "status": "direct",
+      "declarations": [
+        "SixBirdsNoGo.RealProbability.markovArrowDPI",
+        "SixBirdsNoGo.RealProbability.KL_pushforward_le"
+      ],
+      "modules": [
+        "SixBirdsNoGo.RealFiniteKL",
+        "SixBirdsNoGo.RealArrowDPI",
+        "SixBirdsNoGo.RealMarkovPaths"
+      ],
+      "scope": "Any current finite real probability law, stochastic rows, deterministic lens, any finite horizon; extended KL includes infinity."
+    },
+    {
+      "theorem_id": "NG_PROTOCOL_TRAP",
+      "status": "direct",
+      "declarations": [
+        "SixBirdsNoGo.RealProbability.protocolTrap",
+        "SixBirdsNoGo.RealProbability.detailedBalance_pathLaw_reversible"
+      ],
+      "modules": [
+        "SixBirdsNoGo.RealMarkovPaths"
+      ],
+      "scope": "Detailed balance of the initial real law with the stochastic kernel. Null states allowed. Path reversal symmetry is derived."
+    },
+    {
+      "theorem_id": "NG_FORCE_FOREST",
+      "status": "direct",
+      "declarations": [
+        "SixBirdsNoGo.RealGraph.forest_exact"
+      ],
+      "modules": [
+        "SixBirdsNoGo.RealGraphExactness"
+      ],
+      "scope": "An actual acyclic simple graph and a real antisymmetric label on its edges. Potential identity only on edges. Finiteness is unnecessary."
+    },
+    {
+      "theorem_id": "NG_FORCE_NULL",
+      "status": "direct",
+      "declarations": [
+        "SixBirdsNoGo.RealGraph.exact_closedWalk_zero"
+      ],
+      "modules": [
+        "SixBirdsNoGo.RealGraphExactness"
+      ],
+      "scope": "A real edge-local potential difference and a legal closed graph walk. Finiteness is unnecessary."
+    },
+    {
+      "theorem_id": "NG_MACRO_CLOSURE_DEFICIT",
+      "status": "direct",
+      "declarations": [
+        "SixBirdsNoGo.RealProbability.closureTheorem",
+        "SixBirdsNoGo.RealProbability.closure_variational_minimum",
+        "SixBirdsNoGo.RealProbability.conditionalInfo_positive_of_distinct_fiber_rows"
+      ],
+      "modules": [
+        "SixBirdsNoGo.RealKLMixture",
+        "SixBirdsNoGo.RealClosure"
+      ],
+      "scope": "Arbitrary current law (time zero, or the law at time t), stochastic micro and candidate macro kernels, deterministic lens, any finite lag. CMI is independently defined. Only positive-weight rows enter support checks; null fibers permit arbitrary stochastic rows."
+    },
+    {
+      "theorem_id": "NG_OBJECT_CONTRACTIVE",
+      "status": "direct",
+      "declarations": [
+        "SixBirdsNoGo.RealProbability.dobrushin_contraction",
+        "SixBirdsNoGo.RealProbability.contractive_separation",
+        "SixBirdsNoGo.RealProbability.contractive_stationary_unique"
+      ],
+      "modules": [
+        "SixBirdsNoGo.RealTVContraction"
+      ],
+      "scope": "Nonempty finite state space, genuine real stochastic rows, actual maximum row TV coefficient below one, two epsilon-stable probability laws. Full 2 epsilon/(1-coefficient) bound and uniqueness. Supplementary Banach existence/convergence argument is reviewed analytically, not exported here."
+    },
+    {
+      "theorem_id": "NG_LADDER_IDEM",
+      "status": "direct",
+      "declarations": [
+        "SixBirdsNoGo.iterate_stabilizes_ext"
+      ],
+      "modules": [
+        "SixBirdsNoGo.Idempotence"
+      ],
+      "scope": "Any endomap on any carrier, with pointwise idempotence; all positive iterates equal one step."
+    },
+    {
+      "theorem_id": "NG_LADDER_BOUNDED_INTERFACE",
+      "status": "direct",
+      "declarations": [
+        "SixBirdsNoGo.FiniteImage.definable_cardinality",
+        "SixBirdsNoGo.FiniteImage.no_infinite_distinct_sequence"
+      ],
+      "modules": [
+        "SixBirdsNoGo.FiniteImageDefinability"
+      ],
+      "scope": "Arbitrary domain and codomain with finite lens image. All Boolean predicates factoring through the lens; exact cardinality and no injective sequence from Nat."
+    }
+  ],
+  "source_sha256": {
+    "lean/SixBirdsNoGo.lean": "78c5c636bc26d115bcbb0205dd8f8bb98be83ed0bcb3841c5b0da2af6f514584",
+    "lean/lakefile.lean": "9f80d040f0abbec550b01f048dc9b472e7cf076459cd08dd70512522f1561707",
+    "lean/lake-manifest.json": "5c03454b19fa87efdde545963f179f98749de671fe49a3d53893b279e7e37896",
+    "lean/lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+    "review/CheckTargets.lean": "95f47d19a630d86d1ef06ba084034c61306799d9756b2330ab72befca2543193",
+    "review/CheckAxioms.lean": "4053d2582d30fbe5434895aa26a39448741ce6b8d14dfc3d3787ff87f0576382",
+    "docs/project/theorem_statement_sheet.yaml": "4fd9265fd0b59607bc82348b721b9c72dcc5874367658e3babd0b630f9eb5567",
+    "review/mathematical-review.txt": "cac285b6dfda73b74f527a941f31a40686964db07a1eb982bc7a58294cf754f9",
+    "scripts/run_mathematical_audit.py": "fdbf834744a88eb2669b74221eb0cff92fc5852f9556195d89e8b4f58e97545c",
+    "lean/SixBirdsNoGo/ArrowDPI.lean": "1f1ac8c2d1340388eedc718817f2aff1953cde9f6ddc7911c78025a93c9faad9",
+    "lean/SixBirdsNoGo/ArrowDPIExample.lean": "22e3cdabaaac237f7e21559ceceb5a75274e1a7e094ac7fa81c9b6813e1f44f6",
+    "lean/SixBirdsNoGo/BoundedInterfaceNoLadder.lean": "2c6df4b741f92feeb7ea969cc7d2af22b187014fa0cae277c9def0dbfc7c75b4",
+    "lean/SixBirdsNoGo/BoundedInterfaceNoLadderExample.lean": "91be4ac5afc405adde0af764c4cce4f0295baaea3760240b0ce8bd50eb578945",
+    "lean/SixBirdsNoGo/ClosedWalkExactness.lean": "393b3e2e664d6cd8858e55e8c8f8f9c6331356c6f5b2b4c162afcfccabbbf4d4",
+    "lean/SixBirdsNoGo/ClosedWalkExactnessExample.lean": "809293e9738c62d089c393f98939534ac422e90aef45d3740c351ebbe00e3de0",
+    "lean/SixBirdsNoGo/ClosureDirectPack.lean": "afe52ef8e99b984d384c5332fe313a7544b856b0a18dd60bdcab3461ef5d204e",
+    "lean/SixBirdsNoGo/ClosureDirectPackExample.lean": "b14109855a90c128e44a9428e3fbada5d5068feb1d22412792b57fafee9f5ca6",
+    "lean/SixBirdsNoGo/ClosureVariationalCore.lean": "597d1c1b835703b255b350c90d62d9a7bb2e8f9acde2c29e6cde1cbf5606d9b6",
+    "lean/SixBirdsNoGo/ClosureVariationalCoreExample.lean": "604409eee152399576e5ceffb9a4796115647b1460b3f02414ff54254a8faa61",
+    "lean/SixBirdsNoGo/ContractionUniqueness.lean": "603e4f77f1766b2fbf28b6e6ce1147402cab5b115572dd798907947d9e3e44e7",
+    "lean/SixBirdsNoGo/ContractionUniquenessExample.lean": "c4b1571675f5d252d165b5296eded6dd6e43fa9154ee9611e340b76a43b5fe93",
+    "lean/SixBirdsNoGo/FiniteImageDefinability.lean": "1e35f019c30f14e25ef4dd61e46baaf2ecaf2135bf72a68ff696127322547319",
+    "lean/SixBirdsNoGo/FiniteKLDPI.lean": "c7301cbc45500793c1eb798bd5b6cea30317f2442bf4c27f7f485e2696d44346",
+    "lean/SixBirdsNoGo/FiniteKLDPIExample.lean": "012d4b442dcbaca1ee3e59a849627ccf4bbffbe711d3e4c8d941b6634096d194",
+    "lean/SixBirdsNoGo/FiniteLensCardinality.lean": "680256ca255d985a7e5b1f7f36b7d818db0176a210289825a27e6876ea2c7ce4",
+    "lean/SixBirdsNoGo/FiniteLensDefinability.lean": "ecab611841e1192414512ed6ec8d3273a7fdc11a08c08d0b46cee5df5eea74f7",
+    "lean/SixBirdsNoGo/FiniteLensDefinabilityExample.lean": "4ea0c232e7ebb8a5cafbbe02fa28b395e31b7d465450ec46455bc0ab19d48bd7",
+    "lean/SixBirdsNoGo/FiniteProbabilityCore.lean": "fb1697b35012ff10ba8c607a219092c859b1b2efa9d024b00f0d8a87deb20626",
+    "lean/SixBirdsNoGo/FiniteProbabilityCoreExample.lean": "be89d6999db30f458bd83ed7a8d719292c9dff5a237d8b3c6e4be558f6cb398d",
+    "lean/SixBirdsNoGo/ForestForceBridge.lean": "82cab76136aec2c6fcb10cf53c663be7eaae38a29939855e8367fece9c69945b",
+    "lean/SixBirdsNoGo/ForestForceBridgeExample.lean": "842986943a47f83a03988de048d37ca300ad5afcd4fd29e5758e39c9e8da7cb8",
+    "lean/SixBirdsNoGo/Idempotence.lean": "ee37d6b66afa90934506aca94615f3091738f433269284d2051d7260aed545b9",
+    "lean/SixBirdsNoGo/NullForceBridge.lean": "19b6b05b2c7227590f52d81c94424dd582cbf0997bd52d2f72d6eac9d7d6db9b",
+    "lean/SixBirdsNoGo/NullForceBridgeExample.lean": "bb1a0bb86694aa87aa05476f4b2ab72dc9ea7730726a07cc64776017234bf4e4",
+    "lean/SixBirdsNoGo/ProtocolTrap.lean": "047efe318be8349bc7df580ab7735758bba71f75daa94a2691e717d3d33f2663",
+    "lean/SixBirdsNoGo/ProtocolTrapExample.lean": "660f7bf6c3ad5f3c51d3bf1ab9094e771c25c89a62cfbe49b4183668def8c0f4",
+    "lean/SixBirdsNoGo/RealArrowDPI.lean": "7e40b53eccf932c4c646d1fe3081e828e6a924690ed1a170c4538b9427122202",
+    "lean/SixBirdsNoGo/RealClosure.lean": "875d5fcad1bc1155efcc893163ab84783af1147ab924dedf88fce9390b5d08bb",
+    "lean/SixBirdsNoGo/RealClosureExamples.lean": "88d28cdcf1c5cda6cff417b53dd2229bf9646a2a0b208846ae8a019ff3d82fab",
+    "lean/SixBirdsNoGo/RealFiniteKL.lean": "4a2785f82eaada19c454afe0c857d55db4a9865d26e89ded01998d81259e2c36",
+    "lean/SixBirdsNoGo/RealGraphExactness.lean": "024fd8b5f568ef08d8062273b19d4df1fcfd24fd64abade24c144d46f3e79174",
+    "lean/SixBirdsNoGo/RealKLMixture.lean": "d93e57b0111c08a4d2e09b376fcac89be46654abf72ff48b279ad67386ad0f16",
+    "lean/SixBirdsNoGo/RealMarkovPaths.lean": "2a7dff45f9a41bd74720a52dd2e157a475f6007d49c73de2173ac567306aaf74",
+    "lean/SixBirdsNoGo/RealProbabilityExamples.lean": "8c058fb765441929a20adfba5f1cd1af34615ccb07046ce7664e52b0f0bf8450",
+    "lean/SixBirdsNoGo/RealTVContraction.lean": "aa776a25489092d30f8653ab4b07eeee8024e75ab28995c146e2eaca45e54bbe",
+    "lean/SixBirdsNoGo/RealTVExamples.lean": "7d015cc652d1fb970c095815bb53ed7dc36f9a7058e4667e1b9bf319f4e3048b",
+    "lean/SixBirdsNoGo/TreeExactness.lean": "41c387e2c57f43b076388f368b64ff817d6f94d3249e52885092173dc84a12dc",
+    "lean/SixBirdsNoGo/TreeExactnessExample.lean": "0c9dd90943b59dfb6696a9ba255e5816cf6a4e0fb3f400de8b90099c771f5a21",
+    "src/sixbirds_nogo/__init__.py": "9c57c5a4ad918b44d7e82066c74f5429cc2fb18173e941f8c550a1f135b60a99",
+    "src/sixbirds_nogo/affinity.py": "de09f4c5b37fcfd2d16a26aecd7794093162d869bdc6c707495830890e6ac18a",
+    "src/sixbirds_nogo/arrow.py": "d4b35232c88c46dab36a91e13a97eb53f6b84cfb37ff4b1e1e21cd9a0dd19943",
+    "src/sixbirds_nogo/closure_deficit.py": "6ab587cbd598cbaeec0a56c8245a0b1a908f985c7c8c6a19f053a2fca49d5e1b",
+    "src/sixbirds_nogo/coarse.py": "c9624cb8d6317b855dffec5606e89bef938e14fc6da8d2495aec256183aa8b2f",
+    "src/sixbirds_nogo/definability.py": "29985822249012391c0584a3cf5e0c6a513f85527da1ceb2825fac9bab105c58",
+    "src/sixbirds_nogo/executable_witnesses.py": "a1390dcbd8c300691493ce354eb0e2553befa0ce033ff0b929d422c8d4ee47c7",
+    "src/sixbirds_nogo/graph_cycle.py": "6142406145a9596f0975436467b82428e658795a3af96b96d0cb8e479bf19215",
+    "src/sixbirds_nogo/markov.py": "f0320db6e4ae81371d16ddbb447d924d9b180b91c04f2da5ad4b6c6a54281e11",
+    "src/sixbirds_nogo/master_suite.py": "967efe74198f0e8b082a78b1edf5c59bb3f3cb996fed096d94c4271db37200ac",
+    "src/sixbirds_nogo/objecthood.py": "818051cb9788060c46e6fc84dc575d88350d5430b53ca0fe83903b41e3966193",
+    "src/sixbirds_nogo/packaging.py": "f3ef0c133b459cfd26cc6e9b4aaf3297ff915eb30225f6f3c7101d44be8f074d",
+    "src/sixbirds_nogo/pathspace.py": "ab43fc56989c0e0ececf0d89d13a80817fe8494e933c8a7900db0124075ef624",
+    "src/sixbirds_nogo/primitives.py": "99134fc52e3c5da13ccb283d103a71d7bfbc09ddf6152bfd6638bb5d26557bca",
+    "src/sixbirds_nogo/proxy_macro_fit.py": "d5e8490820c36f200f933d4652027eab057fd1fa6368e0ab5e7311594ab22959",
+    "src/sixbirds_nogo/repro.py": "c86546c63cee2f003118fe3d97cd497f843d5828cfb0e3ba2a877c8b79cf4f0b",
+    "src/sixbirds_nogo/robustness.py": "ab5682b41898cd786a22f54a2d8c8033e916a846105e2e549f14c2090a0c3238",
+    "src/sixbirds_nogo/witnesses.py": "eee09cf82b38d7c4c385dc77991f8c23cba87baeebbd99edac0c92dc4b964d44"
+  },
+  "limits": [
+    "This receipt checks the listed source content; rerun after source changes.",
+    "Finite experiment log values use uncertified Decimal evaluation; probability laws and regime classifications use exact rational arithmetic.",
+    "Older T20\u2013T44 labels are historical schema/provenance claims, not proof certificates.",
+    "The paper and its historical formalization summaries await the separately requested editing phase."
+  ]
+}

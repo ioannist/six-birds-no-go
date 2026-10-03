@@ -191,6 +191,9 @@ def main() -> int:
     evidence_core = sum(1 for c in claims['claims'] if c['claim_class'] == 'core' and c['support_grade'] == 'evidence_only')
 
     summary = {
+        "validation_kind": "historical_schema_consistency",
+        "mathematical_proof_certificate": False,
+        "current_proof_coverage": "review/current-theorem-coverage.json",
         'generated_at_utc': now_iso(),
         'theorem_count': len(theorem_ids),
         'claim_count': claim_count,

@@ -13,6 +13,12 @@ Matrix = tuple[tuple[Fraction, ...], ...]
 Vector = tuple[Fraction, ...]
 
 
+def validate_nonnegative_integer(value: Any, name: str) -> None:
+    """Reject fractional iteration counts and booleans before recursing."""
+    if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+        raise ValueError(f"{name} must be a nonnegative integer")
+
+
 def parse_probability(value: Any) -> Fraction:
     """Parse a probability value as an exact Fraction."""
     if isinstance(value, Fraction):
@@ -104,8 +110,7 @@ def _matrix_multiply(a: Matrix, b: Matrix) -> Matrix:
 def matrix_power(matrix: Matrix, n: int) -> Matrix:
     """Compute exact matrix power with exponentiation by squaring."""
     validate_row_stochastic(matrix)
-    if n < 0:
-        raise ValueError("n must be nonnegative")
+    validate_nonnegative_integer(n, "n")
     size = len(matrix)
     result = _identity(size)
     base = matrix
@@ -120,8 +125,7 @@ def matrix_power(matrix: Matrix, n: int) -> Matrix:
 
 def pushforward_distribution(dist: Vector, matrix: Matrix, steps: int = 1) -> Vector:
     """Push a row distribution through a chain for a given number of steps."""
-    if steps < 0:
-        raise ValueError("steps must be nonnegative")
+    validate_nonnegative_integer(steps, "steps")
     validate_distribution(dist)
     validate_row_stochastic(matrix)
     if len(dist) != len(matrix):
@@ -319,7 +323,7 @@ def load_chain_from_witness(witness_id: str, config_path: str = "configs/witness
     row_states = dynamics.get("row_states")
     if not isinstance(row_states, list) or not all(isinstance(s, str) for s in row_states):
         raise ValueError(f"witness {witness_id!r} has invalid row_states")
-    if set(row_states) != set(states):
+    if set(row_states) != set(states) or len(row_states) != len(states):
         raise ValueError(f"witness {witness_id!r} row_states must match states")
 
     raw_matrix = parse_probability_matrix(dynamics.get("matrix"))
