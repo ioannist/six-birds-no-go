@@ -33,3 +33,16 @@ paper/supplement/*.pdf
 *.pem
 *.key
 .codex_thread_id
+
+# Local AI-agent state, transcripts, and scratch files (never commit).
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+.codex/
+.cursor/
+.aider*
+.continue/
+*.transcript.*
+transcript*.jsonl
+session*.jsonl
